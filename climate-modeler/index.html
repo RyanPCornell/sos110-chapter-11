@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Modeler — Project Global Warming to 2100</title>
+<style>
+:root{
+  --bg:#f3f6f8; --panel:#ffffff; --ink:#16242e; --mut:#5c7284; --line:#dbe4ea;
+  --accent:#1f6f8b; --warm:#d9534f; --cool:#2e8b7a; --gold:#c8963e;
+  --r:9px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:1.4rem 1.25rem 3rem}
+.tag{font-family:'Courier New',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:1.5rem;margin-top:.25rem}
+.sub{color:var(--mut);font-size:.9rem;margin-top:.35rem;max-width:840px}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:1.25rem;margin-top:1.25rem;align-items:start}
+@media(max-width:860px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem}
+.panel h2{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:.8rem;font-weight:700}
+.scn-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
+.scn{border:1px solid var(--line);background:#f7fafb;border-radius:7px;padding:.55rem .6rem;cursor:pointer;font-size:.78rem;font-weight:600;text-align:left;transition:all .15s;color:var(--ink)}
+.scn small{display:block;color:var(--mut);font-weight:400;font-size:.68rem;margin-top:.15rem}
+.scn.on{border-color:var(--accent);background:#e8f2f5;box-shadow:0 0 0 1px var(--accent)}
+.ctrl{margin-bottom:1rem}
+.ctrl label{display:flex;justify-content:space-between;font-size:.82rem;font-weight:500;margin-bottom:.35rem}
+.ctrl label b{font-family:'Courier New',monospace;color:var(--accent)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;background:var(--line);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.25);cursor:pointer}
+.tick3{display:flex;justify-content:space-between;font-size:.66rem;color:var(--mut);margin-top:.2rem}
+.seg{display:flex;background:#eef3f5;border-radius:6px;padding:3px;gap:2px;margin-top:.35rem}
+.seg-btn{flex:1;padding:.4rem .2rem;font-size:.74rem;font-weight:600;border:none;background:transparent;border-radius:4px;color:var(--mut);cursor:pointer}
+.seg-btn.on{background:var(--accent);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1rem}
+@media(max-width:600px){.cards{grid-template-columns:repeat(2,1fr)}}
+.mcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:.8rem .9rem;position:relative;overflow:hidden}
+.mcard .k{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.mcard .v{font-size:1.5rem;font-weight:700;line-height:1.1;margin-top:.15rem}
+.mcard .u{font-size:.66rem;color:var(--mut)}
+.chart-wrap{position:relative;height:340px}
+.chart-wrap.sm{height:170px}
+.chart-title{font-size:.78rem;font-weight:600;color:var(--mut);margin-bottom:.3rem}
+.verdict{border-radius:var(--r);padding:.8rem 1rem;margin-bottom:1rem;font-size:.86rem;font-weight:600;display:flex;gap:.6rem;align-items:flex-start}
+.tips{margin-top:.5rem;display:flex;flex-direction:column;gap:.4rem}
+.tip{display:flex;align-items:center;gap:.6rem;font-size:.8rem;padding:.4rem .6rem;border-radius:6px;background:#f7fafb;border:1px solid var(--line)}
+.tip .th{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.tip.crossed{background:#fbeceb;border-color:#f0c4c1}
+.tip.crossed .th{background:var(--warm)}
+.tip .safe{margin-left:auto;font-size:.7rem;color:var(--cool);font-weight:600}
+.tip .cross{margin-left:auto;font-size:.7rem;color:var(--warm);font-weight:700}
+.disclaimer{background:rgba(200,150,62,.1);border:1px solid rgba(200,150,62,.35);border-left:3px solid var(--gold);border-radius:var(--r);padding:.75rem 1rem;font-size:.78rem;color:#6b5320;margin-top:1.25rem;line-height:1.6}
+.src{margin-top:1rem;font-size:.74rem;color:var(--mut);line-height:1.7}
+.src b{color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;font-size:.75rem;color:var(--mut);margin-top:.4rem}
+.legend span{display:flex;align-items:center;gap:.35rem}
+.legend .d{width:14px;height:3px;border-radius:2px}
+body.embed .tag{margin-top:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tag">Chapter 11 · What About the Future?</div>
+  <h1>Climate Modeler — Project Global Warming to 2100</h1>
+  <p class="sub">Choose an emissions pathway and see how much the planet warms. This simulator uses the IPCC's central finding that <b>warming rises in near-direct proportion to the total (cumulative) CO₂ humans emit</b> — the science behind "carbon budgets." Adjust when the world reaches net-zero and how sensitive the climate is, and watch which <b>tipping points</b> come into reach.</p>
+
+  <div class="layout">
+    <!-- CONTROLS -->
+    <div class="panel">
+      <h2>1 · Emissions Pathway</h2>
+      <div class="scn-grid" id="scnGrid"></div>
+
+      <h2>2 · Fine-tune</h2>
+      <div class="ctrl">
+        <label>Net-zero CO₂ year <b id="nzVal">2050</b></label>
+        <input type="range" id="nz" min="2035" max="2120" step="5" value="2050">
+        <div class="tick3"><span>2035</span><span>2075</span><span>never (2120+)</span></div>
+      </div>
+      <div class="ctrl">
+        <label>Today's emissions trend <b id="trendVal">falling slowly</b></label>
+        <input type="range" id="trend" min="-2" max="3" step="1" value="0">
+        <div class="tick3"><span>−2%/yr</span><span>flat</span><span>+3%/yr</span></div>
+        <div style="font-size:.68rem;color:var(--mut);margin-top:.25rem">Rate of change before net-zero decline begins.</div>
+      </div>
+      <div class="ctrl">
+        <label style="margin-bottom:.15rem">Climate sensitivity</label>
+        <div class="seg" id="sensSeg">
+          <button class="seg-btn" data-s="lo">Low</button>
+          <button class="seg-btn on" data-s="mid">Central</button>
+          <button class="seg-btn" data-s="hi">High</button>
+        </div>
+        <div style="font-size:.68rem;color:var(--mut);margin-top:.35rem" id="sensNote">TCRE ≈ 0.45 °C per 1,000 Gt CO₂ (IPCC AR6 central; likely range 0.27–0.63).</div>
+      </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div>
+      <div class="cards">
+        <div class="mcard"><div class="k">Warming in 2100</div><div class="v" id="c-2100">—</div><div class="u">above 1850–1900</div></div>
+        <div class="mcard"><div class="k">Peak warming</div><div class="v" id="c-peak">—</div><div class="u" id="c-peakyr">—</div></div>
+        <div class="mcard"><div class="k">CO₂ in 2100</div><div class="v" id="c-co2">—</div><div class="u">ppm</div></div>
+        <div class="mcard"><div class="k">Cumulative CO₂</div><div class="v" id="c-cum">—</div><div class="u">Gt, 2024–2100</div></div>
+      </div>
+
+      <div class="verdict" id="verdict"></div>
+
+      <div class="panel" style="margin-bottom:1rem">
+        <div class="chart-title">Global temperature anomaly (°C above pre-industrial)</div>
+        <div class="chart-wrap"><canvas id="tempChart"></canvas></div>
+        <div class="legend">
+          <span><span class="d" style="background:#888"></span>Observed (1850–2024)</span>
+          <span><span class="d" style="background:var(--warm)"></span>Your projection</span>
+          <span><span class="d" style="background:#c9a227;height:0;border-top:2px dashed #c9a227"></span>Tipping-point thresholds</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="chart-title">Atmospheric CO₂ concentration (ppm)</div>
+        <div class="chart-wrap sm"><canvas id="co2Chart"></canvas></div>
+      </div>
+
+      <div class="panel" style="margin-top:1rem">
+        <h2>Tipping points within reach at your peak warming</h2>
+        <div class="tips" id="tips"></div>
+        <div style="font-size:.7rem;color:var(--mut);margin-top:.6rem">Approximate central thresholds from Armstrong McKay et al. (2022). Crossing a threshold does not mean instant collapse — it marks where a self-reinforcing change becomes <i>likely</i>, sometimes over centuries.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ <b>Educational estimates only.</b> This is a simplified climate <i>emulator</i>, not a full Earth-system model. It uses the IPCC's near-linear relationship between cumulative CO₂ emissions and warming (TCRE) plus a fixed non-CO₂ forcing offset. Real projections from models like those in the IPCC AR6 include ocean heat lag, aerosols, methane, and many feedbacks this tool approximates. Numbers are for building intuition, not for planning or research.</div>
+
+  <div class="src">
+    <b>Sources &amp; methodology</b><br>
+    [1] IPCC. (2021). <i>Climate Change 2021: The Physical Science Basis (AR6, WGI),</i> Summary for Policymakers &amp; Ch. 5. Transient Climate Response to Cumulative Emissions (TCRE) ≈ 0.45 °C per 1,000 Gt CO₂ (likely range 0.27–0.63); ~1.1 °C warming by 2011–2020; SSP scenario warming ranges used to calibrate the presets.<br>
+    [2] Matthews, H.D., et al. (2009). The proportionality of global warming to cumulative carbon emissions. <i>Nature, 459,</i> 829–832. Foundational TCRE relationship.<br>
+    [3] Meinshausen, M., et al. (2020). The SSP greenhouse gas concentrations and their extensions to 2500. <i>Geoscientific Model Development, 13,</i> 3571–3605. Scenario emission pathways.<br>
+    [4] Friedlingstein, P., et al. (2023). <i>Global Carbon Budget 2023.</i> Earth System Science Data. ~40 Gt CO₂/yr present-day emissions; airborne fraction ~0.46; 7.8 Gt CO₂ per ppm.<br>
+    [5] Armstrong McKay, D.I., et al. (2022). Exceeding 1.5 °C global warming could trigger multiple climate tipping points. <i>Science, 377,</i> eabn7950. Tipping-point threshold estimates.
+  </div>
+</div>
+
+<script>
+if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
+
+// ── Constants (see sources) ──
+const E0 = 40;            // Gt CO2/yr present-day (Global Carbon Budget 2023)
+const GT_PER_PPM = 7.8;   // Gt CO2 per ppm
+const AF = 0.46;          // airborne fraction
+const CO2_2024 = 424;     // ppm 2024
+const T_2024 = 1.2;       // °C warming in 2024 vs 1850-1900
+const TCRE = {lo:0.00027, mid:0.00045, hi:0.00063}; // °C per Gt CO2
+const NONCO2 = 0.35;      // fixed additional forcing offset for non-CO2 GHGs/aerosols (°C), scenario-scaled
+const START=2024, END=2100;
+
+let sens='mid', netZero=2050, trend=0, scenario='paris';
+
+const SCENARIOS = {
+  paris:  {label:'Paris-aligned', desc:'Net-zero ~2050', nz:2050, trend:0},
+  slow:   {label:'Slow transition', desc:'Net-zero ~2075', nz:2075, trend:0},
+  delayed:{label:'Delayed action', desc:'Net-zero ~2090', nz:2090, trend:1},
+  high:   {label:'No new policy', desc:'Emissions keep rising', nz:2120, trend:2}
+};
+
+// emissions(year): grow/decline at `trend` %/yr until decline toward net-zero begins,
+// then linear decline to 0 at netZero. Model: linear ramp from E0 (2024) to 0 at netZero,
+// but the early slope is nudged by `trend` (positive trend => rises first then falls).
+function emissions(y){
+  if(y<START) return E0;
+  // "never" (net-zero beyond 2100): emissions follow the chosen trend growth, no decline.
+  if(netZero>2100){
+    return Math.max(0, E0*Math.pow(1+trend/100, y-START));
+  }
+  // A net-zero target: decline toward 0 by netZero, with the early slope tilted by `trend`.
+  if(y>=netZero) return 0;
+  const span=netZero-START;
+  if(span<=0) return 0;
+  const frac=(y-START)/span;
+  let base = E0*(1-frac);                       // linear decline to 0 at netZero
+  let bump = trend*0.3*E0*Math.sin(Math.PI*frac); // 0 at both ends, peaks mid-path
+  return Math.max(0, base+bump);
+}
+function cumulative(y){ // Gt CO2 from START to y (trapezoid)
+  let c=0; for(let t=START;t<y;t++){ c+=(emissions(t)+emissions(t+1))/2; } return c;
+}
+
+// historical observed anomaly (schematic, 1850-2024) — smooth rise to 1.2
+function histAnom(y){
+  const f=(y-1850)/(2024-1850);
+  return -0.1 + 1.3*Math.pow(Math.max(0,f),1.7) + 0.05*Math.sin((y-1850)/11);
+}
+
+const TIPS=[
+  {name:'Warm-water coral reefs die off', th:1.5, color:'#e07b5a'},
+  {name:'Greenland Ice Sheet collapse (multi-century)', th:1.5, color:'#4aa3df'},
+  {name:'Arctic permafrost carbon release', th:1.5, color:'#8a6d3b'},
+  {name:'Mountain glaciers lost', th:2.0, color:'#5ec8d8'},
+  {name:'West Antarctic Ice Sheet collapse', th:2.0, color:'#3f7fae'},
+  {name:'Amazon rainforest dieback', th:3.5, color:'#3fae6b'},
+  {name:'Atlantic circulation (AMOC) collapse', th:4.0, color:'#7d5ba6'}
+];
+
+function project(){
+  const tcre=TCRE[sens];
+  const nonco2 = NONCO2 * (scenario==='high'?1.15:scenario==='delayed'?1.05:1.0);
+  const years=[], temp=[], co2=[];
+  let peak=0,peakYr=START;
+  for(let y=START;y<=END;y++){
+    const cum=cumulative(y);
+    const t=T_2024 + tcre*cum + (nonco2-NONCO2); // offset relative shifts
+    years.push(y); temp.push(t);
+    co2.push(CO2_2024 + AF*cum/GT_PER_PPM);
+    if(t>peak){peak=t;peakYr=y;}
+  }
+  return {years,temp,co2,peak,peakYr,
+    t2100:temp[temp.length-1], co2_2100:co2[co2.length-1], cum:cumulative(END)};
+}
+
+// ── Canvas helpers ──
+function setup(id,h){
+  const c=document.getElementById(id), dpr=devicePixelRatio||1;
+  const w=c.parentElement.clientWidth; c.width=w*dpr; c.height=h*dpr;
+  c.style.width=w+'px'; c.style.height=h+'px';
+  const ctx=c.getContext('2d'); ctx.scale(dpr,dpr); ctx.clearRect(0,0,w,h);
+  return {ctx,w,h};
+}
+
+function drawTemp(P){
+  const {ctx,w,h}=setup('tempChart',340);
+  const pad={l:42,r:14,t:14,b:28};
+  const cw=w-pad.l-pad.r, chh=h-pad.t-pad.b;
+  const y0=1850,y1=2100, tmax=Math.max(4.5,Math.ceil(P.peak+0.5));
+  const X=y=>pad.l+(y-y0)/(y1-y0)*cw;
+  const Y=t=>pad.t+chh*(1-t/tmax);
+  // gridlines + tipping thresholds
+  ctx.font='10px system-ui';
+  [0,1,2,3,4].forEach(t=>{ if(t>tmax)return; const yy=Y(t);
+    ctx.strokeStyle='rgba(0,0,0,.06)'; ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke();
+    ctx.fillStyle='#5c7284'; ctx.textAlign='right'; ctx.fillText(t+'°',pad.l-6,yy+3); });
+  // tipping threshold dashed lines
+  [1.5,2,3].forEach(t=>{ if(t>tmax)return; const yy=Y(t);
+    ctx.strokeStyle='rgba(201,162,39,.6)'; ctx.setLineDash([5,4]); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle='#a9861f'; ctx.textAlign='left'; ctx.fillText(t+'°C',pad.l+4,yy-3); });
+  // x ticks
+  ctx.textAlign='center'; ctx.fillStyle='#5c7284';
+  [1850,1900,1950,2000,2050,2100].forEach(y=>{ ctx.fillText(y,X(y),h-8); });
+  // Paris 1.5 & 2 target zone shading up to 2100 handled by lines above
+  // historical
+  ctx.beginPath();
+  for(let y=1850;y<=2024;y++){ const x=X(y),yy=Y(histAnom(y)); y===1850?ctx.moveTo(x,yy):ctx.lineTo(x,yy); }
+  ctx.strokeStyle='#888'; ctx.lineWidth=2; ctx.stroke();
+  // projection
+  ctx.beginPath();
+  P.years.forEach((y,i)=>{ const x=X(y),yy=Y(P.temp[i]); i===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy); });
+  ctx.strokeStyle='#d9534f'; ctx.lineWidth=2.5; ctx.stroke();
+  // fill under projection
+  ctx.lineTo(X(2100),Y(0)); ctx.lineTo(X(2024),Y(0)); ctx.closePath();
+  ctx.fillStyle='rgba(217,83,79,.08)'; ctx.fill();
+  // peak marker
+  const px=X(P.peakYr),py=Y(P.peak);
+  ctx.fillStyle='#d9534f'; ctx.beginPath(); ctx.arc(px,py,3.5,0,7); ctx.fill();
+  // axis border
+  ctx.strokeStyle='rgba(0,0,0,.2)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+chh); ctx.lineTo(pad.l+cw,pad.t+chh); ctx.stroke();
+}
+
+function drawCO2(P){
+  const {ctx,w,h}=setup('co2Chart',170);
+  const pad={l:42,r:14,t:12,b:24};
+  const cw=w-pad.l-pad.r, chh=h-pad.t-pad.b;
+  const y0=2024,y1=2100;
+  const cmax=Math.max(500,Math.ceil(P.co2_2100/100)*100+50), cmin=380;
+  const X=y=>pad.l+(y-y0)/(y1-y0)*cw;
+  const Y=v=>pad.t+chh*(1-(v-cmin)/(cmax-cmin));
+  ctx.font='10px system-ui'; ctx.fillStyle='#5c7284';
+  for(let v=400;v<=cmax;v+=100){ const yy=Y(v);
+    ctx.strokeStyle='rgba(0,0,0,.06)'; ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke();
+    ctx.textAlign='right'; ctx.fillText(v,pad.l-6,yy+3); }
+  ctx.textAlign='center'; [2024,2050,2075,2100].forEach(y=>ctx.fillText(y,X(y),h-7));
+  ctx.beginPath();
+  P.years.forEach((y,i)=>{ const x=X(y),yy=Y(P.co2[i]); i===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy); });
+  ctx.strokeStyle='#1f6f8b'; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.lineTo(X(2100),Y(cmin)); ctx.lineTo(X(2024),Y(cmin)); ctx.closePath();
+  ctx.fillStyle='rgba(31,111,139,.08)'; ctx.fill();
+  ctx.strokeStyle='rgba(0,0,0,.2)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+chh); ctx.lineTo(pad.l+cw,pad.t+chh); ctx.stroke();
+}
+
+function render(){
+  const P=project();
+  document.getElementById('c-2100').textContent=P.t2100.toFixed(1)+'°C';
+  document.getElementById('c-peak').textContent=P.peak.toFixed(1)+'°C';
+  document.getElementById('c-peakyr').textContent='around '+ (P.peakYr>=END?'2100+':P.peakYr);
+  document.getElementById('c-co2').textContent=Math.round(P.co2_2100);
+  document.getElementById('c-cum').textContent=Math.round(P.cum).toLocaleString();
+
+  // verdict
+  const v=document.getElementById('verdict');
+  let bg,txt,ic;
+  if(P.peak<=1.6){ bg='#e6f4ef;color:#1c6b52;border:1px solid #bfe3d6'; ic='✅'; txt='Warming held near the Paris 1.5 °C goal. Deep, early cuts keep most tipping points out of reach.'; }
+  else if(P.peak<=2.1){ bg='#fff6e5;color:#8a6a1f;border:1px solid #f0dcae'; ic='⚠️'; txt='Around the 2 °C upper Paris limit. Serious impacts, and several tipping points become possible.'; }
+  else if(P.peak<=3.1){ bg='#fdeee7;color:#9a4d24;border:1px solid #f3cbb4'; ic='🔥'; txt='Well above Paris targets. Widespread, severe impacts and multiple tipping points within reach.'; }
+  else { bg='#fbe9e9;color:#8f2f2c;border:1px solid #f0c0be'; ic='🚨'; txt='A high-warming world. Dangerous, largely irreversible changes and cascading tipping points.'; }
+  v.setAttribute('style','background:'+bg);
+  v.innerHTML=`<span style="font-size:1.1rem">${ic}</span><span>${txt}</span>`;
+
+  // tipping list
+  document.getElementById('tips').innerHTML=TIPS.map(t=>{
+    const crossed=P.peak>=t.th;
+    return `<div class="tip${crossed?' crossed':''}"><span class="th" style="background:${crossed?'':t.color}"></span>
+      <span>${t.name}</span>
+      <span class="${crossed?'cross':'safe'}">${crossed?'≥ '+t.th+'°C — in reach':'below '+t.th+'°C'}</span></div>`;
+  }).join('');
+
+  drawTemp(P); drawCO2(P);
+}
+
+// ── Build scenario buttons ──
+const sg=document.getElementById('scnGrid');
+for(const k in SCENARIOS){ const s=SCENARIOS[k];
+  const b=document.createElement('button'); b.className='scn'+(k===scenario?' on':''); b.dataset.k=k;
+  b.innerHTML=`${s.label}<small>${s.desc}</small>`;
+  b.onclick=()=>{ scenario=k; netZero=s.nz; trend=s.trend;
+    document.getElementById('nz').value=Math.min(2120,s.nz); document.getElementById('trend').value=s.trend;
+    syncLabels(); document.querySelectorAll('.scn').forEach(x=>x.classList.toggle('on',x.dataset.k===k)); render(); };
+  sg.appendChild(b);
+}
+function trendLabel(t){ return t<0?Math.abs(t)+'%/yr falling':t===0?'roughly flat':'+'+t+'%/yr rising'; }
+function syncLabels(){
+  document.getElementById('nzVal').textContent = netZero>=2120?'never':netZero;
+  document.getElementById('trendVal').textContent = trendLabel(trend);
+}
+document.getElementById('nz').addEventListener('input',e=>{ netZero=+e.target.value; scenario=''; document.querySelectorAll('.scn').forEach(x=>x.classList.remove('on')); syncLabels(); render(); });
+document.getElementById('trend').addEventListener('input',e=>{ trend=+e.target.value; syncLabels(); render(); });
+document.querySelectorAll('#sensSeg .seg-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#sensSeg .seg-btn').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  sens=b.dataset.s;
+  const notes={lo:'TCRE ≈ 0.27 °C per 1,000 Gt CO₂ (low end of IPCC AR6 likely range).',
+    mid:'TCRE ≈ 0.45 °C per 1,000 Gt CO₂ (IPCC AR6 central; likely range 0.27–0.63).',
+    hi:'TCRE ≈ 0.63 °C per 1,000 Gt CO₂ (high end of IPCC AR6 likely range).'};
+  document.getElementById('sensNote').textContent=notes[sens]; render();
+}));
+let rz; window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(render,120);});
+syncLabels(); render();
+</script>
+</body>
+</html>

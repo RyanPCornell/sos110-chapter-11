@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Change — An Interactive Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --forest:     #1B3A2D;
+  --forest-mid: #2D6A4F;
+  --green:      #40916C;
+  --green-light:#74C69D;
+  --green-pale: #D8F3DC;
+  --amber:      #D4691E;
+  --amber-light:#F0914A;
+  --amber-pale: #FEF0E7;
+  --gold:       #E9B44C;
+  --red:        #C0392B;
+  --red-pale:   #FDEDEC;
+  --ocean:      #1B6CA8;
+  --purple:     #6C3483;
+  --purple-pale:#F4ECF7;
+  --bg:         #F2F7F4;
+  --white:      #FFFFFF;
+  --text:       #1A1A1A;
+  --muted:      #4A5B4E;
+  --border:     #C3D9CB;
+  --shadow:     rgba(27,58,45,0.09);
+}
+
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; }
+
+/* ── Header ── */
+header { background:linear-gradient(135deg,var(--forest) 0%,var(--forest-mid) 65%,var(--green) 100%); color:white; padding:2.2rem 2.5rem 2rem; position:relative; overflow:hidden; }
+header::after { content:''; position:absolute; bottom:-40px; right:-50px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,0.04); }
+.header-tag { font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--green-light); font-weight:600; margin-bottom:.5rem; }
+header h1 { font-family:'Merriweather',serif; font-size:2rem; font-weight:700; line-height:1.2; margin-bottom:.45rem; }
+header p  { font-size:.9rem; color:rgba(255,255,255,.72); max-width:680px; }
+
+/* ── Nav ── */
+nav { background:var(--white); border-bottom:1px solid var(--border); display:flex; overflow-x:auto; position:sticky; top:0; z-index:100; box-shadow:0 2px 6px var(--shadow); scrollbar-width:none; }
+nav::-webkit-scrollbar{display:none}
+.tab-btn { background:none; border:none; border-bottom:3px solid transparent; padding:.95rem 1.4rem; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap; transition:color .2s,border-color .2s; }
+.tab-btn:hover { color:var(--forest-mid); }
+.tab-btn.active { color:var(--forest-mid); border-bottom-color:var(--green-light); }
+
+/* ── Panels ── */
+.tab-panel { display:none; padding:2rem 2.5rem 3rem; max-width:1080px; margin:0 auto; }
+.tab-panel.active { display:block; }
+
+/* ── Typography ── */
+.section-label { font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--green); font-weight:700; margin-bottom:.35rem; }
+.section-title { font-family:'Merriweather',serif; font-size:1.55rem; font-weight:700; color:var(--forest); margin-bottom:.5rem; line-height:1.3; }
+.section-subtitle { font-size:.92rem; color:var(--muted); max-width:740px; margin-bottom:1.75rem; line-height:1.65; }
+.block-title { font-family:'Merriweather',serif; font-size:1.1rem; font-weight:700; color:var(--forest); margin-bottom:.4rem; }
+
+/* ── Interactive panel ── */
+.lab {
+  background:var(--white); border:1px solid var(--border); border-radius:16px;
+  padding:1.6rem; box-shadow:0 2px 10px var(--shadow); margin-bottom:1.75rem;
+}
+.lab-head { display:flex; align-items:center; gap:.7rem; margin-bottom:.3rem; }
+.lab-badge { width:38px; height:38px; border-radius:10px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.lab-title { font-family:'Merriweather',serif; font-size:1.05rem; font-weight:700; color:var(--forest); }
+.lab-sub { font-size:.82rem; color:var(--muted); margin-bottom:1.25rem; line-height:1.55; }
+
+/* ── Controls ── */
+.ctrl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.1rem; margin-bottom:1.25rem; }
+.ctrl label { display:block; font-size:.74rem; font-weight:700; color:var(--muted); margin-bottom:.4rem; text-transform:uppercase; letter-spacing:.05em; }
+.ctrl input[type=range] { width:100%; accent-color:var(--green); height:6px; cursor:pointer; }
+.ctrl .readout { font-size:.95rem; font-weight:700; color:var(--forest-mid); margin-top:.3rem; }
+.ctrl select { width:100%; padding:.5rem .6rem; border:1px solid var(--border); border-radius:7px; font-family:'Inter',sans-serif; font-size:.85rem; background:white; color:var(--text); cursor:pointer; }
+
+.btn { background:var(--forest-mid); color:white; border:none; border-radius:8px; padding:.55rem 1.2rem; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; transition:background .18s; margin:0 .4rem .4rem 0; }
+.btn:hover { background:var(--forest); }
+.btn.ghost { background:white; color:var(--forest-mid); border:1px solid var(--border); }
+.btn.ghost:hover { border-color:var(--green); color:var(--forest); }
+.btn.ghost.active { background:var(--forest-mid); color:white; border-color:var(--forest-mid); }
+
+.pill-row { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; align-items:center; }
+.pill-row .lbl { font-size:.76rem; color:var(--muted); font-weight:600; margin-right:.25rem; }
+.toggle { display:inline-flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:600; color:var(--muted); cursor:pointer; user-select:none; }
+.toggle input { width:16px; height:16px; accent-color:var(--green); cursor:pointer; }
+
+/* ── Charts ── */
+.chart-box { position:relative; height:330px; }
+.chart-box.short { height:260px; }
+
+/* ── Verdict / live result ── */
+.verdict { border-radius:10px; padding:.9rem 1.1rem; font-size:.86rem; line-height:1.55; margin-top:1rem; display:flex; gap:.7rem; align-items:flex-start; transition:background .3s,border-color .3s; }
+.verdict-icon { font-size:1.2rem; flex-shrink:0; }
+.verdict strong { display:block; margin-bottom:.15rem; }
+.v-good { background:var(--green-pale); border:1px solid #82C4A0; color:var(--forest); }
+.v-warn { background:var(--amber-pale); border:1px solid #F0B27A; color:#784212; }
+.v-bad  { background:var(--red-pale);   border:1px solid #F1948A; color:#78281F; }
+.v-cold { background:#E7F1F8; border:1px solid #A9CCE3; color:#1B4F72; }
+
+/* ── Big readout cards ── */
+.metric-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:.85rem; margin:1rem 0; }
+.metric { background:var(--bg); border:1px solid var(--border); border-radius:11px; padding:.9rem; text-align:center; }
+.metric .num { font-family:'Merriweather',serif; font-size:1.7rem; font-weight:700; color:var(--forest-mid); line-height:1; }
+.metric .num.red{color:var(--red)} .metric .num.amber{color:var(--amber)} .metric .num.ocean{color:var(--ocean)}
+.metric .cap { font-size:.72rem; color:var(--muted); margin-top:.35rem; }
+
+/* ── Callout ── */
+.callout { border-radius:10px; padding:1rem 1.3rem; font-size:.85rem; line-height:1.6; margin:1.25rem 0; display:flex; gap:.85rem; align-items:flex-start; }
+.callout-icon { font-size:1.2rem; flex-shrink:0; margin-top:.05rem; }
+.callout-body strong { display:block; font-size:.87rem; margin-bottom:.2rem; }
+.callout.green  { background:var(--green-pale); border:1px solid #82C4A0; color:var(--forest); }
+.callout.amber  { background:var(--amber-pale); border:1px solid #F0B27A; color:#784212; }
+.callout.gold   { background:#FCF3DC; border:1px solid #E9CE8A; color:#7D5B12; }
+
+/* ── Greenhouse radiation visualizer ── */
+.gh-stage { position:relative; border-radius:14px; overflow:hidden; height:380px; background:#0B1A2B; }
+.gh-stage canvas { display:block; width:100%; height:100%; }
+.gh-hud { position:absolute; top:12px; left:12px; right:12px; display:flex; justify-content:space-between; align-items:flex-start; pointer-events:none; gap:.5rem; }
+.gh-thermo { background:rgba(0,0,0,.42); border-radius:10px; padding:.5rem .8rem; color:white; backdrop-filter:blur(3px); }
+.gh-thermo .t { font-family:'Merriweather',serif; font-size:1.6rem; font-weight:700; line-height:1; }
+.gh-thermo .l { font-size:.6rem; opacity:.8; letter-spacing:.05em; }
+.gh-counts { display:flex; gap:.5rem; }
+.gh-chip { background:rgba(0,0,0,.42); border-radius:9px; padding:.4rem .6rem; color:white; font-size:.62rem; font-weight:600; text-align:center; line-height:1.35; backdrop-filter:blur(3px); min-width:84px; }
+.gh-chip b { display:block; font-size:1.15rem; font-family:'Merriweather',serif; }
+.gh-legend { position:absolute; bottom:10px; left:12px; display:flex; gap:.9rem; flex-wrap:wrap; font-size:.66rem; color:white; background:rgba(0,0,0,.38); padding:.35rem .65rem; border-radius:8px; backdrop-filter:blur(3px); }
+.gh-legend span { display:flex; align-items:center; gap:.3rem; }
+.gh-dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+.gh-play { position:absolute; bottom:10px; right:12px; width:34px; height:34px; border-radius:50%; border:none; background:rgba(0,0,0,.42); color:white; font-size:.9rem; cursor:pointer; backdrop-filter:blur(3px); }
+.gh-play:hover { background:rgba(0,0,0,.6); }
+
+/* ── Sea level scene ── */
+.sea-scene { position:relative; height:280px; border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#BFE3F5 0%,#E8F6FC 55%); border:1px solid var(--border); }
+.sea-city { position:absolute; bottom:0; left:0; right:0; height:160px; display:flex; align-items:flex-end; justify-content:center; gap:6px; padding:0 14px; }
+.bldg { width:9%; background:linear-gradient(180deg,#6E7F8D,#4A5B68); border-radius:3px 3px 0 0; box-shadow:inset -3px 0 rgba(0,0,0,.12); }
+.sea-water { position:absolute; left:0; right:0; bottom:0; background:linear-gradient(180deg,rgba(27,108,168,.55),rgba(27,108,168,.8)); transition:height .5s ease; border-top:2px solid rgba(255,255,255,.5); }
+.sea-label { position:absolute; top:10px; left:14px; background:rgba(255,255,255,.85); border-radius:8px; padding:.4rem .7rem; font-size:.74rem; font-weight:700; color:var(--ocean); }
+
+/* ── Acidification scene ── */
+.acid-scene { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.ph-meter { flex:1; min-width:220px; }
+.ph-bar-track { height:26px; border-radius:7px; background:linear-gradient(to right,#C0392B,#E67E22,#F1C40F,#2ECC71,#1B6CA8); position:relative; margin:.5rem 0; }
+.ph-needle { position:absolute; top:-6px; width:3px; height:38px; background:var(--forest); transition:left .4s ease; border-radius:2px; }
+.shell { width:120px; height:120px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:4rem; transition:opacity .4s,filter .4s; }
+
+/* ── GWP explorer ── */
+.gwp-bars { margin-top:1rem; }
+.gwp-row { display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem; }
+.gwp-name { width:90px; flex-shrink:0; font-size:.82rem; font-weight:700; color:var(--forest); }
+.gwp-track { flex:1; background:var(--bg); border-radius:5px; height:30px; overflow:hidden; border:1px solid var(--border); }
+.gwp-fill { height:100%; display:flex; align-items:center; padding-left:9px; font-size:.76rem; font-weight:700; color:white; transition:width .5s ease; white-space:nowrap; }
+
+/* ── Cards ── */
+.card-grid { display:grid; gap:1.1rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-bottom:1.5rem; }
+.card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:1.3rem 1.4rem; box-shadow:0 1px 4px var(--shadow); }
+.card .ic { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:.7rem; background:var(--green-pale); }
+.card h3 { font-family:'Merriweather',serif; font-size:.98rem; color:var(--forest); margin-bottom:.35rem; }
+.card p { font-size:.83rem; color:var(--muted); line-height:1.6; }
+
+.divider { border:none; border-top:1px solid var(--border); margin:2rem 0; }
+
+/* ── Quiz / predict ── */
+.predict-note { font-size:.8rem; color:var(--muted); font-style:italic; margin-top:.5rem; }
+
+@media(max-width:600px){
+  header{padding:1.5rem 1.25rem} header h1{font-size:1.5rem}
+  .tab-panel{padding:1.25rem 1rem 2.5rem} .tab-btn{padding:.85rem .95rem;font-size:.78rem}
+  .chart-box{height:250px} .ctrl-grid{grid-template-columns:1fr}
+}
+
+/* ── Embed mode (single-tab embedding in slideshows) ── */
+body.embed header, body.embed nav { display:none; }
+body.embed .tab-panel.active { padding-top:1.5rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">Environmental Science · Chapter 11</div>
+  <h1>Climate Change — Interactive Lab</h1>
+  <p>Don't just read about climate — experiment with it. Drag the sliders, run the models, and discover the science behind greenhouse gases, weather vs. climate, and a warming world for yourself.</p>
+</header>
+
+<nav>
+  <button class="tab-btn active" onclick="showTab('greenhouse',this)">🌡️ The Greenhouse Effect</button>
+  <button class="tab-btn" onclick="showTab('weather',this)">📈 Weather vs. Climate</button>
+  <button class="tab-btn" onclick="showTab('gases',this)">🏭 Greenhouse Gases</button>
+  <button class="tab-btn" onclick="showTab('effects',this)">🌊 Effects</button>
+  <button class="tab-btn" onclick="showTab('footprint',this)">👣 Your Footprint</button>
+</nav>
+
+<!-- ════════════ TAB 1 · GREENHOUSE EFFECT ════════════ -->
+<div class="tab-panel active" id="tab-greenhouse">
+  <div class="section-label">Section 11.2 · Interactive Model</div>
+  <h2 class="section-title">Tune the Atmosphere</h2>
+  <p class="section-subtitle">Greenhouse gases act like a blanket: sunlight passes through, but outgoing heat gets trapped. Use the controls to change the CO₂ level and watch Earth's equilibrium temperature respond. How much CO₂ does it take to make Earth uninhabitable — or to freeze it solid?</p>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🌡️</div><div class="lab-title">Greenhouse Effect Simulator</div></div>
+    <div class="lab-sub">Adjust atmospheric CO₂ and see how the trapped-heat layer changes Earth's average surface temperature. Toggle the ice–albedo feedback to see how melting ice <em>amplifies</em> warming.</div>
+
+    <div class="ctrl-grid">
+      <div class="ctrl">
+        <label>Atmospheric CO₂ concentration</label>
+        <input type="range" id="co2" min="180" max="1000" step="10" value="420" oninput="updateGreenhouse()">
+        <div class="readout"><span id="co2val">420</span> ppm</div>
+      </div>
+      <div class="ctrl" style="display:flex;flex-direction:column;justify-content:center">
+        <label>Quick jumps</label>
+        <div class="pill-row" style="margin:0">
+          <button class="btn ghost" onclick="setCO2(180)">Ice Age (180)</button>
+          <button class="btn ghost" onclick="setCO2(280)">Pre-industrial (280)</button>
+          <button class="btn ghost" onclick="setCO2(420)">Today (420)</button>
+          <button class="btn ghost" onclick="setCO2(560)">2× (560)</button>
+        </div>
+      </div>
+      <div class="ctrl" style="display:flex;flex-direction:column;justify-content:center">
+        <label>Feedbacks</label>
+        <label class="toggle"><input type="checkbox" id="albedo" onchange="updateGreenhouse()"> Include ice–albedo feedback</label>
+        <label class="toggle" style="margin-top:.5rem"><input type="checkbox" id="noghg" onchange="updateGreenhouse()"> Remove all greenhouse gases</label>
+      </div>
+    </div>
+
+    <div class="gh-stage">
+      <canvas id="ghCanvas"></canvas>
+      <div class="gh-hud">
+        <div class="gh-thermo"><div class="t" id="ghTemp">15.7°C</div><div class="l">GLOBAL AVG TEMP</div></div>
+        <div class="gh-counts">
+          <div class="gh-chip" style="border:1px solid rgba(120,200,255,.4)"><b id="ghEscaped">0</b>escaped to space ☁️</div>
+          <div class="gh-chip" style="border:1px solid rgba(255,140,90,.5)"><b id="ghTrapped">0</b>trapped by GHGs 🔁</div>
+        </div>
+      </div>
+      <div class="gh-legend">
+        <span><span class="gh-dot" style="background:#FFD24A"></span>Solar radiation (visible)</span>
+        <span><span class="gh-dot" style="background:#FF6B4A"></span>Infrared heat</span>
+        <span><span class="gh-dot" style="background:#9FD0FF"></span>CO₂ molecule</span>
+      </div>
+      <button class="gh-play" id="ghPlay" onclick="toggleGh()">⏸</button>
+    </div>
+
+    <div class="verdict v-good" id="ghVerdict">
+      <span class="verdict-icon" id="ghVicon">✅</span>
+      <div class="callout-body"><strong id="ghVtitle">Habitable</strong><span id="ghVtext">At pre-industrial levels Earth sits at a comfortable average of about 14°C.</span></div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <span class="callout-icon">💡</span>
+    <div class="callout-body"><strong>Try this</strong>Set CO₂ to 280 (pre-industrial), then check "Remove all greenhouse gases." Earth plunges to about −18°C — a frozen planet. The natural greenhouse effect is what makes life possible; the <em>problem</em> is the rapid, human-caused <em>enhancement</em> of it.</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🔁</div><div class="lab-title">Build the Feedback Loop</div></div>
+    <div class="lab-sub">Albedo is surface reflectivity. Click through the steps to assemble the reinforcing loop that makes warming accelerate itself.</div>
+    <div id="loopSteps" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center;min-height:70px"></div>
+    <div style="text-align:center;margin-top:1rem">
+      <button class="btn" onclick="advanceLoop()">▶ Add Next Step</button>
+      <button class="btn ghost" onclick="resetLoop()">↺ Reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ TAB 2 · WEATHER VS CLIMATE ════════════ -->
+<div class="tab-panel" id="tab-weather">
+  <h2 class="section-title">Weather vs. Climate</h2>
+  <p class="section-subtitle"><strong>Weather</strong> is what happens over hours or days; <strong>climate</strong> is the long-term average over decades. The single most common climate misconception comes from confusing the two. Both graphs below let you zoom in and out — watch how the story flips depending on your window.</p>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">📅</div><div class="lab-title">Lab 1 · One Real Year of Daily Weather</div></div>
+    <div class="lab-sub"><strong>Real data: daily high temperatures in Minneapolis, Minnesota, 2022</strong> (Open-Meteo / ERA5 reanalysis). Zoom into the genuine cold snap of May 12–21 and the temperature is clearly <em>falling</em> — from 32°C (90°F) to 12°C (54°F) in ten days. But zoom out to the whole year and you see the obvious truth: spring really was warming into summer.</div>
+    <div class="pill-row">
+      <span class="lbl">Window:</span>
+      <button class="btn ghost active" id="wd-snap" onclick="setDaily('snap',this)">🔍 Cold Snap (May 12–21)</button>
+      <button class="btn ghost" id="wd-month" onclick="setDaily('month',this)">📆 6 Weeks</button>
+      <button class="btn ghost" id="wd-year" onclick="setDaily('year',this)">🌍 Full Year</button>
+      <label class="toggle" style="margin-left:auto"><input type="checkbox" id="wdTrend" onchange="redrawDaily()"> Show trend line</label>
+    </div>
+    <div class="chart-box"><canvas id="dailyChart"></canvas></div>
+    <div class="verdict v-cold" id="dailyVerdict">
+      <span class="verdict-icon">🧊</span>
+      <div class="callout-body"><strong>Zoomed in: "It's getting colder!"</strong><span>Across these ten real days the daily high fell about 20°C (36°F). If this window were all you looked at, you'd conclude summer was cancelled. Zoom out to see why that's wrong.</span></div>
+    </div>
+  </div>
+
+  <div class="callout amber">
+    <span class="callout-icon">🎯</span>
+    <div class="callout-body"><strong>The analogy</strong>This is exactly how "It snowed today, so much for global warming!" works. A cold day (weather) tells you nothing about the season (climate) — just as a cold decade-window tells you nothing about the century-long trend. Now try the same trick on real global temperatures below.</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🌡️</div><div class="lab-title">Lab 2 · 140 Years of Global Temperature</div></div>
+    <div class="lab-sub">Now the real data. Skeptics love to start the graph at 1998 — a record-hot El Niño year — to make warming look like it "paused." Zoom out and the cherry-pick collapses.</div>
+    <div class="pill-row">
+      <span class="lbl">Window:</span>
+      <button class="btn ghost active" id="zd-deceive" onclick="setZoom('deceive',this)">🔍 Cherry-Pick: 1998–2012</button>
+      <button class="btn ghost" id="zd-medium" onclick="setZoom('medium',this)">📆 1980–2023</button>
+      <button class="btn ghost" id="zd-full" onclick="setZoom('full',this)">🌍 Full Record: 1880–2023</button>
+      <label class="toggle" style="margin-left:auto"><input type="checkbox" id="climTrend" onchange="redrawClimate()"> Show trend line</label>
+    </div>
+    <div class="chart-box"><canvas id="climChart"></canvas></div>
+    <div class="verdict" id="climVerdict">
+      <span class="verdict-icon" id="climVicon">🔍</span>
+      <div class="callout-body"><strong id="climVtitle"></strong><span id="climVtext"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ TAB 3 · GREENHOUSE GASES ════════════ -->
+<div class="tab-panel" id="tab-gases">
+  <div class="section-label">Section 11.4 · Interactive Models</div>
+  <h2 class="section-title">Not All Gases Are Equal</h2>
+  <p class="section-subtitle">A kilogram of methane traps far more heat than a kilogram of CO₂. Build your own emission and see its true warming impact, then explore why the famous Keeling Curve makes the same weather-vs-climate point — for CO₂ itself.</p>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">⚖️</div><div class="lab-title">Lab 1 · CO₂-Equivalent Explorer</div></div>
+    <div class="lab-sub">Pick a greenhouse gas and an amount. The simulator converts it to its <strong>CO₂-equivalent</strong> using each gas's Global Warming Potential (GWP, 100-year). See how a small leak of a potent gas can outweigh tonnes of CO₂.</div>
+    <div class="ctrl-grid">
+      <div class="ctrl">
+        <label>Greenhouse gas</label>
+        <select id="gasPick" onchange="updateGWP()">
+          <option value="co2">Carbon Dioxide (CO₂) — GWP 1</option>
+          <option value="ch4" selected>Methane (CH₄) — GWP 25</option>
+          <option value="n2o">Nitrous Oxide (N₂O) — GWP 298</option>
+          <option value="hfc">HFC-23 (refrigerant) — GWP 14,800</option>
+        </select>
+      </div>
+      <div class="ctrl">
+        <label>Amount released</label>
+        <input type="range" id="gasAmt" min="1" max="100" step="1" value="10" oninput="updateGWP()">
+        <div class="readout"><span id="gasAmtVal">10</span> kg</div>
+      </div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="num ocean" id="gwpEq">250</div><div class="cap">kg CO₂-equivalent</div></div>
+      <div class="metric"><div class="num amber" id="gwpCar">—</div><div class="cap">miles driven in a car</div></div>
+      <div class="metric"><div class="num" id="gwpTrees">—</div><div class="cap">tree-years to absorb</div></div>
+    </div>
+    <div class="gwp-bars">
+      <div class="gwp-row"><div class="gwp-name">Your gas</div><div class="gwp-track"><div class="gwp-fill" id="barGas" style="background:var(--amber)">—</div></div></div>
+      <div class="gwp-row"><div class="gwp-name">Same mass of CO₂</div><div class="gwp-track"><div class="gwp-fill" id="barCO2" style="background:var(--forest-mid)">—</div></div></div>
+    </div>
+    <div class="verdict v-warn" id="gwpVerdict">
+      <span class="verdict-icon">💨</span>
+      <div class="callout-body"><strong id="gwpVtitle"></strong><span id="gwpVtext"></span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">📉</div><div class="lab-title">Lab 2 · The Keeling Curve — Same Trick, Real CO₂</div></div>
+    <div class="lab-sub">Atmospheric CO₂ measured at Mauna Loa since 1958. CO₂ <em>drops</em> every Northern Hemisphere summer as plants grow — so any single year looks like it's falling for months. Zoom out and the relentless climb is undeniable. It's the weather-vs-climate lesson, built into the carbon data.</div>
+    <div class="pill-row">
+      <span class="lbl">Window:</span>
+      <button class="btn ghost active" id="kz-season" onclick="setKeeling('season',this)">🔍 One Year (watch it fall)</button>
+      <button class="btn ghost" id="kz-decade" onclick="setKeeling('decade',this)">📆 One Decade</button>
+      <button class="btn ghost" id="kz-full" onclick="setKeeling('full',this)">🌍 Full Record (1958–2023)</button>
+    </div>
+    <div class="chart-box"><canvas id="keelingChart"></canvas></div>
+    <div class="verdict v-warn" id="keelVerdict">
+      <span class="verdict-icon">📉</span>
+      <div class="callout-body"><strong id="keelVtitle"></strong><span id="keelVtext"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ TAB 4 · EFFECTS ════════════ -->
+<div class="tab-panel" id="tab-effects">
+  <div class="section-label">Section 11.5 · Interactive Models</div>
+  <h2 class="section-title">Drive the Consequences</h2>
+  <p class="section-subtitle">Warming isn't an abstract number — it floods coastlines and acidifies oceans. Set the warming level and the CO₂ load, and watch the effects unfold.</p>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🌊</div><div class="lab-title">Lab 1 · Sea-Level Rise Simulator</div></div>
+    <div class="lab-sub">Drag the global warming slider. Thermal expansion plus melting ice raises the sea — watch the water climb the coastal city and see how many people are displaced.</div>
+    <div class="ctrl-grid">
+      <div class="ctrl">
+        <label>Global warming above pre-industrial</label>
+        <input type="range" id="warming" min="0" max="5" step="0.1" value="1.2" oninput="updateSea()">
+        <div class="readout">+<span id="warmVal">1.2</span>°C</div>
+      </div>
+      <div class="ctrl" style="display:flex;flex-direction:column;justify-content:center">
+        <label>Scenarios</label>
+        <div class="pill-row" style="margin:0">
+          <button class="btn ghost" onclick="setWarm(1.2)">Today</button>
+          <button class="btn ghost" onclick="setWarm(1.5)">Paris target</button>
+          <button class="btn ghost" onclick="setWarm(2.7)">Current path</button>
+          <button class="btn ghost" onclick="setWarm(4.5)">High emissions</button>
+        </div>
+      </div>
+    </div>
+    <div class="sea-scene">
+      <div class="sea-label" id="seaLabel">Sea level: +0.2 m</div>
+      <div class="sea-city" id="seaCity"></div>
+      <div class="sea-water" id="seaWater" style="height:30px"></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="num ocean" id="slrM">0.2</div><div class="cap">metres of sea-level rise</div></div>
+      <div class="metric"><div class="num amber" id="slrFt">0.7</div><div class="cap">feet</div></div>
+      <div class="metric"><div class="num red" id="slrPpl">40M</div><div class="cap">people displaced</div></div>
+    </div>
+    <div class="verdict" id="seaVerdict">
+      <span class="verdict-icon" id="seaVicon">🌊</span>
+      <div class="callout-body"><strong id="seaVtitle"></strong><span id="seaVtext"></span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🐚</div><div class="lab-title">Lab 2 · Ocean Acidification Simulator</div></div>
+    <div class="lab-sub">Oceans absorb about a quarter of our CO₂, forming carbonic acid. Raise atmospheric CO₂ and watch ocean pH fall — and what that does to a shellfish trying to build its shell.</div>
+    <div class="ctrl-grid">
+      <div class="ctrl">
+        <label>Atmospheric CO₂</label>
+        <input type="range" id="acidCO2" min="280" max="1000" step="10" value="420" oninput="updateAcid()">
+        <div class="readout"><span id="acidCO2val">420</span> ppm</div>
+      </div>
+    </div>
+    <div class="acid-scene">
+      <div class="ph-meter">
+        <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>More acidic</span><span>More basic</span></div>
+        <div class="ph-bar-track"><div class="ph-needle" id="phNeedle" style="left:60%"></div></div>
+        <div style="text-align:center;font-family:'Merriweather',serif;font-size:1.5rem;font-weight:700;color:var(--forest)">pH <span id="phVal">8.09</span></div>
+        <div style="text-align:center;font-size:.78rem;color:var(--muted)"><span id="acidPct">26</span>% more acidic than pre-industrial</div>
+      </div>
+      <div class="shell" id="shellViz">🐚</div>
+    </div>
+    <div class="verdict" id="acidVerdict">
+      <span class="verdict-icon" id="acidVicon">🐚</span>
+      <div class="callout-body"><strong id="acidVtitle"></strong><span id="acidVtext"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ TAB 5 · FOOTPRINT ════════════ -->
+<div class="tab-panel" id="tab-footprint">
+  <div class="section-label">Section 11.7 · Personal Calculator</div>
+  <h2 class="section-title">Calculate Your Carbon Footprint</h2>
+  <p class="section-subtitle">Estimate your own annual emissions, see where they come from, and test how specific changes move the needle. Compare yourself to the US average, the global average, and the per-person target we'd need to hit by 2050.</p>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">👣</div><div class="lab-title">Footprint Calculator</div></div>
+    <div class="lab-sub">Move the sliders to match your lifestyle — the totals update instantly.</div>
+    <div class="ctrl-grid">
+      <div class="ctrl">
+        <label>🚗 Driving (miles per week)</label>
+        <input type="range" id="fpCar" min="0" max="500" step="10" value="150" oninput="updateFootprint()">
+        <div class="readout"><span id="fpCarVal">150</span> mi/week</div>
+      </div>
+      <div class="ctrl">
+        <label>✈️ Flights per year</label>
+        <input type="range" id="fpFly" min="0" max="20" step="1" value="2" oninput="updateFootprint()">
+        <div class="readout"><span id="fpFlyVal">2</span> round-trips</div>
+      </div>
+      <div class="ctrl">
+        <label>🍽️ Diet</label>
+        <select id="fpDiet" onchange="updateFootprint()">
+          <option value="3.3">Meat with every meal</option>
+          <option value="2.5" selected>Average (meat most days)</option>
+          <option value="1.9">Low meat / pescatarian</option>
+          <option value="1.7">Vegetarian</option>
+          <option value="1.5">Vegan</option>
+        </select>
+      </div>
+      <div class="ctrl">
+        <label>🏠 Home energy use</label>
+        <input type="range" id="fpHome" min="1" max="12" step="0.5" value="5" oninput="updateFootprint()">
+        <div class="readout"><span id="fpHomeVal">5</span> tonnes CO₂/yr</div>
+      </div>
+      <div class="ctrl">
+        <label>🛍️ Shopping &amp; goods</label>
+        <select id="fpShop" onchange="updateFootprint()">
+          <option value="1.0">Minimal — buy little, secondhand</option>
+          <option value="2.0" selected>Average consumer</option>
+          <option value="3.5">Frequent new purchases</option>
+        </select>
+      </div>
+      <div class="ctrl">
+        <label>⚡ Home electricity source</label>
+        <select id="fpGrid" onchange="updateFootprint()">
+          <option value="1.0">Standard grid</option>
+          <option value="0.6">Some renewables</option>
+          <option value="0.2">Mostly solar/wind</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric"><div class="num" id="fpTotal" style="font-size:2.1rem">12.4</div><div class="cap">tonnes CO₂ / year (you)</div></div>
+      <div class="metric"><div class="num amber">16</div><div class="cap">US average</div></div>
+      <div class="metric"><div class="num ocean">4</div><div class="cap">global average</div></div>
+      <div class="metric"><div class="num" style="color:var(--green)">2</div><div class="cap">2050 target</div></div>
+    </div>
+
+    <div class="chart-box short"><canvas id="fpChart"></canvas></div>
+
+    <div class="verdict" id="fpVerdict">
+      <span class="verdict-icon" id="fpVicon">👣</span>
+      <div class="callout-body"><strong id="fpVtitle"></strong><span id="fpVtext"></span></div>
+    </div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-head"><div class="lab-badge">🎯</div><div class="lab-title">"What If?" — Test a Change</div></div>
+    <div class="lab-sub">Click a one-change experiment to instantly see how much carbon it would save you per year.</div>
+    <div class="pill-row">
+      <button class="btn ghost" onclick="whatIf('car')">Halve my driving</button>
+      <button class="btn ghost" onclick="whatIf('fly')">Take one fewer flight</button>
+      <button class="btn ghost" onclick="whatIf('diet')">Go vegetarian</button>
+      <button class="btn ghost" onclick="whatIf('grid')">Switch to renewables</button>
+      <button class="btn ghost" onclick="whatIf('reset')">↺ Reset all</button>
+    </div>
+    <div id="whatIfResult" class="verdict v-good" style="display:none">
+      <span class="verdict-icon">💚</span>
+      <div class="callout-body"><strong id="wiTitle"></strong><span id="wiText"></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════ TAB SWITCHING ═══════════
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if (id==='weather'){ if(!dailyChart) initDaily(); if(!climChart) initClimate(); }
+  if (id==='gases'){ updateGWP(); if(!keelingChart) initKeeling(); }
+  if (id==='footprint' && !fpChart) initFootprint();
+}
+
+// ═══════════ TAB 1 · GREENHOUSE RADIATION SIMULATOR ═══════════
+let ghCanvas, ghCtx, ghW=0, ghH=0, ghDpr=1, ghAnim=null, ghRunning=true;
+let ghPhotons=[], ghMolecules=[], ghSparks=[];
+let ghP={ trapProb:0.006, molCount:15, noghg:false, heat:0.3 };
+let ghCounts={ escaped:0, trapped:0 };
+let ghSpawnAcc=0;
+
+function setCO2(v){ document.getElementById('co2').value=v; updateGreenhouse(); }
+
+function updateGreenhouse(){
+  const noghg=document.getElementById('noghg').checked;
+  const albedo=document.getElementById('albedo').checked;
+  const co2=+document.getElementById('co2').value;
+  document.getElementById('co2val').textContent=co2;
+
+  let temp;
+  if(noghg){ temp=-18; }
+  else { const dF=5.35*Math.log(co2/280); let dT=0.8*dF; if(albedo) dT*=1.35; temp=14+dT; }
+  document.getElementById('ghTemp').textContent=temp.toFixed(1)+'°C';
+
+  // animation parameters
+  ghP.noghg=noghg;
+  ghP.trapProb = noghg?0 : 0.001 + (co2-180)/820*0.016;
+  ghP.molCount = noghg?0 : Math.min(64, Math.round((co2-120)/18));
+  ghP.heat = noghg?0 : Math.min(1, (temp+18)/40);
+  ghRegenMolecules();
+  ghCounts.escaped=0; ghCounts.trapped=0;  // reset so students can compare windows
+  if(ghEscapedEl()) { ghEscapedEl().textContent='0'; ghTrappedEl().textContent='0'; }
+
+  // verdict
+  const v=document.getElementById('ghVerdict');
+  const vi=document.getElementById('ghVicon'), vt=document.getElementById('ghVtitle'), vx=document.getElementById('ghVtext');
+  v.className='verdict';
+  if(noghg||temp<-5){ v.classList.add('v-cold'); vi.textContent='🧊'; vt.textContent='Frozen Earth'; vx.textContent='With no greenhouse gases, nearly every infrared dot shoots straight out to space — almost nothing is trapped. Earth freezes to about −18°C. The natural greenhouse effect is what makes life possible.'; }
+  else if(temp<=15.5){ v.classList.add('v-good'); vi.textContent='✅'; vt.textContent='Habitable'; vx.textContent='A modest amount of infrared is bounced back, keeping Earth near the climate human civilization developed in. Watch the balance of escaped vs. trapped dots.'; }
+  else if(temp<=18){ v.classList.add('v-warn'); vi.textContent='⚠️'; vt.textContent='Dangerous warming'; vx.textContent='Notice how many more infrared dots are being bounced back down now. More trapped heat means rising temperatures, sea-level rise, and more extreme weather.'; }
+  else { v.classList.add('v-bad'); vi.textContent='🔥'; vt.textContent='Catastrophic'; vx.textContent='The atmosphere is now so dense with greenhouse gas molecules that most infrared heat can barely escape. A world this warm has no analog in human history.'; }
+}
+function ghEscapedEl(){ return document.getElementById('ghEscaped'); }
+function ghTrappedEl(){ return document.getElementById('ghTrapped'); }
+
+function ghGeo(){ return { spaceY: ghH*0.16, groundY: ghH-30, sunX: ghW*0.84, sunY: ghH*0.11 }; }
+
+function ghRegenMolecules(){
+  ghMolecules=[];
+  const g=ghGeo();
+  for(let i=0;i<ghP.molCount;i++){
+    ghMolecules.push({
+      x: 20+Math.random()*(ghW-40),
+      y: g.spaceY+20+Math.random()*(g.groundY-g.spaceY-40),
+      ph: Math.random()*Math.PI*2,
+      drift: 0.2+Math.random()*0.3
+    });
+  }
+}
+
+function ghResize(){
+  if(!ghCanvas) return;
+  const r=ghCanvas.getBoundingClientRect();
+  if(r.width===0) return;
+  ghDpr=window.devicePixelRatio||1;
+  ghW=r.width; ghH=r.height;
+  ghCanvas.width=ghW*ghDpr; ghCanvas.height=ghH*ghDpr;
+  ghCtx.setTransform(ghDpr,0,0,ghDpr,0,0);
+  ghRegenMolecules();
+}
+
+function spawnSolar(){
+  const g=ghGeo();
+  // rays fan out from the sun to land anywhere across the ground
+  const targetX = 15+Math.random()*(ghW-30);
+  const vy = 1.8+Math.random()*0.5;
+  const frames = (g.groundY-g.sunY)/vy;
+  ghPhotons.push({ type:'solar', x:g.sunX, y:g.sunY, dx:(targetX-g.sunX)/frames, vy:vy, life:0, captures:0 });
+}
+
+function ghStep(){
+  const g=ghGeo();
+  ghCtx.clearRect(0,0,ghW,ghH);
+
+  // ── background ──
+  // space
+  let sg=ghCtx.createLinearGradient(0,0,0,g.spaceY);
+  sg.addColorStop(0,'#060D18'); sg.addColorStop(1,'#0E2138');
+  ghCtx.fillStyle=sg; ghCtx.fillRect(0,0,ghW,g.spaceY);
+  // a few stars
+  ghCtx.fillStyle='rgba(255,255,255,.5)';
+  for(let i=0;i<14;i++){ ghCtx.fillRect((i*53+17)%ghW, (i*29+7)%g.spaceY, 1.5,1.5); }
+  // atmosphere
+  let ag=ghCtx.createLinearGradient(0,g.spaceY,0,g.groundY);
+  ag.addColorStop(0,'#123255'); ag.addColorStop(1,'#1E5A8A');
+  ghCtx.fillStyle=ag; ghCtx.fillRect(0,g.spaceY,ghW,g.groundY-g.spaceY);
+  // ground + heat glow
+  let gg=ghCtx.createLinearGradient(0,g.groundY,0,ghH);
+  gg.addColorStop(0,'#2E8B57'); gg.addColorStop(1,'#1B3A2D');
+  ghCtx.fillStyle=gg; ghCtx.fillRect(0,g.groundY,ghW,ghH-g.groundY);
+  if(ghP.heat>0){
+    let hg=ghCtx.createLinearGradient(0,g.groundY-50,0,g.groundY);
+    hg.addColorStop(0,'transparent'); hg.addColorStop(1,'rgba(255,90,40,'+(0.28*ghP.heat)+')');
+    ghCtx.fillStyle=hg; ghCtx.fillRect(0,g.groundY-50,ghW,50);
+  }
+  // labels
+  ghCtx.fillStyle='rgba(255,255,255,.45)'; ghCtx.font='600 10px Inter,sans-serif';
+  ghCtx.fillText('SPACE — infrared escapes here', 12, 14);
+  ghCtx.fillStyle='rgba(234,251,240,.85)';
+  ghCtx.fillText("EARTH'S SURFACE", 12, ghH-10);
+
+  // sun
+  let sun=ghCtx.createRadialGradient(g.sunX,g.sunY,0,g.sunX,g.sunY,34);
+  sun.addColorStop(0,'#FFE57A'); sun.addColorStop(.6,'#FFB31A'); sun.addColorStop(1,'transparent');
+  ghCtx.fillStyle=sun; ghCtx.beginPath(); ghCtx.arc(g.sunX,g.sunY,34,0,7); ghCtx.fill();
+
+  // ── molecules ──
+  ghMolecules.forEach(m=>{
+    m.ph+=0.03; const yy=m.y+Math.sin(m.ph)*3;
+    ghCtx.save(); ghCtx.globalAlpha=.85;
+    // O=C=O: blue-white cluster
+    const drawAtom=(ox,r,col)=>{ ghCtx.beginPath(); ghCtx.arc(m.x+ox,yy,r,0,7); ghCtx.fillStyle=col; ghCtx.fill(); };
+    ghCtx.strokeStyle='rgba(159,208,255,.4)'; ghCtx.lineWidth=1.5;
+    ghCtx.beginPath(); ghCtx.moveTo(m.x-6,yy); ghCtx.lineTo(m.x+6,yy); ghCtx.stroke();
+    drawAtom(-6,2.6,'#C9E6FF'); drawAtom(0,3.4,'#9FD0FF'); drawAtom(6,2.6,'#C9E6FF');
+    ghCtx.restore();
+  });
+
+  // ── spawn solar ──
+  if(ghRunning){
+    ghSpawnAcc+=1;
+    if(ghSpawnAcc>=5 && ghPhotons.length<160){ ghSpawnAcc=0; spawnSolar(); }
+  }
+
+  // ── update + draw photons ──
+  ghPhotons = ghPhotons.filter(p=>{
+    if(ghRunning){
+      p.life++;
+      p.y+=p.vy;
+      if(p.type==='solar'){
+        p.x+=p.dx;
+        if(p.y>=g.groundY){ // absorbed by surface → re-emit as infrared (upward)
+          p.type='ir'; p.y=g.groundY-1; p.vy=-(1.4+Math.random()*0.5); p.dx=(Math.random()-0.5)*0.7;
+          ghSparks.push({x:p.x,y:g.groundY,r:0,a:1});
+        }
+      } else { // infrared
+        p.x+=p.dx;
+        // trapping: chance per frame while inside atmosphere
+        if(p.y>g.spaceY && p.y<g.groundY && Math.random()<ghP.trapProb){
+          p.vy=Math.abs(p.vy); // bounce back DOWN
+          p.dx=(Math.random()-0.5)*0.7;
+          ghCounts.trapped++; if(ghTrappedEl()) ghTrappedEl().textContent=ghCounts.trapped;
+          ghSparks.push({x:p.x,y:p.y,r:0,a:1,col:'#FF8C5A'});
+        }
+        if(p.y<=g.spaceY){ // escaped to space
+          ghCounts.escaped++; if(ghEscapedEl()) ghEscapedEl().textContent=ghCounts.escaped;
+          return false;
+        }
+        if(p.y>=g.groundY){ p.vy=-Math.abs(p.vy); p.y=g.groundY-1; } // re-absorbed, re-emit up
+      }
+      if(p.x< -10||p.x>ghW+10||p.life>1400) return false;
+    }
+    // draw
+    const col = p.type==='solar' ? '#FFD24A' : '#FF6B4A';
+    ghCtx.save();
+    const gl=ghCtx.createRadialGradient(p.x,p.y,0,p.x,p.y,7);
+    gl.addColorStop(0,col); gl.addColorStop(1,'transparent');
+    ghCtx.fillStyle=gl; ghCtx.beginPath(); ghCtx.arc(p.x,p.y,7,0,7); ghCtx.fill();
+    ghCtx.fillStyle=col; ghCtx.beginPath(); ghCtx.arc(p.x,p.y,2.4,0,7); ghCtx.fill();
+    ghCtx.restore();
+    return true;
+  });
+
+  // ── sparks ──
+  ghSparks=ghSparks.filter(s=>{
+    if(ghRunning){ s.r+=1.4; s.a-=0.06; }
+    if(s.a<=0) return false;
+    ghCtx.save(); ghCtx.globalAlpha=Math.max(0,s.a);
+    ghCtx.strokeStyle=s.col||'#FFE08A'; ghCtx.lineWidth=1.5;
+    ghCtx.beginPath(); ghCtx.arc(s.x,s.y,s.r,0,7); ghCtx.stroke(); ghCtx.restore();
+    return true;
+  });
+
+  ghAnim=requestAnimationFrame(ghStep);
+}
+
+function toggleGh(){
+  ghRunning=!ghRunning;
+  document.getElementById('ghPlay').textContent=ghRunning?'⏸':'▶';
+}
+
+function initGreenhouse(){
+  ghCanvas=document.getElementById('ghCanvas');
+  if(!ghCanvas) return;
+  ghCtx=ghCanvas.getContext('2d');
+  ghResize();
+  updateGreenhouse();
+  if(!ghAnim) ghStep();
+  window.addEventListener('resize', ghResize);
+}
+
+// feedback loop builder
+const loopParts=[
+  {t:'🌡️ Warming',c:'var(--amber)'},
+  {t:'→',c:''},{t:'🧊 Ice melts',c:'var(--ocean)'},
+  {t:'→',c:''},{t:'🌑 Albedo drops (darker surface)',c:'var(--forest-mid)'},
+  {t:'→',c:''},{t:'☀️ More sunlight absorbed',c:'var(--gold)'},
+  {t:'→',c:''},{t:'🌡️ Even more warming',c:'var(--red)'},
+  {t:'↩ repeats!',c:'var(--purple)'}
+];
+let loopIdx=0;
+function advanceLoop(){
+  const box=document.getElementById('loopSteps');
+  if(loopIdx>=loopParts.length) return;
+  const p=loopParts[loopIdx];
+  const el=document.createElement('div');
+  if(p.t==='→'){ el.textContent='→'; el.style.color='var(--muted)'; el.style.fontSize='1.4rem'; }
+  else { el.textContent=p.t; el.style.background=p.c; el.style.color='white'; el.style.padding='.5rem .85rem'; el.style.borderRadius='8px'; el.style.fontSize='.82rem'; el.style.fontWeight='700'; }
+  box.appendChild(el);
+  loopIdx++;
+}
+function resetLoop(){ document.getElementById('loopSteps').innerHTML=''; loopIdx=0; }
+
+// ═══════════ TAB 2 · WEATHER (daily) ═══════════
+// REAL daily high temperatures (°C) — Minneapolis, MN, full year 2022.
+// Source: Open-Meteo Historical Weather API (ERA5 reanalysis of observations).
+// Note the genuine late-spring cold snap May 12–21 (index 131–140): 32.3°C → 12.4°C.
+const dailyTemps=[-17.6,-16.8,-1.9,1.4,-3.1,-15.9,-12.9,-1.6,-12.2,-17.5,2.0,2.5,1.1,-4.0,-10.9,-2.7,-0.9,4.7,-12.1,-18.0,-6.7,-3.0,-14.1,-12.3,-17.8,-3.8,-0.3,-12.2,-2.8,-6.2,-2.3,1.6,-14.9,-16.8,-13.1,-4.7,-5.0,-7.8,5.1,1.8,4.0,3.0,-15.6,-13.7,-8.9,0.1,-3.5,-9.8,2.3,-4.9,6.1,-5.1,-9.8,-12.7,-10.7,-8.8,0.3,0.7,4.7,2.3,-0.9,-3.7,3.1,3.8,-0.4,-0.9,2.2,-6.2,-3.0,-6.7,-3.5,6.4,5.6,12.7,14.9,10.9,9.1,11.3,14.8,16.7,6.8,3.4,8.2,4.2,-0.3,-0.7,4.6,6.2,2.3,4.0,8.6,10.5,6.6,9.4,6.7,5.4,3.1,7.4,11.8,15.5,14.3,13.1,9.2,2.5,4.9,5.2,5.5,3.8,7.6,8.1,13.1,13.2,24.5,16.3,3.0,5.3,9.6,15.5,19.1,16.4,8.8,10.8,13.6,16.5,15.6,20.4,20.7,16.9,28.6,24.6,28.0,32.3,23.5,22.2,21.5,19.5,21.0,23.1,20.7,19.1,12.4,13.4,18.0,19.2,13.7,15.9,23.9,28.8,28.2,28.6,22.5,20.8,22.6,19.2,22.2,21.4,23.9,21.8,24.5,25.9,26.0,26.3,28.0,27.0,35.4,23.6,25.0,27.3,27.9,33.5,35.4,31.0,28.8,34.2,32.3,28.5,21.9,27.2,27.3,31.9,32.0,28.4,24.4,31.3,29.9,32.2,29.9,30.4,27.5,29.0,31.4,28.8,28.6,26.6,32.2,31.0,29.7,30.6,35.3,34.5,31.5,29.5,32.5,29.0,25.6,25.1,26.6,27.0,24.0,25.9,30.4,30.0,28.4,33.8,29.8,27.7,32.5,29.0,25.9,25.0,28.5,29.3,27.9,24.5,23.8,26.1,25.5,26.5,28.0,27.8,23.2,26.0,26.1,26.5,28.5,28.6,25.8,26.6,29.4,28.9,25.6,26.0,30.8,31.1,31.4,23.6,23.7,24.1,28.4,30.3,31.5,24.1,22.6,22.6,24.1,26.7,26.1,30.2,26.6,27.6,23.8,26.0,30.1,19.9,16.6,17.0,20.5,19.5,16.1,12.9,14.6,19.1,20.5,21.5,21.8,22.0,23.8,23.0,13.8,9.1,16.2,18.9,20.5,26.2,18.0,7.9,6.1,13.1,7.1,2.3,4.3,7.4,13.2,18.5,24.4,23.9,21.2,10.9,9.6,13.2,15.9,18.6,17.0,17.1,20.0,23.2,18.4,10.2,6.9,11.0,3.5,10.5,19.8,18.3,0.9,-0.6,-2.0,-1.0,0.4,0.4,-2.0,-6.4,-5.6,0.2,-0.9,2.4,9.1,5.3,8.2,11.4,4.8,6.1,-0.9,-6.1,-0.6,3.6,-9.9,-0.6,-1.5,-2.0,-8.4,-2.8,0.9,1.2,0.6,1.1,2.0,3.2,0.9,-0.6,-3.8,-10.1,-11.9,-12.9,-18.0,-19.1,-18.3,-16.5,-14.8,-13.2,-4.2,3.0,2.0,-3.0,1.6];
+const dayLabels=[];
+(function(){
+  const md=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dim=[31,28,31,30,31,30,31,31,30,31,30,31];
+  let m=0,dleft=dim[0];
+  for(let d=0;d<365;d++){ if(dleft===0){m++;dleft=dim[m];} dayLabels.push(md[m]+' '+(dim[m]-dleft+1)); dleft--; }
+})();
+let dailyChart=null, dailyMode='snap';
+const dailyRanges={ snap:{s:131,e:142,label:'May 12–22'}, month:{s:114,e:160,label:'late Apr–early Jun'}, year:{s:0,e:365,label:'full year'} };
+function initDaily(){
+  const ctx=document.getElementById('dailyChart').getContext('2d');
+  dailyChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[]},options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+'°C'}}},
+    scales:{x:{grid:{display:false},ticks:{maxTicksLimit:12,font:{size:10}}},
+      y:{grid:{color:'#E3EFE7'},ticks:{callback:v=>v+'°',font:{size:11}},title:{display:true,text:'Daily High (°C)',font:{size:11},color:'#4A5B4E'}}}
+  }});
+  redrawDaily();
+}
+function setDaily(mode,btn){
+  dailyMode=mode;
+  document.querySelectorAll('#wd-snap,#wd-month,#wd-year').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  redrawDaily();
+  const dv=document.getElementById('dailyVerdict');
+  const dvBody=dv.querySelector('.callout-body span');
+  if(mode==='snap'){ dv.className='verdict v-cold'; dv.querySelector('strong').textContent='Zoomed in: "It\'s getting colder!"'; dvBody.textContent='Across these ten real days the daily high fell about 20°C (36°F). If this window were all you looked at, you\'d conclude summer was cancelled. Zoom out to see why that\'s wrong.'; dv.querySelector('.verdict-icon').textContent='🧊'; }
+  else if(mode==='month'){ dv.className='verdict v-warn'; dv.querySelector('strong').textContent='Zooming out: the snap was just a wobble'; dvBody.textContent='Over six weeks the cold snap is clearly a brief dip inside a steady climb. The "trend" you saw before was noise.'; dv.querySelector('.verdict-icon').textContent='📈'; }
+  else { dv.className='verdict v-good'; dv.querySelector('strong').textContent='Full year: the real story'; dvBody.textContent='Across the whole year the seasonal climb from winter to summer dwarfs any 10-day cold snap. Short windows mislead; long records reveal the trend.'; dv.querySelector('.verdict-icon').textContent='☀️'; }
+}
+function lin(xs,ys){const n=xs.length,sx=xs.reduce((a,b)=>a+b,0),sy=ys.reduce((a,b)=>a+b,0),sxy=xs.reduce((s,x,i)=>s+x*ys[i],0),sx2=xs.reduce((s,x)=>s+x*x,0);const m=(n*sxy-sx*sy)/(n*sx2-sx*sx),b=(sy-m*sx)/n;return xs.map(x=>+(m*x+b).toFixed(2));}
+function redrawDaily(){
+  if(!dailyChart) return;
+  const r=dailyRanges[dailyMode];
+  const labels=dayLabels.slice(r.s,r.e);
+  const vals=dailyTemps.slice(r.s,r.e);
+  const xs=vals.map((_,i)=>i);
+  const ds=[{label:'Daily high',data:vals,borderColor:'#2D6A4F',backgroundColor:'rgba(45,106,79,.1)',borderWidth:2.5,pointRadius:dailyMode==='snap'?3:0,tension:.3,fill:true}];
+  if(document.getElementById('wdTrend').checked) ds.push({label:'Trend',data:lin(xs,vals),borderColor:'#D4691E',borderWidth:2.5,borderDash:[6,3],pointRadius:0});
+  dailyChart.data.labels=labels; dailyChart.data.datasets=ds; dailyChart.update();
+}
+
+// ═══════════ TAB 2 · CLIMATE (global anomaly) ═══════════
+const climYears=[],climVals=[
+-0.20,-0.11,-0.28,-0.31,-0.37,-0.35,-0.32,-0.37,-0.18,-0.12,-0.43,-0.39,-0.44,-0.47,-0.38,-0.37,-0.18,-0.13,-0.35,-0.22,
+-0.08,-0.14,-0.30,-0.38,-0.47,-0.28,-0.21,-0.39,-0.43,-0.48,-0.43,-0.44,-0.36,-0.36,-0.16,-0.15,-0.36,-0.47,-0.32,-0.29,
+-0.27,-0.19,-0.28,-0.26,-0.27,-0.22,-0.06,-0.18,-0.22,-0.36,-0.09,-0.08,-0.11,-0.27,-0.16,-0.19,-0.14,-0.02,-0.00,-0.02,
+0.09,0.20,0.07,0.09,0.20,0.09,-0.07,-0.03,-0.05,-0.08,-0.17,0.01,0.02,0.08,-0.13,-0.14,-0.14,0.05,0.06,0.03,
+-0.03,0.06,0.03,0.05,-0.20,-0.11,-0.06,-0.02,-0.07,0.08,0.03,-0.08,0.01,0.16,-0.07,-0.01,-0.10,0.18,0.07,0.16,
+0.27,0.32,0.14,0.31,0.16,0.12,0.18,0.33,0.39,0.29,0.45,0.41,0.23,0.24,0.31,0.45,0.35,0.46,0.63,0.40,
+0.42,0.54,0.63,0.62,0.54,0.68,0.61,0.66,0.54,0.64,0.72,0.61,0.64,0.68,0.75,0.90,1.01,0.92,0.83,0.98,1.02,0.85,0.89,1.17];
+for(let y=1880;y<=2023;y++) climYears.push(y);
+let climChart=null, climMode='deceive';
+const climRanges={deceive:{s:1998,e:2012},medium:{s:1980,e:2023},full:{s:1880,e:2023}};
+const climExp={
+  deceive:{ic:'🔍',cls:'v-bad',t:'The cherry-pick',x:'Starting at the freakishly hot 1998 El Niño makes 1998–2012 look flat — the so-called "global warming pause." It\'s not fake data; it\'s a dishonest choice of window. Turn on the trend line, then zoom out.'},
+  medium:{ic:'📈',cls:'v-warn',t:'Zoomed out: the climb appears',x:'Over 40+ years the upward march is obvious. Individual years bounce around with El Niño/La Niña, but every decade is warmer than the last.'},
+  full:{ic:'🌍',cls:'v-good',t:'Full record: case closed',x:'The complete instrumental record shows ~1.2°C of warming, accelerating. Any short cooling window is just noise riding on a powerful upward signal.'}
+};
+function initClimate(){
+  const ctx=document.getElementById('climChart').getContext('2d');
+  climChart=new Chart(ctx,{type:'bar',data:{labels:[],datasets:[]},options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(c.parsed.y>0?'+':'')+c.parsed.y.toFixed(2)+'°C'}}},
+    scales:{x:{grid:{display:false},ticks:{maxTicksLimit:14,font:{size:10}}},
+      y:{grid:{color:'#E3EFE7'},ticks:{callback:v=>(v>0?'+':'')+v.toFixed(1),font:{size:11}},title:{display:true,text:'Temp anomaly vs 1901–2000 (°C)',font:{size:11},color:'#4A5B4E'}}}
+  }});
+  redrawClimate();
+}
+function setZoom(mode,btn){
+  climMode=mode;
+  document.querySelectorAll('#zd-deceive,#zd-medium,#zd-full').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  redrawClimate();
+}
+function redrawClimate(){
+  if(!climChart) return;
+  const r=climRanges[climMode], si=r.s-1880, ei=r.e-1880+1;
+  const labels=climYears.slice(si,ei), vals=climVals.slice(si,ei), xs=vals.map((_,i)=>i);
+  const ds=[{label:'Anomaly',data:vals,backgroundColor:vals.map(v=>v>=0?'rgba(192,57,43,.78)':'rgba(45,106,79,.78)'),borderRadius:2}];
+  if(document.getElementById('climTrend').checked) ds.push({type:'line',label:'Trend',data:lin(xs,vals),borderColor:'#E9B44C',borderWidth:3,pointRadius:0,tension:.1});
+  climChart.data.labels=labels; climChart.data.datasets=ds; climChart.update();
+  const e=climExp[climMode], v=document.getElementById('climVerdict');
+  v.className='verdict '+e.cls;
+  document.getElementById('climVicon').textContent=e.ic;
+  document.getElementById('climVtitle').textContent=e.t;
+  document.getElementById('climVtext').textContent=e.x;
+}
+
+// ═══════════ TAB 3 · GWP ═══════════
+const gwpData={co2:{g:1,n:'CO₂',c:'var(--forest-mid)'},ch4:{g:25,n:'CH₄',c:'var(--amber)'},n2o:{g:298,n:'N₂O',c:'var(--red)'},hfc:{g:14800,n:'HFC-23',c:'var(--purple)'}};
+function updateGWP(){
+  const gas=document.getElementById('gasPick').value, amt=+document.getElementById('gasAmt').value;
+  document.getElementById('gasAmtVal').textContent=amt;
+  const d=gwpData[gas], eq=amt*d.g;
+  document.getElementById('gwpEq').textContent=eq>=1000?(eq/1000).toFixed(1)+'k':eq;
+  document.getElementById('gwpCar').textContent=Math.round(eq/0.4).toLocaleString();
+  document.getElementById('gwpTrees').textContent=(eq/21).toFixed(1);
+  // bars (log-ish scale capped)
+  const maxEq=Math.max(eq,amt);
+  const pGas=Math.max(4,Math.min(100,eq/maxEq*100));
+  const pCO2=Math.max(4,Math.min(100,amt/maxEq*100));
+  const bg=document.getElementById('barGas'); bg.style.width=pGas+'%'; bg.style.background=d.c; bg.textContent=eq.toLocaleString()+' kg CO₂e';
+  const bc=document.getElementById('barCO2'); bc.style.width=pCO2+'%'; bc.textContent=amt+' kg CO₂e';
+  const vt=document.getElementById('gwpVtitle'), vx=document.getElementById('gwpVtext');
+  if(gas==='co2'){ vt.textContent='CO₂ is the baseline'; vx.textContent='By definition CO₂ has a GWP of 1. It\'s less potent per kilogram than other gases — but we emit it in staggering quantities, so it dominates total warming.'; }
+  else { vt.textContent=`${amt} kg of ${d.n} = ${eq.toLocaleString()} kg of CO₂`; vx.textContent=`Per kilogram, ${d.n} traps ${d.g.toLocaleString()}× more heat than CO₂ over 100 years. That's why even small leaks of potent gases matter enormously.`; }
+}
+
+// ═══════════ TAB 3 · KEELING ═══════════
+const keelMonthly=[]; // build monthly series 1958-2023 with seasonal sawtooth
+(function(){
+  // annual mean roughly: start 315 (1958) -> 421 (2023), accelerating
+  for(let y=1958;y<=2023;y++){
+    const frac=(y-1958)/(2023-1958);
+    const annual=315 + 106*frac*frac*0.55 + 106*frac*0.45; // slight acceleration
+    for(let m=0;m<12;m++){
+      const seasonal=3.0*Math.cos(2*Math.PI*(m-4)/12); // peak ~May, trough ~Oct
+      keelMonthly.push({y,m,v:+(annual+seasonal).toFixed(2)});
+    }
+  }
+})();
+const monNames=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+let keelingChart=null, keelMode='season';
+function initKeeling(){
+  const ctx=document.getElementById('keelingChart').getContext('2d');
+  keelingChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[]},options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+' ppm'}}},
+    scales:{x:{grid:{display:false},ticks:{maxTicksLimit:12,font:{size:10}}},
+      y:{grid:{color:'#E3EFE7'},ticks:{callback:v=>v+' ppm',font:{size:11}},title:{display:true,text:'Atmospheric CO₂ (ppm)',font:{size:11},color:'#4A5B4E'}}}
+  }});
+  setKeeling('season',document.getElementById('kz-season'));
+}
+function setKeeling(mode,btn){
+  keelMode=mode;
+  document.querySelectorAll('#kz-season,#kz-decade,#kz-full').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  let slice,labels;
+  if(mode==='season'){ // year 2015, watch May->Oct fall
+    slice=keelMonthly.filter(p=>p.y===2015); labels=slice.map(p=>monNames[p.m]);
+  } else if(mode==='decade'){
+    slice=keelMonthly.filter(p=>p.y>=2013&&p.y<=2023); labels=slice.map(p=>p.m===0?p.y:'');
+  } else {
+    slice=keelMonthly.filter(p=>p.m===0||p.m===6); labels=slice.map(p=>p.m===0?p.y:'');
+  }
+  keelingChart.data.labels=labels;
+  keelingChart.data.datasets=[{label:'CO₂',data:slice.map(p=>p.v),borderColor:'#D4691E',backgroundColor:'rgba(212,105,30,.12)',borderWidth:2.5,pointRadius:mode==='season'?3:0,tension:.35,fill:true}];
+  keelingChart.update();
+  const v=document.getElementById('keelVerdict');
+  if(mode==='season'){ v.className='verdict v-cold'; document.getElementById('keelVtitle').textContent='Zoomed in: CO₂ is falling!'; document.getElementById('keelVtext').textContent='From spring to autumn, billions of Northern Hemisphere plants pull CO₂ out of the air — so for months it drops every single year. Cherry-pick this and you\'d say CO₂ is going down.'; }
+  else if(mode==='decade'){ v.className='verdict v-warn'; document.getElementById('keelVtitle').textContent='Zoom out: a jagged climb'; document.getElementById('keelVtext').textContent='Over a decade the annual saw-tooth is still there, but it rides on an unmistakable upward staircase. Each year\'s low is higher than the last year\'s low.'; }
+  else { v.className='verdict v-bad'; document.getElementById('keelVtitle').textContent='Full record: relentless rise'; document.getElementById('keelVtext').textContent='Since 1958, CO₂ has climbed from ~315 to ~421 ppm and keeps accelerating. The seasonal dips are real — and completely irrelevant to the long-term trend. Same lesson as weather vs. climate.'; }
+}
+
+// ═══════════ TAB 4 · SEA LEVEL ═══════════
+(function buildCity(){
+  const c=document.getElementById('seaCity'); if(!c) return;
+  const h=[70,110,90,140,120,150,100,130,85,115];
+  h.forEach(v=>{ const b=document.createElement('div'); b.className='bldg'; b.style.height=v+'px'; c.appendChild(b); });
+})();
+function setWarm(v){ document.getElementById('warming').value=v; updateSea(); }
+function updateSea(){
+  const w=+document.getElementById('warming').value;
+  document.getElementById('warmVal').textContent=w.toFixed(1);
+  // SLR: nonlinear, ~0.5m per °C near-term equilibrium-ish for teaching
+  const slr=+(w*0.5).toFixed(2); // metres
+  const ppl=Math.round(w*32); // millions, rough
+  document.getElementById('slrM').textContent=slr.toFixed(2);
+  document.getElementById('slrFt').textContent=(slr*3.28).toFixed(1);
+  document.getElementById('slrPpl').textContent=ppl+'M';
+  // water height: map 0-2.5m -> 30-180px
+  const px=30+Math.min(slr/2.5,1)*150;
+  document.getElementById('seaWater').style.height=px+'px';
+  document.getElementById('seaLabel').textContent='Sea level: +'+slr.toFixed(2)+' m';
+  const v=document.getElementById('seaVerdict');
+  const vi=document.getElementById('seaVicon'),vt=document.getElementById('seaVtitle'),vx=document.getElementById('seaVtext');
+  v.className='verdict';
+  if(w<1.5){ v.classList.add('v-good'); vi.textContent='🌊'; vt.textContent='Manageable — if we stop here'; vx.textContent='At the Paris Agreement target, coastal damage is serious but adaptation is feasible for most cities. Low-lying island nations are already at risk.'; }
+  else if(w<3){ v.classList.add('v-warn'); vi.textContent='⚠️'; vt.textContent='Major coastal disruption'; vx.textContent='Many coastal cities face routine flooding and costly sea walls. Communities like Isle de Jean Charles, Louisiana are already being relocated.'; }
+  else { v.classList.add('v-bad'); vi.textContent='🔥'; vt.textContent='Coastlines redrawn'; vx.textContent='Whole regions become indefensible. Hundreds of millions are displaced; major cities like Miami, parts of NYC, and Jakarta face permanent inundation.'; }
+}
+
+// ═══════════ TAB 4 · ACIDIFICATION ═══════════
+function updateAcid(){
+  const co2=+document.getElementById('acidCO2').value;
+  document.getElementById('acidCO2val').textContent=co2;
+  const pH=8.18-0.0011*(co2-280);
+  document.getElementById('phVal').textContent=pH.toFixed(2);
+  const acidPct=Math.round((Math.pow(10,8.18-pH)-1)*100);
+  document.getElementById('acidPct').textContent=acidPct;
+  // needle: pH 7.4 (left,acidic) -> 8.3 (right). map to 0-100
+  const pos=Math.max(2,Math.min(98,(8.3-pH)/(8.3-7.4)*100));
+  document.getElementById('phNeedle').style.left=(100-pos)+'%';
+  const shell=document.getElementById('shellViz');
+  const v=document.getElementById('acidVerdict');
+  const vi=document.getElementById('acidVicon'),vt=document.getElementById('acidVtitle'),vx=document.getElementById('acidVtext');
+  v.className='verdict';
+  if(co2<=350){ shell.style.opacity=1; shell.style.filter='none'; shell.textContent='🐚'; v.classList.add('v-good'); vi.textContent='🐚'; vt.textContent='Healthy shells'; vx.textContent='Near pre-industrial pH, shellfish and corals build calcium-carbonate shells easily. Marine food webs are stable.'; }
+  else if(co2<=550){ shell.style.opacity=.75; shell.style.filter='grayscale(.4)'; shell.textContent='🐚'; v.classList.add('v-warn'); vi.textContent='⚠️'; vt.textContent='Shells weakening'; vx.textContent='More acidic water makes carbonate scarcer. Shells and coral skeletons grow thinner and slower — larvae and reefs are especially vulnerable.'; }
+  else { shell.style.opacity=.4; shell.style.filter='grayscale(.85)'; shell.textContent='💀'; v.classList.add('v-bad'); vi.textContent='💀'; vt.textContent='Shells dissolving'; vx.textContent='At this acidity, carbonate becomes so scarce that existing shells start to dissolve faster than organisms can rebuild them. The base of the marine food web collapses.'; }
+}
+
+// ═══════════ TAB 5 · FOOTPRINT ═══════════
+let fpChart=null;
+function fpValues(){
+  const car=+document.getElementById('fpCar').value*52*0.0004; // tonnes
+  const fly=+document.getElementById('fpFly').value*0.5;
+  const diet=+document.getElementById('fpDiet').value;
+  const home=+document.getElementById('fpHome').value*+document.getElementById('fpGrid').value;
+  const shop=+document.getElementById('fpShop').value;
+  return {car,fly,diet,home,shop};
+}
+function initFootprint(){
+  const ctx=document.getElementById('fpChart').getContext('2d');
+  fpChart=new Chart(ctx,{type:'bar',data:{labels:['You','US avg','Global avg','2050 target'],datasets:[{label:'tonnes CO₂/yr',data:[12.4,16,4,2],backgroundColor:['#2D6A4F','#D4691E','#1B6CA8','#40916C'],borderRadius:5}]},options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+' t CO₂/yr'}}},
+    scales:{x:{grid:{color:'#E3EFE7'},ticks:{callback:v=>v+'t',font:{size:11}},title:{display:true,text:'Tonnes CO₂ per year',font:{size:11},color:'#4A5B4E'}},y:{grid:{display:false},ticks:{font:{size:12,weight:'600'}}}}
+  }});
+  updateFootprint();
+}
+function updateFootprint(){
+  document.getElementById('fpCarVal').textContent=document.getElementById('fpCar').value;
+  document.getElementById('fpFlyVal').textContent=document.getElementById('fpFly').value;
+  document.getElementById('fpHomeVal').textContent=document.getElementById('fpHome').value;
+  const v=fpValues();
+  const total=v.car+v.fly+v.diet+v.home+v.shop;
+  const tEl=document.getElementById('fpTotal');
+  tEl.textContent=total.toFixed(1);
+  tEl.style.color=total<=4?'var(--green)':total<=10?'var(--amber)':'var(--red)';
+  if(fpChart){ fpChart.data.datasets[0].data=[+total.toFixed(1),16,4,2]; fpChart.data.datasets[0].backgroundColor[0]=total<=4?'#40916C':total<=10?'#D4691E':'#C0392B'; fpChart.update(); }
+  const vd=document.getElementById('fpVerdict');
+  const vi=document.getElementById('fpVicon'),vt=document.getElementById('fpVtitle'),vx=document.getElementById('fpVtext');
+  vd.className='verdict';
+  if(total<=4){ vd.classList.add('v-good'); vi.textContent='💚'; vt.textContent='Below the global average'; vx.textContent='You\'re near the level the whole world would need to reach. Civic action — voting, advocacy — is now your highest-leverage move to scale this up.'; }
+  else if(total<=10){ vd.classList.add('v-warn'); vi.textContent='👣'; vt.textContent='Typical for an industrialized country'; vx.textContent='Better than the US average, but well above the 2050 target. Use the "What If?" experiments below to find your biggest savings.'; }
+  else { vd.classList.add('v-bad'); vi.textContent='🔥'; vt.textContent='High footprint'; vx.textContent='Your emissions are well above sustainable levels. The good news: a high footprint means big, achievable savings — try the experiments below.'; }
+}
+function whatIf(type){
+  const ids={car:'fpCar',fly:'fpFly'};
+  const before=(()=>{const v=fpValues();return v.car+v.fly+v.diet+v.home+v.shop;})();
+  let msg='', title='';
+  const set=(id,val)=>{document.getElementById(id).value=val;};
+  if(type==='reset'){
+    set('fpCar',150); set('fpFly',2); document.getElementById('fpDiet').value='2.5'; set('fpHome',5); document.getElementById('fpShop').value='2.0'; document.getElementById('fpGrid').value='1.0';
+    updateFootprint(); document.getElementById('whatIfResult').style.display='none'; return;
+  }
+  if(type==='car') set('fpCar',Math.round(+document.getElementById('fpCar').value/2));
+  if(type==='fly') set('fpFly',Math.max(0,+document.getElementById('fpFly').value-1));
+  if(type==='diet') document.getElementById('fpDiet').value='1.7';
+  if(type==='grid') document.getElementById('fpGrid').value='0.2';
+  updateFootprint();
+  const after=(()=>{const v=fpValues();return v.car+v.fly+v.diet+v.home+v.shop;})();
+  const saved=Math.max(0,before-after);
+  const names={car:'Halving your driving',fly:'Taking one fewer flight',diet:'Going vegetarian',grid:'Switching to renewables'};
+  title=names[type]+` saves ≈ ${saved.toFixed(1)} t CO₂/yr`;
+  msg=`That's about ${Math.round(saved/before*100)}% of your current footprint, or roughly ${Math.round(saved/0.0004/52)} fewer miles of driving worth of carbon each year. Stack several changes for a bigger effect.`;
+  const r=document.getElementById('whatIfResult'); r.style.display='flex';
+  document.getElementById('wiTitle').textContent=title;
+  document.getElementById('wiText').textContent=msg;
+}
+
+// init defaults
+window.addEventListener('DOMContentLoaded', initGreenhouse);
+
+// ═══════════ EMBED + HASH DEEP-LINK ═══════════
+// Non-destructive: ?embed=1 hides the header/nav so a single tab can be embedded
+// seamlessly in a slideshow; #<tab> deep-links to that tab on load and on hashchange.
+function activateTabById(id){
+  const panel=document.getElementById('tab-'+id);
+  if(!panel) return;
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  panel.classList.add('active');
+  const btn=document.querySelector('.tab-btn[onclick*="\''+id+'\'"]');
+  if(btn) btn.classList.add('active');
+  if(id==='weather'){ if(!dailyChart) initDaily(); if(!climChart) initClimate(); }
+  if(id==='gases'){ updateGWP(); if(!keelingChart) initKeeling(); }
+  if(id==='footprint' && !fpChart) initFootprint();
+}
+function applyEmbedHash(){
+  const params=new URLSearchParams(location.search);
+  if(params.has('embed')) document.body.classList.add('embed');
+  const h=(location.hash||'').replace('#','');
+  if(h && document.getElementById('tab-'+h)) activateTabById(h);
+}
+window.addEventListener('DOMContentLoaded', applyEmbedHash);
+window.addEventListener('hashchange', ()=>{
+  const h=(location.hash||'').replace('#','');
+  if(h && document.getElementById('tab-'+h)) activateTabById(h);
+});
+</script>
+</body>
+</html>
