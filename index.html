@@ -715,6 +715,72 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 .os .os-spark{height:14px}
 .os .os-you{padding:6px 12px}
 .os .os-yh{margin-bottom:2px}
+.os .os-inote{font-size:11.5px;line-height:1.45;color:var(--muted)}
+.os .os-inote b{color:var(--ink)}
+.os .os-imp{display:grid;grid-template-columns:1.45fr 1fr;gap:16px;align-items:start}
+.os .os-ichart{background:#fffaf0;border:1px solid var(--line);border-radius:12px;padding:8px}
+.os .os-iside{display:flex;flex-direction:column;gap:7px}
+.os .os-cool{display:flex;flex-direction:column;gap:5px}
+.os .os-crow{display:grid;grid-template-columns:18px 78px 1fr 64px;gap:7px;align-items:center;font-size:12.5px;padding:3px 6px;border-radius:7px}
+.os .os-crow.you{background:rgba(230,200,122,.3)}
+.os .os-crow b{font:italic 900 13px Merriweather,serif}
+.os .os-crow i{height:11px;background:#efe6d0;border-radius:5px;overflow:hidden}
+.os .os-crow i span{display:block;height:100%;background:var(--c)}
+.os .os-crow em{font-style:normal;font-weight:800;text-align:right}
+.os .os-cnote{margin:0;font-size:11.5px;color:var(--muted)}
+.os .os-itiles{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.os .os-itiles div{background:#fffaf0;border:1px solid var(--line);border-radius:10px;padding:7px 9px}
+.os .os-itiles b{display:block;font:900 19px Merriweather,serif;color:var(--grn)}
+.os .os-itiles span{font-size:11px;color:var(--muted);line-height:1.3}
+.os .os-sfoot .up{color:var(--grn);font-weight:700}
+.os .os-sfoot .dn{color:var(--red);font-weight:700}
+.os .os-gauge{position:relative;height:84px;margin:6px 40px 4px}
+.os .os-gtrack{position:absolute;left:0;right:0;top:30px;height:12px;overflow:visible;border-radius:6px;background:linear-gradient(90deg,#2f7a40,#c9b46a 45%,#c8783a 70%,#a8483f)}
+.os .os-gtrack b{position:absolute;top:-1px;margin-left:0;transform:translateX(-50%);font:600 9.5px Inter;color:var(--muted);white-space:nowrap}
+.os .os-gpin{position:absolute;top:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.os .os-gpin i{width:3px;height:28px;border-radius:2px;background:var(--ink)}
+.os .os-gpin em{font-style:normal;font:800 10.5px Inter;white-space:nowrap;position:absolute;top:30px}
+.os .os-gpin.up{top:-2px;flex-direction:column-reverse}
+.os .os-gpin.up em{top:-2px}
+.os .os-gpin.up i{height:20px;margin-top:14px}
+.os .os-gpin.now i{background:#b8432f;width:5px}
+.os .os-gpin.now em{color:#b8432f;font-size:12px}
+.os .os-gpin.prev i{background:#9a8d70}
+.os .os-gpin.prev em{color:#7a6d50;font-weight:700}
+.os .os-gpin.all i{background:#2f7a40}
+.os .os-gpin.all em{color:#2f7a40}
+.os .os-gpin.none i{background:#6e6250}
+.os .os-gpin.none em{color:#6e6250}
+.os .os-gtrack b{transform:translate(-50%,0);top:-1px;color:#fbf5e6;font-weight:800;font-size:9px;line-height:12px}
+.os .os-gtrack b:first-child{transform:none;padding-left:4px}
+.os .os-gtrack b:last-child{transform:translateX(-100%);padding-right:4px}
+.os .os-gpin em{top:32px}
+.os .os-demobar{position:absolute;left:16px;right:16px;bottom:8px;margin:0 auto;width:max-content;max-width:min(1240px,calc(100% - 32px));z-index:60;display:flex;align-items:center;gap:10px;
+  background:rgba(59,50,34,.95);color:#fbf5e6;border-radius:12px;padding:7px 12px;box-shadow:0 10px 26px rgba(30,20,8,.35);font:600 13px Inter}
+.os .os-demotag{font:800 10px Inter;letter-spacing:.16em;text-transform:uppercase;background:#2668a8;border-radius:5px;padding:2px 7px}
+.os .os-demotxt{flex:1;font:italic 600 14px Merriweather,serif;min-width:0}
+.os .os-demoviews{display:flex;gap:4px}
+.os .os-demoviews a{color:#e6d8b8;text-decoration:none;font:700 11.5px Inter;border:1px solid rgba(251,245,230,.35);border-radius:999px;padding:3px 9px}
+.os .os-demoviews a.on{background:#fbf5e6;color:#3b3222}
+.os .os-dpause{background:none;border:1px solid rgba(251,245,230,.5);color:#fbf5e6;border-radius:999px;font:700 11.5px Inter;padding:3px 10px;cursor:pointer;white-space:nowrap}
+.os .os-replay{color:#fbf5e6;text-decoration:none;font:700 11.5px Inter;white-space:nowrap}
+.os.os-demobarOn{padding-bottom:54px}
+.os.os-demo #osGo,.os.os-demo .os-cact .os-btn{pointer-events:none}
+.os .os-sample{position:absolute;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(59,50,34,.38);backdrop-filter:blur(2px)}
+.os .os-scard2{width:min(1180px,96%);max-height:97%;display:flex;flex-direction:column;gap:8px;background:#fffdf6;border:1px solid rgba(120,100,60,.4);border-radius:16px;padding:12px 14px;box-shadow:0 18px 50px rgba(40,30,10,.32)}
+.os .os-shead{display:flex;align-items:center;gap:16px}
+.os .os-shead>div:first-child{flex:0 0 auto}
+.os .os-stitle{font:italic 900 21px Merriweather,serif}
+.os .os-sroles{flex:1;display:flex;justify-content:center;gap:6px}
+.os .os-sroles .os-seg{flex:0 0 auto;font-size:13.5px;padding:6px 16px}
+.os .os-ssteps{display:flex;flex-wrap:wrap;gap:5px}
+.os .os-ssteps .os-seg{flex:0 0 auto}
+.os .os-sframe{position:relative;height:min(58vh,560px);aspect-ratio:16/9;max-width:100%;align-self:center;overflow:hidden;border:1px solid rgba(120,100,60,.3);border-radius:10px;background:#f4ecda;flex:0 0 auto}
+.os .os-sframe iframe{position:absolute;left:0;top:0;width:1440px;height:810px;border:0;transform-origin:0 0;pointer-events:none}
+.os .os-sfoot2{display:flex;align-items:center;gap:16px}
+.os .os-scap{flex:1;margin:0;font:400 14.5px/1.5 Merriweather,serif;min-height:3em}
+.os .os-snav{display:flex;align-items:center;gap:8px}
+.os .os-snum{font:700 12px Inter;color:#8a8069;min-width:4.5em;text-align:center}
 
 /* "Book Recommendation" thumbnail — a small labelled book cover pinned to the
    bottom-right corner of any slide. Added with book_rec(); CSS auto-included when
@@ -2610,6 +2676,32 @@ const SIM = (function () {
       T: { actual: last(A).T, all: last(all).T, none: last(none).T },
     };
   }
+  // ── alternative futures (for the impact chart and the finale) ──
+  // Every world below replays the real votes for sessions 0..si, except where `force(n, sIdx)` returns laws for a nation;
+  // after session si the laws are held as they are until 2066.
+  function heldRun(I, si, force) {
+    const C = newWorld(I.seed, I.assign), V = I.V || [];
+    for (let s = 0; s <= si && s < SESSIONS.length; s++) {
+      if (force) { const res = NATIONS.map((N, n) => { const f = force(n, s); return f ? { laws: f, tally: {}, real: 0, size: 0 } : decide(C, n, s, V[s] || {}); }); const before = C.nat.map(x => ({ ...x.laws })); res.forEach((r, n) => enact(C, n, r.laws)); C.sessions.push({ year: C.year, si: s, res, before }); }
+      else session(C, s, V[s]);
+      const stop = s < si && s + 1 < SESSIONS.length ? SESSIONS[s + 1] : YN;
+      while (C.year < stop) step(C);
+    }
+    return C;
+  }
+  // the paths of warming (and emissions) for the world as voted, for no nation acting, for every nation acting,
+  // and, for nation k, the world where only k had drilled and built, or only k had gone all in
+  function futures(I, si, k) {
+    const T = C => C.hist.map(r => [r.year, r.T]), E = C => C.hist.map(r => [r.year, r.worldE]);
+    const out = {};
+    const A = heldRun(I, si), none = heldRun(I, si, () => BROWN()), all = heldRun(I, si, n => GREEN(n));
+    Object.assign(out, { held: T(A), heldE: E(A), none: T(none), noneE: E(none), all: T(all), allE: E(all), A, noneC: none, allC: all });
+    if (k != null && k >= 0) {
+      const lo = heldRun(I, si, n => n === k ? GREEN(n) : null), hi = heldRun(I, si, n => n === k ? BROWN() : null);
+      Object.assign(out, { kGreen: T(lo), kBrown: T(hi) });
+    }
+    return out;
+  }
   // the ballot's preview: nation n passes `draft` at session si while the other nations keep their laws; compared with
   // n keeping its own. Both worlds then run to 2066 with no further changes.
   function project(I, si, n, draft) {
@@ -2644,7 +2736,7 @@ const SIM = (function () {
   const at = (pts, y) => { for (let i = 1; i < pts.length; i++) if (y <= pts[i][0]) { const [a, va] = pts[i - 1], [b, vb] = pts[i]; return va + (vb - va) * (y - a) / (b - a); } return pts[pts.length - 1][1]; };
 
   return { Y0, YN, SESSIONS, NATIONS, NI, LAWS, LI, GROUPS, SECTORS, lawsFor, pack, parse, deal, packAssign, parseAssign, newWorld, run, step, session, decide, standIn,
-    ledger, whatIf, effort, project, GREEN, BROWN, SSP, at, hash, cleanCost, emptyLaws, T0, PPM0 };
+    ledger, whatIf, effort, project, futures, heldRun, GREEN, BROWN, SSP, at, hash, cleanCost, emptyLaws, T0, PPM0 };
 })();
 
 // ONE SKY: the continent. A seeded heightmap (fractal noise under an oval falloff) gives the land, the islands,
@@ -3235,7 +3327,7 @@ const UI = (function () {
   const fmtT = v => (v >= 10 ? '$' + v.toFixed(0) : '$' + v.toFixed(1)) + 'T';
   const pct = (v, d = 0) => (v * 100).toFixed(d) + '%';
   const sgn = (v, d = 1) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(d);
-  const R = { C: null, you: -1, tab: 'warm', host: false, iv: null, T: [] };
+  const R = { C: null, you: -1, tab: 'impact', fut: null, host: false, iv: null, T: [] };
   let el = null, $ = s => el.querySelector(s), $$ = s => [...el.querySelectorAll(s)];
 
   // ── glyphs for the laws ──
@@ -3288,7 +3380,7 @@ const UI = (function () {
   }
   // C = the replayed world; o.you = viewer's nation; o.step = which step we're on
   function setGame(C, o = {}) {
-    R.C = C; if (o.you != null) R.you = o.you; R.step = o.step || R.step; R.si = o.si;
+    R.C = C; if (o.you != null) R.you = o.you; if ('fut' in o) R.fut = o.fut; R.step = o.step || R.step; R.si = o.si;
     const h = C.hist, rec = h[h.length - 1] || null;
     if (rec && h.length > 1) rec.prevNat = h[h.length - 2].nat;
     WORLD.set(rec, { you: R.you, flash: o.flash, gid: o.gid });
@@ -3353,7 +3445,7 @@ const UI = (function () {
   }
 
   // ── charts ──
-  const TABS = [['warm', 'Warming'], ['emis', 'Emissions'], ['inc', 'Income'], ['dmg', 'Damage'], ['clean', 'Clean power'], ['price', 'Carbon price']];
+  const TABS = [['impact', 'Impact'], ['warm', 'Warming'], ['emis', 'Emissions'], ['inc', 'Income'], ['dmg', 'Damage'], ['clean', 'Clean power'], ['price', 'Carbon price']];
   function drawTab() {
     $('#osTabs').innerHTML = TABS.map(([k, l]) => `<button role="tab" aria-selected="${R.tab === k}" data-t="${k}">${l}</button>`).join('');
     $$('#osTabs button').forEach(b => b.onclick = () => { R.tab = b.dataset.t; drawTab(); });
@@ -3361,16 +3453,51 @@ const UI = (function () {
     lg.innerHTML = '';
     const byN = (f, name) => N5.map((N, n) => ({ name: N.name, color: N.color, pts: h.map(r => [r.year, f(r.nat[n], r)]), you: n === R.you }));
     const nl = () => legend(lg, N5.map((N, n) => [N.color, N.name + (n === R.you ? ' (you)' : '')]));
-    if (R.tab === 'warm') chart(box, { title: 'Warming since 1850–1900', unit: '°C', yMin: 1.2, yMax: 2.7, dec: 2, refs: SIM.SSP.map(s => ({ name: s.id, pts: s.T })), series: [{ name: 'Five nations', color: '#b8432f', pts: h.map(r => [r.year, r.T]) }] });
+    if (R.tab === 'impact') impactChart(box, lg);
+    else if (R.tab === 'warm') chart(box, { title: 'Warming since 1850–1900', unit: '°C', yMin: 1.2, yMax: 2.7, dec: 2, refs: SIM.SSP.map(s => ({ name: s.id, pts: s.T })), series: [{ name: 'Five nations', color: '#b8432f', pts: h.map(r => [r.year, r.T]) }] });
     else if (R.tab === 'emis') { nl(); chart(box, { title: 'Emissions by nation', unit: 'Gt CO₂e/yr', yMin: 0, yMax: Math.max(40, ...h.map(r => r.worldE)) * 1.05, dec: 0, stack: N5.map((N, n) => ({ name: N.name, color: N.color, pts: h.map(r => [r.year, r.nat[n].emis]) })) }); }
     else if (R.tab === 'inc') { nl(); chart(box, { title: 'Income per person', unit: '$ thousand', yMin: 0, yMax: Math.max(80, ...h.flatMap(r => r.nat.map(x => x.gdpPc))) * 1.08, dec: 0, series: byN(x => x.gdpPc) }); }
     else if (R.tab === 'dmg') { nl(); chart(box, { title: 'Lost to climate each year', unit: '% of GDP', yMin: 0, yMax: Math.max(4, ...h.flatMap(r => r.nat.map(x => (x.dmg + x.shock) * 100))) * 1.1, dec: 1, series: byN(x => Math.max(0, (x.dmg + x.shock) * 100)) }); }
     else if (R.tab === 'clean') { nl(); chart(box, { title: 'Clean electricity', unit: '% of power', yMin: 0, yMax: 100, dec: 0, series: byN(x => x.clean * 100) }); }
     else { nl(); chart(box, { title: 'Price of a tonne of CO₂', unit: '$/t', yMin: 0, yMax: Math.max(100, ...h.flatMap(r => r.nat.map(x => x.P))) * 1.1, dec: 0, series: byN(x => x.P) }); }
   }
+  // the impact chart: the world as voted (and where its laws lead if they hold), against no nation acting and every
+  // nation acting; for a delegate, the band between their nation drilling and building and going all in
+  function impactChart(box, lg, big) {
+    const C = R.C, h = C ? C.hist : [], F = R.fut, you = R.you;
+    if (!F) { chart(box, { title: 'Where the world is heading', unit: '°C', yMin: 1.2, yMax: 2.6, dec: 2, series: [] }); if (!big) lg.innerHTML = '<span class="os-inote">The futures appear after the first summit.</span>'; return; }
+    const now = h.length ? h[h.length - 1].year : 2026, proj = F.held.filter(p => p[0] >= now);
+    const refs = [{ name: big ? 'No nation acts' : 'None act', pts: F.none, color: '#8a7d60', dash: '5 4', end: 1, hover: 1 }, { name: big ? 'Every nation acts' : 'All act', pts: F.all, color: '#2f7a40', dash: '5 4', end: 1, hover: 1 }];
+    const series = [];
+    if (proj.length > 1 && now < 2066) series.push({ name: big ? 'If these laws hold' : 'Laws hold', color: '#b8432f', pts: proj, dash: '3 3', w: 2 });
+    series.push({ name: big ? 'Your world' : 'Now', color: '#b8432f', pts: h.map(r => [r.year, r.T]), w: 3, noEnd: !big && proj.length > 1 && now < 2066 });
+    const band = you >= 0 && F.kGreen ? { name: big ? `${N5[you].name}’s range` : 'You', color: N5[you].color, lo: F.kGreen, hi: F.kBrown } : null;
+    const yMax = Math.max(2.4, ...F.none.map(p => p[1])) + .08;
+    chart(box, { title: big ? 'Warming, 2026–2066: your world and the alternatives' : 'Where the world is heading', unit: '°C', yMin: 1.3, yMax, dec: 2, refs, series, band, W: big ? 640 : 400, H: big ? 300 : 214, Rm: big ? 150 : 104 });
+    if (lg) {
+      const end = F.held[F.held.length - 1][1], kb = F.kBrown ? F.kBrown[F.kBrown.length - 1][1] : null, kg = F.kGreen ? F.kGreen[F.kGreen.length - 1][1] : null;
+      lg.innerHTML = `<span class="os-inote">2066 if today’s laws hold: <b>+${end.toFixed(2)} °C</b>.${band ? ` The shaded band is ${N5[you].name}’s reach: all in (+${kg.toFixed(2)}) to drill and build (+${kb.toFixed(2)}).` : ' Dashed: no nation acting, every nation acting.'}</span>`;
+    }
+  }
+  function impactPage(L, F) {
+    const C = R.C, last = C.hist[C.hist.length - 1], none = L.none.hist, all = L.all.hist, y = R.you;
+    const sum = (H, f) => H.reduce((a, r) => a + f(r), 0);
+    const eAv = sum(none, r => r.worldE) - sum(C.hist, r => r.worldE), seaAv = none[none.length - 1].slr - last.slr;
+    const dmg = H => sum(H, r => r.Y * r.dmgShare), dAv = dmg(none) - dmg(C.hist);
+    const ice = C.tips.ice ? `lost in ${C.tips.ice}` : 'still there in 2066', iceNone = L.none.tips.ice ? `lost in ${L.none.tips.ice}` : 'kept';
+    const rows = L.rows.slice().sort((a, b) => b.cooled - a.cooled), mx = Math.max(.01, ...rows.map(r => r.cooled)), tot = L.T.none - L.T.actual;
+    const head0 = y >= 0 ? `${N5[y].name}’s laws kept <b>${Math.max(0, L.rows[y].cooled).toFixed(3)} °C</b> out of the sky. All five nations together kept <b>${tot.toFixed(2)} °C</b> out, compared with no nation acting.` : `Together the five nations kept <b>${tot.toFixed(2)} °C</b> out of the sky, compared with no nation acting. Every nation acting would have kept out <b>${(L.T.none - L.T.all).toFixed(2)} °C</b>.`;
+    return head('2066 · THE CLIMATE', 'What did your laws do to the climate?', head0) +
+      `<div class="os-imp"><div class="os-ichart" id="osIchart"></div><div class="os-iside">
+        <div class="os-eb">WHERE THE COOLING CAME FROM</div><div class="os-cool">${rows.map(r => `<div class="os-crow${r.n === y ? ' you' : ''}" style="--c:${N5[r.n].color}">${crest(r.n, 16)}<b>${N5[r.n].name}</b><i><span style="width:${Math.max(2, r.cooled / mx * 100).toFixed(0)}%"></span></i><em>${Math.max(0, r.cooled).toFixed(3)} °C</em></div>`).join('')}</div>
+        <p class="os-cnote">Each bar: how much warmer 2066 would be if that nation alone had drilled and built instead.</p>
+        <div class="os-eb">COMPARED WITH NO NATION ACTING</div>
+        <div class="os-itiles"><div><b>${eAv.toFixed(0)} Gt</b><span>of CO₂e never emitted</span></div><div><b>${seaAv.toFixed(1)} cm</b><span>less sea-level rise</span></div><div><b>$${dAv.toFixed(1)}T</b><span>of climate damage avoided</span></div><div><b>Arctic ice</b><span>${ice} (no action: ${iceNone})</span></div></div>
+      </div></div>`;
+  }
   function legend(l, items) { l.innerHTML = items.map(([c, t]) => `<span><i style="background:${c}"></i>${esc(t)}</span>`).join(''); }
   function chart(box, o) {
-    const W = 400, H = 214, L = 34, Rm = 104, T = 24, B = 22, x0 = 2026, x1 = 2066;
+    const W = o.W || 400, H = o.H || 214, L = 34, Rm = o.Rm || 104, T = 24, B = 22, x0 = 2026, x1 = 2066;
     const X = x => L + (x - x0) / (x1 - x0) * (W - L - Rm), Y = v => T + (1 - (v - o.yMin) / ((o.yMax - o.yMin) || 1)) * (H - T - B);
     const fmtv = v => v.toFixed(o.dec) + (o.unit.startsWith('%') ? '%' : '');
     let s = `<text x="${L}" y="13" class="os-ct">${o.title}</text><text x="${W - 4}" y="13" class="os-cu" text-anchor="end">${o.unit}</text>`;
@@ -3381,7 +3508,9 @@ const UI = (function () {
     s += `<rect x="${X(now)}" y="${T}" width="${Math.max(0, X(x1) - X(now))}" height="${H - T - B}" fill="#efe6d0" opacity=".45"/>`;
     const path = pts => pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join('');
     const labels = [], hover = [];
-    if (o.refs) for (const r of o.refs) { s += `<path d="${path(r.pts)}" stroke="#9a8d70" stroke-width="1.2" fill="none" stroke-dasharray="4 3"/>`; labels.push([Y(r.pts[r.pts.length - 1][1]), r.name, '#7a6d50', 0]); }
+    if (o.band) { const b = o.band; s += `<path d="${path(b.hi)} ${b.lo.slice().reverse().map(p => 'L' + X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join('')} Z" fill="${b.color}" opacity=".2"/><path d="${path(b.hi)}" stroke="${b.color}" stroke-width="1" fill="none" opacity=".6"/><path d="${path(b.lo)}" stroke="${b.color}" stroke-width="1" fill="none" opacity=".6"/>`;
+      const e = b.hi[b.hi.length - 1], f = b.lo[b.lo.length - 1]; labels.push([(Y(e[1]) + Y(f[1])) / 2, b.name, b.color, 1]); hover.push({ name: b.name + ' (drill)', color: b.color, pts: b.hi }, { name: b.name + ' (all in)', color: b.color, pts: b.lo }); }
+    if (o.refs) for (const r of o.refs) { s += `<path d="${path(r.pts)}" stroke="${r.color || '#9a8d70'}" stroke-width="${r.w || 1.2}" fill="none" stroke-dasharray="${r.dash || '4 3'}"/>`; labels.push([Y(r.pts[r.pts.length - 1][1]), r.name + (r.end ? ' ' + fmtv(r.pts[r.pts.length - 1][1]) : ''), r.color || '#7a6d50', r.end ? 1 : 0]); if (r.hover) hover.push(r); }
     if (o.stack) {
       const n = o.stack[0].pts.length, acc = Array(n).fill(0);
       for (const sr of o.stack) {
@@ -3393,7 +3522,8 @@ const UI = (function () {
       if (n) labels.push([Y(acc[n - 1]) - 2, 'Total ' + acc[n - 1].toFixed(1), '#3b3222', 1]);
     }
     if (o.series) for (const sr of o.series) {
-      if (sr.pts.length >= 2) s += `<path d="${path(sr.pts)}" stroke="${sr.color}" stroke-width="${sr.you ? 3.2 : 2}" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+      if (sr.pts.length >= 2) s += `<path d="${path(sr.pts)}" stroke="${sr.color}" stroke-width="${sr.w || (sr.you ? 3.2 : 2)}" fill="none" stroke-linejoin="round" stroke-linecap="round"${sr.dash ? ` stroke-dasharray="${sr.dash}"` : ''}/>`;
+      if (sr.noEnd) { hover.push(sr); continue; }
       const lp = sr.pts[sr.pts.length - 1];
       if (lp) { s += `<circle cx="${X(lp[0])}" cy="${Y(lp[1])}" r="${sr.you ? 4.5 : 3.5}" fill="${sr.color}" stroke="#fbf5e6" stroke-width="2"/>`; labels.push([Y(lp[1]), `${sr.name} ${fmtv(lp[1])}`, '#3b3222', sr.you ? 1 : 0]); }
       hover.push(sr);
@@ -3482,29 +3612,33 @@ const UI = (function () {
   // the reckoning at 2066 (pages: the world, who paid and who gained, and in round 2 the twist)
   function showFinal(L, o) {
     const C = R.C, last = C.hist[C.hist.length - 1], first = C.hist[0];
-    const pages = [];
+    const pages = [], kinds = [];
+    const add = (k, html) => { kinds.push(k); pages.push(html); };
     // 1. the world
     const rank = N5.map((N, n) => ({ n, inc: last.nat[n].gdpPc, gr: Math.pow(last.nat[n].gdpPc / (N.gdp / N.pop), 1 / 40) - 1, cut: last.nat[n].emis / first.nat[n].emis - 1, dmg: C.hist.reduce((a, h) => a + h.nat[n].Y * (h.nat[n].dmg + h.nat[n].shock), 0) }));
     const by = (k, dir) => rank.slice().sort((a, b) => dir * (a[k] - b[k]))[0];
     const aw = [['Fastest growing', by('gr', -1), r => `${(r.gr * 100).toFixed(2)}% a year`], ['Biggest cut', by('cut', 1), r => `${sgn(r.cut * 100, 0)}% emissions`], ['Hit hardest', by('dmg', -1), r => `$${r.dmg.toFixed(1)}T lost to climate since 2026`]];
-    pages.push(head('2066 · FORTY YEARS LATER', 'Where did the world land?', `The five nations finished at <b>+${last.T.toFixed(2)} °C</b>, ${Math.round(last.ppm)} ppm of CO₂ and seas ${Math.round(last.slr)} cm higher. World emissions went from ${first.worldE.toFixed(1)} to ${last.worldE.toFixed(1)} Gt a year.`) +
+    add('world', head('2066 · FORTY YEARS LATER', 'Where did the world land?', `The five nations finished at <b>+${last.T.toFixed(2)} °C</b>, ${Math.round(last.ppm)} ppm of CO₂ and seas ${Math.round(last.slr)} cm higher. World emissions went from ${first.worldE.toFixed(1)} to ${last.worldE.toFixed(1)} Gt a year.`) +
       `<div class="os-fin"><div class="os-fchart" id="osFchart"></div><div class="os-awards">${aw.map(([t, r, f]) => `<div class="os-aw" style="--c:${N5[r.n].color}">${crest(r.n, 22)}<div><span>${t}</span><b>${N5[r.n].name}</b><em>${f(r)}</em></div></div>`).join('')}</div></div>`);
-    // 2. who paid, who gained (the commons)
+    // 2. what the laws did to the climate
+    if (L && o.fut) add('impact', impactPage(L, o.fut));
+    // 3. who paid, who gained (the commons)
     if (L) {
       // each nation's three worlds on its own scale, so the gaps between them show
       const bar = (r, v, c, lbl) => { const lo = Math.min(r.actual, r.all, r.none) * .94, hi = Math.max(r.actual, r.all, r.none), w = 18 + 82 * (v - lo) / ((hi - lo) || 1), d = v / r.actual - 1;
         return `<div class="os-lb"><span class="os-ll">${lbl}</span><span class="os-lt"><i style="width:${w.toFixed(1)}%;background:${c}"></i></span><span class="os-lv"><b>$${v.toFixed(1)}k</b>${lbl === 'Your world' ? '' : `<em class="${d >= 0 ? 'up' : 'dn'}">${sgn(d * 100)}%</em>`}</span></div>`; };
-      pages.push(head('THE LEDGER', 'Who paid, and who gained?', `Income per person in 2066, in the world you made and in two others: every nation acting, and no nation acting. Warming: you <b>+${L.T.actual.toFixed(2)} °C</b> · everyone acting <b>+${L.T.all.toFixed(2)} °C</b> · no one acting <b>+${L.T.none.toFixed(2)} °C</b>.`) +
+      add('ledger', head('THE LEDGER', 'Who paid, and who gained?', `Income per person in 2066, in the world you made and in two others: every nation acting, and no nation acting. Warming: you <b>+${L.T.actual.toFixed(2)} °C</b> · everyone acting <b>+${L.T.all.toFixed(2)} °C</b> · no one acting <b>+${L.T.none.toFixed(2)} °C</b>.`) +
         `<div class="os-ledger">${L.rows.map(r => `<div class="os-lrow" style="--c:${N5[r.n].color}"><div class="os-lname">${crest(r.n, 20)}<b>${N5[r.n].name}</b></div><div class="os-lbars">${bar(r, r.actual, N5[r.n].color, 'Your world')}${bar(r, r.all, '#2f8545', 'Everyone acted')}${bar(r, r.none, '#9a8d70', 'No one acted')}</div>` +
           `<div class="os-lnote">Its own laws cooled the world <b>${r.cooled > 0 ? r.cooled.toFixed(3) : '0.000'} °C</b>.<br>They changed its own income <b class="${r.ownGain >= 0 ? 'up' : 'dn'}">${sgn(r.ownGain * 100)}%</b>, and the other nations’ by <b class="${r.othersGain >= 0 ? 'up' : 'dn'}">${sgn(r.othersGain * 100)}%</b> on average.</div></div>`).join('')}</div>`);
     }
     // 3. the twist (round 2 only)
-    if (o.twist) pages.push(o.twist);
+    if (o.twist) add('twist', o.twist);
     let pg = 0;
     const draw = () => {
       overlay(pages[pg] + `<div class="os-fnav">${pages.map((_, i) => `<i class="${i === pg ? 'on' : ''}"></i>`).join('')}</div>` +
-        act(pg < pages.length - 1 ? { onGo: () => { pg++; draw(); }, goLabel: ['Who paid, who gained? ▸', 'One more thing… ▸'][pg] || 'Next ▸' } : o, 'Close', pg ? '<button class="os-btn ghost" id="osBack">◂ Back</button>' : ''), () => {
+        act(pg < pages.length - 1 ? { onGo: () => { pg++; draw(); }, goLabel: { impact: 'What did your laws do? ▸', ledger: 'Who paid, who gained? ▸', twist: 'One more thing… ▸' }[kinds[pg + 1]] || 'Next ▸' } : o, 'Close', pg ? '<button class="os-btn ghost" id="osBack">◂ Back</button>' : ''), () => {
         if (pg === 0) finalChart($('#osFchart'));
+        if ($('#osIchart')) { const keepF = R.fut; R.fut = o.fut; impactChart($('#osIchart'), null, true); R.fut = keepF; }
         const b = $('#osBack'); if (b) b.onclick = () => { pg--; draw(); };
       }, 'wide');
       if (pg === pages.length - 1) wire(o); else $('#osGo').onclick = () => { pg++; draw(); };
@@ -3531,12 +3665,16 @@ const UI = (function () {
   const root = document.querySelector('[data-os]');
   if (!root || root.dataset.wired) return; root.dataset.wired = '1';
   const slide = root.closest('.slide') || root;
-  const GID = slide.dataset.gameId || 'os-test';
+  let GID = slide.dataset.gameId || 'os-test';
   const CG = window.__cg;
+  function QS0() { return new URLSearchParams(location.search); }
   CG.trapKeys(root);
   const QS = new URLSearchParams(location.search);
   const AS = QS.get('as');
-  const PK = AS ? 'as-' + AS.replace(/[^a-z0-9]/gi, '').slice(0, 16) : CG.pid(GID);
+  // ?demo plays a scripted class on the browser-local backend (never Firestore); ?view=projector|cairhien|andor|… picks the screen
+  const DEMO = QS0().has('demo'), VIEW = (QS0().get('view') || 'projector').toLowerCase();
+  let DEMO_ON = false;
+  let PK = DEMO && VIEW !== 'projector' ? 'demo-you' : AS ? 'as-' + AS.replace(/[^a-z0-9]/gi, '').slice(0, 16) : CG.pid(GID);
   const S5KEY = slide.dataset.s5 || 'ch11-climate-serious';          // the slide-5 spectrum this game sorts by
   const q = s => root.querySelector(s);
   const esc = UI.esc;
@@ -3566,6 +3704,15 @@ const UI = (function () {
     if (sig !== cMemo.sig) cMemo = { sig, C: SIM.run({ seed: seed(), assign: assign(), V: votesUpTo(nV) }, upto) };
     return cMemo.C;
   }
+  // the alternative futures for the impact chart: computed once per session (the laws hold between summits)
+  let fMemo = { sig: '', F: null };
+  function futAt(sIdx, k) {
+    if (sIdx < 0) return null;
+    const sig = gid() + '|' + (state.assign || '') + '|' + sIdx + '|' + k + '|' + JSON.stringify(votesUpTo(sIdx + 1));
+    if (sig !== fMemo.sig) fMemo = { sig, F: SIM.futures({ seed: seed(), assign: assign(), V: votesUpTo(sIdx + 1) }, sIdx, k) };
+    return fMemo.F;
+  }
+  const futNow = () => { const ph = phase(); if (['idle', 'lobby', 'deal'].includes(ph)) return null; return futAt(ph === 'vote' ? si() - 1 : si(), myN()); };
   const mineKey = k => 'os:' + GID + ':' + gid() + ':' + PK + ':' + k;
   function mine(k) { try { return JSON.parse(localStorage.getItem(mineKey(k)) || 'null'); } catch (e) { return null; } }
   function setMine(k, v) { try { localStorage.setItem(mineKey(k), JSON.stringify(v)); } catch (e) { } }
@@ -3620,6 +3767,7 @@ const UI = (function () {
       <label class="os-set" data-pacewrap hidden>Pace <select data-pace><option value="5">Slow · 5 s a year</option><option value="3.5" selected>Normal · 3.5 s</option><option value="2.2">Fast · 2.2 s</option></select></label>
       <button class="os-b" data-pause hidden>Pause</button>
       <button class="os-b" data-take hidden>Run the clock from this screen</button>
+      <button class="os-b" data-samplebtn hidden>Sample student screen</button>
       <span class="os-hs" data-hs></span>
       <button class="os-b ghost" data-reset>Reset</button>`;
     bar.querySelector('[data-open]').onclick = () => backend.setDoc('polls', GID, { phase: 'lobby', players: {}, gameId: Date.now() % 100000 + 1, pace: 3.5, hostId: HOSTID, round: 1 });
@@ -3628,12 +3776,13 @@ const UI = (function () {
     bar.querySelector('[data-pace]').onchange = e => backend.mergeDoc('polls', GID, { pace: +e.target.value });
     bar.querySelector('[data-pause]').onclick = () => state.paused ? backend.mergeDoc('polls', GID, { paused: 0, deadline: Date.now() + pace() * 1000 }) : backend.mergeDoc('polls', GID, { paused: 1, deadline: null });
     bar.querySelector('[data-take]').onclick = () => backend.mergeDoc('polls', GID, { hostId: HOSTID });
+    bar.querySelector('[data-samplebtn]').onclick = () => sampleOpen('del');
     bar.querySelector('[data-reset]').onclick = () => { if (confirm('Reset the game for everyone?')) backend.setDoc('polls', GID, { phase: 'idle' }); };
   }
   function paintHostBar() {
     const bar = q('[data-hostbar]'), ph = phase(), n = Object.keys(state.players || {}).length;
     const show = (sel, on) => { const e = bar.querySelector(sel); if (e) e.hidden = !on; };
-    show('[data-open]', ph === 'idle'); show('[data-start]', ph === 'lobby'); show('[data-skip]', ph === 'vote' || ph === 'run');
+    show('[data-open]', ph === 'idle'); show('[data-samplebtn]', ph === 'idle' || ph === 'lobby'); show('[data-start]', ph === 'lobby'); show('[data-skip]', ph === 'vote' || ph === 'run');
     show('[data-pacewrap]', ['run', 'summit'].includes(ph)); show('[data-pause]', ph === 'run'); show('[data-take]', !clockMine() && ph !== 'idle');
     bar.querySelector('[data-pause]').textContent = state.paused ? 'Resume' : 'Pause';
     const ps = bar.querySelector('[data-pace]'); if (state.pace && ps.value !== String(state.pace)) ps.value = String(state.pace);
@@ -3744,7 +3893,7 @@ const UI = (function () {
     const step = ph === 'deal' || ph === 'lobby' || ph === 'idle' ? 'deal' : ph === 'final' ? 'end' : 's' + s;
     const h = C.hist, recY = h.length ? h[h.length - 1].year : SIM.Y0;
     const newYear = recY !== lastYear;
-    UI.setGame(C, { you: myN(), step, si: s, flash: ph === 'run' && newYear && lastYear !== -1, gid: gid() });
+    UI.setGame(C, { you: myN(), step, si: s, flash: ph === 'run' && newYear && lastYear !== -1, gid: gid(), fut: futNow() });
     if (ph === 'run' && newYear && lastYear !== -1 && h.length) UI.arrive(h[h.length - 1]);
     lastYear = recY;
     const sig = gid() + ph + s + (ph === 'final' ? '' : '');
@@ -3760,7 +3909,13 @@ const UI = (function () {
     // what these laws mean for the next eight years, if they hold
     const s = si(), I = { seed: seed(), assign: assign(), V: votesUpTo(s + 1) };
     const W = SIM.run(I, Math.min(SIM.YN, SIM.SESSIONS[s] + 8)), h = W.hist, e0 = C.hist.length ? C.hist[C.hist.length - 1].worldE : W.world0.E, e8 = h[h.length - 1].worldE;
-    return `<b>If these laws hold,</b> world emissions go from ${e0.toFixed(1)} to ${e8.toFixed(1)} Gt a year by ${h[h.length - 1].year} (${UI.sgn((e8 / e0 - 1) * 100, 0)}%).`;
+    const now = futAt(s, -1), before = s > 0 ? SIM.futures({ seed: seed(), assign: assign(), V: votesUpTo(s) }, s - 1, -1) : null;
+    const t1 = now.held[now.held.length - 1][1], t0 = before ? before.held[before.held.length - 1][1] : now.none[now.none.length - 1][1];
+    const ta = now.all[now.all.length - 1][1], tn = now.none[now.none.length - 1][1];
+    const X = t => clamp((t - 1.5) / 1.0, 0, 1) * 100;
+    const pin = (t, cls, lbl, up) => `<span class="os-gpin ${cls}${up ? ' up' : ''}" style="left:${X(t).toFixed(1)}%"><i></i><em>${lbl} +${t.toFixed(2)}</em></span>`;
+    const gauge = `<div class="os-gauge"><div class="os-gtrack">${[1.5, 2, 2.5].map(t => `<b style="left:${X(t)}%">${t.toFixed(1)} °C</b>`).join('')}</div>${pin(ta, 'all', 'Every nation acts', 1)}${pin(tn, 'none', 'No nation acts', 1)}${before && Math.abs(t0 - t1) > .004 ? pin(t0, 'prev', 'Before this summit') : ''}${pin(t1, 'now', 'These laws')}</div>`;
+    return gauge + `<b>If these laws hold,</b> world emissions go from ${e0.toFixed(1)} to ${e8.toFixed(1)} Gt a year by ${h[h.length - 1].year} (${UI.sgn((e8 / e0 - 1) * 100, 0)}%), and the world is on course for <b>+${t1.toFixed(2)} °C</b> in 2066 <span class="${t1 <= t0 ? 'up' : 'dn'}">(${before ? 'before this summit' : 'with no nation acting'}: +${t0.toFixed(2)} °C)</span>.`;
   }
   function progress(C, first) {
     const s = si(), rows = [0, 1, 2, 3, 4].map(n => [n, cntFor(n), Object.values(assign()).filter(x => x === n).length]);
@@ -3779,6 +3934,7 @@ const UI = (function () {
     const L = SIM.ledger(I);
     const o = HOST ? (state.round === 2 ? { onGo: () => { if (confirm('Close the game for everyone?')) backend.setDoc('polls', GID, { phase: 'idle' }); }, goLabel: 'Close the game' } : { onGo: () => deal(2), goLabel: 'Play again with new nations ▸' }) : { note: state.round === 2 ? 'Thanks for playing.' : 'Your instructor may run the world once more.' };
     if (state.round === 2) o.twist = twist(C);
+    o.fut = futAt(4, myN());
     UI.show.final(L, o);
   }
   function twist(C) {
@@ -3798,7 +3954,7 @@ const UI = (function () {
   // ── render ──
   function render() {
     const ph = phase();
-    if (HOST) paintHostBar();
+    if (HOST && !DEMO_ON) paintHostBar();
     q('[data-lobby]').hidden = true;
     if (ph === 'idle' || ph === 'lobby') {
       screen('run');
@@ -3817,7 +3973,7 @@ const UI = (function () {
   function tick() {
     if (!backend) return;
     const ph = phase(), left = state.deadline ? state.deadline - Date.now() : null;
-    if (HOST && clockMine() && left != null && left <= (ph === 'run' ? 0 : -2000) && !state.paused) { state.deadline = null; advance(); }
+    if (HOST && !DEMO_ON && clockMine() && left != null && left <= (ph === 'run' ? 0 : -2000) && !state.paused) { state.deadline = null; advance(); }
     // a delegate who started but never cast is cast automatically just before time runs out
     if (!HOST && myN() >= 0 && ph === 'vote' && left != null && left < 4000) {
       const k = 'V' + si(), m = mine(k);
@@ -3829,12 +3985,151 @@ const UI = (function () {
   }
   setInterval(tick, 250);
 
+  // ═════════ the self-running demo (game-demos site and the "Sample student screen") ═════════
+  // 24 bots (and, unless the viewer is the projector, one delegate: you) play a whole game on the local backend.
+  // Every beat calls the same functions the projector uses. ?freeze=N jumps straight to beat N.
+  function demoRun() {
+    const NAT = SIM.NATIONS.map(N => N.id), want = NAT.indexOf(VIEW), SEED = +(QS.get('seed') || 2066), FREEZE = QS.has('freeze') ? +QS.get('freeze') : -1;
+    const bots = Array.from({ length: 24 }, (_, i) => 'bot' + String(i).padStart(2, '0'));
+    const players = Object.fromEntries([...bots, ...(want >= 0 ? [PK] : [])].map((k, i) => [k, { t: 1, s5: String((i * 37) % 101) }]));
+    const doc = o => backend.mergeDoc('polls', GID, o), shard = o => backend.mergeDocShard('polls', GID, o);
+    const you = want >= 0, nm = you ? SIM.NATIONS[want].name : '';
+    function dealDemo() {
+      const a = SIM.deal(players, SEED, false);
+      if (you && a[PK] !== want) { const swap = Object.keys(a).find(k => k !== PK && a[k] === want); a[swap] = a[PK]; a[PK] = want; }
+      backend.setDoc('polls', GID, { phase: 'deal', gameId: SEED, round: 1, assign: SIM.packAssign(a), s5m: '', si: 0, yr: SIM.Y0, F: {}, in: {}, players, pace: 3.5, hostId: HOSTID });
+    }
+    // the bots vote the way their nation's mood leans (greener as the damage arrives); `part` of them first
+    function botsVote(part) {
+      const s = si(), C = worldNow(), a = assign(), o = {};
+      Object.keys(a).filter(k => k.startsWith('bot')).forEach((k, i) => { if (part === 'half' ? i % 2 === 0 : true) o[k] = SIM.pack(SIM.standIn(C, a[k], k, s + 7)); });
+      shard({ in: { ['V' + s]: o } });
+    }
+    const PLAN = [{ tax: 50, solar: 1, ev: 1, adapt: 1, build: 1, subs: 0 }, { tax: 100, solar: 1, ev: 1, adapt: 1, build: 2, coal: 1, forest: 1, rd: 1, subs: 0 }];
+    function draft() { if (!you) return; const s = si(), C = worldNow(), v = { ...C.nat[want].laws, ...(PLAN[s] || PLAN[1]) }; setMine('V' + s, { draft: SIM.pack(v), touched: 1 }); ballotSig = ''; render(); }
+    function cast() { if (!you) return; const k = 'V' + si(), m = mine(k); if (m && m.draft) submit(k, m.draft); ballotSig = ''; render(); }
+    const adv = n => () => { for (let i = 0; i < n; i++) { lastAdv = { tag: '', at: 0 }; advance(); } };
+    const years = (n, cap) => Array.from({ length: n }, () => [2200, adv(1), cap]);
+    const goBtn = () => { const g = document.getElementById('osGo'); if (g) { g.disabled = false; g.click(); } };
+    const S = [
+      [500, () => backend.setDoc('polls', GID, { phase: 'lobby', players: {}, gameId: SEED, pace: 3.5, round: 1, hostId: HOSTID }), `One Sky: one imagined class, played out. ${you ? 'You are a delegate of ' + nm + '.' : 'This is the projector.'} A real class will play differently.`],
+      [2000, () => doc({ players }), 'Students open the slide and join the game.'],
+      [2400, dealDemo, you ? `You are dealt into ${nm}. Each nation has its own economy and its own climate risks.` : 'Every student is dealt into one of five nations, each with its own economy and its own climate risks.'],
+      [3400, () => { go.first(); botsVote('half'); }, you ? 'The first session: your nation’s delegates vote on its own laws.' : 'The first session opens. Each nation votes on its own laws; the projector counts the votes.'],
+      [2800, () => { draft(); botsVote('all'); }, you ? 'Every choice updates the preview: what your laws would do to your own growth, and to the whole world’s warming.' : 'Delegates are casting their votes.'],
+      [2600, cast, you ? 'You cast your votes. Nobody sees them until the summit.' : 'The session closes when time runs out, or when the instructor closes it.'],
+      [2400, adv(1), 'The summit: each nation’s new laws, one nation at a time, and where they put the world in 2066.'],
+      [10500, go.run, 'The years begin. The map follows every nation’s choices.'],
+      ...years(4, 'A year passes.'),
+      [2200, () => { R0.tab = 'impact'; adv(1)(); }, you ? 'The Impact chart: the world as voted, against no nation acting and every nation acting. The shaded band is how far your nation alone could swing it.' : 'The Impact chart: where the world is heading, against no nation acting and every nation acting.'],
+      ...years(3, 'A year passes.'),
+      [3200, () => { draft(); botsVote('all'); }, you ? 'Year 2034: the second session. You strengthen your nation’s laws.' : 'Year 2034: the second session. The nations vote again.'],
+      [2800, () => { cast(); adv(1)(); }, 'The second summit.'],
+      [10500, go.run, 'The years continue.'],
+      ...years(8, 'A year passes.'),
+      [2400, () => { botsVote('all'); cast(); adv(1)(); }, 'Sessions in 2042, 2050 and 2058 follow the same pattern.'],
+      [7000, () => { go.run(); adv(4)(); }, 'Forty years go by in eight-year steps.'],
+      [2400, adv(4), ''],
+      [2400, () => { botsVote('all'); cast(); adv(1)(); }, 'The 2050 summit.'],
+      [7000, () => { go.run(); adv(4)(); }, ''],
+      [2400, adv(4), ''],
+      [2400, () => { botsVote('all'); cast(); adv(1)(); }, 'The last summit, 2058.'],
+      [7000, () => { go.run(); adv(4)(); }, ''],
+      [2400, adv(4), '2066: where did the world land?'],
+      [9000, goBtn, 'What did the nations’ laws do to the climate? Their world, against the alternatives, and where the cooling came from.'],
+      [12000, goBtn, 'Who paid, and who gained? Each nation paid for its own laws, but the cooling was shared.'],
+    ];
+    const bar = document.createElement('div'); bar.className = 'os-demobar';
+    const views = [['projector', 'Projector'], ...SIM.NATIONS.map(N => [N.id, N.name])];
+    bar.innerHTML = `<span class="os-demotag">Demo</span><span class="os-demotxt"></span><button class="os-dpause">❚❚ Pause</button><span class="os-demoviews">${views.map(([k, l]) => `<a href="?demo=1&view=${k}" class="${VIEW === k ? 'on' : ''}">${l}</a>`).join('')}</span><a href="${location.search}" class="os-replay">↻ Replay</a>`;
+    root.appendChild(bar); root.classList.add('os-demo');
+    const txt = bar.querySelector('.os-demotxt');
+    if (FREEZE >= 0) { bar.hidden = true; for (let i = 0; i <= Math.min(FREEZE, S.length - 1); i++) { try { S[i][1](); } catch (e) { console.error(e); } } return; }
+    root.classList.add('os-demobarOn');
+    let step = 0, left = 1000, paused = false;
+    const dwell = i => Math.max((S[i + 1] ? S[i + 1][0] : 8000) * 1.5, 2400 + 60 * (S[i][2] || '').length);
+    const pb = bar.querySelector('.os-dpause'); pb.onclick = () => { paused = !paused; pb.textContent = paused ? '▶ Play' : '❚❚ Pause'; };
+    const iv = setInterval(() => {
+      if (paused || (left -= 100) > 0) return;
+      if (step >= S.length) { clearInterval(iv); pb.hidden = true; return; }
+      const i = step++; if (S[i][2]) txt.textContent = S[i][2];
+      try { S[i][1](); } catch (e) { console.error(e); }
+      left = dwell(i);
+    }, 100);
+  }
+  const R0 = UI.R;
+
+  // ═════════ the sample student screen: real frames of the demo ═════════
+  const SAMPLE = {
+    del: { t: 'A delegate', view: 'terrasen', steps: [
+      { t: 'Your nation', b: 2, cap: 'Each student is dealt into one of five nations. The card shows the nation’s economy, its emissions and what warming threatens.' },
+      { t: 'The ballot', b: 4, cap: 'Every eight years, delegates vote on their own nation’s laws. The panel on the right previews what their choices would do to their nation’s growth and income, and to the world’s warming.' },
+      { t: 'The summit', b: 6, cap: 'After each session, every nation’s new laws are revealed one nation at a time, with a gauge of where they put the world in 2066.' },
+      { t: 'The years', b: 9, cap: 'The years run on a living map: plants open and close, forests fall or regrow, the ice shrinks, coasts flood, storms strike. The side panel follows the student’s own nation.' },
+      { t: 'Your impact', b: 12, cap: 'The Impact chart: the world as voted, the path if today’s laws hold, and the worlds where no nation or every nation acts. The shaded band is how far your nation alone could move 2066.' },
+      { t: 'The second session', b: 16, cap: 'In 2034 the delegates vote again, knowing what eight years of their laws did.' },
+      { t: 'Where it landed', b: 35, cap: 'In 2066: where the world landed, against the published climate pathways.' },
+      { t: 'The climate', b: 36, cap: 'What the laws did to the climate: your world against the alternatives, how much each nation’s laws cooled the world, and what was avoided.' },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained: each nation’s income in 2066 in three worlds, and what its own laws did for itself and for its neighbors.' }] },
+    host: { t: 'The projector', view: 'projector', steps: [
+      { t: 'The lobby', b: 1, cap: 'Students join from the slide.' },
+      { t: 'The nations', b: 2, cap: 'Five nations, five economies, one sky.' },
+      { t: 'A session', b: 4, cap: 'While the nations vote, the projector shows how many delegates of each nation have voted.' },
+      { t: 'The summit', b: 6, cap: 'Every nation’s new laws, revealed one at a time, and where they put the world.' },
+      { t: 'The years', b: 9, cap: 'The years run on the map: indicators, the nations’ laws, breaking news, and charts.' },
+      { t: 'Where it landed', b: 35, cap: 'The world in 2066.' },
+      { t: 'The climate', b: 36, cap: 'What the laws did to the climate, nation by nation.' },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained.' }] },
+  };
+  const sampleBase = () => /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '/game-demos-web/onesky/' : 'https://ryanpcornell.github.io/sos110-game-demos/onesky/';
+  let sR = 'del', sAt = 0;
+  function sampleBox() {
+    let box = q('[data-sample]'); if (box) return box;
+    box = document.createElement('div'); box.className = 'os-sample'; box.dataset.sample = ''; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Sample student screen');
+    box.innerHTML = `<div class="os-scard2"><div class="os-shead"><div><div class="os-eb">Sample student screen</div><div class="os-stitle">What students will see</div></div>
+      <div class="os-sroles">${Object.entries(SAMPLE).map(([k, v]) => `<button class="os-seg" data-srole="${k}">${v.t}</button>`).join('')}</div><button class="os-b ghost" data-sclose>Close ×</button></div>
+      <div class="os-ssteps" data-ssteps></div><div class="os-sframe" data-sframe></div>
+      <div class="os-sfoot2"><p class="os-scap" data-scap></p><div class="os-snav"><button class="os-b ghost" data-sprev>◀ Back</button><span class="os-snum" data-snum></span><button class="os-b go" data-snext>Next ▶</button></div></div></div>`;
+    root.appendChild(box);
+    box.addEventListener('click', ev => {
+      const b = ev.target.closest('button'); if (!b) { if (ev.target === box) sampleClose(); return; }
+      if (b.hasAttribute('data-sclose')) sampleClose(); else if (b.hasAttribute('data-snext')) sampleShow(sAt + 1); else if (b.hasAttribute('data-sprev')) sampleShow(sAt - 1);
+      else if (b.dataset.srole) sampleOpen(b.dataset.srole); else if (b.dataset.sgo != null) sampleShow(+b.dataset.sgo);
+    });
+    document.addEventListener('keydown', ev => {
+      if (box.hidden) return;
+      if (ev.key === 'Escape') sampleClose(); else if (ev.key === 'ArrowRight') { ev.preventDefault(); ev.stopPropagation(); sampleShow(sAt + 1); } else if (ev.key === 'ArrowLeft') { ev.preventDefault(); ev.stopPropagation(); sampleShow(sAt - 1); }
+    }, true);
+    window.addEventListener('resize', sampleScale);
+    return box;
+  }
+  function sampleScale() { const f = q('[data-sframe]'), fr = f && f.querySelector('iframe'); if (fr) fr.style.transform = 'scale(' + (f.clientWidth / 1440).toFixed(4) + ')'; }
+  function sampleOpen(r) {
+    const box = sampleBox(); sR = r;
+    box.querySelectorAll('[data-srole]').forEach(b => b.classList.toggle('on', b.dataset.srole === r));
+    q('[data-ssteps]').innerHTML = SAMPLE[r].steps.map((st, j) => `<button class="os-seg" data-sgo="${j}">${j + 1} · ${esc(st.t)}</button>`).join('');
+    box.hidden = false; sampleShow(0);
+  }
+  function sampleShow(i) {
+    const steps = SAMPLE[sR].steps; sAt = (i + steps.length) % steps.length; const st = steps[sAt];
+    q('[data-sframe]').innerHTML = `<iframe title="A sample screen" loading="eager" src="${sampleBase()}?demo=1&view=${SAMPLE[sR].view}&freeze=${st.b}"></iframe>`;
+    sampleScale(); q('[data-scap]').textContent = st.cap; q('[data-snum]').textContent = (sAt + 1) + ' of ' + steps.length;
+    q('[data-ssteps]').querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === sAt));
+  }
+  function sampleClose() { const box = q('[data-sample]'); if (box) { box.hidden = true; q('[data-sframe]').innerHTML = ''; } }
+
   window.__os = { SIM, UI, WORLD, state: () => state, worldNow, PK, assign, myN, backend: () => backend, advance, deal, GID };
 
   // ── connect ──
   window.__deckLiveReady.then(live => {
     backend = live.backend; HOST = live.HOST;
-    if (HOST) hostBar();
+    DEMO_ON = DEMO && backend.kind === 'local';
+    if (DEMO_ON) {     // a private game per demo page; leftovers of earlier demos cleared
+      try { Object.keys(localStorage).filter(k => k.startsWith('iv:polls:' + GID + '-') || k.startsWith('os:' + GID + '-')).forEach(k => localStorage.removeItem(k)); } catch (e) { }
+      GID += '-' + Math.random().toString(36).slice(2, 8);
+      HOST = VIEW === 'projector';
+    }
+    if (HOST && !DEMO_ON) hostBar();
     const wantMode = () => (!HOST && state.assign && !['idle', 'lobby'].includes(phase())) ? 'main' : 'full';
     let keepPlayers = {};
     function onSnap(mode, d) {
@@ -3852,6 +4147,7 @@ const UI = (function () {
       unsub = (m === 'main' ? backend.subscribeMain : backend.subscribeDoc).call(backend, 'polls', GID, d => onSnap(m, d));
     }
     listen('full');
+    if (DEMO_ON) demoRun();
   });
 })();
 
