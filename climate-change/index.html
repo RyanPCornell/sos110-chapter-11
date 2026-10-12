@@ -654,6 +654,8 @@ function spawnSolar(){
 }
 
 function ghStep(){
+  // Its tab hidden (or the page embedded off-screen): check back now and then instead of redrawing 160 photons every frame.
+  if(document.hidden || !ghCanvas.getClientRects().length){ ghAnim=setTimeout(ghStep,400); return; }
   const g=ghGeo();
   ghCtx.clearRect(0,0,ghW,ghH);
 
