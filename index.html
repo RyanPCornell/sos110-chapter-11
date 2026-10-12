@@ -1004,6 +1004,82 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 .slide.acad .gu-total strong{font:400 1.4em Merriweather,serif;color:#1f1e1b}
 .slide.acad .gu-hint{font-style:normal;color:#7a7263}
 
+/* ── Chapter 11 live questions (ch11_live.py): Dig Deeper layout, subdued warming-stripes palette ── */
+.slide.cs-slide{background:linear-gradient(158deg,#f8f6f1,#ebe6dc);}
+.cs-slide > *{--accent:#3f5d7b;}
+.cs-wrap{position:absolute; inset:0; display:flex; flex-direction:column; padding:clamp(1rem,2.6vh,2rem) clamp(4.2rem,6vw,5.6rem) clamp(3.3rem,7.5vh,4.2rem);}
+.cs-head .eyebrow{color:#3f5d7b;} .cs-head .eyebrow::before{background:#3f5d7b;}
+.cs-head .heading{color:#2a2e33; margin-bottom:0;}
+.cs-sub{margin:.1rem 0 .55rem; font-family:'Merriweather',serif; font-style:italic; color:#5d6670; font-size:clamp(.8rem,1.3vw,1rem);}
+.cs-root{flex:1; min-height:0; display:flex; flex-direction:column;}
+.cs-play-grid{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); gap:clamp(1rem,2.2vw,2rem);}
+.cs-left{display:flex; flex-direction:column; justify-content:center; min-width:0; min-height:0; overflow:auto;}
+.cs-tag{font:800 clamp(.6rem,.9vw,.72rem) 'Inter',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#3f5d7b;}
+.cs-q{font:900 clamp(1.2rem,2.15vw,1.75rem)/1.25 'Merriweather',serif; color:#22262b; margin:.35rem 0 .9rem;}
+.cs-card{background:#fbf9f4; border:1px solid rgba(42,46,51,.22); outline:1px solid rgba(63,93,123,.38); outline-offset:-6px; border-radius:10px;
+  padding:clamp(.8rem,1.8vh,1.1rem) clamp(1rem,1.5vw,1.3rem) clamp(.9rem,2vh,1.2rem); box-shadow:0 10px 24px -16px rgba(30,40,55,.45);}
+.cs-me{font:italic 700 clamp(.85rem,1.25vw,1rem) 'Merriweather',serif; color:#4a5058; line-height:1.5;}
+.cs-me b{font-style:normal; color:#22262b;}
+.cs-btn{font:inherit; cursor:pointer; font-weight:800; font-size:clamp(.74rem,1.1vw,.9rem); color:#fff; background:#2f4a66; border:0; border-radius:999px; padding:.55rem 1.3rem;}
+.cs-btn:hover{background:#263d55;} .cs-btn:disabled{background:#b3c0c8; cursor:default;}
+.cs-btn.ghost{background:transparent; color:#4a5058; border:1.5px solid rgba(42,46,51,.3);}
+.cs-ctlcard .cs-btn{width:100%; margin-top:.75rem;}
+.cs-ctl{display:flex; align-items:center; gap:.6rem; margin-top:.6rem; flex-wrap:wrap;}
+.cs-hint{font-size:clamp(.62rem,.9vw,.74rem); color:#7a8189; font-style:italic;}
+.cs-live{font:italic 700 clamp(.85rem,1.25vw,1rem) 'Merriweather',serif; color:#4a5058;}
+.cs-live b{font-style:normal; font-size:1.7em; color:#2f4a66;}
+.cs-read{display:flex; align-items:baseline; justify-content:center; gap:.6rem; margin-bottom:.55rem; min-height:2.3rem;}
+.cs-read b{font:900 clamp(1.5rem,2.6vw,2.1rem)/1 'Merriweather',serif; color:#86433d; font-variant-numeric:tabular-nums;}
+.cs-read span{font:700 clamp(.78rem,1.15vw,.92rem) 'Inter',sans-serif; color:#4a5058;}
+.cs-read .cs-dim{font-style:italic; font-family:'Merriweather',serif; font-weight:400; color:#7a8189;}
+/* 1-10: ten points sitting on a ten-stripe rule */
+.cs-scale{position:relative; padding:4px 0;}
+.cs-rule{position:absolute; left:0; right:0; top:50%; height:8px; margin-top:-4px; display:grid; grid-template-columns:repeat(10,1fr); border-radius:2px; overflow:hidden; opacity:.9;}
+.cs-ticks{position:relative; display:grid; grid-template-columns:repeat(10,1fr);}
+.cs-tick{border:0; background:transparent; padding:0; cursor:pointer; display:flex; justify-content:center; font:inherit;}
+.cs-tick b{display:grid; place-items:center; width:clamp(30px,2.9vw,40px); height:clamp(30px,2.9vw,40px); border-radius:50%; background:#fbf9f4; border:1.6px solid rgba(42,46,51,.45);
+  font:700 clamp(.82rem,1.15vw,1rem) 'Merriweather',serif; color:#2a2e33; transition:transform .12s, background .15s, border-color .15s;}
+.cs-tick:hover b{border-color:#2a2e33; transform:translateY(-2px);}
+.cs-tick:focus-visible{outline:none;} .cs-tick:focus-visible b{box-shadow:0 0 0 3px rgba(63,93,123,.35);}
+.cs-tick.on b{background:var(--c); border-color:#2a2e33; color:var(--t,#fff); transform:scale(1.14);}
+.cs-ends{display:flex; justify-content:space-between; font:700 clamp(.62rem,.92vw,.76rem) 'Inter',sans-serif; color:#5d6670; margin-top:.45rem;}
+/* yes / no */
+.cs-opts{display:flex; flex-direction:column; gap:.5rem;}
+.cs-opt{display:flex; align-items:center; gap:.8rem; font:inherit; text-align:left; cursor:pointer; background:#fffdf8; border:1.5px solid rgba(42,46,51,.3); border-radius:10px;
+  padding:clamp(.6rem,1.6vh,.85rem) 1rem; font:700 clamp(1.05rem,1.6vw,1.3rem) 'Merriweather',serif; color:#22262b; transition:border-color .15s, background .15s;}
+.cs-opt:hover{border-color:#2f4a66; background:#f1f3f4;}
+.cs-dot{flex:none; width:20px; height:20px; border-radius:50%; border:1.6px solid #7a8189;}
+.cs-opt.on{border-color:#2f4a66; background:#eef1f3; box-shadow:0 0 0 2px rgba(47,74,102,.18);}
+.cs-opt.on .cs-dot{background:#2f4a66; border-color:#2f4a66; box-shadow:inset 0 0 0 3px #fffdf8;}
+/* the estimate slider: a stripes track */
+.cs-range{-webkit-appearance:none; appearance:none; width:100%; height:14px; border-radius:999px; cursor:pointer; outline:none; margin:.25rem 0 0;
+  background:linear-gradient(90deg,#2f4a66,#3f5d7b,#587793,#7f97ad,#b3c0c8,#dcd5cb,#d6b29a,#c58b72,#aa6553,#86433d); border:1px solid rgba(42,46,51,.35);}
+.cs-range:focus-visible{box-shadow:0 0 0 3px rgba(63,93,123,.35);}
+.cs-range::-webkit-slider-thumb{-webkit-appearance:none; width:30px; height:30px; border-radius:50%; background:#fffdf8; border:3px solid #2a2e33; box-shadow:0 3px 8px rgba(30,40,55,.35);}
+.cs-range::-moz-range-thumb{width:26px; height:26px; border-radius:50%; background:#fffdf8; border:3px solid #2a2e33; box-shadow:0 3px 8px rgba(30,40,55,.35);}
+/* revealed answer */
+.cs-ans{margin-top:.9rem; animation:csIn .5s ease .8s both;}
+.cs-big{font:900 clamp(1.1rem,1.9vw,1.5rem) 'Merriweather',serif; color:#86433d; line-height:1.15;}
+.cs-ans p{margin:.35rem 0 0; font-size:clamp(.74rem,1.1vw,.9rem); color:#2a2e33; line-height:1.5;}
+/* right: the figure panel */
+.cs-right{display:flex; flex-direction:column; min-width:0; min-height:0;}
+.cs-viz{position:relative; flex:1; min-height:0; display:flex; flex-direction:column; background:#fbf9f4; border:1px solid rgba(42,46,51,.22);
+  outline:1px solid rgba(63,93,123,.38); outline-offset:-6px; border-radius:10px; padding:.55rem .8rem .7rem; box-shadow:0 10px 24px -16px rgba(30,40,55,.45);}
+.cs-fig{position:relative; flex:1; min-height:0; display:flex; align-items:center; justify-content:center;}
+.cs-svg{width:100%; height:100%; max-height:100%;}
+.cs-blur{filter:blur(7px) saturate(.5); opacity:.45;}
+.cs-veil{position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); text-align:center; font:italic 700 clamp(.82rem,1.2vw,1rem) 'Merriweather',serif; color:#3a4048;}
+.cs-band{flex:none; margin:.4rem .2rem 0;}
+.cs-band svg{display:block; width:100%; height:clamp(12px,2.2vh,18px); border-radius:2px;}
+.cs-bandcap{display:flex; justify-content:space-between; gap:.6rem; margin-top:.25rem; font:600 clamp(.52rem,.72vw,.62rem) 'Inter',sans-serif; color:#7a8189;}
+.cs-bandcap span:nth-child(2){text-align:center; font-style:italic;}
+.cs-play .cs-grow{transform-box:fill-box; transform-origin:50% 100%; animation:csGrow 1s cubic-bezier(.2,1.1,.4,1) var(--d,0s) both;}
+.cs-play .cs-fade{animation:csIn .6s ease var(--d,0s) both;}
+@keyframes csGrow{from{transform:scaleY(.02); opacity:0} to{transform:none; opacity:1}}
+@keyframes csIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+@media(prefers-reduced-motion:reduce){ .cs-play .cs-grow,.cs-play .cs-fade,.cs-ans{animation:none;} }
+@media(max-width:900px){ .cs-wrap{position:static; padding:1rem 1rem 4rem;} .cs-play-grid{grid-template-columns:1fr;} .cs-viz{min-height:300px;} }
+
 
 /* "Book Recommendation" thumbnail — a small labelled book cover pinned to the
    bottom-right corner of any slide. Added with book_rec(); CSS auto-included when
@@ -1020,253 +1096,6 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 @media(max-width:820px){.book-rec-col{width:82px;} .book-rec-label{font-size:.6rem;}}
 /* When a card grid hosts the thumbnail, reserve bottom space so a 2-col grid clears it */
 @media(min-width:821px){.slide.book-host .grid{padding-bottom:clamp(150px,20vh,215px);}}
-
-
-.slide.poll{background:linear-gradient(160deg,#f4f8f6,#e8f1ec);}
-.poll-root{position:absolute; inset:0; display:flex; flex-direction:column;
-  padding:clamp(1.1rem,2.8vh,2rem) clamp(1.5rem,3.4vw,3.4rem) clamp(1rem,2.4vh,1.6rem);}
-.poll-head{margin-bottom:clamp(.7rem,1.8vh,1.2rem);}
-.poll-head .heading{margin-bottom:.3rem;}
-.poll-sub{font-size:clamp(.85rem,1.35vw,1rem); color:var(--muted); max-width:72ch;}
-.poll-opts{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center;
-  gap:clamp(.45rem,1.3vh,.85rem); max-width:1060px; width:100%; margin:0 auto;}
-.poll-opt{position:relative; overflow:hidden; display:block; width:100%; text-align:left;
-  border:2px solid var(--line); background:#fff; border-radius:14px; cursor:pointer;
-  padding:clamp(.7rem,1.5vh,1.05rem) clamp(.95rem,1.6vw,1.35rem); font-family:inherit;
-  transition:border-color .15s, box-shadow .15s;}
-.poll-opt:hover{border-color:var(--opt,var(--accent));}
-.poll-opt-fill{position:absolute; left:0; top:0; bottom:0; width:0; z-index:0;
-  background:rgba(20,40,30,.10);
-  background:color-mix(in srgb, var(--opt,var(--accent)) 26%, transparent);
-  transition:width .55s cubic-bezier(.22,.61,.36,1);}
-.poll-opt.chosen .poll-opt-fill{background:rgba(20,40,30,.2);
-  background:color-mix(in srgb, var(--opt,var(--accent)) 42%, transparent);}
-.poll-opt-row{position:relative; z-index:1; display:flex; align-items:center;
-  justify-content:space-between; gap:.85rem;}
-.poll-opt-chip{flex:none; width:clamp(.85rem,1.5vw,1.15rem); height:clamp(.85rem,1.5vw,1.15rem);
-  border-radius:5px; background:var(--opt,var(--accent)); box-shadow:0 1px 3px rgba(20,40,30,.25);}
-.poll-opt-label{flex:1; min-width:0; font-size:clamp(.9rem,1.5vw,1.14rem); font-weight:600;
-  color:var(--ink); line-height:1.3;}
-.poll-opt-stat{flex:none; display:flex; align-items:baseline; gap:.7rem; font-variant-numeric:tabular-nums;}
-.poll-opt-count{font-size:clamp(.72rem,1.1vw,.88rem); color:var(--muted); white-space:nowrap;}
-.poll-opt-pct{font-family:'Merriweather',serif; font-weight:800; color:var(--opt,var(--accent));
-  font-size:clamp(1.05rem,2vw,1.5rem); min-width:2.7em; text-align:right;}
-.poll-opt.chosen{border-color:var(--opt,var(--accent)); box-shadow:0 6px 18px rgba(20,40,30,.16);}
-.poll-opt.chosen .poll-opt-label::after{content:" ✓"; color:var(--opt,var(--accent)); font-weight:800;}
-.poll-opts.voted .poll-opt,.slide.poll.host .poll-opt{cursor:default;}
-.poll-opts.voted .poll-opt:hover,.slide.poll.host .poll-opt:hover{border-color:var(--line);}
-.poll-opts.voted .poll-opt.chosen:hover,.slide.poll.host .poll-opt.chosen:hover{border-color:var(--opt,var(--accent));}
-.poll-foot{display:flex; align-items:center; gap:1rem; margin-top:clamp(.6rem,1.5vh,1rem);
-  max-width:1060px; width:100%; margin-left:auto; margin-right:auto;}
-.poll-total{font-size:clamp(.82rem,1.3vw,.98rem); color:#33453d;}
-.poll-total strong{font-family:'Merriweather',serif; color:var(--forest); font-size:1.15em;}
-.poll-hint{font-size:clamp(.78rem,1.2vw,.9rem); color:var(--muted); font-style:italic;}
-.poll-reset{margin-left:auto; background:#fff; border:1.5px solid var(--line); color:var(--muted);
-  font-family:inherit; font-size:.82rem; font-weight:600; padding:.5rem .9rem; border-radius:9px; cursor:pointer;}
-.poll-reset:hover{border-color:var(--accent); color:var(--accent);}
-.poll-reveal{margin-left:auto; background:var(--accent); border:1.5px solid var(--accent); color:#fff;
-  font-family:inherit; font-size:.84rem; font-weight:700; padding:.5rem 1.05rem; border-radius:9px; cursor:pointer;}
-.poll-reveal:hover{filter:brightness(1.08);}
-.poll-reveal ~ .poll-reset{margin-left:.6rem;}
-/* staged options (poll_slide(staged=True)): revealed one at a time by the host */
-.poll-opt.pending{display:none;}
-.poll-opt.just-in{animation:pollslide .34s cubic-bezier(.2,1.2,.4,1);}
-@keyframes pollslide{from{transform:translateY(14px); opacity:0;} to{transform:translateY(0); opacity:1;}}
-.poll-stage{margin-left:auto; background:var(--accent); border:1.5px solid var(--accent); color:#fff;
-  font-family:inherit; font-size:.84rem; font-weight:700; padding:.5rem 1.05rem; border-radius:9px; cursor:pointer;}
-.poll-stage:hover{filter:brightness(1.08);}
-.poll-stage:disabled{background:#fff; color:var(--muted); border-color:var(--line); cursor:default; filter:none;}
-.poll-stage ~ .poll-reveal,.poll-stage ~ .poll-reset{margin-left:.6rem;}
-.poll-answer{display:flex; justify-content:center; align-items:center; text-align:center;
-  max-width:1060px; width:100%; margin:0 auto clamp(.4rem,1.4vh,.9rem); min-height:0;}
-.poll-answer[hidden]{display:none;}
-.poll-answer-big{font-family:'Merriweather',serif; font-weight:900; line-height:.92; letter-spacing:.01em;
-  text-transform:uppercase; font-size:clamp(3.2rem,14vw,9rem);
-  animation:pollpop .38s cubic-bezier(.2,1.35,.4,1);}
-.poll-answer.kind-true .poll-answer-big{color:#2D6A4F;}
-.poll-answer.kind-false .poll-answer-big{color:#A4373A;}
-.poll-answer.kind-other .poll-answer-big{color:var(--accent);}
-@keyframes pollpop{from{transform:scale(.55); opacity:0;} to{transform:scale(1); opacity:1;}}
-.poll-opt.correct{border-color:var(--opt,var(--accent));
-  box-shadow:0 0 0 3px var(--opt,var(--accent)) inset, 0 6px 18px rgba(20,40,30,.18);}
-/* sources line, uncovered together with the answer */
-.poll-refs{max-width:1060px; width:100%; margin:.55rem auto 0; padding-top:.4rem;
-  border-top:1px solid var(--line); font-size:clamp(.6rem,.95vw,.72rem); line-height:1.45;
-  color:var(--muted); font-style:italic;}
-.poll-refs[hidden]{display:none;}
-/* concealed: the tally is hidden until the instructor reveals it */
-.slide.poll.concealed .poll-opt-fill{width:0 !important;}
-.slide.poll.concealed .poll-opt-count,
-.slide.poll.concealed .poll-opt-pct{visibility:hidden;}
-.poll-mid{flex:1; min-height:0; display:flex; align-items:center; gap:clamp(1rem,3vw,2.6rem);
-  max-width:1140px; width:100%; margin:0 auto;}
-.poll-mid .poll-opts{flex:1.35 1 0;}
-.poll-figure{flex:1 1 0; align-self:stretch; margin:0; position:relative; min-width:0;
-  max-height:100%; border-radius:16px; overflow:hidden;
-  box-shadow:0 10px 30px rgba(20,40,30,.18); background:#e8f1ec;}
-.poll-figure img{width:100%; height:100%; object-fit:cover; display:block;}
-.poll-figcap{position:absolute; left:0; right:0; bottom:0; margin:0; padding:.5rem .7rem .4rem;
-  font-size:clamp(.6rem,.95vw,.72rem); color:#fff; text-align:right; line-height:1.2;
-  background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0));}
-@media (max-width:820px){ .poll-opts{justify-content:flex-start;}
-  .poll-mid{flex-direction:column; align-items:stretch; gap:.8rem;}
-  .poll-figure{flex:none; height:34vh;} }
-
-/* compact live poll that nests inside another slide (poll_embed) */
-.poll-embed{background:#fff; border:1px solid var(--line); border-left:5px solid var(--accent);
-  border-radius:12px; padding:.55rem .8rem .65rem; box-shadow:var(--shadow); margin-top:.6rem;}
-.poll-embed-prompt{font-size:clamp(.62rem,1vw,.74rem); font-weight:800; letter-spacing:.05em;
-  text-transform:uppercase; color:var(--accent); margin-bottom:.15rem;}
-.poll-embed-q{font-size:clamp(.85rem,1.35vw,1.02rem); font-weight:700; line-height:1.35;
-  color:var(--forest); margin-bottom:.5rem;}
-.poll-embed .poll-opts{flex:none; min-height:0; display:flex; flex-direction:column;
-  justify-content:flex-start; gap:.35rem; margin:0;}
-.poll-embed .poll-opt{padding:.4rem .7rem; border-radius:9px;}
-.poll-embed .poll-opt-label{font-size:clamp(.8rem,1.2vw,.95rem);}
-.poll-embed .poll-opt-count{font-size:clamp(.66rem,.95vw,.78rem);}
-.poll-embed .poll-foot{margin-top:.5rem; max-width:none; width:100%; gap:.7rem;}
-.poll-embed .poll-total,.poll-embed .poll-hint{font-size:clamp(.7rem,1.05vw,.82rem);}
-.poll-embed .poll-reset{font-size:.74rem; padding:.35rem .75rem;}
-.poll-embed.host .poll-opt{cursor:default;}
-
-
-/* decision poll — results hidden until the host releases them */
-.dpoll .poll-opt-fill,.dpoll .poll-opt-stat{opacity:0; transition:opacity .5s ease;}
-.dpoll.released .poll-opt-fill,.dpoll.released .poll-opt-stat{opacity:1;}
-.dp-verdict{display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; max-width:1060px; width:100%; margin:0 auto clamp(.4rem,1.4vh,.9rem);}
-.dp-verdict[hidden]{display:none;}
-.dp-verdict-big{font-family:'Merriweather',serif; font-weight:900; line-height:1; letter-spacing:.005em;
-  text-transform:uppercase; font-size:clamp(2rem,7.5vw,4.6rem);
-  animation:pollpop .38s cubic-bezier(.2,1.35,.4,1);}
-.dp-verdict.bad .dp-verdict-big{color:#A4373A;}
-.dp-verdict.good .dp-verdict-big{color:#2D6A4F;}
-.dp-verdict-sub{margin-top:.35rem; font-size:clamp(.82rem,1.4vw,1rem); color:var(--muted); font-weight:600;}
-
-
-/* guess-the-number live-distribution slide */
-.slide.guess{background:linear-gradient(160deg,#f4f8f6,#e9f1ee);}
-.gu-root{position:absolute; inset:0; display:flex; flex-direction:column;
-  padding:clamp(1.1rem,2.8vh,2rem) clamp(1.5rem,3.4vw,3.4rem) clamp(1rem,2.4vh,1.6rem);}
-.gu-head{margin-bottom:clamp(.6rem,1.6vh,1.1rem);}
-.gu-head .heading{margin-bottom:.3rem;}
-.gu-sub{font-size:clamp(.85rem,1.35vw,1rem); color:var(--muted); max-width:76ch;}
-.gu-student{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center;
-  gap:clamp(.7rem,1.9vh,1.2rem); max-width:1020px; width:100%; margin:0 auto;}
-.gu-student[hidden]{display:none;}
-.gu-rows{display:flex; flex-direction:column; gap:clamp(.55rem,1.6vh,1rem);}
-.gu-row{display:flex; align-items:center; gap:clamp(.8rem,1.8vw,1.4rem);
-  background:#fff; border:1px solid var(--line); border-radius:14px;
-  padding:clamp(.55rem,1.4vh,.9rem) clamp(.8rem,1.6vw,1.2rem);}
-.gu-cat{flex:none; width:clamp(150px,22vw,230px); font-weight:700; color:var(--forest);
-  font-size:clamp(.88rem,1.45vw,1.08rem); line-height:1.25;}
-.gu-range{flex:1; accent-color:var(--accent); height:1.6rem; cursor:pointer;}
-.gu-range:disabled{cursor:default; opacity:.55;}
-.gu-entry{flex:1; min-width:0; border:2px solid var(--line); border-radius:12px; background:#fff;
-  padding:.35rem .8rem; outline:none; font-family:'Merriweather',serif; font-weight:900;
-  color:var(--accent); font-size:clamp(1.2rem,2.3vw,1.8rem); line-height:1.25;
-  font-variant-numeric:tabular-nums; transition:border-color .15s;}
-.gu-entry:focus{border-color:var(--accent);}
-.gu-entry::placeholder{color:#c3cdc7; font-weight:700;}
-.gu-entry:disabled{color:var(--muted); background:#f4f7f5;}
-.gu-row.entry .gu-out{min-width:0;}
-.gu-out{flex:none; display:flex; align-items:baseline; gap:.25rem; min-width:4.6rem; justify-content:flex-end;}
-.gu-num{font-family:'Merriweather',serif; font-weight:900; color:var(--accent);
-  font-size:clamp(1.4rem,2.7vw,2rem); line-height:1; font-variant-numeric:tabular-nums;}
-.gu-unit{font-size:clamp(.72rem,1.15vw,.88rem); color:var(--muted); font-weight:700;}
-.gu-submit{align-self:center; font-family:inherit; font-weight:800; color:#fff; border:none; cursor:pointer;
-  background:var(--forest-mid); border-radius:12px; padding:.75rem 2rem;
-  font-size:clamp(.98rem,1.7vw,1.2rem); transition:filter .15s, transform .08s;}
-.gu-submit:hover:not(:disabled){filter:brightness(1.1);}
-.gu-submit:active:not(:disabled){transform:translateY(1px);}
-.gu-submit:disabled{background:#bcc7c2; cursor:default;}
-.gu-host{flex:1; min-height:0; display:flex; flex-direction:column;}
-.gu-host[hidden]{display:none;}
-.gu-toolbar{display:flex; align-items:center; justify-content:flex-end; gap:.5rem; margin-bottom:.4rem;}
-.gu-revealbtn{margin-right:auto; font-family:inherit; font-weight:800; font-size:clamp(.78rem,1.25vw,.92rem);
-  padding:.45rem 1rem; border:none; border-radius:9px; cursor:pointer; color:#fff; background:#A4373A;
-  transition:filter .15s;}
-.gu-revealbtn:hover{filter:brightness(1.12);}
-.gu-revealbtn.on{background:#6b7f77;}
-.gu-revealbtn[hidden]{display:none;}
-.gu-answer{position:absolute; top:0; bottom:20px; width:0; z-index:4;
-  border-left:3px dashed #A4373A; margin-left:-1.5px; animation:gu-ansin .4s ease;}
-.gu-answer[hidden]{display:none;}
-@keyframes gu-ansin{from{opacity:0; transform:translateY(-8px);}}
-.gu-answer-lbl{position:absolute; top:-2px; left:50%; transform:translateX(-50%);
-  font-family:'Inter',sans-serif; font-weight:800; color:#fff; background:#A4373A;
-  font-size:clamp(.6rem,1vw,.74rem); line-height:1; padding:.28em .5em; border-radius:6px;
-  white-space:nowrap; box-shadow:0 2px 8px rgba(20,40,30,.25);}
-.gu-answer.card{top:4px; bottom:18px;}
-.gu-bins{position:relative;}
-.gu-viewlbl{font-size:clamp(.7rem,1.1vw,.82rem); font-weight:700; color:var(--muted);
-  text-transform:uppercase; letter-spacing:.03em;}
-.gu-view{font-family:inherit; font-size:clamp(.78rem,1.2vw,.9rem); font-weight:600; padding:.35rem .55rem;
-  border:1.5px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); cursor:pointer;}
-.gu-view:focus{outline:none; border-color:var(--accent);}
-.gu-strips{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center;
-  gap:clamp(.5rem,1.5vh,.9rem);}
-.gu-strips[hidden]{display:none;}
-.gu-strip{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
-  border-radius:12px; padding:.5rem .95rem .3rem; box-shadow:0 4px 14px rgba(20,40,30,.06);}
-.gu-track{position:relative; height:clamp(62px,12vh,100px); margin:0 1rem;}
-.gu-track-line{position:absolute; left:-.5rem; right:-.5rem; bottom:20px; height:2px;
-  background:var(--line); border-radius:1px;}
-.gu-dots{position:absolute; left:0; right:0; top:0; bottom:22px;}
-.gu-dot{position:absolute; width:8px; height:8px; margin-left:-4px; border-radius:50%;
-  background:var(--accent); opacity:.42; animation:gu-pop .3s ease;}
-.gu-dot.part{width:6px; height:6px; margin-left:-3px; opacity:.2;}
-@keyframes gu-pop{from{transform:scale(.3); opacity:0;}}
-.gu-stats-wrap{display:flex; align-items:baseline; gap:.7rem; white-space:nowrap;}
-.gu-scale{font-family:'Inter',sans-serif; font-weight:800; color:var(--accent);
-  font-size:clamp(.62rem,1vw,.76rem); letter-spacing:.02em;}
-.gu-budget{align-self:center; font-size:clamp(.82rem,1.35vw,1rem); color:#33453d;
-  background:#fff; border:1px solid var(--line); border-radius:10px; padding:.45rem .9rem;}
-.gu-budget strong{font-family:'Merriweather',serif; color:var(--forest); font-size:1.1em;
-  font-variant-numeric:tabular-nums;}
-.gu-mean{position:absolute; bottom:21px; width:0; z-index:3; transition:left .6s cubic-bezier(.22,.61,.36,1);}
-.gu-mean[hidden]{display:none;}
-.gu-mean::after{content:""; position:absolute; left:-8px; bottom:-8px; width:16px; height:16px;
-  background:var(--forest); transform:rotate(45deg); border:2.5px solid #fff; border-radius:3px;
-  box-shadow:0 3px 10px rgba(20,40,30,.35);}
-.gu-mean-lbl{position:absolute; left:0; bottom:12px; transform:translateX(-50%);
-  font-family:'Merriweather',serif; font-weight:900; color:var(--forest);
-  font-size:clamp(.95rem,1.7vw,1.3rem); line-height:1; white-space:nowrap;
-  background:rgba(255,255,255,.88); padding:.12em .35em; border-radius:6px;}
-.gu-ticks{position:absolute; left:0; right:0; bottom:0; height:14px;}
-.gu-ticks span{position:absolute; transform:translateX(-50%); font-size:.62rem; color:var(--muted);
-  font-weight:700; font-variant-numeric:tabular-nums;}
-.gu-ticks span:nth-child(1){left:0%;} .gu-ticks span:nth-child(2){left:25%;}
-.gu-ticks span:nth-child(3){left:50%;} .gu-ticks span:nth-child(4){left:75%;}
-.gu-ticks span:nth-child(5){left:100%;}
-.gu-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(.7rem,1.8vh,1.1rem); width:100%;
-  flex:1; min-height:0; align-content:center;}
-.gu-grid[hidden]{display:none;}
-.gu-card{background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent);
-  border-radius:14px; padding:.6rem .85rem .5rem; box-shadow:0 4px 14px rgba(20,40,30,.06);
-  display:flex; flex-direction:column; min-height:clamp(120px,24vh,220px);}
-.gu-card-head{display:flex; align-items:baseline; justify-content:space-between; gap:.6rem;
-  font-weight:800; color:var(--forest); font-size:clamp(.85rem,1.4vw,1.05rem); margin-bottom:.35rem;}
-.gu-stats{font-family:'Inter',sans-serif; font-weight:600; color:var(--muted);
-  font-size:clamp(.66rem,1.05vw,.8rem); white-space:nowrap;}
-.gu-bins{flex:1; min-height:0; display:flex; align-items:flex-end; gap:.3rem;}
-.gu-bin{flex:1 1 0; height:100%; display:flex; flex-direction:column; min-width:0;}
-.gu-bin-col{flex:1; display:flex; align-items:flex-end; background:#eef3f1; border-radius:5px; overflow:hidden;}
-.gu-bin-fill{width:100%; background:var(--accent); border-radius:5px 5px 0 0; transition:height .45s ease;}
-.gu-bin-lbl{font-size:.6rem; color:var(--muted); font-weight:700; text-align:center; margin-top:.15rem;
-  font-variant-numeric:tabular-nums;}
-.gu-foot{display:flex; align-items:center; gap:1rem; margin-top:clamp(.55rem,1.4vh,.95rem);
-  max-width:1020px; width:100%; margin-left:auto; margin-right:auto;}
-.gu-total{font-size:clamp(.82rem,1.3vw,.98rem); color:#33453d;}
-.gu-total strong{font-family:'Merriweather',serif; color:var(--forest); font-size:1.15em;}
-.gu-hint{font-size:clamp(.78rem,1.2vw,.9rem); color:var(--muted); font-style:italic;}
-.gu-reset{margin-left:auto; background:#fff; border:1.5px solid var(--line); color:var(--muted);
-  font-family:inherit; font-size:.82rem; font-weight:600; padding:.5rem .9rem; border-radius:9px; cursor:pointer;}
-.gu-reset:hover{border-color:var(--accent); color:var(--accent);}
-@media (max-width:820px){
-  .gu-cat{width:38vw;}
-  .gu-grid{grid-template-columns:1fr; overflow:auto;}
-}
 
 
 /* opinion-spectrum (Agree ←→ Disagree) live slide */
@@ -1383,138 +1212,624 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   </div>
   <div class="footer">© 2023 W. W. Norton &amp; Company, Inc.</div>
 </section>
-<section class="slide sc-slide" data-type="content" data-sc-id="ch11-climate-serious-10" data-sc-legacy="ch11-climate-serious" style="--accent:#2D6A4F">
-  <div class="sc"><div class="sc-card">
-    <div class="sc-eb">Introduction · Where do you stand?</div>
-    <h2 class="sc-q">Climate change is a serious issue.</h2>
-    <p class="sc-sub">Indicate how strongly you agree, from 1 (strongly disagree) to 10 (strongly agree). Responses are anonymous; the class distribution is shown once everyone has answered.</p>
-    <div class="sc-stage">
-      <div class="sc-hist"><div class="sc-col" data-c="1" style="--c:#3d6f9e"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="2" style="--c:#4f7ea4"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="3" style="--c:#6a8fa8"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="4" style="--c:#93a3a2"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="5" style="--c:#c9b68c"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="6" style="--c:#d6aa72"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="7" style="--c:#d08a4a"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="8" style="--c:#c4703f"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="9" style="--c:#b55a3f"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-col" data-c="10" style="--c:#a8483f"><span class="sc-cnt"></span><div class="sc-bar"></div></div><div class="sc-mean"><span></span></div></div>
-      <div class="sc-axis"><div class="sc-rule"></div><div class="sc-ticks"><button class="sc-tick" type="button" data-v="1" aria-label="1 of 10: Strongly disagree"><b>1</b></button><button class="sc-tick" type="button" data-v="2" aria-label="2 of 10: Strongly disagree"><b>2</b></button><button class="sc-tick" type="button" data-v="3" aria-label="3 of 10: Disagree"><b>3</b></button><button class="sc-tick" type="button" data-v="4" aria-label="4 of 10: Disagree"><b>4</b></button><button class="sc-tick" type="button" data-v="5" aria-label="5 of 10: Lean disagree"><b>5</b></button><button class="sc-tick" type="button" data-v="6" aria-label="6 of 10: Lean agree"><b>6</b></button><button class="sc-tick" type="button" data-v="7" aria-label="7 of 10: Agree"><b>7</b></button><button class="sc-tick" type="button" data-v="8" aria-label="8 of 10: Agree"><b>8</b></button><button class="sc-tick" type="button" data-v="9" aria-label="9 of 10: Strongly agree"><b>9</b></button><button class="sc-tick" type="button" data-v="10" aria-label="10 of 10: Strongly agree"><b>10</b></button></div></div>
-      <div class="sc-ends"><span>Strongly disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly agree</span></div>
-    </div>
-    <div class="sc-foot">
-      <div data-sc-student style="display:contents"><div class="sc-pick" data-sc-pick></div><button class="sc-btn" type="button" data-sc-lock disabled>Submit response</button></div>
-      <div class="sc-host" data-sc-hostbox hidden><div class="sc-n"><b data-sc-n>0</b><span data-sc-nl>answers in</span></div><div class="sc-dots" data-sc-dots></div>
-        <button class="sc-btn" type="button" data-sc-reveal>Reveal results</button><button class="sc-btn ghost" type="button" data-sc-reset>Reset</button></div>
-    </div>
-    <div class="sc-said" data-sc-said></div>
-  </div></div>
-  <script>(function(){
-  var sec=document.currentScript.closest('section'), id=sec.dataset.scId, legacy=sec.dataset.scLegacy||'';
-  var WORDS=["Strongly disagree","Strongly disagree","Disagree","Disagree","Lean disagree","Lean agree","Agree","Agree","Strongly agree","Strongly agree"], q=function(s){return sec.querySelector(s);}, qa=function(s){return Array.prototype.slice.call(sec.querySelectorAll(s));};
-  var NAV=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' ','PageUp','PageDown','Home','End'];
+<section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "scale", "id": "ch11-climate-serious-10", "legacy": "ch11-climate-serious", "q": "Climate change is a serious issue.", "tag": "Question · Agreement"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Where Do You Stand?</h2><p class="cs-sub">Answer on your laptop. Responses are anonymous.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
+  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
   if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
-  var doneKey='scale-done:'+id, mine=null, pick=null, state={counts:{},released:false}, backend=null, HOST=false;
-  try{ var v0=localStorage.getItem(doneKey); mine=v0?parseInt(v0,10):null; }catch(e){}
-  pick=mine;
-  function merc(){}
-  function paint(){
-    qa('.sc-tick').forEach(function(b){ b.classList.toggle('on', +b.dataset.v===pick); });
-    merc(pick);
-    var p=q('[data-sc-pick]');
-    if(pick){ p.innerHTML='<b>'+pick+'</b><span>'+WORDS[pick-1]+'</span>'+(mine?'<em class="sc-locked">Recorded. Your answer is anonymous.</em>':'<em>on a scale of 1 to 10</em>'); }
-    else p.innerHTML='<span>Select a point on the scale.</span>';
-    var go=q('[data-sc-lock]'); if(go){ go.disabled=!pick||mine!==null; go.textContent=mine!==null?'Submitted':'Submit response'; }
+  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
+  var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : 'guess-done:'+ID;
+  var st={counts:{},released:false}, backend=null, HOST=false, viewKey=null, lastRel=false, pick=null, mine=null;
+  function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
+  (function(){ var x=ls(KEY); if(x===null||x==='') return;
+    if(K==='estimate'){ try{ var a=JSON.parse(x); mine=Array.isArray(a)? +a[0] : null; }catch(e){ mine=null; } }
+    else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
+  pick = mine!==null ? mine : (K==='estimate' ? 50 : null);
+  function rel(){ return !!st.released; }
+  function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
+
+  function agg(){
+    var c=st.counts||{}, by=[], n=0, s=0, i;
+    if(K==='scale'){ for(i=1;i<=10;i++){ var k=+c['v_'+i]||0; by.push(k); n+=k; s+=k*i; } }
+    else if(K==='yesno'){ by=[+c['0']||0, +c['1']||0]; n=by[0]+by[1]; }
+    else { for(i=0;i<=100;i++){ var e=+c['0_'+i]||0; by.push(e); n+=e; s+=e*i; } }
+    var a={by:by, n:n, mean:n? s/n : 0};
+    if(K==='estimate' && n){ var acc=0; for(i=0;i<=100;i++){ acc+=by[i]; if(acc>=n/2){ a.median=i; break; } } }
+    return a;
   }
-  function agg(){ var c=state.counts||{}, n=0, s=0, by=[]; for(var v=1;v<=10;v++){ var k=c['v_'+v]||0; by.push(k); n+=k; s+=k*v; } return {n:n, mean:n?s/n:0, by:by}; }
-  function render(){
-    var a=agg(), rel=!!state.released, h=q('.sc-hist');
-    h.classList.toggle('in', rel); setTimeout(function(){ merc(HOST ? (rel && a.n ? a.mean : null) : pick); }, 750);
-    var mx=Math.max(1, Math.max.apply(null,a.by));
-    qa('.sc-col').forEach(function(c,i){ var bar=c.querySelector('.sc-bar'), hh=rel?(a.by[i]/mx*86+(a.by[i]?4:0))+'%':'0'; if(rel) setTimeout(function(){ bar.style.height=hh; }, 350); else bar.style.height='0'; c.querySelector('.sc-cnt').innerHTML=rel&&a.by[i]?(Math.round(a.by[i]/a.n*100)+'%<small>'+a.by[i]+'</small>'):''; c.classList.toggle('me', rel && mine===i+1); c.classList.toggle('hi', rel && i>=6); });
-    var mean=q('.sc-mean'); if(rel&&a.n){ mean.style.left=((a.mean-.5)/10*100)+'%'; mean.querySelector('span').innerHTML='Mean <b>'+a.mean.toFixed(1)+'</b> · n = '+a.n; }
-    var said=q('[data-sc-said]');
-    if(said){ if(rel&&a.n){ var agree=a.by.slice(6).reduce(function(x,y){return x+y;},0), dis=a.by.slice(0,4).reduce(function(x,y){return x+y;},0);
-        said.innerHTML='<b>'+Math.round(agree/a.n*100)+'%</b> agree (7–10) · <b>'+Math.round((a.n-agree-dis)/a.n*100)+'%</b> are in the middle (5–6) · <b>'+Math.round(dis/a.n*100)+'%</b> disagree (1–4)'; } else said.textContent=''; }
-    if(HOST){
-      q('[data-sc-n]').textContent=a.n; q('[data-sc-nl]').textContent=a.n===1?'answer in':'answers in';
-      var d=q('[data-sc-dots]'); if(d.children.length!==Math.min(a.n,120)) d.innerHTML=new Array(Math.min(a.n,120)+1).join('<i></i>');
-      q('[data-sc-reveal]').textContent=rel?'Hide results':'Reveal results';
+
+  /* ── the figure (svg) ── */
+  var W=560, H=300, ns='http://www.w3.org/2000/svg';
+  function T(x,y,txt,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'middle')+'" font-family="'+(o.serif?'Merriweather,Georgia,serif':'Inter,system-ui,sans-serif')+'"'
+      +' font-weight="'+(o.w||700)+'" font-size="'+(o.s||12)+'"'+(o.it?' font-style="italic"':'')+' fill="'+(o.c||INK)+'"'+(o.cls?' class="'+o.cls+'"':'')+(o.st?' style="'+o.st+'"':'')+'>'+txt+'</text>'; }
+  function defs(){ return '<defs><filter id="csNib'+ID+'" filterUnits="userSpaceOnUse" x="-40" y="-40" width="640" height="380"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>'
+      +'<linearGradient id="csGr'+ID+'" x1="0" x2="1" y1="0" y2="0">'+S.map(function(c,i){ return '<stop offset="'+(i/(S.length-1))+'" stop-color="'+c+'"/>'; }).join('')+'</linearGradient>'
+      +'<pattern id="csHatch'+ID+'" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0 V6" stroke="#fff" stroke-width=".8" opacity=".22"/></pattern></defs>'; }
+  function nib(){ return ' filter="url(#csNib'+ID+')"'; }
+  function title(t){ return T(W/2,24,t,{serif:1,it:1,w:400,s:15}); }
+
+  function figScale(a, you){
+    var L=46, R=514, base=226, maxH=132, slot=(R-L)/10, bw=slot*.62, mx=Math.max(1,Math.max.apply(null,a.by)), s='';
+    s+=title('How the class answered'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M'+(L-12)+','+base+' H'+(R+12)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var i=0;i<10;i++){
+      var x=L+slot*i+(slot-bw)/2, h=a.n? Math.max(a.by[i]?4:0, a.by[i]/mx*maxH) : 0, cx=x+bw/2;
+      s+='<g class="cs-grow" style="--d:'+(.08*i).toFixed(2)+'s"><rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+S[i]+'"/>'
+        +'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="none" stroke="'+INK+'" stroke-width="1.2"'+nib()+'/>':'')+'</g>';
+      if(a.n && a.by[i]) s+=T(cx,base-h-8,Math.round(a.by[i]/a.n*100)+'%',{serif:1,w:900,s:14,cls:'cs-fade',st:'--d:'+(.5+.08*i).toFixed(2)+'s'});
+      s+=T(cx,base+19,i+1,{w:800,s:13,c:(you===i+1?S[1]:INK)});
+      if(you===i+1) s+='<path d="M'+(cx-6)+','+(base+28)+' l6,-5 l6,5" fill="none" stroke="'+S[1]+'" stroke-width="2"/>'+T(cx,base+42,'you',{w:800,s:11,c:S[1]});
     }
+    s+=T(L-8,base+62,'Strongly disagree',{a:'start',it:1,serif:1,w:400,s:11.5,c:'#5d6670'})+T(R+8,base+62,'Strongly agree',{a:'end',it:1,serif:1,w:400,s:11.5,c:'#5d6670'});
+    if(a.n){ var xm=L+slot*(a.mean-.5);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-62).toFixed(1)+'" y="'+(base-maxH-46)+'" width="124" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class average '+f1(a.mean),{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    return s;
   }
-  qa('.sc-tick').forEach(function(b){ b.addEventListener('click', function(){ if(HOST||mine!==null) return; pick=+b.dataset.v; paint(); }); });
-  sec.addEventListener('keydown', function(e){
-    if(NAV.indexOf(e.key)>-1) e.stopPropagation();
-    if(HOST||mine!==null) return;
-    if(e.key==='ArrowRight'||e.key==='ArrowUp'){ pick=Math.min(10,(pick||0)+1); paint(); e.preventDefault(); }
-    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ pick=Math.max(1,(pick||2)-1); paint(); e.preventDefault(); }
+  function figYesNo(a, you){
+    var base=232, maxH=160, cw=96, xs=[150,314], cols=[S[8],S[1]], lab=['Yes','No'], s='';
+    s+=title('How the class voted'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M60,'+base+' H500" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var k=0;k<2;k++){
+      var X=xs[k], sh=a.n? a.by[k]/a.n : 0, h=Math.max(a.by[k]?4:0, sh*maxH);
+      s+='<rect x="'+X+'" y="'+(base-maxH)+'" width="'+cw+'" height="'+maxH+'" rx="6" fill="#fbf9f4" stroke="rgba(42,46,51,.28)" stroke-width="1.2" stroke-dasharray="4 4"/>';
+      s+='<g class="cs-grow" style="--d:'+(.15*k)+'s"><rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="'+cols[k]+'"/>'
+        +'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="none" stroke="'+INK+'" stroke-width="1.4"'+nib()+'/>':'')+'</g>';
+      if(a.n) s+=T(X+cw/2,base-h-12,Math.round(sh*100)+'%',{serif:1,w:900,s:26,cls:'cs-fade',st:'--d:'+(.55+.15*k)+'s'});
+      s+=T(X+cw/2,base+24,lab[k],{serif:1,w:900,s:17});
+      s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
+      if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
+    }
+    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    return s;
+  }
+  function figEstimate(a, you){
+    var L=40, R=520, base=226, maxH=132, s='';
+    function X(v){ return L+(R-L)*v/100; }
+    s+=title('How the class estimated'+(a.n?' (n = '+a.n+')':''));
+    var pts=[], mx=0, sig=4;
+    for(var u=0;u<=100;u++){ var y=0; if(a.n) for(var v=0;v<=100;v++){ if(a.by[v]) y+=a.by[v]*Math.exp(-Math.pow(u-v,2)/(2*sig*sig)); } pts.push(y); if(y>mx) mx=y; }
+    var d='M'+L+','+base; pts.forEach(function(y,u){ d+=' L'+X(u).toFixed(1)+','+(base-(mx? y/mx*maxH : 0)).toFixed(1); }); d+=' L'+R+','+base+' Z';
+    s+='<g class="cs-grow"><path d="'+d+'" fill="url(#csGr'+ID+')"/><path d="'+d+'" fill="url(#csHatch'+ID+')"/><path d="'+d+'" fill="none" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/></g>';
+    s+='<path d="M'+(L-10)+','+base+' H'+(R+10)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    [0,25,50,75,100].forEach(function(t){ s+='<path d="M'+X(t)+','+base+' v6" stroke="'+INK+'" stroke-width="1.2"/>'+T(X(t),base+21,t+'%',{w:700,s:12,c:'#4a5058'}); });
+    s+=T(W/2,base+42,'share of people willing to pay 1% of their salary',{serif:1,it:1,w:400,s:12,c:'#5d6670'});
+    if(a.n && a.median!==undefined){ var xm=X(a.median);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class median '+a.median+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+62,'your estimate',{w:800,s:11,c:S[1]}); }
+    return s;
+  }
+  function fig(a, you, tease){
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);
+    return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
+  }
+  function sample(){
+    if(K==='scale') return {by:[1,1,2,2,3,4,6,7,5,4], n:35, mean:6.6};
+    if(K==='yesno') return {by:[17,11], n:28};
+    var by=[]; for(var v=0;v<=100;v++) by.push(Math.round(6*Math.exp(-Math.pow(v-40,2)/300)+3*Math.exp(-Math.pow(v-70,2)/120)));
+    var n=by.reduce(function(x,y){return x+y;},0); return {by:by, n:n, median:45};
+  }
+
+  /* ── left column ── */
+  function controls(){
+    if(K==='scale'){
+      var t=''; for(var v=1;v<=10;v++) t+='<button type="button" class="cs-tick'+(pick===v?' on':'')+'" data-v="'+v+'" style="--c:'+S[v-1]+';--t:'+(v>=4&&v<=7?'#22262b':'#fff')+'" aria-label="'+v+' of 10: '+WORDS[v-1]+'"><b>'+v+'</b></button>';
+      return '<div class="cs-read">'+(pick? '<b>'+pick+'</b><span>'+WORDS[pick-1]+'</span>' : '<span class="cs-dim">Choose a point from 1 to 10</span>')+'</div>'
+        +'<div class="cs-scale"><div class="cs-rule">'+S.map(function(c){ return '<i style="background:'+c+'"></i>'; }).join('')+'</div><div class="cs-ticks">'+t+'</div></div>'
+        +'<div class="cs-ends"><span>1 &middot; Strongly disagree</span><span>Strongly agree &middot; 10</span></div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick?'':' disabled')+'>Lock in my answer</button>';
+    }
+    if(K==='yesno'){
+      return '<div class="cs-opts">'+['Yes','No'].map(function(o,k){ return '<button type="button" class="cs-opt'+(pick===k?' on':'')+'" data-k="'+k+'"><span class="cs-dot"></span><span>'+o+'</span></button>'; }).join('')+'</div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick===null?' disabled':'')+'>Lock in my vote</button>';
+    }
+    return '<div class="cs-read"><b data-cs-num>'+pick+'%</b><span>of people</span></div>'
+      +'<input class="cs-range" type="range" min="0" max="100" step="1" value="'+pick+'" data-cs-range style="--p:'+pick+'%" aria-label="Your estimate, 0 to 100 percent">'
+      +'<div class="cs-ends"><span>0%</span><span>50%</span><span>100%</span></div>'
+      +'<button class="cs-btn" type="button" data-cs-lock>Lock in my estimate</button>';
+  }
+  function mineText(){
+    if(K==='scale') return '<b>'+mine+'</b> ('+WORDS[mine-1]+')';
+    if(K==='yesno') return '<b>'+(mine===0?'Yes':'No')+'</b>';
+    return '<b>'+mine+'%</b>';
+  }
+  function answer(a){
+    if(!a.n) return '<div class="cs-ans"><div class="cs-big">No answers yet</div></div>';
+    if(K==='scale'){
+      var ag=a.by.slice(6).reduce(function(x,y){return x+y;},0), di=a.by.slice(0,4).reduce(function(x,y){return x+y;},0);
+      return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
+        +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
+    }
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many people do you think would say yes?</p></div>';
+    return '<div class="cs-ans"><div class="cs-big">Class median: '+a.median+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
+  }
+  function left(a){
+    var h='<div class="cs-tag">'+C.tag+'</div><div class="cs-q">'+C.q+'</div>', r=rel();
+    if(HOST){
+      h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
+        +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+    } else if(mine!==null){
+      h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
+    } else if(r){
+      h+='<div class="cs-card cs-me">Answers are closed for this question.</div>';
+    } else {
+      h+='<div class="cs-card cs-ctlcard">'+controls()+'</div>';
+    }
+    if(r) h+=answer(a);
+    return '<div class="cs-left">'+h+'</div>';
+  }
+  function right(a, play){
+    var r=rel(), inner = r ? fig(a, HOST? null : mine, false)
+      : fig(sample(), null, true)+'<div class="cs-veil">The class&rsquo;s answers appear after the reveal</div>';
+    return '<div class="cs-right"><div class="cs-viz'+(r&&play?' cs-play':'')+'"><div class="cs-fig">'+inner+'</div>'+BAND+'</div></div>';
+  }
+  function render(force){
+    var a=agg(), r=rel();
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&K!=='estimate')? pick : ''].join('|');
+    if(key===viewKey && !force) return; viewKey=key;
+    var play = r && !lastRel; lastRel=r;
+    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+  }
+
+  function lock(){
+    if(HOST||!backend||rel()||mine!==null||pick===null) return;
+    mine=pick;
+    if(K==='scale'){ ls(KEY,String(mine)); if(C.legacy) ls('spectrum-done:'+C.legacy, String(Math.round((10-mine)/9*100))); backend.bump('polls', ID, 'v_'+mine); }
+    else if(K==='yesno'){ ls(KEY,String(mine)); backend.bump('polls', ID, mine); }
+    else { ls(KEY,JSON.stringify([mine])); backend.bump('polls', ID, '0_'+mine); }
+    render(true);
+  }
+  function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+
+  root.addEventListener('click', function(e){
+    var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
+    var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
+    if(e.target.closest('[data-cs-lock]')){ lock(); return; }
+    var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
+    if(b.dataset.cs==='reveal') setRel(true);
+    else if(b.dataset.cs==='hide') setRel(false);
+    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false});
   });
-  window.addEventListener('resize', function(){ merc(HOST ? null : pick); });
-  new MutationObserver(function(){ if(sec.classList.contains('active')) setTimeout(function(){ merc(pick); },60); }).observe(sec,{attributes:true,attributeFilter:['class']});
+  root.addEventListener('input', function(e){
+    var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
+    r.style.setProperty('--p', pick+'%'); var n=root.querySelector('[data-cs-num]'); if(n) n.textContent=pick+'%';
+  });
+  SEC.addEventListener('keydown', function(e){
+    if(K!=='scale' || HOST || mine!==null || rel() || !e.target.closest('.cs-ticks')) return;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){ pick=Math.min(10,(pick||0)+1); }
+    else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ pick=Math.max(1,(pick||2)-1); }
+    else return;
+    e.preventDefault(); e.stopPropagation(); render();
+    var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
+  });
+  /* presenter clicker: the first press reveals, the next press moves on */
+  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+
   window.__deckLiveReady.then(function(live){
     backend=live.backend; HOST=!!live.HOST;
-    if(HOST){ pick=null; mine=null; paint(); }
-    q('[data-sc-student]').hidden=HOST; q('[data-sc-hostbox]').hidden=!HOST;
-    if(HOST){
-      q('[data-sc-reveal]').onclick=function(){ backend.mergeDoc('polls', id, {released:!state.released}); };
-      q('[data-sc-reset]').onclick=function(){ if(confirm('Reset all answers for this question?')) backend.setDoc('polls', id, {counts:{}, released:false}); };
-    } else {
-      q('[data-sc-lock]').onclick=function(){
-        if(mine!==null||!pick) return;
-        mine=pick; try{ localStorage.setItem(doneKey, String(mine)); if(legacy) localStorage.setItem('spectrum-done:'+legacy, String(Math.round((10-mine)/9*100))); }catch(e){}
-        backend.bump('polls', id, 'v_'+mine); paint(); render();
-      };
-    }
-    backend.subscribeDoc('polls', id, function(d){ state=d||{counts:{},released:false}; render(); });
+    if(HOST){ SEC.classList.add('cs-host'); pick=null; mine=null; }
+    backend.subscribeDoc('polls', ID, function(d){ st=d||{counts:{},released:false}; render(); });
   });
-  paint(); render();
-})();</script>
-</section>
-<section class="slide acad poll dpoll" data-type="dpoll" data-poll-id="ch11-pay-1pct-self"
-  data-trigger-idx="0" data-threshold="50"
-  data-msg-over="" data-msg-under="" style="--accent:#2D6A4F">
-  <div class="poll-root">
-    <div class="poll-head">
-      <div class="eyebrow">Introduction · Your view</div>
-      <h2 class="heading">Would you pay 1% of your income to tackle climate change?</h2>
-      <div class="poll-sub">Vote anonymously. Results stay hidden until the instructor releases them.</div>
-    </div>
-    <div class="dp-verdict" data-dp-verdict hidden aria-live="polite">
-      <span class="dp-verdict-big" data-dp-big></span>
-      <span class="dp-verdict-sub" data-dp-sub></span>
-    </div>
-    <div class="poll-opts" data-poll-opts><button class="poll-opt" type="button" data-idx="0" style="--opt:#3d5a57"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">Yes</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button><button class="poll-opt" type="button" data-idx="1" style="--opt:#8a8478"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">No</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button></div>
-    <div class="poll-foot">
-      <span class="poll-total"><strong data-poll-total>0</strong> votes</span>
-      <span class="poll-hint" data-poll-hint>Select your answer.</span>
-      <button class="poll-reveal" type="button" data-dp-release hidden>Release results</button>
-      <button class="poll-reset" type="button" data-poll-reset hidden>Reset results</button>
-    </div>
-  </div>
-</section>
-<section class="slide acad guess" data-type="guess" data-gu-id="ch11-pay-1pct-others" data-gu-unit="%" style="--accent:#2D6A4F">
-  <div class="gu-root">
-    <div class="gu-head">
-      <div class="eyebrow">Introduction · Your estimate</div>
-      <h2 class="heading">What percentage of people do you think would be willing to pay 1% of their salary to tackle climate change?</h2>
-      <div class="gu-sub">Set your estimate and submit it. The class's estimates appear on the instructor's screen.</div>
-    </div>
-    <div class="gu-student" data-gu-student>
-      <div class="gu-rows"><div class="gu-row"><div class="gu-cat">Percentage of people willing to pay 1% of their salary</div><input class="gu-range" type="range" data-cat="0" min="0" max="100" value="50" step="1"><div class="gu-out"><span class="gu-num" data-gu-num="0">50</span><span class="gu-unit">%</span></div></div></div>
-      
-      <button class="gu-submit" type="button" data-gu-submit>Submit estimate</button>
-    </div>
-    <div class="gu-host" data-gu-host hidden>
-      <div class="gu-toolbar">
-        <button class="gu-revealbtn" type="button" data-gu-revealbtn hidden>Reveal answers</button>
-        
-        <label class="gu-viewlbl" for="gu-view-ch11-pay-1pct-others">View</label>
-        <select class="gu-view" id="gu-view-ch11-pay-1pct-others" data-gu-view>
-          <option value="standard">Standard (dot plot)</option>
-          <option value="expanded">Expanded (histograms)</option>
-        </select>
-      </div>
-      <div class="gu-strips" data-gu-strips><div class="gu-strip"><div class="gu-card-head">Percentage of people willing to pay 1% of their salary<span class="gu-stats-wrap"><span class="gu-scale" data-gu-scale="0"></span><span class="gu-stats" data-gu-stats="0"></span></span></div><div class="gu-track"><div class="gu-track-line"></div><div class="gu-dots" data-gu-dots="0"></div><div class="gu-mean" data-gu-mean="0" hidden><span class="gu-mean-lbl" data-gu-meanlbl="0"></span></div><div class="gu-ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div></div></div></div>
-      <div class="gu-grid" data-gu-grid hidden><div class="gu-card"><div class="gu-card-head">Percentage of people willing to pay 1% of their salary<span class="gu-stats" data-gu-stats="0"></span></div><div class="gu-bins" data-gu-bins="0"></div></div></div>
-    </div>
-    <div class="gu-foot">
-      <span class="gu-total"><strong data-gu-total>0</strong> students have guessed</span>
-      <span class="gu-hint" data-gu-hint></span>
-      <button class="gu-reset" type="button" data-gu-reset hidden>Reset guesses</button>
-    </div>
-  </div>
-</section>
+  render();
+})();</script></section>
+<section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "yesno", "id": "ch11-pay-1pct-self", "q": "Would you pay 1% of your income to tackle climate change?", "tag": "Question · Your view"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Your View</h2><p class="cs-sub">Vote on your laptop. Results stay hidden until the reveal.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
+  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+  if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
+  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
+  var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : 'guess-done:'+ID;
+  var st={counts:{},released:false}, backend=null, HOST=false, viewKey=null, lastRel=false, pick=null, mine=null;
+  function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
+  (function(){ var x=ls(KEY); if(x===null||x==='') return;
+    if(K==='estimate'){ try{ var a=JSON.parse(x); mine=Array.isArray(a)? +a[0] : null; }catch(e){ mine=null; } }
+    else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
+  pick = mine!==null ? mine : (K==='estimate' ? 50 : null);
+  function rel(){ return !!st.released; }
+  function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
+
+  function agg(){
+    var c=st.counts||{}, by=[], n=0, s=0, i;
+    if(K==='scale'){ for(i=1;i<=10;i++){ var k=+c['v_'+i]||0; by.push(k); n+=k; s+=k*i; } }
+    else if(K==='yesno'){ by=[+c['0']||0, +c['1']||0]; n=by[0]+by[1]; }
+    else { for(i=0;i<=100;i++){ var e=+c['0_'+i]||0; by.push(e); n+=e; s+=e*i; } }
+    var a={by:by, n:n, mean:n? s/n : 0};
+    if(K==='estimate' && n){ var acc=0; for(i=0;i<=100;i++){ acc+=by[i]; if(acc>=n/2){ a.median=i; break; } } }
+    return a;
+  }
+
+  /* ── the figure (svg) ── */
+  var W=560, H=300, ns='http://www.w3.org/2000/svg';
+  function T(x,y,txt,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'middle')+'" font-family="'+(o.serif?'Merriweather,Georgia,serif':'Inter,system-ui,sans-serif')+'"'
+      +' font-weight="'+(o.w||700)+'" font-size="'+(o.s||12)+'"'+(o.it?' font-style="italic"':'')+' fill="'+(o.c||INK)+'"'+(o.cls?' class="'+o.cls+'"':'')+(o.st?' style="'+o.st+'"':'')+'>'+txt+'</text>'; }
+  function defs(){ return '<defs><filter id="csNib'+ID+'" filterUnits="userSpaceOnUse" x="-40" y="-40" width="640" height="380"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>'
+      +'<linearGradient id="csGr'+ID+'" x1="0" x2="1" y1="0" y2="0">'+S.map(function(c,i){ return '<stop offset="'+(i/(S.length-1))+'" stop-color="'+c+'"/>'; }).join('')+'</linearGradient>'
+      +'<pattern id="csHatch'+ID+'" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0 V6" stroke="#fff" stroke-width=".8" opacity=".22"/></pattern></defs>'; }
+  function nib(){ return ' filter="url(#csNib'+ID+')"'; }
+  function title(t){ return T(W/2,24,t,{serif:1,it:1,w:400,s:15}); }
+
+  function figScale(a, you){
+    var L=46, R=514, base=226, maxH=132, slot=(R-L)/10, bw=slot*.62, mx=Math.max(1,Math.max.apply(null,a.by)), s='';
+    s+=title('How the class answered'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M'+(L-12)+','+base+' H'+(R+12)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var i=0;i<10;i++){
+      var x=L+slot*i+(slot-bw)/2, h=a.n? Math.max(a.by[i]?4:0, a.by[i]/mx*maxH) : 0, cx=x+bw/2;
+      s+='<g class="cs-grow" style="--d:'+(.08*i).toFixed(2)+'s"><rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+S[i]+'"/>'
+        +'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="none" stroke="'+INK+'" stroke-width="1.2"'+nib()+'/>':'')+'</g>';
+      if(a.n && a.by[i]) s+=T(cx,base-h-8,Math.round(a.by[i]/a.n*100)+'%',{serif:1,w:900,s:14,cls:'cs-fade',st:'--d:'+(.5+.08*i).toFixed(2)+'s'});
+      s+=T(cx,base+19,i+1,{w:800,s:13,c:(you===i+1?S[1]:INK)});
+      if(you===i+1) s+='<path d="M'+(cx-6)+','+(base+28)+' l6,-5 l6,5" fill="none" stroke="'+S[1]+'" stroke-width="2"/>'+T(cx,base+42,'you',{w:800,s:11,c:S[1]});
+    }
+    s+=T(L-8,base+62,'Strongly disagree',{a:'start',it:1,serif:1,w:400,s:11.5,c:'#5d6670'})+T(R+8,base+62,'Strongly agree',{a:'end',it:1,serif:1,w:400,s:11.5,c:'#5d6670'});
+    if(a.n){ var xm=L+slot*(a.mean-.5);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-62).toFixed(1)+'" y="'+(base-maxH-46)+'" width="124" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class average '+f1(a.mean),{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    return s;
+  }
+  function figYesNo(a, you){
+    var base=232, maxH=160, cw=96, xs=[150,314], cols=[S[8],S[1]], lab=['Yes','No'], s='';
+    s+=title('How the class voted'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M60,'+base+' H500" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var k=0;k<2;k++){
+      var X=xs[k], sh=a.n? a.by[k]/a.n : 0, h=Math.max(a.by[k]?4:0, sh*maxH);
+      s+='<rect x="'+X+'" y="'+(base-maxH)+'" width="'+cw+'" height="'+maxH+'" rx="6" fill="#fbf9f4" stroke="rgba(42,46,51,.28)" stroke-width="1.2" stroke-dasharray="4 4"/>';
+      s+='<g class="cs-grow" style="--d:'+(.15*k)+'s"><rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="'+cols[k]+'"/>'
+        +'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="none" stroke="'+INK+'" stroke-width="1.4"'+nib()+'/>':'')+'</g>';
+      if(a.n) s+=T(X+cw/2,base-h-12,Math.round(sh*100)+'%',{serif:1,w:900,s:26,cls:'cs-fade',st:'--d:'+(.55+.15*k)+'s'});
+      s+=T(X+cw/2,base+24,lab[k],{serif:1,w:900,s:17});
+      s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
+      if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
+    }
+    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    return s;
+  }
+  function figEstimate(a, you){
+    var L=40, R=520, base=226, maxH=132, s='';
+    function X(v){ return L+(R-L)*v/100; }
+    s+=title('How the class estimated'+(a.n?' (n = '+a.n+')':''));
+    var pts=[], mx=0, sig=4;
+    for(var u=0;u<=100;u++){ var y=0; if(a.n) for(var v=0;v<=100;v++){ if(a.by[v]) y+=a.by[v]*Math.exp(-Math.pow(u-v,2)/(2*sig*sig)); } pts.push(y); if(y>mx) mx=y; }
+    var d='M'+L+','+base; pts.forEach(function(y,u){ d+=' L'+X(u).toFixed(1)+','+(base-(mx? y/mx*maxH : 0)).toFixed(1); }); d+=' L'+R+','+base+' Z';
+    s+='<g class="cs-grow"><path d="'+d+'" fill="url(#csGr'+ID+')"/><path d="'+d+'" fill="url(#csHatch'+ID+')"/><path d="'+d+'" fill="none" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/></g>';
+    s+='<path d="M'+(L-10)+','+base+' H'+(R+10)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    [0,25,50,75,100].forEach(function(t){ s+='<path d="M'+X(t)+','+base+' v6" stroke="'+INK+'" stroke-width="1.2"/>'+T(X(t),base+21,t+'%',{w:700,s:12,c:'#4a5058'}); });
+    s+=T(W/2,base+42,'share of people willing to pay 1% of their salary',{serif:1,it:1,w:400,s:12,c:'#5d6670'});
+    if(a.n && a.median!==undefined){ var xm=X(a.median);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class median '+a.median+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+62,'your estimate',{w:800,s:11,c:S[1]}); }
+    return s;
+  }
+  function fig(a, you, tease){
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);
+    return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
+  }
+  function sample(){
+    if(K==='scale') return {by:[1,1,2,2,3,4,6,7,5,4], n:35, mean:6.6};
+    if(K==='yesno') return {by:[17,11], n:28};
+    var by=[]; for(var v=0;v<=100;v++) by.push(Math.round(6*Math.exp(-Math.pow(v-40,2)/300)+3*Math.exp(-Math.pow(v-70,2)/120)));
+    var n=by.reduce(function(x,y){return x+y;},0); return {by:by, n:n, median:45};
+  }
+
+  /* ── left column ── */
+  function controls(){
+    if(K==='scale'){
+      var t=''; for(var v=1;v<=10;v++) t+='<button type="button" class="cs-tick'+(pick===v?' on':'')+'" data-v="'+v+'" style="--c:'+S[v-1]+';--t:'+(v>=4&&v<=7?'#22262b':'#fff')+'" aria-label="'+v+' of 10: '+WORDS[v-1]+'"><b>'+v+'</b></button>';
+      return '<div class="cs-read">'+(pick? '<b>'+pick+'</b><span>'+WORDS[pick-1]+'</span>' : '<span class="cs-dim">Choose a point from 1 to 10</span>')+'</div>'
+        +'<div class="cs-scale"><div class="cs-rule">'+S.map(function(c){ return '<i style="background:'+c+'"></i>'; }).join('')+'</div><div class="cs-ticks">'+t+'</div></div>'
+        +'<div class="cs-ends"><span>1 &middot; Strongly disagree</span><span>Strongly agree &middot; 10</span></div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick?'':' disabled')+'>Lock in my answer</button>';
+    }
+    if(K==='yesno'){
+      return '<div class="cs-opts">'+['Yes','No'].map(function(o,k){ return '<button type="button" class="cs-opt'+(pick===k?' on':'')+'" data-k="'+k+'"><span class="cs-dot"></span><span>'+o+'</span></button>'; }).join('')+'</div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick===null?' disabled':'')+'>Lock in my vote</button>';
+    }
+    return '<div class="cs-read"><b data-cs-num>'+pick+'%</b><span>of people</span></div>'
+      +'<input class="cs-range" type="range" min="0" max="100" step="1" value="'+pick+'" data-cs-range style="--p:'+pick+'%" aria-label="Your estimate, 0 to 100 percent">'
+      +'<div class="cs-ends"><span>0%</span><span>50%</span><span>100%</span></div>'
+      +'<button class="cs-btn" type="button" data-cs-lock>Lock in my estimate</button>';
+  }
+  function mineText(){
+    if(K==='scale') return '<b>'+mine+'</b> ('+WORDS[mine-1]+')';
+    if(K==='yesno') return '<b>'+(mine===0?'Yes':'No')+'</b>';
+    return '<b>'+mine+'%</b>';
+  }
+  function answer(a){
+    if(!a.n) return '<div class="cs-ans"><div class="cs-big">No answers yet</div></div>';
+    if(K==='scale'){
+      var ag=a.by.slice(6).reduce(function(x,y){return x+y;},0), di=a.by.slice(0,4).reduce(function(x,y){return x+y;},0);
+      return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
+        +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
+    }
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many people do you think would say yes?</p></div>';
+    return '<div class="cs-ans"><div class="cs-big">Class median: '+a.median+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
+  }
+  function left(a){
+    var h='<div class="cs-tag">'+C.tag+'</div><div class="cs-q">'+C.q+'</div>', r=rel();
+    if(HOST){
+      h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
+        +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+    } else if(mine!==null){
+      h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
+    } else if(r){
+      h+='<div class="cs-card cs-me">Answers are closed for this question.</div>';
+    } else {
+      h+='<div class="cs-card cs-ctlcard">'+controls()+'</div>';
+    }
+    if(r) h+=answer(a);
+    return '<div class="cs-left">'+h+'</div>';
+  }
+  function right(a, play){
+    var r=rel(), inner = r ? fig(a, HOST? null : mine, false)
+      : fig(sample(), null, true)+'<div class="cs-veil">The class&rsquo;s answers appear after the reveal</div>';
+    return '<div class="cs-right"><div class="cs-viz'+(r&&play?' cs-play':'')+'"><div class="cs-fig">'+inner+'</div>'+BAND+'</div></div>';
+  }
+  function render(force){
+    var a=agg(), r=rel();
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&K!=='estimate')? pick : ''].join('|');
+    if(key===viewKey && !force) return; viewKey=key;
+    var play = r && !lastRel; lastRel=r;
+    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+  }
+
+  function lock(){
+    if(HOST||!backend||rel()||mine!==null||pick===null) return;
+    mine=pick;
+    if(K==='scale'){ ls(KEY,String(mine)); if(C.legacy) ls('spectrum-done:'+C.legacy, String(Math.round((10-mine)/9*100))); backend.bump('polls', ID, 'v_'+mine); }
+    else if(K==='yesno'){ ls(KEY,String(mine)); backend.bump('polls', ID, mine); }
+    else { ls(KEY,JSON.stringify([mine])); backend.bump('polls', ID, '0_'+mine); }
+    render(true);
+  }
+  function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+
+  root.addEventListener('click', function(e){
+    var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
+    var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
+    if(e.target.closest('[data-cs-lock]')){ lock(); return; }
+    var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
+    if(b.dataset.cs==='reveal') setRel(true);
+    else if(b.dataset.cs==='hide') setRel(false);
+    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false});
+  });
+  root.addEventListener('input', function(e){
+    var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
+    r.style.setProperty('--p', pick+'%'); var n=root.querySelector('[data-cs-num]'); if(n) n.textContent=pick+'%';
+  });
+  SEC.addEventListener('keydown', function(e){
+    if(K!=='scale' || HOST || mine!==null || rel() || !e.target.closest('.cs-ticks')) return;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){ pick=Math.min(10,(pick||0)+1); }
+    else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ pick=Math.max(1,(pick||2)-1); }
+    else return;
+    e.preventDefault(); e.stopPropagation(); render();
+    var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
+  });
+  /* presenter clicker: the first press reveals, the next press moves on */
+  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+
+  window.__deckLiveReady.then(function(live){
+    backend=live.backend; HOST=!!live.HOST;
+    if(HOST){ SEC.classList.add('cs-host'); pick=null; mine=null; }
+    backend.subscribeDoc('polls', ID, function(d){ st=d||{counts:{},released:false}; render(); });
+  });
+  render();
+})();</script></section>
+<section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "estimate", "id": "ch11-pay-1pct-others", "q": "What percentage of people do you think would be willing to pay 1% of their salary to tackle climate change?", "tag": "Question · Everyone else"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Your Estimate</h2><p class="cs-sub">Make your estimate on your laptop. The class’s estimates appear after the reveal.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
+  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+  if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
+  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
+  var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : 'guess-done:'+ID;
+  var st={counts:{},released:false}, backend=null, HOST=false, viewKey=null, lastRel=false, pick=null, mine=null;
+  function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
+  (function(){ var x=ls(KEY); if(x===null||x==='') return;
+    if(K==='estimate'){ try{ var a=JSON.parse(x); mine=Array.isArray(a)? +a[0] : null; }catch(e){ mine=null; } }
+    else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
+  pick = mine!==null ? mine : (K==='estimate' ? 50 : null);
+  function rel(){ return !!st.released; }
+  function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
+
+  function agg(){
+    var c=st.counts||{}, by=[], n=0, s=0, i;
+    if(K==='scale'){ for(i=1;i<=10;i++){ var k=+c['v_'+i]||0; by.push(k); n+=k; s+=k*i; } }
+    else if(K==='yesno'){ by=[+c['0']||0, +c['1']||0]; n=by[0]+by[1]; }
+    else { for(i=0;i<=100;i++){ var e=+c['0_'+i]||0; by.push(e); n+=e; s+=e*i; } }
+    var a={by:by, n:n, mean:n? s/n : 0};
+    if(K==='estimate' && n){ var acc=0; for(i=0;i<=100;i++){ acc+=by[i]; if(acc>=n/2){ a.median=i; break; } } }
+    return a;
+  }
+
+  /* ── the figure (svg) ── */
+  var W=560, H=300, ns='http://www.w3.org/2000/svg';
+  function T(x,y,txt,o){ o=o||{}; return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'middle')+'" font-family="'+(o.serif?'Merriweather,Georgia,serif':'Inter,system-ui,sans-serif')+'"'
+      +' font-weight="'+(o.w||700)+'" font-size="'+(o.s||12)+'"'+(o.it?' font-style="italic"':'')+' fill="'+(o.c||INK)+'"'+(o.cls?' class="'+o.cls+'"':'')+(o.st?' style="'+o.st+'"':'')+'>'+txt+'</text>'; }
+  function defs(){ return '<defs><filter id="csNib'+ID+'" filterUnits="userSpaceOnUse" x="-40" y="-40" width="640" height="380"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>'
+      +'<linearGradient id="csGr'+ID+'" x1="0" x2="1" y1="0" y2="0">'+S.map(function(c,i){ return '<stop offset="'+(i/(S.length-1))+'" stop-color="'+c+'"/>'; }).join('')+'</linearGradient>'
+      +'<pattern id="csHatch'+ID+'" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0 V6" stroke="#fff" stroke-width=".8" opacity=".22"/></pattern></defs>'; }
+  function nib(){ return ' filter="url(#csNib'+ID+')"'; }
+  function title(t){ return T(W/2,24,t,{serif:1,it:1,w:400,s:15}); }
+
+  function figScale(a, you){
+    var L=46, R=514, base=226, maxH=132, slot=(R-L)/10, bw=slot*.62, mx=Math.max(1,Math.max.apply(null,a.by)), s='';
+    s+=title('How the class answered'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M'+(L-12)+','+base+' H'+(R+12)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var i=0;i<10;i++){
+      var x=L+slot*i+(slot-bw)/2, h=a.n? Math.max(a.by[i]?4:0, a.by[i]/mx*maxH) : 0, cx=x+bw/2;
+      s+='<g class="cs-grow" style="--d:'+(.08*i).toFixed(2)+'s"><rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+S[i]+'"/>'
+        +'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+x.toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="none" stroke="'+INK+'" stroke-width="1.2"'+nib()+'/>':'')+'</g>';
+      if(a.n && a.by[i]) s+=T(cx,base-h-8,Math.round(a.by[i]/a.n*100)+'%',{serif:1,w:900,s:14,cls:'cs-fade',st:'--d:'+(.5+.08*i).toFixed(2)+'s'});
+      s+=T(cx,base+19,i+1,{w:800,s:13,c:(you===i+1?S[1]:INK)});
+      if(you===i+1) s+='<path d="M'+(cx-6)+','+(base+28)+' l6,-5 l6,5" fill="none" stroke="'+S[1]+'" stroke-width="2"/>'+T(cx,base+42,'you',{w:800,s:11,c:S[1]});
+    }
+    s+=T(L-8,base+62,'Strongly disagree',{a:'start',it:1,serif:1,w:400,s:11.5,c:'#5d6670'})+T(R+8,base+62,'Strongly agree',{a:'end',it:1,serif:1,w:400,s:11.5,c:'#5d6670'});
+    if(a.n){ var xm=L+slot*(a.mean-.5);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-62).toFixed(1)+'" y="'+(base-maxH-46)+'" width="124" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class average '+f1(a.mean),{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    return s;
+  }
+  function figYesNo(a, you){
+    var base=232, maxH=160, cw=96, xs=[150,314], cols=[S[8],S[1]], lab=['Yes','No'], s='';
+    s+=title('How the class voted'+(a.n?' (n = '+a.n+')':''));
+    s+='<path d="M60,'+base+' H500" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    for(var k=0;k<2;k++){
+      var X=xs[k], sh=a.n? a.by[k]/a.n : 0, h=Math.max(a.by[k]?4:0, sh*maxH);
+      s+='<rect x="'+X+'" y="'+(base-maxH)+'" width="'+cw+'" height="'+maxH+'" rx="6" fill="#fbf9f4" stroke="rgba(42,46,51,.28)" stroke-width="1.2" stroke-dasharray="4 4"/>';
+      s+='<g class="cs-grow" style="--d:'+(.15*k)+'s"><rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="'+cols[k]+'"/>'
+        +'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="url(#csHatch'+ID+')"/>'
+        +(h?'<rect x="'+X+'" y="'+(base-h).toFixed(1)+'" width="'+cw+'" height="'+h.toFixed(1)+'" rx="6" fill="none" stroke="'+INK+'" stroke-width="1.4"'+nib()+'/>':'')+'</g>';
+      if(a.n) s+=T(X+cw/2,base-h-12,Math.round(sh*100)+'%',{serif:1,w:900,s:26,cls:'cs-fade',st:'--d:'+(.55+.15*k)+'s'});
+      s+=T(X+cw/2,base+24,lab[k],{serif:1,w:900,s:17});
+      s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
+      if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
+    }
+    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    return s;
+  }
+  function figEstimate(a, you){
+    var L=40, R=520, base=226, maxH=132, s='';
+    function X(v){ return L+(R-L)*v/100; }
+    s+=title('How the class estimated'+(a.n?' (n = '+a.n+')':''));
+    var pts=[], mx=0, sig=4;
+    for(var u=0;u<=100;u++){ var y=0; if(a.n) for(var v=0;v<=100;v++){ if(a.by[v]) y+=a.by[v]*Math.exp(-Math.pow(u-v,2)/(2*sig*sig)); } pts.push(y); if(y>mx) mx=y; }
+    var d='M'+L+','+base; pts.forEach(function(y,u){ d+=' L'+X(u).toFixed(1)+','+(base-(mx? y/mx*maxH : 0)).toFixed(1); }); d+=' L'+R+','+base+' Z';
+    s+='<g class="cs-grow"><path d="'+d+'" fill="url(#csGr'+ID+')"/><path d="'+d+'" fill="url(#csHatch'+ID+')"/><path d="'+d+'" fill="none" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/></g>';
+    s+='<path d="M'+(L-10)+','+base+' H'+(R+10)+'" stroke="'+INK+'" stroke-width="1.6"'+nib()+'/>';
+    [0,25,50,75,100].forEach(function(t){ s+='<path d="M'+X(t)+','+base+' v6" stroke="'+INK+'" stroke-width="1.2"/>'+T(X(t),base+21,t+'%',{w:700,s:12,c:'#4a5058'}); });
+    s+=T(W/2,base+42,'share of people willing to pay 1% of their salary',{serif:1,it:1,w:400,s:12,c:'#5d6670'});
+    if(a.n && a.median!==undefined){ var xm=X(a.median);
+      s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
+        +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
+        +T(xm.toFixed(1),base-maxH-31,'class median '+a.median+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+62,'your estimate',{w:800,s:11,c:S[1]}); }
+    return s;
+  }
+  function fig(a, you, tease){
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);
+    return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
+  }
+  function sample(){
+    if(K==='scale') return {by:[1,1,2,2,3,4,6,7,5,4], n:35, mean:6.6};
+    if(K==='yesno') return {by:[17,11], n:28};
+    var by=[]; for(var v=0;v<=100;v++) by.push(Math.round(6*Math.exp(-Math.pow(v-40,2)/300)+3*Math.exp(-Math.pow(v-70,2)/120)));
+    var n=by.reduce(function(x,y){return x+y;},0); return {by:by, n:n, median:45};
+  }
+
+  /* ── left column ── */
+  function controls(){
+    if(K==='scale'){
+      var t=''; for(var v=1;v<=10;v++) t+='<button type="button" class="cs-tick'+(pick===v?' on':'')+'" data-v="'+v+'" style="--c:'+S[v-1]+';--t:'+(v>=4&&v<=7?'#22262b':'#fff')+'" aria-label="'+v+' of 10: '+WORDS[v-1]+'"><b>'+v+'</b></button>';
+      return '<div class="cs-read">'+(pick? '<b>'+pick+'</b><span>'+WORDS[pick-1]+'</span>' : '<span class="cs-dim">Choose a point from 1 to 10</span>')+'</div>'
+        +'<div class="cs-scale"><div class="cs-rule">'+S.map(function(c){ return '<i style="background:'+c+'"></i>'; }).join('')+'</div><div class="cs-ticks">'+t+'</div></div>'
+        +'<div class="cs-ends"><span>1 &middot; Strongly disagree</span><span>Strongly agree &middot; 10</span></div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick?'':' disabled')+'>Lock in my answer</button>';
+    }
+    if(K==='yesno'){
+      return '<div class="cs-opts">'+['Yes','No'].map(function(o,k){ return '<button type="button" class="cs-opt'+(pick===k?' on':'')+'" data-k="'+k+'"><span class="cs-dot"></span><span>'+o+'</span></button>'; }).join('')+'</div>'
+        +'<button class="cs-btn" type="button" data-cs-lock'+(pick===null?' disabled':'')+'>Lock in my vote</button>';
+    }
+    return '<div class="cs-read"><b data-cs-num>'+pick+'%</b><span>of people</span></div>'
+      +'<input class="cs-range" type="range" min="0" max="100" step="1" value="'+pick+'" data-cs-range style="--p:'+pick+'%" aria-label="Your estimate, 0 to 100 percent">'
+      +'<div class="cs-ends"><span>0%</span><span>50%</span><span>100%</span></div>'
+      +'<button class="cs-btn" type="button" data-cs-lock>Lock in my estimate</button>';
+  }
+  function mineText(){
+    if(K==='scale') return '<b>'+mine+'</b> ('+WORDS[mine-1]+')';
+    if(K==='yesno') return '<b>'+(mine===0?'Yes':'No')+'</b>';
+    return '<b>'+mine+'%</b>';
+  }
+  function answer(a){
+    if(!a.n) return '<div class="cs-ans"><div class="cs-big">No answers yet</div></div>';
+    if(K==='scale'){
+      var ag=a.by.slice(6).reduce(function(x,y){return x+y;},0), di=a.by.slice(0,4).reduce(function(x,y){return x+y;},0);
+      return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
+        +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
+    }
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many people do you think would say yes?</p></div>';
+    return '<div class="cs-ans"><div class="cs-big">Class median: '+a.median+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
+  }
+  function left(a){
+    var h='<div class="cs-tag">'+C.tag+'</div><div class="cs-q">'+C.q+'</div>', r=rel();
+    if(HOST){
+      h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
+        +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+    } else if(mine!==null){
+      h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
+    } else if(r){
+      h+='<div class="cs-card cs-me">Answers are closed for this question.</div>';
+    } else {
+      h+='<div class="cs-card cs-ctlcard">'+controls()+'</div>';
+    }
+    if(r) h+=answer(a);
+    return '<div class="cs-left">'+h+'</div>';
+  }
+  function right(a, play){
+    var r=rel(), inner = r ? fig(a, HOST? null : mine, false)
+      : fig(sample(), null, true)+'<div class="cs-veil">The class&rsquo;s answers appear after the reveal</div>';
+    return '<div class="cs-right"><div class="cs-viz'+(r&&play?' cs-play':'')+'"><div class="cs-fig">'+inner+'</div>'+BAND+'</div></div>';
+  }
+  function render(force){
+    var a=agg(), r=rel();
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&K!=='estimate')? pick : ''].join('|');
+    if(key===viewKey && !force) return; viewKey=key;
+    var play = r && !lastRel; lastRel=r;
+    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+  }
+
+  function lock(){
+    if(HOST||!backend||rel()||mine!==null||pick===null) return;
+    mine=pick;
+    if(K==='scale'){ ls(KEY,String(mine)); if(C.legacy) ls('spectrum-done:'+C.legacy, String(Math.round((10-mine)/9*100))); backend.bump('polls', ID, 'v_'+mine); }
+    else if(K==='yesno'){ ls(KEY,String(mine)); backend.bump('polls', ID, mine); }
+    else { ls(KEY,JSON.stringify([mine])); backend.bump('polls', ID, '0_'+mine); }
+    render(true);
+  }
+  function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+
+  root.addEventListener('click', function(e){
+    var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
+    var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
+    if(e.target.closest('[data-cs-lock]')){ lock(); return; }
+    var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
+    if(b.dataset.cs==='reveal') setRel(true);
+    else if(b.dataset.cs==='hide') setRel(false);
+    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false});
+  });
+  root.addEventListener('input', function(e){
+    var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
+    r.style.setProperty('--p', pick+'%'); var n=root.querySelector('[data-cs-num]'); if(n) n.textContent=pick+'%';
+  });
+  SEC.addEventListener('keydown', function(e){
+    if(K!=='scale' || HOST || mine!==null || rel() || !e.target.closest('.cs-ticks')) return;
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){ pick=Math.min(10,(pick||0)+1); }
+    else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ pick=Math.max(1,(pick||2)-1); }
+    else return;
+    e.preventDefault(); e.stopPropagation(); render();
+    var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
+  });
+  /* presenter clicker: the first press reveals, the next press moves on */
+  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+
+  window.__deckLiveReady.then(function(live){
+    backend=live.backend; HOST=!!live.HOST;
+    if(HOST){ SEC.classList.add('cs-host'); pick=null; mine=null; }
+    backend.subscribeDoc('polls', ID, function(d){ st=d||{counts:{},released:false}; render(); });
+  });
+  render();
+})();</script></section>
 <section class="slide ws-slide" data-type="content" style="--accent:#2D6A4F">
   <div class="slide-inner col ws-inner">
     <div class="eyebrow">Introduction</div>
@@ -4822,7 +5137,7 @@ const UI = (function () {
 if(!window.__deckLiveReady){
   window.__deckLiveReady = new Promise(function(res){ window.__deckLiveResolve = res; });
 }
-const slides = Array.from(document.querySelectorAll('.slide'));
+const slides = Array.from(document.querySelectorAll('.slide')).filter(s => !s.closest('.sp-pop'));   // slides inside a pop-up are not deck slides
 let cur = 0;
 const progress = document.getElementById('progress');
 const counter  = document.getElementById('counter');
