@@ -948,6 +948,62 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 .sc-said{font:500 14px Inter;color:#4a463d;margin-top:8px;min-height:1.3em}.sc-said b{font-weight:700;color:#1f1e1b}
 .sc-locked{color:var(--accent,#2D6A4F)!important;font-weight:600}
 
+.slide.acad{background:#f4efe4!important}
+.slide.acad .poll-root,.slide.acad .gu-root{inset:clamp(1.2rem,4.5vh,2.8rem) clamp(3.6rem,7vw,7rem) clamp(3.6rem,9vh,4.8rem);background:#fffdf8;border:1px solid #d8cfbd;border-radius:6px;
+  box-shadow:0 18px 40px rgba(40,32,18,.09);padding:clamp(1.6rem,3.4vh,2.6rem) clamp(1.8rem,3.6vw,3.2rem) clamp(1.1rem,2.4vh,1.6rem);color:#2b2a26}
+.slide.acad .poll-root::before,.slide.acad .gu-root::before{content:'';position:absolute;left:clamp(1.8rem,3.6vw,3.2rem);right:clamp(1.8rem,3.6vw,3.2rem);top:0;height:3px;background:var(--accent,#2D6A4F)}
+.slide.acad .eyebrow{font:700 11.5px Inter!important;letter-spacing:.22em!important;text-transform:uppercase;color:#7a7263!important;background:none!important;padding:0!important}
+.slide.acad .eyebrow::before,.slide.acad .eyebrow::after{display:none!important}
+.slide.acad .heading{font:400 clamp(26px,3.3vw,42px)/1.15 Merriweather,Georgia,serif!important;letter-spacing:-.01em;color:#1f1e1b!important;margin:.5rem 0 .4rem!important}
+.slide.acad .heading::after{display:none!important}
+.slide.acad .poll-sub,.slide.acad .gu-sub{font-size:clamp(14px,1.25vw,16px);line-height:1.5;color:#6a6458}
+/* yes / no */
+.slide.acad .poll-opts{max-width:none;gap:12px}
+.slide.acad .poll-opt{border:1.5px solid #cfc6b4;border-radius:4px;background:#fffdf8;box-shadow:none!important;padding:clamp(.95rem,2.2vh,1.35rem) clamp(1.1rem,2vw,1.6rem)}
+.slide.acad .poll-opt:hover{border-color:#2b2a26}
+.slide.acad .poll-opt-chip{width:20px;height:20px;border-radius:50%;background:transparent;border:1.5px solid #8f8778;box-shadow:none}
+.slide.acad .poll-opt.chosen{border-color:#1f1e1b}
+.slide.acad .poll-opt.chosen .poll-opt-chip{background:#1f1e1b;border-color:#1f1e1b;box-shadow:inset 0 0 0 3px #fffdf8}
+.slide.acad .poll-opt.chosen .poll-opt-label::after{content:''}
+.slide.acad .poll-opt-label{font:400 clamp(20px,2vw,26px) Merriweather,serif;color:#1f1e1b}
+.slide.acad .poll-opt-fill{background:color-mix(in srgb,var(--opt) 16%,transparent)!important}
+.slide.acad .poll-opt-pct{font:400 clamp(22px,2.2vw,30px) Merriweather,serif;color:#1f1e1b}
+.slide.acad .poll-opt-count{font:500 13px Inter;color:#7a7263}
+.slide.acad .poll-foot{border-top:1px solid #e6dfd0;padding-top:12px}
+.slide.acad .poll-total{color:#4a463d}.slide.acad .poll-total strong{font:400 1.4em Merriweather,serif;color:#1f1e1b}
+.slide.acad .poll-hint{font-style:normal;color:#7a7263}
+.slide.acad .poll-reveal,.slide.acad .poll-stage{background:#1f1e1b;border-color:#1f1e1b;border-radius:4px;font-weight:600}
+.slide.acad .poll-reset{border-radius:4px;border-color:#bfb6a3;color:#3a372f}
+.slide.acad .dp-verdict-big{font-family:Merriweather,serif;font-weight:400;color:#1f1e1b}
+/* the estimate slider */
+.slide.acad .gu-row{background:none;border:0;padding:0}
+.slide.acad .gu-cat{font:700 11.5px Inter;letter-spacing:.14em;text-transform:uppercase;color:#7a7263;width:clamp(150px,20vw,220px);line-height:1.5}
+.slide.acad .gu-range{-webkit-appearance:none;appearance:none;height:30px;background:transparent}
+.slide.acad .gu-range::-webkit-slider-runnable-track{height:2px;background:#bfb6a3}
+.slide.acad .gu-range::-moz-range-track{height:2px;background:#bfb6a3}
+.slide.acad .gu-range::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-11px;border-radius:50%;background:#1f1e1b;border:3px solid #fffdf8;box-shadow:0 0 0 1.5px #1f1e1b}
+.slide.acad .gu-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#1f1e1b;border:3px solid #fffdf8;box-shadow:0 0 0 1.5px #1f1e1b}
+.slide.acad .gu-num{font:400 clamp(34px,3.6vw,48px) Merriweather,serif;color:#1f1e1b}
+.slide.acad .gu-unit{font:600 15px Inter;color:#7a7263}
+.slide.acad .gu-submit{background:#1f1e1b!important;border-radius:4px!important;font-weight:600!important;padding:11px 24px!important;box-shadow:none!important}
+.slide.acad .gu-submit:disabled{background:#bfb6a3!important}
+.slide.acad .gu-strip,.slide.acad .gu-card{background:#fffdf8;border:1px solid #e0d8c7;border-left:1px solid #e0d8c7;border-radius:4px;box-shadow:none}
+.slide.acad .gu-card-head{font:600 13px Inter;color:#4a463d}
+.slide.acad .gu-track-line{background:#2b2a26;height:1px}
+.slide.acad .gu-track{height:clamp(120px,24vh,190px)}
+.slide.acad .gu-strip{padding:14px 18px 10px}
+.slide.acad .gu-dot{background:#3d5a57!important;width:11px;height:11px;margin-left:-5.5px;opacity:.9}
+.slide.acad .gu-ticks span{font:600 11px Inter;color:#7a7263}
+.slide.acad .gu-stats{font:600 12.5px Inter;color:#4a463d}
+.slide.acad .gu-mean::after{background:#1f1e1b!important;border-color:#fffdf8!important}
+.slide.acad .gu-mean-lbl{background:#1f1e1b!important;color:#fffdf8!important;border-radius:3px!important;font-weight:600!important}
+.slide.acad .gu-scale{color:#2b2a26}
+.slide.acad .gu-revealbtn{background:#1f1e1b;border-radius:4px;font-weight:600}
+.slide.acad .gu-view{border-radius:4px}
+.slide.acad .gu-foot{border-top:1px solid #e6dfd0;padding-top:12px;color:#4a463d}
+.slide.acad .gu-total strong{font:400 1.4em Merriweather,serif;color:#1f1e1b}
+.slide.acad .gu-hint{font-style:normal;color:#7a7263}
+
 
 /* "Book Recommendation" thumbnail — a small labelled book cover pinned to the
    bottom-right corner of any slide. Added with book_rec(); CSS auto-included when
@@ -1405,39 +1461,39 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   paint(); render();
 })();</script>
 </section>
-<section class="slide poll dpoll" data-type="dpoll" data-poll-id="ch11-pay-1pct-self"
+<section class="slide acad poll dpoll" data-type="dpoll" data-poll-id="ch11-pay-1pct-self"
   data-trigger-idx="0" data-threshold="50"
   data-msg-over="" data-msg-under="" style="--accent:#2D6A4F">
   <div class="poll-root">
     <div class="poll-head">
-      <div class="eyebrow">Introduction</div>
+      <div class="eyebrow">Introduction · Your view</div>
       <h2 class="heading">Would you pay 1% of your income to tackle climate change?</h2>
-      <div class="poll-sub">Cast your vote — results stay hidden until the instructor releases them.</div>
+      <div class="poll-sub">Vote anonymously. Results stay hidden until the instructor releases them.</div>
     </div>
     <div class="dp-verdict" data-dp-verdict hidden aria-live="polite">
       <span class="dp-verdict-big" data-dp-big></span>
       <span class="dp-verdict-sub" data-dp-sub></span>
     </div>
-    <div class="poll-opts" data-poll-opts><button class="poll-opt" type="button" data-idx="0" style="--opt:#2D6A4F"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">Yes</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button><button class="poll-opt" type="button" data-idx="1" style="--opt:#A4373A"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">No</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button></div>
+    <div class="poll-opts" data-poll-opts><button class="poll-opt" type="button" data-idx="0" style="--opt:#3d5a57"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">Yes</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button><button class="poll-opt" type="button" data-idx="1" style="--opt:#8a8478"><span class="poll-opt-fill"></span><span class="poll-opt-row"><span class="poll-opt-chip"></span><span class="poll-opt-label">No</span><span class="poll-opt-stat"><span class="poll-opt-count">0 votes</span><span class="poll-opt-pct">0%</span></span></span></button></div>
     <div class="poll-foot">
       <span class="poll-total"><strong data-poll-total>0</strong> votes</span>
-      <span class="poll-hint" data-poll-hint>Click your answer.</span>
+      <span class="poll-hint" data-poll-hint>Select your answer.</span>
       <button class="poll-reveal" type="button" data-dp-release hidden>Release results</button>
       <button class="poll-reset" type="button" data-poll-reset hidden>Reset results</button>
     </div>
   </div>
 </section>
-<section class="slide guess" data-type="guess" data-gu-id="ch11-pay-1pct-others" data-gu-unit="%" style="--accent:#2D6A4F">
+<section class="slide acad guess" data-type="guess" data-gu-id="ch11-pay-1pct-others" data-gu-unit="%" style="--accent:#2D6A4F">
   <div class="gu-root">
     <div class="gu-head">
-      <div class="eyebrow">Introduction</div>
+      <div class="eyebrow">Introduction · Your estimate</div>
       <h2 class="heading">What percentage of people do you think would be willing to pay 1% of their salary to tackle climate change?</h2>
-      <div class="gu-sub">Slide your estimate and lock it in — the class's guesses appear on the instructor's screen.</div>
+      <div class="gu-sub">Set your estimate and submit it. The class's estimates appear on the instructor's screen.</div>
     </div>
     <div class="gu-student" data-gu-student>
       <div class="gu-rows"><div class="gu-row"><div class="gu-cat">Percentage of people willing to pay 1% of their salary</div><input class="gu-range" type="range" data-cat="0" min="0" max="100" value="50" step="1"><div class="gu-out"><span class="gu-num" data-gu-num="0">50</span><span class="gu-unit">%</span></div></div></div>
       
-      <button class="gu-submit" type="button" data-gu-submit>Lock in my guesses</button>
+      <button class="gu-submit" type="button" data-gu-submit>Submit estimate</button>
     </div>
     <div class="gu-host" data-gu-host hidden>
       <div class="gu-toolbar">
@@ -5382,7 +5438,7 @@ show(start);
         hintEl.textContent = state.game ? 'Roll as many times as you like. Pick a new game to reset.' : 'Choose a game to begin.';
       } else {
         hintEl.textContent = !state.game ? 'Waiting for the instructor to choose a game…'
-          : (myVote!==null ? 'Your pick is locked in — watch the class results and rolls update live.'
+          : (myVote!==null ? 'Your pick is locked in. Watch the class results and rolls update live.'
                            : 'Tap your prediction below.');
       }
     }
@@ -5455,13 +5511,13 @@ show(start);
       if(HOST){
         releaseBtn.textContent = released ? 'Hide results' : 'Release results';
         hintEl.textContent = released ? 'Results are on every screen.'
-          : (total+' secret ballot'+(total===1?'':'s')+' in — release when the class is ready.');
+          : (total+' secret ballot'+(total===1?'':'s')+' in. Release when the class is ready.');
       } else if(released){
         hintEl.textContent = 'The results are in!';
       } else if(myVote!==null){
         hintEl.textContent = 'Your vote is locked in. Results stay secret until your instructor releases them…';
       } else {
-        hintEl.textContent = 'Click your answer — votes stay secret until the instructor releases the results.';
+        hintEl.textContent = 'Select your answer. Votes stay secret until the instructor releases the results.';
       }
     }
 
@@ -6288,7 +6344,7 @@ show(start);
       if(!mine) return;
       ranges.forEach(function(r,i){ if(mine[i]!==undefined){ r.value=mine[i]; if(nums[i]) nums[i].textContent=mine[i]; } r.disabled=true; });
       submitBtn.disabled=true; submitBtn.textContent='Locked in ✓';
-      hintEl.textContent='Your guesses are in — the class distribution is on the instructor’s screen.';
+      hintEl.textContent='Your estimate is in. The class distribution is on the instructor’s screen.';
       updateBudget();
     }
     updateBudget();
@@ -6397,7 +6453,7 @@ show(start);
     if(HOST){
       sec.classList.add('host');
       studentBox.hidden=true; hostBox.hidden=false;
-      hintEl.textContent='Live distributions — students guess on their own screens.';
+      hintEl.textContent='Live distributions. Students submit on their own screens.';
       resetBtn.hidden=false;
       resetBtn.addEventListener('click', function(){
         if(confirm('Reset all guesses for this question?')) backend.reset('polls', id);
@@ -7030,7 +7086,7 @@ show(start);
         revealBtn.hidden=!opened; closeBtn.hidden=!opened; resetBtn.hidden=!opened;
         revealBtn.textContent = released ? 'Hide results' : 'Release results';
         hintEl.textContent = released ? 'Results are on every screen.'
-          : (agg.n+' guess'+(agg.n===1?'':'es')+' in — release when the class is ready.');
+          : (agg.n+' guess'+(agg.n===1?'':'es')+' in. Release when the class is ready.');
       } else {
         studentBox.hidden=released;
         if(released) hintEl.textContent='The results are in!';
