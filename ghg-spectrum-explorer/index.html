@@ -50,6 +50,54 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .src a{color:var(--accent);text-decoration:none}
 .src a:hover{text-decoration:underline}
 .tag{font-family:'Courier New',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* ── ?focus=lab: the whole tool on one screen for the Chapter 11 deck (no scrolling, deck palette, pop-ups) ── */
+body.focus{--bg:#fbf9f4; --panel:#fff; --panel2:#f4f1ea; --ink:#22262b; --mut:#5d6670; --line:rgba(42,46,51,.18);
+  --accent:#3f5d7b; --co2:#b9532a; --solar:#c9961c; --earth:#b8455e; background:#fbf9f4; color:#22262b; height:100vh; overflow:hidden;}
+body.focus .wrap{max-width:none; height:100vh; padding:.55rem .7rem .65rem; display:flex; flex-direction:column; gap:.55rem;}
+.fx-bar{flex:none; display:flex; align-items:center; gap:.45rem; flex-wrap:wrap;}
+.fx-spacer{flex:1;}
+.fx-pill{display:inline-flex; align-items:center; gap:.4rem; font:700 .78rem system-ui,sans-serif; color:#3a4048; background:#fff;
+  border:1px solid rgba(42,46,51,.22); border-radius:999px; padding:.4rem .85rem; cursor:pointer;}
+.fx-pill:hover{border-color:#2f4a66; color:#2f4a66;}
+.fx-pill svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.8;}
+body.focus .controls{margin:0; gap:.4rem;}
+body.focus .gas-btn{background:#fff; border:1px solid rgba(42,46,51,.22); padding:.36rem .8rem; font-size:.8rem;}
+body.focus .gas-btn.on{border-color:currentColor; box-shadow:inset 0 0 0 1px currentColor; background:#fbf9f4;}
+body.focus .gas-btn small{color:#7a8189;}
+.fx-main{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) clamp(230px,25vw,310px); gap:.65rem;}
+.fx-chart{display:flex; flex-direction:column; min-height:0; background:#fff; border:1px solid rgba(42,46,51,.16); border-radius:8px; padding:.45rem .55rem .4rem;}
+body.focus .stage{flex:1; min-height:0; background:transparent; padding:0; border-radius:0;}
+body.focus .stage canvas{position:absolute; inset:0; width:100%; height:100%;}
+body.focus .legend{margin-top:.3rem; font-size:.72rem; gap:.3rem 1rem;}
+.fx-side{display:flex; flex-direction:column; gap:.55rem; min-height:0; overflow:auto;}
+.fx-card{background:#fff; border:1px solid rgba(42,46,51,.16); border-radius:8px; padding:.65rem .75rem;}
+body.focus .slider-box{min-width:0;}
+body.focus .slider-box label{color:#4a5058; font-weight:600;}
+body.focus .slider-box label b{color:#86433d; font-family:Georgia,serif;}
+body.focus .slider-box > div{font-size:.62rem!important; color:#7a8189!important;}
+body.focus input[type=range]{height:9px; border-radius:999px; background:linear-gradient(90deg,#2f4a66,#3f5d7b,#587793,#7f97ad,#b3c0c8,#dcd5cb,#d6b29a,#c58b72,#aa6553,#86433d);}
+body.focus input[type=range]::-webkit-slider-thumb{width:20px; height:20px; background:#fffdf8; border:3px solid #22262b;}
+body.focus .toggle{color:#3a4048; font-size:.78rem;}
+body.focus .readout{margin:0; background:#f4f1ea; border:1px solid rgba(42,46,51,.14);}
+body.focus .readout .lbl{color:#5d6670; font-size:.64rem;}
+body.focus .readout .big{font:900 2.1rem Georgia,'Merriweather',serif; color:#86433d; line-height:1.1;}
+body.focus #absNote{color:#5d6670!important; font-size:.72rem!important;}
+body.focus input[type=checkbox]{accent-color:#2f4a66;}
+.fx-note{font-size:.76rem; color:#3a4048; line-height:1.5;}
+.fx-note b{color:#22262b;}
+.fx-pop{position:fixed; inset:0; z-index:50; background:rgba(28,33,41,.42); display:flex; align-items:center; justify-content:center; padding:1rem;}
+.fx-pop[hidden]{display:none;}
+.fx-popcard{position:relative; background:#fbf9f4; color:#22262b; border:1px solid rgba(42,46,51,.22); outline:1px solid rgba(63,93,123,.38); outline-offset:-6px;
+  border-radius:12px; width:min(780px,94vw); max-height:88vh; overflow:auto; padding:1.2rem 1.5rem 1.3rem; box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.fx-popcard h3{font:900 1.15rem Georgia,'Merriweather',serif; margin-bottom:.6rem; color:#22262b;}
+.fx-popcard .info h3{font:700 .92rem system-ui,sans-serif; margin:.6rem 0 .3rem;}
+.fx-popcard p{font-size:.86rem; color:#3a4048; margin-bottom:.5rem; line-height:1.55;}
+.fx-popcard .pill{background:#f4f1ea; border-color:rgba(42,46,51,.18); color:#3f5d7b;}
+.fx-popcard .disclaimer{background:#fbf3e6; border:1px solid rgba(185,83,42,.25); border-left:3px solid #b9532a; color:#4a3a2a; margin-top:0;}
+.fx-popcard .src{color:#4a5058;} .fx-popcard .src b{color:#22262b;}
+.fx-x{position:absolute; top:.55rem; right:.65rem; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(42,46,51,.07); font-size:1.3rem; line-height:1; cursor:pointer; color:#22262b;}
+.fx-x:hover{background:rgba(42,46,51,.14);}
 </style>
 </head>
 <body>
@@ -120,6 +168,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 
 <script>
 if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
+const FOCUS = new URLSearchParams(location.search).get('focus')==='lab';
+if(FOCUS) document.body.classList.add('focus');
+/* colours for the drawing: the original dark theme, or the deck's paper theme in focus mode */
+const PAL = FOCUS ? {
+  uv:'rgba(125,91,166,.07)', vis:'rgba(201,150,28,.07)', ir:'rgba(184,69,94,.04)',
+  winFill:'rgba(63,93,123,.08)', winStroke:'rgba(63,93,123,.45)', winText:'#3f5d7b', comb:'rgba(88,119,147,.2)',
+  sun:'#c9961c', sunFill:'rgba(201,150,28,.10)', earth:'#b8455e', earthFill:'rgba(184,69,94,.12)',
+  axis:'rgba(42,46,51,.4)', grid:'rgba(42,46,51,.08)', tick:'#5d6670', region:'rgba(42,46,51,.38)', mark:'rgba(185,83,42,.5)'
+} : {
+  uv:'rgba(150,120,220,.10)', vis:'rgba(255,255,255,.05)', ir:'rgba(224,102,47,.05)',
+  winFill:'rgba(94,200,216,.10)', winStroke:'rgba(94,200,216,.5)', winText:'#7fd6e2', comb:'rgba(127,168,189,.22)',
+  sun:'#f4c542', sunFill:'rgba(244,197,66,.10)', earth:'#dc4b6b', earthFill:'rgba(220,75,107,.16)',
+  axis:'rgba(255,255,255,.18)', grid:'rgba(255,255,255,.08)', tick:'#9fb6c2', region:'rgba(255,255,255,.35)', mark:'rgba(224,102,47,.4)'
+};
 
 // ── Gas absorption bands: {center µm, half-width (log-ish), peak absorptivity 0-1} ──
 // Simplified from HITRAN band structure (see sources). Longwave (thermal IR) focus.
@@ -136,6 +198,7 @@ const GASES = {
   O3:  {name:'Ozone', formula:'O₃', color:'#3fae6b', on:false,
         bands:[{c:9.6,w:.55,a:.85},{c:14,w:1.4,a:.35},{c:0.28,w:.05,a:1.0}]}  // 9.6µm IR + UV Hartley
 };
+if(FOCUS){ const C={H2O:'#3f7fb5',CO2:'#b9532a',CH4:'#a8841c',N2O:'#7d5ba6',O3:'#3f8a5a'}; for(const k in C) GASES[k].color=C[k]; }
 let CO2ppm = 420;
 let showWindow = true;
 
@@ -188,7 +251,7 @@ function combinedAbs(l){
 const cv=document.getElementById('spec');
 function draw(){
   const dpr=devicePixelRatio||1;
-  const W=cv.clientWidth, H=420;
+  const W=cv.clientWidth, H=FOCUS ? Math.max(220, cv.parentElement.clientHeight) : 420;
   cv.width=W*dpr; cv.height=H*dpr;
   const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
   ctx.clearRect(0,0,W,H);
@@ -198,18 +261,17 @@ function draw(){
   const Y=v=>pad.t+ch*(1-v);
 
   // region backgrounds: UV / Visible / IR
-  const regions=[[LMIN,0.4,'rgba(150,120,220,.10)','UV'],[0.4,0.7,'rgba(255,255,255,.05)','Visible'],
-                 [0.7,70,'rgba(224,102,47,.05)','Infrared']];
+  const regions=[[LMIN,0.4,PAL.uv,'UV'],[0.4,0.7,PAL.vis,'Visible'],[0.7,70,PAL.ir,'Infrared']];
   regions.forEach(([a,b,col,lab])=>{
     ctx.fillStyle=col; ctx.fillRect(X(a),pad.t,X(b)-X(a),ch);
   });
   // atmospheric window highlight
   if(showWindow){
-    ctx.fillStyle='rgba(94,200,216,.10)';
+    ctx.fillStyle=PAL.winFill;
     ctx.fillRect(X(8),pad.t,X(13)-X(8),ch);
-    ctx.strokeStyle='rgba(94,200,216,.5)'; ctx.setLineDash([4,4]); ctx.lineWidth=1;
+    ctx.strokeStyle=PAL.winStroke; ctx.setLineDash([4,4]); ctx.lineWidth=1;
     ctx.strokeRect(X(8),pad.t,X(13)-X(8),ch); ctx.setLineDash([]);
-    ctx.fillStyle='#7fd6e2'; ctx.font='11px system-ui'; ctx.textAlign='center';
+    ctx.fillStyle=PAL.winText; ctx.font='11px system-ui'; ctx.textAlign='center';
     ctx.fillText('atmospheric window', (X(8)+X(13))/2, pad.t+13);
   }
 
@@ -218,7 +280,7 @@ function draw(){
   ctx.moveTo(X(LMIN),Y(0));
   for(let i=0;i<=400;i++){ const l=LMIN*Math.pow(LMAX/LMIN,i/400); ctx.lineTo(X(l),Y(combinedAbs(l))); }
   ctx.lineTo(X(LMAX),Y(0)); ctx.closePath();
-  ctx.fillStyle='rgba(127,168,189,.22)'; ctx.fill();
+  ctx.fillStyle=PAL.comb; ctx.fill();
 
   // per-gas bands (outline) for the ON gases
   for(const key in GASES){ const g=GASES[key]; if(!g.on)continue;
@@ -239,32 +301,32 @@ function draw(){
     data.s.forEach(([l,v],i)=>{ const x=X(l),y=Y(v/data.peak*0.9); i?ctx.lineTo(x,y):ctx.moveTo(x,y); });
     ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke();
   }
-  curve(SUN,'#f4c542','rgba(244,197,66,.10)');
-  curve(EARTH,'#dc4b6b','rgba(220,75,107,.16)');
+  curve(SUN,PAL.sun,PAL.sunFill);
+  curve(EARTH,PAL.earth,PAL.earthFill);
 
   // axes
-  ctx.strokeStyle='rgba(255,255,255,.18)'; ctx.lineWidth=1;
+  ctx.strokeStyle=PAL.axis; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+ch); ctx.lineTo(pad.l+cw,pad.t+ch); ctx.stroke();
   // x ticks
   const ticks=[0.2,0.5,1,2,5,10,15,20,50];
-  ctx.fillStyle='#9fb6c2'; ctx.font='10px system-ui'; ctx.textAlign='center';
-  ticks.forEach(t=>{ const x=X(t); ctx.strokeStyle='rgba(255,255,255,.08)';
+  ctx.fillStyle=PAL.tick; ctx.font='10px system-ui'; ctx.textAlign='center';
+  ticks.forEach(t=>{ const x=X(t); ctx.strokeStyle=PAL.grid;
     ctx.beginPath(); ctx.moveTo(x,pad.t); ctx.lineTo(x,pad.t+ch); ctx.stroke();
-    ctx.fillStyle='#9fb6c2'; ctx.fillText(t,x,pad.t+ch+14); });
+    ctx.fillStyle=PAL.tick; ctx.fillText(t,x,pad.t+ch+14); });
   ctx.fillText('Wavelength (µm) — log scale', pad.l+cw/2, pad.t+ch+40);
   // y label
   ctx.save(); ctx.translate(14,pad.t+ch/2); ctx.rotate(-Math.PI/2); ctx.textAlign='center';
-  ctx.fillStyle='#9fb6c2'; ctx.fillText('Emission / Absorption →',0,0); ctx.restore();
+  ctx.fillStyle=PAL.tick; ctx.fillText('Emission / Absorption →',0,0); ctx.restore();
 
   // region labels along top
-  ctx.font='10px system-ui'; ctx.fillStyle='rgba(255,255,255,.35)';
+  ctx.font='10px system-ui'; ctx.fillStyle=PAL.region;
   ctx.textAlign='center';
   ctx.fillText('UV', X(0.3), pad.t+ch-6);
   ctx.fillText('VISIBLE', X(0.55), pad.t+ch-6);
   ctx.fillText('THERMAL INFRARED', X(20), pad.t+ch-6);
 
   // 15µm marker line
-  ctx.strokeStyle='rgba(224,102,47,.4)'; ctx.setLineDash([2,3]);
+  ctx.strokeStyle=PAL.mark; ctx.setLineDash([2,3]);
   ctx.beginPath(); ctx.moveTo(X(15),pad.t); ctx.lineTo(X(15),pad.t+ch); ctx.stroke(); ctx.setLineDash([]);
 }
 
@@ -293,6 +355,34 @@ for(const key in GASES){ const g=GASES[key];
 document.getElementById('co2').addEventListener('input',e=>{ CO2ppm=+e.target.value; document.getElementById('co2val').textContent=CO2ppm; draw(); updateReadout(); });
 document.getElementById('showWindow').addEventListener('change',e=>{ showWindow=e.target.checked; draw(); });
 let rz; window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(draw,120);});
+
+/* focus mode: rebuild the page as one screen, explanations and sources in pop-ups */
+if(FOCUS){
+  const wrap=document.querySelector('.wrap'), card=wrap.querySelector('.card');
+  const infos=[...wrap.querySelectorAll('.grid2 .info')].map(c=>'<div class="info">'+c.innerHTML+'</div>').join('');
+  const disc=wrap.querySelector('.disclaimer').outerHTML, src=wrap.querySelector('.src').outerHTML;
+  const I='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".9" fill="currentColor"/></svg>';
+  const B='<svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M8 12h8M8 16h6"/></svg>';
+  const bar=document.createElement('div'); bar.className='fx-bar';
+  bar.append(document.getElementById('gasBtns'));
+  bar.insertAdjacentHTML('beforeend','<span class="fx-spacer"></span><button class="fx-pill" type="button" data-fx="how">'+I+'How to use</button><button class="fx-pill" type="button" data-fx="src">'+B+'Sources</button>');
+  const chart=document.createElement('div'); chart.className='fx-chart';
+  chart.append(card.querySelector('.stage'), card.querySelector('.legend'));
+  const c1=document.createElement('div'); c1.className='fx-card'; c1.append(card.querySelector('.slider-box'));
+  const c2=document.createElement('div'); c2.className='fx-card'; c2.append(card.querySelector('.toggle'));
+  const side=document.createElement('div'); side.className='fx-side';
+  side.append(card.querySelector('.readout'), c1, c2);
+  side.insertAdjacentHTML('beforeend','<div class="fx-card fx-note"><b>The 15 µm CO₂ band.</b> Earth radiates most strongly near 10 µm, and CO₂ absorbs strongly at 15 µm, right where Earth emits much of its heat.</div>');
+  const main=document.createElement('div'); main.className='fx-main'; main.append(chart, side);
+  const pop=(id,t,h)=>'<div class="fx-pop" data-pop="'+id+'" hidden><div class="fx-popcard" role="dialog" aria-label="'+t+'"><button class="fx-x" type="button" aria-label="Close">&times;</button><h3>'+t+'</h3>'+h+'</div></div>';
+  wrap.innerHTML=''; wrap.append(bar, main);
+  wrap.insertAdjacentHTML('beforeend', pop('how','How to use',infos)+pop('src','Sources',disc+src));
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-fx]'); if(b){ document.querySelector('.fx-pop[data-pop="'+b.dataset.fx+'"]').hidden=false; return; }
+    if(e.target.closest('.fx-x') || e.target.classList.contains('fx-pop')){ e.target.closest('.fx-pop').hidden=true; }
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.fx-pop').forEach(p=>p.hidden=true); });
+}
 draw(); updateReadout();
 </script>
 </body>

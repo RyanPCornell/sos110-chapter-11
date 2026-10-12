@@ -57,6 +57,48 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .legend span{display:flex;align-items:center;gap:.35rem}
 .legend .d{width:14px;height:3px;border-radius:2px}
 body.embed .tag{margin-top:0}
+
+/* ── ?focus=lab: the whole modeler on one screen for the Chapter 11 deck (no scrolling, deck palette, tabs + pop-ups) ── */
+body.focus{--bg:#fbf9f4; --ink:#22262b; --mut:#5d6670; --line:rgba(42,46,51,.16); --accent:#2f4a66; --warm:#86433d; --cool:#5f7f62; --gold:#a8844a;
+  background:#fbf9f4; height:100vh; overflow:hidden;}
+body.focus .wrap{max-width:none; height:100vh; padding:.55rem .7rem .65rem; display:flex; flex-direction:column; gap:.55rem;}
+.fx-bar{flex:none; display:flex; align-items:center; gap:.45rem; flex-wrap:wrap;}
+.fx-spacer{flex:1;}
+.fx-tab,.fx-pill{display:inline-flex; align-items:center; gap:.4rem; font:700 .78rem system-ui,sans-serif; color:#3a4048; background:#fff;
+  border:1px solid rgba(42,46,51,.22); border-radius:999px; padding:.42rem .9rem; cursor:pointer;}
+.fx-tab:hover,.fx-pill:hover{border-color:#2f4a66; color:#2f4a66;}
+.fx-tab.on{background:#2f4a66; border-color:#2f4a66; color:#fff;}
+.fx-pill svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.8;}
+body.focus .layout{flex:1; min-height:0; margin:0; align-items:stretch; grid-template-columns:clamp(250px,27vw,320px) minmax(0,1fr); gap:.65rem;}
+body.focus .layout > .panel{overflow:auto; padding:.75rem .85rem; border-color:rgba(42,46,51,.16); border-radius:8px;}
+body.focus .panel h2{margin-bottom:.5rem; color:#3f5d7b;}
+body.focus .scn-grid{margin-bottom:.7rem; gap:.4rem;}
+body.focus .scn{background:#fff; border-color:rgba(42,46,51,.2); padding:.45rem .55rem;}
+body.focus .scn.on{background:#eef1f3; border-color:#2f4a66; box-shadow:0 0 0 1px #2f4a66;}
+body.focus .ctrl{margin-bottom:.75rem;}
+body.focus .ctrl label b{color:#86433d; font-family:Georgia,serif;}
+body.focus input[type=range]{height:8px; border-radius:999px; background:linear-gradient(90deg,#2f4a66,#3f5d7b,#587793,#7f97ad,#b3c0c8,#dcd5cb,#d6b29a,#c58b72,#aa6553,#86433d);}
+body.focus input[type=range]::-webkit-slider-thumb{width:18px; height:18px; background:#fffdf8; border:3px solid #22262b;}
+body.focus .seg{background:#efece5;} body.focus .seg-btn.on{background:#2f4a66;}
+.fx-note{font-size:.68rem; color:#7a8189; font-style:italic; margin-top:.2rem; line-height:1.45;}
+.fx-out{display:flex; flex-direction:column; gap:.5rem; min-height:0;}
+body.focus .cards{margin:0; gap:.5rem;}
+body.focus .mcard{padding:.55rem .7rem; border-color:rgba(42,46,51,.16); border-radius:8px;}
+body.focus .mcard .v{font-family:Georgia,'Merriweather',serif; font-size:1.45rem; color:#22262b;}
+body.focus .verdict{margin:0; padding:.55rem .8rem; font-size:.8rem;}
+.fx-pane{flex:1; min-height:0; display:none; flex-direction:column; background:#fff; border:1px solid rgba(42,46,51,.16); border-radius:8px; padding:.6rem .75rem .55rem;}
+.fx-pane.on{display:flex;}
+.fx-pane .chart-wrap{flex:1; min-height:0; height:auto!important;}
+.fx-pane .tips{overflow:auto;}
+.fx-pop{position:fixed; inset:0; z-index:50; background:rgba(28,33,41,.42); display:flex; align-items:center; justify-content:center; padding:1rem;}
+.fx-pop[hidden]{display:none;}
+.fx-popcard{position:relative; background:#fbf9f4; color:#22262b; border:1px solid rgba(42,46,51,.22); outline:1px solid rgba(63,93,123,.38); outline-offset:-6px;
+  border-radius:12px; width:min(780px,94vw); max-height:88vh; overflow:auto; padding:1.2rem 1.5rem 1.3rem; box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.fx-popcard h3{font:900 1.15rem Georgia,'Merriweather',serif; margin-bottom:.6rem;}
+.fx-popcard p{font-size:.86rem; color:#3a4048; margin-bottom:.6rem; line-height:1.6;}
+.fx-popcard .disclaimer{margin:0 0 .8rem;} .fx-popcard .src{margin:0;}
+.fx-x{position:absolute; top:.55rem; right:.65rem; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(42,46,51,.07); font-size:1.3rem; line-height:1; cursor:pointer; color:#22262b;}
+.fx-x:hover{background:rgba(42,46,51,.14);}
 </style>
 </head>
 <body>
@@ -142,6 +184,10 @@ body.embed .tag{margin-top:0}
 
 <script>
 if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
+const FOCUS = new URLSearchParams(location.search).get('focus')==='lab';
+if(FOCUS) document.body.classList.add('focus');
+const MP = FOCUS ? {proj:'#86433d', projFill:'rgba(134,67,61,.08)', obs:'#7a8189', thr:'rgba(168,132,74,.7)', thrText:'#8a6446', co2:'#3f5d7b', co2Fill:'rgba(63,93,123,.1)', axis:'#5d6670'}
+                 : {proj:'#d9534f', projFill:'rgba(217,83,79,.08)', obs:'#888', thr:'rgba(201,162,39,.6)', thrText:'#a9861f', co2:'#1f6f8b', co2Fill:'rgba(31,111,139,.08)', axis:'#5c7284'};
 
 // ── Constants (see sources) ──
 const E0 = 40;            // Gt CO2/yr present-day (Global Carbon Budget 2023)
@@ -218,6 +264,7 @@ function project(){
 
 // ── Canvas helpers ──
 function setup(id,h){
+  if(FOCUS){ const ph=document.getElementById(id).parentElement.clientHeight; if(ph>60) h=ph; }
   const c=document.getElementById(id), dpr=devicePixelRatio||1;
   const w=c.parentElement.clientWidth; c.width=w*dpr; c.height=h*dpr;
   c.style.width=w+'px'; c.style.height=h+'px';
@@ -236,30 +283,30 @@ function drawTemp(P){
   ctx.font='10px system-ui';
   [0,1,2,3,4].forEach(t=>{ if(t>tmax)return; const yy=Y(t);
     ctx.strokeStyle='rgba(0,0,0,.06)'; ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke();
-    ctx.fillStyle='#5c7284'; ctx.textAlign='right'; ctx.fillText(t+'°',pad.l-6,yy+3); });
+    ctx.fillStyle=MP.axis; ctx.textAlign='right'; ctx.fillText(t+'°',pad.l-6,yy+3); });
   // tipping threshold dashed lines
   [1.5,2,3].forEach(t=>{ if(t>tmax)return; const yy=Y(t);
-    ctx.strokeStyle='rgba(201,162,39,.6)'; ctx.setLineDash([5,4]); ctx.lineWidth=1;
+    ctx.strokeStyle=MP.thr; ctx.setLineDash([5,4]); ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle='#a9861f'; ctx.textAlign='left'; ctx.fillText(t+'°C',pad.l+4,yy-3); });
+    ctx.fillStyle=MP.thrText; ctx.textAlign='left'; ctx.fillText(t+'°C',pad.l+4,yy-3); });
   // x ticks
-  ctx.textAlign='center'; ctx.fillStyle='#5c7284';
+  ctx.textAlign='center'; ctx.fillStyle=MP.axis;
   [1850,1900,1950,2000,2050,2100].forEach(y=>{ ctx.fillText(y,X(y),h-8); });
   // Paris 1.5 & 2 target zone shading up to 2100 handled by lines above
   // historical
   ctx.beginPath();
   for(let y=1850;y<=2024;y++){ const x=X(y),yy=Y(histAnom(y)); y===1850?ctx.moveTo(x,yy):ctx.lineTo(x,yy); }
-  ctx.strokeStyle='#888'; ctx.lineWidth=2; ctx.stroke();
+  ctx.strokeStyle=MP.obs; ctx.lineWidth=2; ctx.stroke();
   // projection
   ctx.beginPath();
   P.years.forEach((y,i)=>{ const x=X(y),yy=Y(P.temp[i]); i===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy); });
-  ctx.strokeStyle='#d9534f'; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.strokeStyle=MP.proj; ctx.lineWidth=2.5; ctx.stroke();
   // fill under projection
   ctx.lineTo(X(2100),Y(0)); ctx.lineTo(X(2024),Y(0)); ctx.closePath();
-  ctx.fillStyle='rgba(217,83,79,.08)'; ctx.fill();
+  ctx.fillStyle=MP.projFill; ctx.fill();
   // peak marker
   const px=X(P.peakYr),py=Y(P.peak);
-  ctx.fillStyle='#d9534f'; ctx.beginPath(); ctx.arc(px,py,3.5,0,7); ctx.fill();
+  ctx.fillStyle=MP.proj; ctx.beginPath(); ctx.arc(px,py,3.5,0,7); ctx.fill();
   // axis border
   ctx.strokeStyle='rgba(0,0,0,.2)'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+chh); ctx.lineTo(pad.l+cw,pad.t+chh); ctx.stroke();
@@ -273,16 +320,16 @@ function drawCO2(P){
   const cmax=Math.max(500,Math.ceil(P.co2_2100/100)*100+50), cmin=380;
   const X=y=>pad.l+(y-y0)/(y1-y0)*cw;
   const Y=v=>pad.t+chh*(1-(v-cmin)/(cmax-cmin));
-  ctx.font='10px system-ui'; ctx.fillStyle='#5c7284';
+  ctx.font='10px system-ui'; ctx.fillStyle=MP.axis;
   for(let v=400;v<=cmax;v+=100){ const yy=Y(v);
     ctx.strokeStyle='rgba(0,0,0,.06)'; ctx.beginPath(); ctx.moveTo(pad.l,yy); ctx.lineTo(pad.l+cw,yy); ctx.stroke();
     ctx.textAlign='right'; ctx.fillText(v,pad.l-6,yy+3); }
   ctx.textAlign='center'; [2024,2050,2075,2100].forEach(y=>ctx.fillText(y,X(y),h-7));
   ctx.beginPath();
   P.years.forEach((y,i)=>{ const x=X(y),yy=Y(P.co2[i]); i===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy); });
-  ctx.strokeStyle='#1f6f8b'; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.strokeStyle=MP.co2; ctx.lineWidth=2.5; ctx.stroke();
   ctx.lineTo(X(2100),Y(cmin)); ctx.lineTo(X(2024),Y(cmin)); ctx.closePath();
-  ctx.fillStyle='rgba(31,111,139,.08)'; ctx.fill();
+  ctx.fillStyle=MP.co2Fill; ctx.fill();
   ctx.strokeStyle='rgba(0,0,0,.2)'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+chh); ctx.lineTo(pad.l+cw,pad.t+chh); ctx.stroke();
 }
@@ -342,6 +389,33 @@ document.querySelectorAll('#sensSeg .seg-btn').forEach(b=>b.addEventListener('cl
   document.getElementById('sensNote').textContent=notes[sens]; render();
 }));
 let rz; window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(render,120);});
+
+/* focus mode: one screen; the three result panels become tabs, the explanation and sources become pop-ups */
+if(FOCUS){
+  const wrap=document.querySelector('.wrap'), layout=wrap.querySelector('.layout');
+  const sub=wrap.querySelector('.sub').innerHTML, disc=wrap.querySelector('.disclaimer').outerHTML, src=wrap.querySelector('.src').outerHTML;
+  const out=layout.children[1], panels=[...out.querySelectorAll(':scope > .panel')];
+  const I='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".9" fill="currentColor"/></svg>';
+  const B='<svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M8 12h8M8 16h6"/></svg>';
+  const names=['Temperature','CO\u2082 in the air','Tipping points'];
+  const bar=document.createElement('div'); bar.className='fx-bar';
+  bar.innerHTML=names.map((n,i)=>'<button class="fx-tab'+(i?'':' on')+'" type="button" data-pane="'+i+'">'+n+'</button>').join('')
+    +'<span class="fx-spacer"></span><button class="fx-pill" type="button" data-fx="how">'+I+'How to use</button><button class="fx-pill" type="button" data-fx="src">'+B+'Sources</button>';
+  panels.forEach((p,i)=>{ p.removeAttribute('style'); p.className='fx-pane'+(i?'':' on'); });
+  out.className='fx-out';
+  layout.children[0].insertAdjacentHTML('beforeend','<div class="fx-note">Educational estimates only, from a simplified emulator. See Sources.</div>');
+  const pop=(id,t,h)=>'<div class="fx-pop" data-pop="'+id+'" hidden><div class="fx-popcard" role="dialog" aria-label="'+t+'"><button class="fx-x" type="button" aria-label="Close">&times;</button><h3>'+t+'</h3>'+h+'</div></div>';
+  wrap.innerHTML=''; wrap.append(bar, layout);
+  wrap.insertAdjacentHTML('beforeend', pop('how','How to use','<p>'+sub+'</p><p><b>1.</b> Pick an emissions pathway, or fine-tune when the world reaches net-zero and how emissions are trending today. <b>2.</b> Choose a climate sensitivity. <b>3.</b> Read the results across the top, then switch between the <b>Temperature</b>, <b>CO\u2082</b> and <b>Tipping points</b> tabs.</p>')
+    + pop('src','Sources and limits', disc+src));
+  bar.addEventListener('click',e=>{ const t=e.target.closest('[data-pane]'); if(!t) return;
+    bar.querySelectorAll('.fx-tab').forEach(x=>x.classList.toggle('on',x===t)); panels.forEach((p,i)=>p.classList.toggle('on',i===+t.dataset.pane)); render(); });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-fx]'); if(b){ document.querySelector('.fx-pop[data-pop="'+b.dataset.fx+'"]').hidden=false; return; }
+    if(e.target.closest('.fx-x') || e.target.classList.contains('fx-pop')) e.target.closest('.fx-pop').hidden=true;
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.fx-pop').forEach(p=>p.hidden=true); });
+}
 syncLabels(); render();
 </script>
 </body>

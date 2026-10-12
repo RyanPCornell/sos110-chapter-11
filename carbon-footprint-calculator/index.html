@@ -173,10 +173,66 @@ canvas{display:block}
 body.embed header{display:none}
 
 @media(max-width:960px){.wrap{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+
+/* ── ?focus=lab: the calculator on one screen for the Chapter 11 deck (no scrolling, deck palette, tabs + pop-ups) ── */
+body.focus{--forest:#22262b; --forest-mid:#2f4a66; --sage:#3f5d7b; --sage-lt:#9fb3c4; --sage-pale:#dfe5ea; --gold:#a8844a; --gold-lt:#c9a87a; --gold-pale:#f4ecdf;
+  --cream:#f4f1ea; --cream-dk:#e3ddd1; --ink:#22262b; --mist:#7a8189; --white:#fff; --red:#86433d; --blue:#86433d; --purple:#7d6a8c;
+  background:#fbf9f4; height:100vh; overflow:hidden;}
+body.focus header{display:none;}
+body.focus .wrap{max-width:none; height:100vh; padding:.55rem .7rem .65rem; display:flex; flex-direction:column; gap:.55rem;}
+.fx-bar{flex:none; display:flex; align-items:center; gap:.45rem; flex-wrap:wrap;}
+.fx-spacer{flex:1;}
+.fx-tab,.fx-pill{display:inline-flex; align-items:center; gap:.4rem; font:700 .78rem system-ui,sans-serif; color:#3a4048; background:#fff;
+  border:1px solid rgba(42,46,51,.22); border-radius:999px; padding:.42rem .9rem; cursor:pointer;}
+.fx-tab:hover,.fx-pill:hover{border-color:#2f4a66; color:#2f4a66;}
+.fx-tab.on{background:#2f4a66; border-color:#2f4a66; color:#fff;}
+.fx-pill svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.8;}
+.fx-lbl{font:800 .62rem system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#3f5d7b; margin-right:.15rem;}
+.fx-main{flex:1; min-height:0; display:grid; grid-template-columns:clamp(270px,29vw,350px) minmax(0,1fr); gap:.65rem;}
+.fx-in{display:flex; flex-direction:column; gap:.5rem; min-height:0;}
+.fx-in .panel{flex:1; min-height:0; overflow:auto; border-color:rgba(42,46,51,.16); border-radius:8px;}
+body.focus .fx-in .ph{display:none;}
+body.focus .fx-in .panel-body-wrap{max-height:none!important; overflow:visible;}
+.fx-note{flex:none; font:italic .7rem system-ui,sans-serif; color:#7a8189; line-height:1.45;}
+body.focus input[type=range]{height:7px; border-radius:999px; background:linear-gradient(90deg,#2f4a66,#3f5d7b,#587793,#7f97ad,#b3c0c8,#dcd5cb,#d6b29a,#c58b72,#aa6553,#86433d);}
+body.focus input[type=range]::-webkit-slider-thumb{background:#fffdf8; border:3px solid #22262b;}
+body.focus .seg-btn.on{background:#2f4a66;}
+.fx-out{display:flex; flex-direction:column; gap:.5rem; min-height:0;}
+body.focus .total{background:#2f4a66; padding:.75rem 1rem; flex-direction:row; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+body.focus .t-num{font-size:2rem;}
+body.focus .t-sub{display:none;}
+body.focus .t-pills{margin:0;}
+body.focus .insight{padding:.45rem .8rem; font-size:.74rem; line-height:1.45;}
+body.focus .cards{gap:.5rem;}
+body.focus .card{padding:.55rem .75rem;}
+body.focus .card-val{font-size:1.15rem;}
+.fx-out > .panel{flex:1; min-height:0; display:flex; flex-direction:column; border-color:rgba(42,46,51,.16); border-radius:8px;}
+body.focus .fx-out > .panel > .ph{display:none;}
+body.focus .fx-out > .panel > .pb{flex:1; min-height:0; display:flex; flex-direction:column; padding:.55rem .8rem .6rem;}
+body.focus .chart-tabs{flex:none; margin-bottom:.45rem;}
+body.focus .ctab.on{border-bottom-color:#86433d;}
+body.focus .cview.on{flex:1; min-height:0; display:flex; flex-direction:column;}
+body.focus .cview .chart-wrap{flex:1; min-height:0; height:auto;}
+body.focus #cv-range > p, body.focus #cv-range > div:last-child, body.focus #range-detail{display:none!important;}
+body.focus #cv-range > div[style*="height:340px"]{flex:1; min-height:0; height:auto!important;}
+body.focus #cv-cmp{overflow:auto; justify-content:center;}
+body.focus #cv-items{overflow:auto;}
+body.focus .bk-table td{padding:.42rem .7rem; font-size:.76rem;} body.focus .bk-table th{padding:.4rem .7rem;}
+.fx-pop{position:fixed; inset:0; z-index:200; background:rgba(28,33,41,.42); display:flex; align-items:center; justify-content:center; padding:1rem;}
+.fx-pop[hidden]{display:none;}
+.fx-popcard{position:relative; background:#fbf9f4; color:#22262b; border:1px solid rgba(42,46,51,.22); outline:1px solid rgba(63,93,123,.38); outline-offset:-6px;
+  border-radius:12px; width:min(860px,94vw); max-height:88vh; overflow:auto; padding:1.2rem 1.5rem 1.3rem; box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.fx-popcard h3{font:900 1.15rem Georgia,serif; margin-bottom:.6rem;}
+.fx-popcard p.fx-p{font:400 .86rem/1.6 system-ui,sans-serif; color:#3a4048; margin-bottom:.6rem;}
+.fx-popcard .disclaimer{margin-bottom:.8rem;}
+.fx-popcard .panel{border:0; background:transparent;} .fx-popcard .ph{display:none;} .fx-popcard .pb{padding:0;}
+.fx-x{position:absolute; top:.55rem; right:.65rem; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(42,46,51,.07); font-size:1.3rem; line-height:1; cursor:pointer; color:#22262b;}
+.fx-x:hover{background:rgba(42,46,51,.14);}
 </style>
 </head>
 <body>
-<script>if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');</script>
+<script>if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
+var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS) document.body.classList.add('focus');</script>
 
 <header>
   <div class="hdr">
@@ -615,6 +671,7 @@ const aiWh = {lo:0.24, mid:0.30, hi:3.0};  // Wh/prompt (Google 2025 / Epoch AI 
 const US_AVG=16000, GLOBAL_AVG=4700, TARGET_2050=2000;
 
 const CLR = {transport:'#4a7c59',food:'#c8963e',energy:'#5b9bd5',consumer:'#a07cc5'};
+if(FOCUS){ CLR.transport='#3f5d7b'; CLR.food='#b88a4e'; CLR.energy='#86433d'; CLR.consumer='#7d6a8c'; }
 
 // ═══════════════════════════════════════════════
 // CALC (returns kg CO₂e)
@@ -750,7 +807,8 @@ function drawDonut(id, labels, values, colors) {
 
 let activeTab='bar';
 function renderCharts(r) {
-  const barColors=['#4a7c59','#7aab8a','#a8cdb5','#c8963e','#e8b86d','#5b9bd5','#8ec1ea','#a07cc5','#c5a8e8','#c8a0d4','#b594d6'];
+  const barColors=FOCUS?['#2f4a66','#3f5d7b','#7f97ad','#b88a4e','#d6b29a','#86433d','#aa6553','#7d6a8c','#94839f','#ab9cb5','#c3b8cb']
+                       :['#4a7c59','#7aab8a','#a8cdb5','#c8963e','#e8b86d','#5b9bd5','#8ec1ea','#a07cc5','#c5a8e8','#c8a0d4','#b594d6'];
   const d=r.d;
   if (activeTab==='bar') {
     drawBar('ch-bar',
@@ -867,7 +925,7 @@ function setSeg(k,v,btn){ s[k]=v; document.getElementById('sg-'+k).querySelector
 
 function switchTab(name,btn){
   btn.parentElement.querySelectorAll('.ctab').forEach(t=>t.classList.remove('on'));
-  ['bar','donut','range'].forEach(v=>document.getElementById('cv-'+v).classList.remove('on'));
+  btn.closest('.pb').querySelectorAll('.cview').forEach(v=>v.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('cv-'+name).classList.add('on');
   activeTab=name; go();
@@ -1030,7 +1088,48 @@ function initPanels(){
 
 let rzTimer;
 window.addEventListener('resize',()=>{ clearTimeout(rzTimer); rzTimer=setTimeout(go,150); });
-document.addEventListener('DOMContentLoaded',()=>{ updateMilesState(); go(); initPanels(); });
+/* focus mode: inputs become tabs, results one tabbed panel, explanations and sources pop-ups */
+function focusSetup(){
+  const wrap=document.querySelector('.wrap'), ctrl=wrap.querySelector('.ctrl-col'), out=wrap.querySelector('.out-col');
+  const ins=[...ctrl.querySelectorAll(':scope > .panel')], outs=[...out.querySelectorAll(':scope > .panel')];
+  const [chartP, cmpP, itemsP, srcP, methP]=outs;
+  const disc=wrap.querySelector('.disclaimer').outerHTML;
+  const I='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".9" fill="currentColor"/></svg>';
+  const B='<svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M8 12h8M8 16h6"/></svg>';
+  const R='<svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/></svg>';
+  const bar=document.createElement('div'); bar.className='fx-bar';
+  bar.innerHTML='<span class="fx-lbl">Your inputs</span>'+ins.map((p,i)=>'<button class="fx-tab'+(i?'':' on')+'" type="button" data-in="'+i+'">'
+      +p.querySelector('.ph-icon').textContent+' '+p.querySelector('.ph-title').textContent.replace(' & Diet','').replace(' Choices','')+'</button>').join('')
+    +'<span class="fx-spacer"></span><button class="fx-pill" type="button" data-reset>'+R+'Reset</button>'
+    +'<button class="fx-pill" type="button" data-fx="how">'+I+'How to use</button><button class="fx-pill" type="button" data-fx="src">'+B+'Sources</button>';
+  ins.forEach((p,i)=>{ p.style.display=i?'none':''; });
+  const inCol=document.createElement('div'); inCol.className='fx-in'; inCol.append(...ins);
+  inCol.insertAdjacentHTML('beforeend','<div class="fx-note">Educational estimates only, not precise measurements of anyone\u2019s actual emissions. See Sources.</div>');
+  /* the comparison and the line-item table become two more views in the results panel */
+  const tabs=chartP.querySelector('.chart-tabs'), pb=chartP.querySelector('.pb');
+  tabs.insertAdjacentHTML('beforeend','<button class="ctab" onclick="switchTab(\'cmp\',this)">How You Compare</button><button class="ctab" onclick="switchTab(\'items\',this)">Line Items</button>');
+  const vc=document.createElement('div'); vc.className='cview'; vc.id='cv-cmp'; vc.append(...cmpP.querySelector('.pb').children);
+  const vi=document.createElement('div'); vi.className='cview'; vi.id='cv-items'; vi.append(itemsP.querySelector('.table-scroll'));
+  pb.append(vc, vi);
+  out.className='fx-out'; out.replaceChildren(...[...out.children].filter(e=>e!==cmpP && e!==itemsP && e!==srcP && e!==methP));
+  const main=document.createElement('div'); main.className='fx-main'; main.append(inCol, out);
+  const pop=(id,t,h)=>'<div class="fx-pop" data-pop="'+id+'" hidden><div class="fx-popcard" role="dialog" aria-label="'+t+'"><button class="fx-x" type="button" aria-label="Close">&times;</button><h3>'+t+'</h3>'+h+'</div></div>';
+  const how='<p class="fx-p">Set your <b>inputs</b> one category at a time with the tabs at the top left (Transportation, Food, Home Energy, Consumer). The total, the four category cards and the charts update as you go.</p>'
+    +'<p class="fx-p">Switch the results panel between <b>By Activity</b> (which choices emit the most), <b>Composition</b> (share by category), <b>Sensitivity</b> (low, central and high estimates), <b>How You Compare</b> (US average, world average and a 2050 target) and <b>Line Items</b>.</p>';
+  wrap.replaceChildren(bar, main);
+  wrap.insertAdjacentHTML('beforeend', pop('how','How to use',how)+pop('src','Sources and methodology', disc+itemsP.querySelector('.meth').outerHTML+srcP.outerHTML+methP.outerHTML));
+  bar.addEventListener('click',e=>{
+    if(e.target.closest('[data-reset]')){ resetAll(); return; }
+    const t=e.target.closest('[data-in]'); if(!t) return;
+    bar.querySelectorAll('.fx-tab').forEach(x=>x.classList.toggle('on',x===t)); ins.forEach((p,i)=>{ p.style.display=(i===+t.dataset.in)?'':'none'; });
+  });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-fx]'); if(b){ document.querySelector('.fx-pop[data-pop="'+b.dataset.fx+'"]').hidden=false; return; }
+    if(e.target.closest('.fx-x') || e.target.classList.contains('fx-pop')) e.target.closest('.fx-pop').hidden=true;
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.fx-pop').forEach(p=>p.hidden=true); });
+}
+document.addEventListener('DOMContentLoaded',()=>{ if(FOCUS) focusSetup(); updateMilesState(); go(); if(!FOCUS) initPanels(); else requestAnimationFrame(go); });
 </script>
 </body>
 </html>

@@ -172,6 +172,48 @@ nav::-webkit-scrollbar{display:none}
 /* ── Embed mode (single-tab embedding in slideshows) ── */
 body.embed header, body.embed nav { display:none; }
 body.embed .tab-panel.active { padding-top:1.5rem; }
+
+/* ── ?focus=lab (+ #weather): one tab on one screen for the Chapter 11 deck: no scrolling, deck palette, pop-ups ── */
+body.focus{background:#fbf9f4; color:#22262b; height:100vh; overflow:hidden;}
+body.focus header, body.focus nav{display:none;}
+body.focus .tab-panel.active{display:flex; flex-direction:column; gap:.55rem; height:100vh; max-width:none; padding:.55rem .7rem .65rem;}
+.fx-bar{flex:none; display:flex; align-items:center; gap:.45rem; flex-wrap:wrap;}
+.fx-spacer{flex:1;}
+.fx-tab,.fx-pill{display:inline-flex; align-items:center; gap:.4rem; font:700 .78rem 'Inter',system-ui,sans-serif; color:#3a4048; background:#fff;
+  border:1px solid rgba(42,46,51,.22); border-radius:999px; padding:.42rem .9rem; cursor:pointer;}
+.fx-tab:hover,.fx-pill:hover{border-color:#2f4a66; color:#2f4a66;}
+.fx-tab.on{background:#2f4a66; border-color:#2f4a66; color:#fff;}
+.fx-tab small{font-weight:500; opacity:.75;}
+.fx-pill svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.8;}
+.fx-pane{flex:1; min-height:0; display:none; grid-template-columns:minmax(0,1fr) clamp(240px,26vw,320px); gap:.65rem;}
+.fx-pane.on{display:grid;}
+.fx-chart{display:flex; flex-direction:column; min-height:0; background:#fff; border:1px solid rgba(42,46,51,.16); border-radius:8px; padding:.6rem .7rem .5rem;}
+.fx-chart .fx-ct{flex:none; font:700 .86rem 'Merriweather',Georgia,serif; color:#22262b; margin-bottom:.3rem;}
+body.focus .fx-chart .chart-box{flex:1; min-height:0; height:auto; position:relative;}
+.fx-side{display:flex; flex-direction:column; gap:.55rem; min-height:0; overflow:auto;}
+.fx-card{background:#fff; border:1px solid rgba(42,46,51,.16); border-radius:8px; padding:.65rem .75rem;}
+.fx-card .fx-k{font:800 .62rem 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#3f5d7b; margin-bottom:.4rem;}
+body.focus .fx-card .lab-sub{margin:0; font-size:.76rem; line-height:1.5; color:#3a4048;}
+body.focus .fx-wins{display:flex; flex-direction:column; gap:.35rem;}
+body.focus .fx-wins .btn{width:100%; justify-content:flex-start; text-align:left; background:#fff; color:#3a4048; border:1px solid rgba(42,46,51,.22); border-radius:8px;
+  font:600 .8rem 'Inter',sans-serif; padding:.5rem .7rem; box-shadow:none;}
+body.focus .fx-wins .btn:hover{border-color:#2f4a66;}
+body.focus .fx-wins .btn.active{background:#2f4a66; color:#fff; border-color:#2f4a66;}
+body.focus .fx-card .toggle{margin:.55rem 0 0!important; font-size:.78rem; color:#3a4048;}
+body.focus input[type=checkbox]{accent-color:#2f4a66;}
+body.focus .fx-side .verdict{margin:0; border-radius:8px; font-size:.78rem; line-height:1.5; background:#f4f1ea; border:1px solid rgba(42,46,51,.14); border-left:4px solid #3f5d7b; color:#22262b;}
+body.focus .fx-side .verdict.v-cold{border-left-color:#3f5d7b;} body.focus .fx-side .verdict.v-warn{border-left-color:#c58b72;}
+body.focus .fx-side .verdict.v-good{border-left-color:#5f7f62;} body.focus .fx-side .verdict.v-bad{border-left-color:#86433d;}
+body.focus .fx-side .verdict strong{color:#22262b; font-family:'Merriweather',Georgia,serif;}
+.fx-pop{position:fixed; inset:0; z-index:200; background:rgba(28,33,41,.42); display:flex; align-items:center; justify-content:center; padding:1rem;}
+.fx-pop[hidden]{display:none;}
+.fx-popcard{position:relative; background:#fbf9f4; color:#22262b; border:1px solid rgba(42,46,51,.22); outline:1px solid rgba(63,93,123,.38); outline-offset:-6px;
+  border-radius:12px; width:min(760px,94vw); max-height:88vh; overflow:auto; padding:1.2rem 1.5rem 1.3rem; box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.fx-popcard h3{font:900 1.15rem 'Merriweather',Georgia,serif; margin-bottom:.6rem;}
+.fx-popcard p{font-size:.86rem; color:#3a4048; margin-bottom:.6rem; line-height:1.6;}
+.fx-popcard .fx-src{font-size:.8rem; color:#4a5058; line-height:1.6; margin-bottom:.4rem;}
+.fx-x{position:absolute; top:.55rem; right:.65rem; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(42,46,51,.07); font-size:1.3rem; line-height:1; cursor:pointer; color:#22262b;}
+.fx-x:hover{background:rgba(42,46,51,.14);}
 </style>
 </head>
 <body>
@@ -766,6 +808,11 @@ const dayLabels=[];
   let m=0,dleft=dim[0];
   for(let d=0;d<365;d++){ if(dleft===0){m++;dleft=dim[m];} dayLabels.push(md[m]+' '+(dim[m]-dleft+1)); dleft--; }
 })();
+const FOCUS = new URLSearchParams(location.search).get('focus')==='lab';
+const WPAL = FOCUS ? {line:'#3f5d7b', fill:'rgba(63,93,123,.12)', trend:'#86433d', grid:'rgba(42,46,51,.08)', axis:'#5d6670',
+                      pos:'rgba(170,101,83,.85)', neg:'rgba(88,119,147,.85)', ctrend:'#22262b'}
+                   : {line:'#2D6A4F', fill:'rgba(45,106,79,.1)', trend:'#D4691E', grid:'#E3EFE7', axis:'#4A5B4E',
+                      pos:'rgba(192,57,43,.78)', neg:'rgba(45,106,79,.78)', ctrend:'#E9B44C'};
 let dailyChart=null, dailyMode='snap';
 const dailyRanges={ snap:{s:131,e:142,label:'May 12–22'}, month:{s:114,e:160,label:'late Apr–early Jun'}, year:{s:0,e:365,label:'full year'} };
 function initDaily(){
@@ -774,7 +821,7 @@ function initDaily(){
     responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+'°C'}}},
     scales:{x:{grid:{display:false},ticks:{maxTicksLimit:12,font:{size:10}}},
-      y:{grid:{color:'#E3EFE7'},ticks:{callback:v=>v+'°',font:{size:11}},title:{display:true,text:'Daily High (°C)',font:{size:11},color:'#4A5B4E'}}}
+      y:{grid:{color:WPAL.grid},ticks:{callback:v=>v+'°',font:{size:11}},title:{display:true,text:'Daily High (°C)',font:{size:11},color:WPAL.axis}}}
   }});
   redrawDaily();
 }
@@ -796,8 +843,8 @@ function redrawDaily(){
   const labels=dayLabels.slice(r.s,r.e);
   const vals=dailyTemps.slice(r.s,r.e);
   const xs=vals.map((_,i)=>i);
-  const ds=[{label:'Daily high',data:vals,borderColor:'#2D6A4F',backgroundColor:'rgba(45,106,79,.1)',borderWidth:2.5,pointRadius:dailyMode==='snap'?3:0,tension:.3,fill:true}];
-  if(document.getElementById('wdTrend').checked) ds.push({label:'Trend',data:lin(xs,vals),borderColor:'#D4691E',borderWidth:2.5,borderDash:[6,3],pointRadius:0});
+  const ds=[{label:'Daily high',data:vals,borderColor:WPAL.line,backgroundColor:WPAL.fill,borderWidth:2.5,pointRadius:dailyMode==='snap'?3:0,tension:.3,fill:true}];
+  if(document.getElementById('wdTrend').checked) ds.push({label:'Trend',data:lin(xs,vals),borderColor:WPAL.trend,borderWidth:2.5,borderDash:[6,3],pointRadius:0});
   dailyChart.data.labels=labels; dailyChart.data.datasets=ds; dailyChart.update();
 }
 
@@ -824,7 +871,7 @@ function initClimate(){
     responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(c.parsed.y>0?'+':'')+c.parsed.y.toFixed(2)+'°C'}}},
     scales:{x:{grid:{display:false},ticks:{maxTicksLimit:14,font:{size:10}}},
-      y:{grid:{color:'#E3EFE7'},ticks:{callback:v=>(v>0?'+':'')+v.toFixed(1),font:{size:11}},title:{display:true,text:'Temp anomaly vs 1901–2000 (°C)',font:{size:11},color:'#4A5B4E'}}}
+      y:{grid:{color:WPAL.grid},ticks:{callback:v=>(v>0?'+':'')+v.toFixed(1),font:{size:11}},title:{display:true,text:'Temp anomaly vs 1901–2000 (°C)',font:{size:11},color:WPAL.axis}}}
   }});
   redrawClimate();
 }
@@ -838,8 +885,8 @@ function redrawClimate(){
   if(!climChart) return;
   const r=climRanges[climMode], si=r.s-1880, ei=r.e-1880+1;
   const labels=climYears.slice(si,ei), vals=climVals.slice(si,ei), xs=vals.map((_,i)=>i);
-  const ds=[{label:'Anomaly',data:vals,backgroundColor:vals.map(v=>v>=0?'rgba(192,57,43,.78)':'rgba(45,106,79,.78)'),borderRadius:2}];
-  if(document.getElementById('climTrend').checked) ds.push({type:'line',label:'Trend',data:lin(xs,vals),borderColor:'#E9B44C',borderWidth:3,pointRadius:0,tension:.1});
+  const ds=[{label:'Anomaly',data:vals,backgroundColor:vals.map(v=>v>=0?WPAL.pos:WPAL.neg),borderRadius:2}];
+  if(document.getElementById('climTrend').checked) ds.push({type:'line',label:'Trend',data:lin(xs,vals),borderColor:WPAL.ctrend,borderWidth:3,pointRadius:0,tension:.1});
   climChart.data.labels=labels; climChart.data.datasets=ds; climChart.update();
   const e=climExp[climMode], v=document.getElementById('climVerdict');
   v.className='verdict '+e.cls;
@@ -1047,6 +1094,47 @@ function applyEmbedHash(){
   if(h && document.getElementById('tab-'+h)) activateTabById(h);
 }
 window.addEventListener('DOMContentLoaded', applyEmbedHash);
+
+if(FOCUS){
+  document.body.classList.add('focus');
+  const P=document.getElementById('tab-weather');
+  const sub=P.querySelector('.section-subtitle').innerHTML, analogy=P.querySelector('.callout .callout-body').innerHTML;
+  const labs=[...P.querySelectorAll('.lab')];
+  const I='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".9" fill="currentColor"/></svg>';
+  const B='<svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M8 12h8M8 16h6"/></svg>';
+  const names=[['Lab 1','One real year of daily weather'],['Lab 2','140 years of global temperature']];
+  const bar=document.createElement('div'); bar.className='fx-bar';
+  bar.innerHTML=names.map((n,i)=>'<button class="fx-tab'+(i?'':' on')+'" type="button" data-lab="'+i+'">'+n[0]+' <small>'+n[1]+'</small></button>').join('')
+    +'<span class="fx-spacer"></span><button class="fx-pill" type="button" data-fx="how">'+I+'How to use</button><button class="fx-pill" type="button" data-fx="src">'+B+'Sources</button>';
+  const dataNotes=[];
+  const panes=labs.map((L,i)=>{
+    const pane=document.createElement('div'); pane.className='fx-pane'+(i?'':' on');
+    const chart=document.createElement('div'); chart.className='fx-chart';
+    chart.innerHTML='<div class="fx-ct">'+L.querySelector('.lab-title').textContent.replace(/^Lab \d · /,'')+'</div>';
+    chart.append(L.querySelector('.chart-box'));
+    const side=document.createElement('div'); side.className='fx-side';
+    dataNotes.push('<p><b>'+names[i][0]+'.</b> '+L.querySelector('.lab-sub').innerHTML+'</p>');
+    const win=document.createElement('div'); win.className='fx-card'; win.innerHTML='<div class="fx-k">Window</div><div class="fx-wins"></div>';
+    const row=L.querySelector('.pill-row'); row.querySelectorAll('.btn').forEach(b=>win.querySelector('.fx-wins').append(b)); win.append(row.querySelector('.toggle'));
+    side.append(win, L.querySelector('.verdict'));
+    pane.append(chart, side); return pane;
+  });
+  const pop=(id,t,h)=>'<div class="fx-pop" data-pop="'+id+'" hidden><div class="fx-popcard" role="dialog" aria-label="'+t+'"><button class="fx-x" type="button" aria-label="Close">&times;</button><h3>'+t+'</h3>'+h+'</div></div>';
+  P.innerHTML=''; P.append(bar, ...panes);
+  P.insertAdjacentHTML('beforeend',
+    pop('how','How to use','<p>'+sub+'</p><p>Pick a <b>window</b> on the right to zoom in or out, and turn on the <b>trend line</b> to compare what each window seems to say. Start with Lab 1 (one year of daily weather), then try the same trick on Lab 2 (the global record).</p>'+dataNotes.join('')+'<p>'+analogy.replace('<strong>The analogy</strong>','<b>The analogy.</b> ')+'</p>')
+   +pop('src','Sources','<p class="fx-src"><b>Lab 1.</b> Daily high temperatures, Minneapolis, Minnesota, 2022: Open-Meteo Historical Weather API (ERA5 reanalysis of observations, ECMWF Copernicus Climate Change Service). open-meteo.com.</p>'
+     +'<p class="fx-src"><b>Lab 2.</b> Global land and ocean surface temperature anomalies, 1880&ndash;2023, relative to the 1901&ndash;2000 average: NOAA National Centers for Environmental Information, <i>Climate at a Glance: Global Time Series</i>. ncei.noaa.gov.</p>'
+     +'<p class="fx-src">The 1998&ndash;2012 &ldquo;pause&rdquo; window and its explanation follow the record El Ni&ntilde;o of 1997&ndash;98; see IPCC AR6 WGI, Cross-Chapter Box 3.1.</p>'));
+  bar.addEventListener('click',e=>{ const t=e.target.closest('[data-lab]'); if(!t) return;
+    bar.querySelectorAll('.fx-tab').forEach(x=>x.classList.toggle('on',x===t)); panes.forEach((p,i)=>p.classList.toggle('on',i===+t.dataset.lab));
+    setTimeout(()=>{ if(dailyChart) dailyChart.resize(); if(climChart) climChart.resize(); },30); });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-fx]'); if(b){ document.querySelector('.fx-pop[data-pop="'+b.dataset.fx+'"]').hidden=false; return; }
+    if(e.target.closest('.fx-x') || e.target.classList.contains('fx-pop')) e.target.closest('.fx-pop').hidden=true;
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.fx-pop').forEach(p=>p.hidden=true); });
+}
 window.addEventListener('hashchange', ()=>{
   const h=(location.hash||'').replace('#','');
   if(h && document.getElementById('tab-'+h)) activateTabById(h);
