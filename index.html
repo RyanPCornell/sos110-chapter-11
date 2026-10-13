@@ -1311,12 +1311,17 @@ body{background:#1c2129;}
 .co-num{font:900 clamp(3rem,8vw,6.4rem)/1 'Merriweather',serif; margin-top:auto; font-variant-numeric:tabular-nums; color:#9fb6cb;}
 .co-not .co-num{color:#e0846b;}
 .co-what{font:700 clamp(1rem,1.8vw,1.45rem) 'Inter',sans-serif; color:#f4efe6; margin-top:.25rem;}
-.co-bar{position:relative; height:clamp(20px,4vh,34px); margin-top:clamp(.8rem,2.4vh,1.4rem); border-radius:3px; background:linear-gradient(90deg,#3f5d7b,#587793);}
-.co-not .co-bar{background:linear-gradient(90deg,#6b5a4e,#7d6a5c);}
-.co-slice{position:absolute; top:-3px; bottom:-3px; right:0; width:0; border-radius:2px; background:#f4efe6; box-shadow:0 0 0 2px #161a20; transition:width 1.1s cubic-bezier(.2,.9,.3,1) .25s;}
-.co-not .co-slice{background:#e0846b;}
-.co-barcap{display:flex; justify-content:space-between; gap:.6rem; margin-top:.35rem; font:600 clamp(.64rem,.95vw,.8rem) 'Inter',sans-serif; color:#8e98a2;}
-.co-barcap b{color:#dcd5cb;}
+.co-bar{position:relative; height:clamp(20px,4vh,34px); margin-top:clamp(.8rem,2.4vh,1.4rem); border-radius:3px; background:rgba(220,213,203,.1); box-shadow:inset 0 0 0 1px rgba(220,213,203,.18);}
+.co-fill{position:absolute; top:0; bottom:0; left:0; width:0; border-radius:3px; background:#9fb6cb; transition:width 1.1s cubic-bezier(.2,.9,.3,1) .25s;}
+.co-not .co-fill{background:#e0846b;}
+.co-mk{position:absolute; top:-6px; bottom:-6px; left:var(--x); width:2px; margin-left:-1px; background:#dcd5cb; opacity:0; transition:opacity .5s ease 1.2s;}
+.co-mk em{position:absolute; top:50%; left:8px; transform:translateY(-50%); font:700 clamp(.6rem,.85vw,.72rem) 'Inter',sans-serif; font-style:normal; color:#dcd5cb; white-space:nowrap;}
+.co-range{position:absolute; top:50%; height:2px; margin-top:-1px; left:var(--a); right:calc(100% - var(--b)); background:#e0846b; opacity:0; transition:opacity .5s ease 1.2s;}
+.co-range::before,.co-range::after{content:''; position:absolute; top:-7px; width:2px; height:16px; background:#e0846b;} .co-range::before{left:0;} .co-range::after{right:0;}
+.co-axis{position:relative; height:1.1rem; margin-top:.3rem; font:600 clamp(.6rem,.85vw,.72rem) 'Inter',sans-serif; color:#8e98a2;}
+.co-axis span{position:absolute; top:0; transform:translateX(-50%);} .co-axis span:first-child{transform:none;} .co-axis span:last-child{transform:translateX(-70%);}
+.co-pre{font-size:.3em; font-weight:700; font-style:italic; vertical-align:.9em; margin-right:.05em; color:#b3c0c8;}
+.co-detail b{color:#f4efe6;}
 .co-detail{margin:.9rem 0 0; font-size:clamp(.82rem,1.3vw,1.05rem); line-height:1.5; color:#c9cfd5;}
 .co-src{margin-top:auto; padding-top:.5rem; font:italic clamp(.55rem,.78vw,.66rem)/1.4 'Merriweather',serif; color:#7f8892;}
 .co-bill{display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:1.4rem; padding:.7rem 1.1rem; border-radius:10px;
@@ -1336,9 +1341,10 @@ body{background:#1c2129;}
 .co-band{position:absolute; left:0; right:0; bottom:0; height:6px; display:flex;} .co-band i{flex:1;}
 .co-slide[data-step="1"] .co-act .co-q, .co-slide[data-step="2"] .co-q, .co-slide[data-step="3"] .co-q, .co-slide[data-step="4"] .co-q{opacity:0;}
 .co-slide:not([data-step="0"]) .co-act .co-body{opacity:1; transform:none;}
-.co-slide:not([data-step="0"]) .co-act .co-slice{width:var(--w);}
+.co-slide:not([data-step="0"]) .co-act .co-fill{width:var(--w);} .co-slide:not([data-step="0"]) .co-act .co-mk{opacity:1;}
 .co-slide[data-step="2"] .co-not .co-body, .co-slide[data-step="3"] .co-not .co-body, .co-slide[data-step="4"] .co-not .co-body{opacity:1; transform:none;}
-.co-slide[data-step="2"] .co-not .co-slice, .co-slide[data-step="3"] .co-not .co-slice, .co-slide[data-step="4"] .co-not .co-slice{width:var(--w);}
+.co-slide[data-step="2"] .co-not .co-fill, .co-slide[data-step="3"] .co-not .co-fill, .co-slide[data-step="4"] .co-not .co-fill{width:var(--w);}
+.co-slide[data-step="2"] .co-not .co-range, .co-slide[data-step="3"] .co-not .co-range, .co-slide[data-step="4"] .co-not .co-range{opacity:1;}
 .co-slide[data-step="3"] .co-bill, .co-slide[data-step="4"] .co-bill{opacity:1; transform:none;}
 .co-slide[data-step="4"] .co-verdict{opacity:1; transform:translate(-50%,-50%);}
 .co-slide[data-step="4"] .co-grid, .co-slide[data-step="4"] .co-bill{filter:blur(1.5px); opacity:.35;}
@@ -5340,30 +5346,30 @@ const UI = (function () {
 <section class="slide co-slide" data-type="content" style="--accent:#86433d" data-step="0">
   <div class="co-wrap">
     <div class="co-head"><div class="eyebrow">Chapter 11 · What Can I Do?</div><h2 class="heading">So, Can We Afford It?</h2>
-      <p class="co-sub">Two price tags, from the most cautious sources we have.</p></div>
+      <p class="co-sub">Two price tags for the same tonne of carbon dioxide.</p></div>
     <div class="co-grid">
       <div class="co-card co-act">
         <div class="co-tag">The cost of acting</div>
         <div class="co-q">?</div>
         <div class="co-body">
-          <div class="co-num"><span data-co-count="1.3">1.3</span>&ndash;<span data-co-count="2.7">2.7</span>%</div>
-          <div class="co-what">of global GDP in 2050</div>
-          <div class="co-bar"><i class="co-slice" style="--w:2.7%"></i></div>
-          <div class="co-barcap"><span>the world economy in 2050</span><span>at least <b>double</b> 2020</span></div>
-          <p class="co-detail">To hold warming to 2&deg;C, with coordinated global action starting by 2025. Growth slows by 0.04&ndash;0.09 percentage points a year.</p>
-          <div class="co-src">IPCC AR6 Working Group III, Summary for Policymakers C.12.2</div>
+          <div class="co-num"><span class="co-pre">under</span> $<span data-co-count="20">20</span></div>
+          <div class="co-what">to cut one tonne of CO&#8322;</div>
+          <div class="co-bar"><i class="co-fill" style="--w:4.76%"></i><i class="co-mk" style="--x:23.81%"><em>all the cuts: $100 or less</em></i></div>
+          <div class="co-axis"><span style="left:0.00%">$0</span><span style="left:23.81%">$100</span><span style="left:47.62%">$200</span><span style="left:71.43%">$300</span><span style="left:95.24%">$400</span></div>
+          <p class="co-detail">More than half of the cuts needed to <b>halve global emissions by 2030</b> cost under $20 a tonne: solar, wind, efficiency, stopping methane leaks. All of them cost $100 a tonne or less, and some save money.</p>
+          <div class="co-src">IPCC AR6 Working Group III, Summary for Policymakers C.12.1 (net lifetime cost of each avoided tonne)</div>
         </div>
       </div>
       <div class="co-card co-not">
         <div class="co-tag">The cost of not acting</div>
         <div class="co-q">?</div>
         <div class="co-body">
-          <div class="co-num"><span data-co-count="10">10</span>&ndash;<span data-co-count="23">23</span>%</div>
-          <div class="co-what">of global GDP lost by 2100</div>
-          <div class="co-bar"><i class="co-slice" style="--w:23%"></i></div>
-          <div class="co-barcap"><span>the world economy in 2100</span><span>from <b>temperature alone</b></span></div>
-          <p class="co-detail">With high warming. This counts only the effect of hotter temperatures on economic output; sea-level rise and lost lives are not included.</p>
-          <div class="co-src">IPCC AR6 Working Group II, Figure 16.9 (Burke et al. 2015; Kahn et al. 2019; Kalkuhl &amp; Wenz 2020)</div>
+          <div class="co-num">$<span data-co-count="185">185</span></div>
+          <div class="co-what">of damage from emitting one tonne of CO&#8322;</div>
+          <div class="co-bar"><i class="co-range" style="--a:10.48%; --b:98.33%"></i><i class="co-fill" style="--w:44.05%"></i></div>
+          <div class="co-axis"><span style="left:0.00%">$0</span><span style="left:23.81%">$100</span><span style="left:47.62%">$200</span><span style="left:71.43%">$300</span><span style="left:95.24%">$400</span></div>
+          <p class="co-detail">Lost lives from heat, lower crop yields, energy costs and sea-level rise, added up over the tonne&rsquo;s lifetime. Likely range: <b>$44 to $413</b>. Even the low end is double the price of most cuts.</p>
+          <div class="co-src">Rennert et al. (2022), &ldquo;Comprehensive evidence implies a higher social cost of CO&#8322;,&rdquo; <i>Nature</i> 610 (2020 dollars)</div>
         </div>
       </div>
     </div>
@@ -5377,7 +5383,7 @@ const UI = (function () {
       <div class="co-vq">&ldquo;The global cost of limiting warming to 2&deg;C over the 21st century is lower than the global economic benefits of reducing warming.&rdquo;</div>
       <div class="co-src">IPCC AR6 Working Group III, SPM C.12.3 (medium confidence), unless damages prove to be at the low end of the range or the future is heavily discounted</div>
     </div>
-    <div class="co-foot">Not a like-for-like comparison: the cost of acting is measured against 2050 GDP under current policies; the damages, against a 2100 world without warming.</div>
+    <div class="co-foot">Like for like: both are U.S. dollars per tonne of CO&#8322;, each counting today&rsquo;s value of every cost or damage over that tonne&rsquo;s lifetime, drawn on the same scale.</div>
     <div class="co-hint">&#9656; click to reveal</div>
   </div>
   <div class="co-band"><i style="background:#2f4a66"></i><i style="background:#3f5d7b"></i><i style="background:#587793"></i><i style="background:#7f97ad"></i><i style="background:#b3c0c8"></i><i style="background:#dcd5cb"></i><i style="background:#d6b29a"></i><i style="background:#c58b72"></i><i style="background:#aa6553"></i><i style="background:#86433d"></i></div>
