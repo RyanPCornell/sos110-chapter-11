@@ -2336,9 +2336,19 @@ body{background:#1c2129;}
     
   </div>
   <div class="embed-wrap">
-    <iframe class="embed-frame" data-src="climate-change/index.html?focus=lab#weather" title="Weather vs. Climate Lab" loading="lazy"></iframe>
+    <iframe class="embed-frame" data-src="climate-change/index.html?focus=lab&veil=1#weather" title="Weather vs. Climate Lab" loading="lazy"></iframe>
   </div>
-</section>
+<script>(function(){
+  var sec=document.currentScript.closest('.slide'); if(!sec||sec.__veil) return; sec.__veil=1;
+  var f=sec.querySelector('iframe'), shown=false;
+  function post(m){ try{ f.contentWindow.postMessage({deck:m},'*'); }catch(e){} }
+  sec.__deckNext=function(){ if(!shown){ shown=true; post('reveal'); return true; } return false; };
+  window.addEventListener('message',function(e){ if(!f||e.source!==f.contentWindow||!e.data) return;
+    if(e.data.deckVeil==='revealed') shown=true;
+    if(e.data.deckVeil==='ready'&&shown) post('reveal'); });
+  new MutationObserver(function(){ if(!sec.classList.contains('active')&&shown){ shown=false; post('veil'); } })
+    .observe(sec,{attributes:true,attributeFilter:['class']});
+})();</script></section>
 <section class="slide" data-type="grid" style="--accent:#2f4a66">
   <div class="slide-inner col">
     <div class="eyebrow">11.1 · Proxies and Paleoclimates</div>
