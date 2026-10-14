@@ -393,6 +393,21 @@ body{background:#1c2129;}
 .evconclusion .evnum{background:#fff; color:var(--accent); font-size:1.4rem;}
 .evconclusion .evhint{color:rgba(255,255,255,.9);}
 @media(max-width:820px){.evhint{display:none;} .evtext{font-size:.95rem;}}
+/* chain colours (Oct 13 2026): the deck's framed cream cards, each link a step along the warming stripes, cool to warm */
+.evchain .evstep{--c:var(--accent); background:#fbf9f4; border:1px solid rgba(42,46,51,.18); border-left:6px solid var(--c);
+  outline:1px solid color-mix(in srgb,var(--c) 30%,transparent); outline-offset:-5px; box-shadow:0 6px 16px rgba(30,40,55,.07);}
+.evchain .evstep:nth-of-type(1){--c:#2f4a66;} .evchain .evstep:nth-of-type(2){--c:#4f7194;}
+.evchain .evstep:nth-of-type(3){--c:#7f97ad;} .evchain .evstep:nth-of-type(4){--c:#c58b72;}
+.evchain .evstep:nth-of-type(5){--c:#86433d;}
+.evchain .evnum{background:var(--c);}
+.evchain .evhint{color:var(--c);}
+.evchain .evtext{color:#22262b;}
+.evchain .evarrow:nth-of-type(1){color:#4f7194;} .evchain .evarrow:nth-of-type(2){color:#7f97ad;}
+.evchain .evarrow:nth-of-type(3){color:#c58b72;} .evchain .evarrow:nth-of-type(4){color:#86433d;}
+.evchain .evconclusion{background:linear-gradient(90deg,#86433d,#aa6553); border-color:#86433d; outline-color:rgba(255,255,255,.35);}
+.evchain .evconclusion .evtext{color:#fff;}
+.evchain .evconclusion .evnum{background:#fff; color:#86433d;}
+.evchain .evconclusion .evhint{color:rgba(255,255,255,.92);}
 
 /* Chart popup modal */
 .evmodal{position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
@@ -1476,28 +1491,6 @@ body{background:#1c2129;}
 .ws-veil span{font:italic 700 clamp(.9rem,1.4vw,1.1rem) 'Merriweather',serif; color:#3a4048; background:rgba(251,249,244,.88); border:1px solid rgba(42,46,51,.18); border-radius:999px; padding:.5rem 1.2rem;}
 .ws-hostbtn{display:none; font:inherit; font-size:.74rem; font-weight:800; color:#fff; background:#2f4a66; border:0; border-radius:18px; padding:.32rem .9rem; cursor:pointer;}
 .ws-slide.ws-host .ws-hostbtn{display:inline-block;}
-
-.deck .slide.os-slide{background:linear-gradient(158deg,#f8f6f1,#ebe6dc);}
-.deck .os-slide .os{background:radial-gradient(120% 80% at 50% 0%,#f8f6f1 0%,#efece5 70%,#e9e5dd 100%);}
-.deck .os-slide .os-lobby{background:linear-gradient(rgba(30,40,55,.05),rgba(30,40,55,.3));}
-.deck .os-slide .os{--ink:#22262b; --gold:#3f5d7b; --paper:#fbf9f4; --muted:#4a5058; --red:#a8483f; --grn:#2f7a40; --line:#d3d8dc;}
-.deck .os-slide :is(.os-yearbox,.os-kpi,.os-ntab,.os-chartbox,.os-news,.os-you){outline:1px solid rgba(63,93,123,.26); outline-offset:-4px; box-shadow:0 6px 16px rgba(30,40,55,.06);}
-.deck .os-slide .os-year{color:#2f4a66;}
-.deck .os-slide .os-kpi{border-top:3px solid var(--k,#3f5d7b);}
-.deck .os-slide .os-kpi .os-kv{color:var(--k,#22262b);}
-.deck .os-slide .os-kpi:nth-child(1){--k:#86433d;} .deck .os-slide .os-kpi:nth-child(2){--k:#3f5d7b;}
-.deck .os-slide .os-kpi:nth-child(3){--k:#aa6553;} .deck .os-slide .os-kpi:nth-child(4){--k:#2f4a66;}
-.deck .os-slide .os-kpi:nth-child(5){--k:#2f7a40;} .deck .os-slide .os-kpi:nth-child(6){--k:#c58b72;}
-.deck .os-slide .os-tabs button[aria-selected=true]{background:#2f4a66; color:#fff;}
-.deck .os-slide .os-steps li.on{background:#2f4a66; border-color:#2f4a66; color:#fff;}
-.deck .os-slide .os-steps li.done{background:#e6ebef;}
-.deck .os-slide :is(.os-dcard,.os-scard,.os-fchart,.os-aw,.os-lrow,.os-trow,.os-lr,.os-law,.os-ichart,.os-itiles div,.os-board,.os-cc,.os-lgrp,.os-clist,.os-plat,.os-chainbox,.os-set select){background:#fffdf8;}
-.deck .os-slide :is(.os-yrow,.os-nrow,.os-slaws,.os-prow2,.os-prof,.os-brow,.os-lrow2,.os-ofx){border-top-color:#dde2e6;}
-.deck .os-slide :is(.os-dmeter i,.os-prow i,.os-bar,.os-bcount i,.os-crow i,.os-lt,.os-sbar i){background:#e8ebee;}
-.deck .os-slide :is(.os-b,.os-btn,.os-seg,.os-set select){border-color:#b3c0c8;}
-.deck .os-slide .os-dmeter b{background:linear-gradient(90deg,#d6b29a,#86433d);}
-.deck .os-slide .os-scale{background:linear-gradient(90deg,#2f7a40,#dcd5cb 50%,#86433d);}
-.deck .os-slide .os-cstage{background:radial-gradient(120% 90% at 50% 0%,#fffdf8,#eef0f1);}
 
 
 /* announcements / upcoming assignments */
