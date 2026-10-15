@@ -3214,19 +3214,19 @@ body{background:#1c2129;}
       </button>
       <div class="evarrow">↓</div>
       <button class="evstep" type="button"
-        data-title="The fingerprint: greenhouse gases, not the Sun"
-        data-tpl="evTplFp">
+        data-title="The result: a warming planet"
+        data-src="https://ourworldindata.org/grapher/temperature-anomaly?tab=line"
+        data-caption="Global average surface-temperature anomaly relative to the 1861&ndash;1890 average. Source: Met Office Hadley Centre (HadCRUT5) via Our World in Data.">
         <span class="evnum">4</span>
-        <span class="evtext">We know the extra heat comes from greenhouse gases, not the Sun: the lower atmosphere is warming while the upper atmosphere cools.</span>
+        <span class="evtext">Thus, less heat escapes to space, and this will lead to more warming.</span>
         <span class="evhint">🔍 See the evidence</span>
       </button>
       <div class="evarrow">↓</div>
-      <button class="evstep evconclusion" type="button"
-        data-title="The result — a warming planet"
-        data-src="https://ourworldindata.org/grapher/temperature-anomaly?tab=line"
-        data-caption="Global average surface-temperature anomaly relative to the 1861&ndash;1890 average. Source: Met Office Hadley Centre (HadCRUT5) via Our World in Data.">
-        <span class="evnum">∴</span>
-        <span class="evtext">Thus, less heat escapes to space, and this will lead to more warming.</span>
+      <button class="evstep" type="button"
+        data-title="The fingerprint: greenhouse gases, not the Sun"
+        data-tpl="evTplFp">
+        <span class="evnum">5</span>
+        <span class="evtext">We know the extra heat comes from greenhouse gases, not the Sun: the lower atmosphere is warming while the upper atmosphere cools.</span>
         <span class="evhint">🔍 See the evidence</span>
       </button>
     </div>
@@ -3671,6 +3671,31 @@ const SIM = (function () {
     const perm = [0, 1, 2, 3, 4].sort((a, b) => hash(seed + ':perm:' + a) - hash(seed + ':perm:' + b));
     order.forEach((k, i) => out[k] = perm[Math.min(4, Math.floor(i * 5 / order.length))]);
     return out;
+  }
+  // the deal used in class: five nations of near-equal size. One nation is filled with the students most concerned about
+  // climate change (8 to 10 on the opening question), one with the least concerned (5 or lower), and three are dealt at
+  // random. A sorted nation holds the class's most (or least) concerned students, but only if at least 60% of its seats
+  // come from its group; otherwise it is dealt at random too. Which nations get the sorted groups is random.
+  // s5 is stored on the old 0-100 spectrum: 0 = 10/10 (strongly agree) … 100 = 1/10.
+  function dealSplit(players, seed) {
+    const r = rng(hash(seed + ':split')), ks = Object.keys(players).sort();
+    for (let i = ks.length - 1; i > 0; i--) { const j = (r() * (i + 1)) | 0; [ks[i], ks[j]] = [ks[j], ks[i]]; }
+    const s5 = k => { const v = players[k] && players[k].s5; return v === '' || v == null || !isFinite(+v) ? null : +v; };
+    const N = ks.length, size = [0, 1, 2, 3, 4].map(i => Math.floor(N / 5) + (i < N % 5 ? 1 : 0));
+    const perm = [0, 1, 2, 3, 4].sort((a, b) => hash(seed + ':perm:' + a) - hash(seed + ':perm:' + b));
+    // the two sorted nations get the smaller sizes, so the groups have the best chance of filling them
+    const bySize = perm.slice().sort((a, b) => size[a] - size[b]), hiN = bySize[0], loN = bySize[1];
+    const out = {}, used = new Set();
+    // a sorted nation takes the m most extreme answers in the class, provided at least 60% of them are in its group
+    const fill = (n, order, inGroup) => { const m = size[n], take = order.slice(0, m); if (!m || take.filter(inGroup).length < Math.ceil(m * .6)) return false; take.forEach(k => { out[k] = n; used.add(k); }); return true; };
+    const answered = ks.filter(k => s5(k) != null);
+    const hi = fill(hiN, answered.slice().sort((a, b) => s5(a) - s5(b)), k => s5(k) <= 22.3);
+    const lo = fill(loN, answered.filter(k => !used.has(k)).sort((a, b) => s5(b) - s5(a)), k => s5(k) >= 55.5);
+    // everyone else, dealt into the remaining seats
+    const rest = ks.filter(k => !used.has(k)), left = size.map((m, n) => m - Object.values(out).filter(x => x === n).length);
+    let n = 0;
+    for (const k of rest) { let guard = 0; while (left[perm[n % 5]] <= 0 && guard++ < 5) n++; out[k] = perm[n % 5]; left[perm[n % 5]]--; n++; }
+    return { a: out, hi: hi ? hiN : -1, lo: lo ? loN : -1 };
   }
   const packAssign = a => Object.entries(a).map(([k, v]) => k + ':' + v).join(',');
   const parseAssign = s => Object.fromEntries(String(s || '').split(',').filter(Boolean).map(x => { const i = x.lastIndexOf(':'); return [x.slice(0, i), +x.slice(i + 1)]; }));
@@ -4166,7 +4191,7 @@ const SIM = (function () {
 
   return { Y0, YN, SESSIONS, NATIONS, NI, LAWS, LI, GROUPS, SECTORS, lawsFor, pack, parse, deal, packAssign, parseAssign, newWorld, run, step, session, decide, standIn,
     ledger, whatIf, effort, project, futures, heldRun, profiles, GREEN, BROWN, SSP, at, hash, cleanCost, emptyLaws, T0, PPM0,
-    dilemma, PLATFORMS, PI, STD_START, stdLaws, platOf, ppack, pparse, standInStd, optionPreview, platProfiles };
+    dealSplit, dilemma, PLATFORMS, PI, STD_START, stdLaws, platOf, ppack, pparse, standInStd, optionPreview, platProfiles };
 })();
 
 // ONE SKY: the continent. A seeded heightmap (fractal noise under an oval falloff) gives the land, the islands,
