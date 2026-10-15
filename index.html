@@ -1350,8 +1350,19 @@ body{background:#1c2129;}
 .cs-play .cs-fade{animation:csIn .6s ease var(--d,0s) both;}
 @keyframes csGrow{from{transform:scaleY(.02); opacity:0} to{transform:none; opacity:1}}
 @keyframes csIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+/* two questions on one slide */
+.cs-pairgrid{flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:clamp(1rem,2.4vw,2.4rem);}
+.cs-unit{display:flex; flex-direction:column; min-width:0; min-height:0;}
+.cs-stack{flex:1; min-height:0; display:flex; flex-direction:column; gap:.6rem;}
+.cs-pair .cs-left{flex:none; justify-content:flex-start; overflow:visible;}
+.cs-pair .cs-q{font-size:clamp(1rem,1.65vw,1.35rem); margin:.25rem 0 .6rem;}
+.cs-pair .cs-opts{flex-direction:row;} .cs-pair .cs-opt{flex:1;}
+.cs-pair .cs-ans{margin-top:.55rem;} .cs-pair .cs-big{font-size:clamp(1rem,1.6vw,1.3rem);}
+.cs-pair .cs-right{flex:1; min-height:140px;}
+.cs-pair .cs-viz{padding:.4rem .7rem .5rem;}
+.cs-pairband{flex:none; margin-top:.5rem;} .cs-pairband .cs-band{margin:0;}
 @media(prefers-reduced-motion:reduce){ .cs-play .cs-grow,.cs-play .cs-fade,.cs-ans{animation:none;} }
-@media(max-width:900px){ .cs-wrap{position:static; padding:1rem 1rem 4rem;} .cs-play-grid{grid-template-columns:1fr;} .cs-viz{min-height:300px;} }
+@media(max-width:900px){ .cs-wrap{position:static; padding:1rem 1rem 4rem;} .cs-play-grid{grid-template-columns:1fr;} .cs-viz{min-height:300px;} .cs-pairgrid{grid-template-columns:1fr;} }
 
 /* ── slide 17: the greenhouse plate (ch11_greenhouse.py) ── */
 .slide.gp-slide{background:linear-gradient(158deg,#f8f6f1,#ebe6dc);}
@@ -1783,10 +1794,12 @@ body{background:#1c2129;}
   <div class="footer">© 2023 W. W. Norton &amp; Company, Inc.</div>
 </section>
 <section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "scale", "id": "ch11-climate-serious-10", "legacy": "ch11-climate-serious", "q": "Climate change is a serious issue.", "tag": "Question · Agreement"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Climate change?</h2><p class="cs-sub">Answer on your laptop. Responses are anonymous.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
-  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+  var SCR=document.currentScript, SEC=SCR.closest('section'); if(!SEC) return;
+  var U=SCR.closest('[data-cs-unit]')||SEC, PAIR=U!==SEC; if(U.__cs) return; U.__cs=1;
   if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
-  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
-  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var C=JSON.parse(U.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var bt=PAIR? null : SEC.querySelector('template[data-cs-band]'), BAND=bt? bt.innerHTML : '', root=U.querySelector('[data-cs-root]');
+  var UNITS=SEC.__csU||(SEC.__csU=[]), me={id:ID}; UNITS.push(me);
   var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
   var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : K==='spectrum' ? 'spectrum-done:'+ID : 'guess-done:'+ID;
   var SL = (K==='estimate'||K==='spectrum');
@@ -1798,6 +1811,12 @@ body{background:#1c2129;}
     else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
   pick = mine!==null ? mine : (SL ? 50 : null);
   function rel(){ return !!st.released; }
+  /* paired estimate: the share of the class that actually said yes, once that question is revealed */
+  function actual(){
+    if(!C.actual) return null;
+    for(var i=0;i<UNITS.length;i++){ var u=UNITS[i]; if(u.id===C.actual && u.agg && u.rel()){ var o=u.agg(); return o.n? Math.round(o.by[0]/o.n*100) : null; } }
+    return null;
+  }
   function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
   function fm(x){ return x%1 ? x.toFixed(1) : String(x); }
 
@@ -1857,10 +1876,10 @@ body{background:#1c2129;}
       s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
       if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
     }
-    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    if(!PAIR) s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
     return s;
   }
-  function figEstimate(a, you){
+  function figEstimate(a, you, act){
     var L=40, R=520, base=226, maxH=132, s='';
     function X(v){ return L+(R-L)*v/100; }
     s+=title((K==='spectrum'?'Where the class stands':'How the class estimated')+(a.n?' (n = '+a.n+')':''));
@@ -1879,11 +1898,15 @@ body{background:#1c2129;}
       s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
         +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
         +T(xm.toFixed(1),base-maxH-31,K==='spectrum'?'class average':'class median '+fm(a.median)+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(act!==null && act!==undefined && K==='estimate'){ var xa=X(act), close=a.n && a.median!==undefined && Math.abs(act-a.median)<26, ya=close? base-maxH-18 : base-maxH-46;
+      s+='<g class="cs-fade" style="--d:1.4s"><path d="M'+xa.toFixed(1)+','+(ya+11)+' V'+base+'" stroke="'+S[0]+'" stroke-width="2.2"/>'
+        +'<rect x="'+(xa-66).toFixed(1)+'" y="'+ya+'" width="132" height="22" rx="11" fill="'+S[0]+'"/>'
+        +T(xa.toFixed(1),ya+15,'actual: '+act+'% said yes',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
     if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+(K==='spectrum'?44:62),K==='spectrum'?'you':'your estimate',{w:800,s:11,c:S[1]}); }
     return s;
   }
   function fig(a, you, tease){
-    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);   /* spectrum shares figEstimate */
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you,tease? null : actual());   /* spectrum shares figEstimate */
     return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
   }
   function sample(){
@@ -1928,10 +1951,14 @@ body{background:#1c2129;}
       return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
         +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
     }
-    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many of your classmates do you think said yes?</p></div>';
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no.'+(PAIR?'':' <b>Next:</b> how many of your classmates do you think said yes?')+'</p></div>';
     if(K==='spectrum'){ var ag=0,ne=0,di=0; a.by.forEach(function(c,v){ if(v<40) ag+=c; else if(v<=60) ne+=c; else di+=c; });
       return '<div class="cs-ans"><div class="cs-big">The class leans: '+spWord(Math.round(a.mean)).toLowerCase()+'</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree, <b>'
         +Math.round(ne/a.n*100)+'%</b> are near neutral, <b>'+Math.round(di/a.n*100)+'%</b> disagree.</p></div>'; }
+    var ac=actual();
+    if(ac!==null) return '<div class="cs-ans"><div class="cs-big">Class guess: '+fm(a.median)+'% &middot; Actual: '+ac+'%</div><p>'
+      +(a.median<ac-2? 'The class <b>underestimated</b> its classmates.' : a.median>ac+2? 'The class <b>overestimated</b> its classmates.' : 'The class guessed about right.')
+      +' <b>Next:</b> what people around the world actually said.</p></div>';
     return '<div class="cs-ans"><div class="cs-big">Class median: '+fm(a.median)+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
   }
   function left(a){
@@ -1939,7 +1966,7 @@ body{background:#1c2129;}
     if(HOST){
       h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
         +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
-        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':(PAIR?'reveals both, or press your clicker':'or press your clicker'))+'</span></div></div>';
     } else if(mine!==null){
       h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
     } else if(r){
@@ -1957,10 +1984,10 @@ body{background:#1c2129;}
   }
   function render(force){
     var a=agg(), r=rel();
-    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : ''].join('|');
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : '', r? actual() : ''].join('|');
     if(key===viewKey && !force) return; viewKey=key;
     var play = r && !lastRel; lastRel=r;
-    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+    root.innerHTML='<div class="'+(PAIR?'cs-stack':'cs-play-grid')+'">'+left(a)+right(a, play)+'</div>';
   }
 
   function lock(){
@@ -1974,15 +2001,19 @@ body{background:#1c2129;}
     render(true);
   }
   function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+  function reset(){ if(backend) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()}); }
+  me.rel=rel; me.agg=agg; me.setRel=setRel; me.reset=reset; me.render=function(){ render(); };
+  me.can=function(){ return HOST && !!backend && !rel(); };
+  function each(f){ UNITS.forEach(f); }
 
   root.addEventListener('click', function(e){
     var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
     var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
     if(e.target.closest('[data-cs-lock]')){ lock(); return; }
     var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
-    if(b.dataset.cs==='reveal') setRel(true);
-    else if(b.dataset.cs==='hide') setRel(false);
-    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()});
+    if(b.dataset.cs==='reveal') each(function(u){ if(u.setRel) u.setRel(true); });
+    else if(b.dataset.cs==='hide') each(function(u){ if(u.setRel) u.setRel(false); });
+    else if(b.dataset.cs==='reset' && confirm(PAIR? 'Reset all answers on this slide?' : 'Reset all answers for this question?')) each(function(u){ if(u.reset) u.reset(); });
   });
   root.addEventListener('input', function(e){
     var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
@@ -1997,7 +2028,7 @@ body{background:#1c2129;}
     var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
   });
   /* presenter clicker: the first press reveals, the next press moves on */
-  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+  SEC.__deckNext=function(){ var go=UNITS.filter(function(u){ return u.can && u.can(); }); if(!go.length) return false; go.forEach(function(u){ u.setRel(true); }); return true; };
 
   window.__deckLiveReady.then(function(live){
     backend=live.backend; HOST=!!live.HOST;
@@ -2007,15 +2038,17 @@ body{background:#1c2129;}
       if(!HOST && mine!==null && (ls(KEY+':run')||'0')!==String(st.run||0)){
         mine=null; pick=SL?50:null; ls(KEY,''); ls(KEY+':run','');
         if(K==='scale' && C.legacy) ls('spectrum-done:'+C.legacy,''); viewKey=null; }
-      render(); });
+      each(function(u){ if(u.render) u.render(); }); });
   });
   render();
 })();</script></section>
-<section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "yesno", "id": "ch11-pay-1pct-self", "q": "Would you pay 1% of your income to tackle climate change?", "tag": "Question · Your view"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Your View</h2><p class="cs-sub">Vote on your laptop. Results stay hidden until the reveal.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
-  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+<section class="slide cs-slide cs-pair" data-type="content" style="--accent:#3f5d7b"><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">You and Your Classmates</h2><p class="cs-sub">Answer both on your laptop. Responses are anonymous, and results stay hidden until the reveal.</p></div><div class="cs-pairgrid"><div class="cs-unit" data-cs-unit><script type="application/json" data-cs-cfg>{"kind": "yesno", "id": "ch11-pay-1pct-self", "tag": "Question 1 · You", "q": "Would you pay 1% of your income to tackle climate change?"}</script><div class="cs-root" data-cs-root aria-live="polite"></div><script>(function(){
+  var SCR=document.currentScript, SEC=SCR.closest('section'); if(!SEC) return;
+  var U=SCR.closest('[data-cs-unit]')||SEC, PAIR=U!==SEC; if(U.__cs) return; U.__cs=1;
   if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
-  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
-  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var C=JSON.parse(U.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var bt=PAIR? null : SEC.querySelector('template[data-cs-band]'), BAND=bt? bt.innerHTML : '', root=U.querySelector('[data-cs-root]');
+  var UNITS=SEC.__csU||(SEC.__csU=[]), me={id:ID}; UNITS.push(me);
   var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
   var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : K==='spectrum' ? 'spectrum-done:'+ID : 'guess-done:'+ID;
   var SL = (K==='estimate'||K==='spectrum');
@@ -2027,6 +2060,12 @@ body{background:#1c2129;}
     else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
   pick = mine!==null ? mine : (SL ? 50 : null);
   function rel(){ return !!st.released; }
+  /* paired estimate: the share of the class that actually said yes, once that question is revealed */
+  function actual(){
+    if(!C.actual) return null;
+    for(var i=0;i<UNITS.length;i++){ var u=UNITS[i]; if(u.id===C.actual && u.agg && u.rel()){ var o=u.agg(); return o.n? Math.round(o.by[0]/o.n*100) : null; } }
+    return null;
+  }
   function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
   function fm(x){ return x%1 ? x.toFixed(1) : String(x); }
 
@@ -2086,10 +2125,10 @@ body{background:#1c2129;}
       s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
       if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
     }
-    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    if(!PAIR) s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
     return s;
   }
-  function figEstimate(a, you){
+  function figEstimate(a, you, act){
     var L=40, R=520, base=226, maxH=132, s='';
     function X(v){ return L+(R-L)*v/100; }
     s+=title((K==='spectrum'?'Where the class stands':'How the class estimated')+(a.n?' (n = '+a.n+')':''));
@@ -2108,11 +2147,15 @@ body{background:#1c2129;}
       s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
         +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
         +T(xm.toFixed(1),base-maxH-31,K==='spectrum'?'class average':'class median '+fm(a.median)+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(act!==null && act!==undefined && K==='estimate'){ var xa=X(act), close=a.n && a.median!==undefined && Math.abs(act-a.median)<26, ya=close? base-maxH-18 : base-maxH-46;
+      s+='<g class="cs-fade" style="--d:1.4s"><path d="M'+xa.toFixed(1)+','+(ya+11)+' V'+base+'" stroke="'+S[0]+'" stroke-width="2.2"/>'
+        +'<rect x="'+(xa-66).toFixed(1)+'" y="'+ya+'" width="132" height="22" rx="11" fill="'+S[0]+'"/>'
+        +T(xa.toFixed(1),ya+15,'actual: '+act+'% said yes',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
     if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+(K==='spectrum'?44:62),K==='spectrum'?'you':'your estimate',{w:800,s:11,c:S[1]}); }
     return s;
   }
   function fig(a, you, tease){
-    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);   /* spectrum shares figEstimate */
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you,tease? null : actual());   /* spectrum shares figEstimate */
     return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
   }
   function sample(){
@@ -2157,10 +2200,14 @@ body{background:#1c2129;}
       return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
         +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
     }
-    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many of your classmates do you think said yes?</p></div>';
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no.'+(PAIR?'':' <b>Next:</b> how many of your classmates do you think said yes?')+'</p></div>';
     if(K==='spectrum'){ var ag=0,ne=0,di=0; a.by.forEach(function(c,v){ if(v<40) ag+=c; else if(v<=60) ne+=c; else di+=c; });
       return '<div class="cs-ans"><div class="cs-big">The class leans: '+spWord(Math.round(a.mean)).toLowerCase()+'</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree, <b>'
         +Math.round(ne/a.n*100)+'%</b> are near neutral, <b>'+Math.round(di/a.n*100)+'%</b> disagree.</p></div>'; }
+    var ac=actual();
+    if(ac!==null) return '<div class="cs-ans"><div class="cs-big">Class guess: '+fm(a.median)+'% &middot; Actual: '+ac+'%</div><p>'
+      +(a.median<ac-2? 'The class <b>underestimated</b> its classmates.' : a.median>ac+2? 'The class <b>overestimated</b> its classmates.' : 'The class guessed about right.')
+      +' <b>Next:</b> what people around the world actually said.</p></div>';
     return '<div class="cs-ans"><div class="cs-big">Class median: '+fm(a.median)+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
   }
   function left(a){
@@ -2168,7 +2215,7 @@ body{background:#1c2129;}
     if(HOST){
       h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
         +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
-        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':(PAIR?'reveals both, or press your clicker':'or press your clicker'))+'</span></div></div>';
     } else if(mine!==null){
       h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
     } else if(r){
@@ -2186,10 +2233,10 @@ body{background:#1c2129;}
   }
   function render(force){
     var a=agg(), r=rel();
-    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : ''].join('|');
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : '', r? actual() : ''].join('|');
     if(key===viewKey && !force) return; viewKey=key;
     var play = r && !lastRel; lastRel=r;
-    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+    root.innerHTML='<div class="'+(PAIR?'cs-stack':'cs-play-grid')+'">'+left(a)+right(a, play)+'</div>';
   }
 
   function lock(){
@@ -2203,15 +2250,19 @@ body{background:#1c2129;}
     render(true);
   }
   function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+  function reset(){ if(backend) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()}); }
+  me.rel=rel; me.agg=agg; me.setRel=setRel; me.reset=reset; me.render=function(){ render(); };
+  me.can=function(){ return HOST && !!backend && !rel(); };
+  function each(f){ UNITS.forEach(f); }
 
   root.addEventListener('click', function(e){
     var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
     var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
     if(e.target.closest('[data-cs-lock]')){ lock(); return; }
     var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
-    if(b.dataset.cs==='reveal') setRel(true);
-    else if(b.dataset.cs==='hide') setRel(false);
-    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()});
+    if(b.dataset.cs==='reveal') each(function(u){ if(u.setRel) u.setRel(true); });
+    else if(b.dataset.cs==='hide') each(function(u){ if(u.setRel) u.setRel(false); });
+    else if(b.dataset.cs==='reset' && confirm(PAIR? 'Reset all answers on this slide?' : 'Reset all answers for this question?')) each(function(u){ if(u.reset) u.reset(); });
   });
   root.addEventListener('input', function(e){
     var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
@@ -2226,7 +2277,7 @@ body{background:#1c2129;}
     var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
   });
   /* presenter clicker: the first press reveals, the next press moves on */
-  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+  SEC.__deckNext=function(){ var go=UNITS.filter(function(u){ return u.can && u.can(); }); if(!go.length) return false; go.forEach(function(u){ u.setRel(true); }); return true; };
 
   window.__deckLiveReady.then(function(live){
     backend=live.backend; HOST=!!live.HOST;
@@ -2236,15 +2287,16 @@ body{background:#1c2129;}
       if(!HOST && mine!==null && (ls(KEY+':run')||'0')!==String(st.run||0)){
         mine=null; pick=SL?50:null; ls(KEY,''); ls(KEY+':run','');
         if(K==='scale' && C.legacy) ls('spectrum-done:'+C.legacy,''); viewKey=null; }
-      render(); });
+      each(function(u){ if(u.render) u.render(); }); });
   });
   render();
-})();</script></section>
-<section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "estimate", "id": "ch11-pay-1pct-others", "q": "What percentage of your classmates do you think would be willing to pay 1% of their income to tackle climate change?", "tag": "Question · Everyone else"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">Introduction · Live</div><h2 class="heading">Your Estimate</h2><p class="cs-sub">Make your estimate on your laptop. The class’s estimates appear after the reveal.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
-  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+})();</script></div><div class="cs-unit" data-cs-unit><script type="application/json" data-cs-cfg>{"kind": "estimate", "id": "ch11-pay-1pct-others", "tag": "Question 2 · Your classmates", "actual": "ch11-pay-1pct-self", "q": "What percentage of your classmates do you think would be willing to pay 1% of their income to tackle climate change?"}</script><div class="cs-root" data-cs-root aria-live="polite"></div><script>(function(){
+  var SCR=document.currentScript, SEC=SCR.closest('section'); if(!SEC) return;
+  var U=SCR.closest('[data-cs-unit]')||SEC, PAIR=U!==SEC; if(U.__cs) return; U.__cs=1;
   if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
-  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
-  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var C=JSON.parse(U.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var bt=PAIR? null : SEC.querySelector('template[data-cs-band]'), BAND=bt? bt.innerHTML : '', root=U.querySelector('[data-cs-root]');
+  var UNITS=SEC.__csU||(SEC.__csU=[]), me={id:ID}; UNITS.push(me);
   var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
   var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : K==='spectrum' ? 'spectrum-done:'+ID : 'guess-done:'+ID;
   var SL = (K==='estimate'||K==='spectrum');
@@ -2256,6 +2308,12 @@ body{background:#1c2129;}
     else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
   pick = mine!==null ? mine : (SL ? 50 : null);
   function rel(){ return !!st.released; }
+  /* paired estimate: the share of the class that actually said yes, once that question is revealed */
+  function actual(){
+    if(!C.actual) return null;
+    for(var i=0;i<UNITS.length;i++){ var u=UNITS[i]; if(u.id===C.actual && u.agg && u.rel()){ var o=u.agg(); return o.n? Math.round(o.by[0]/o.n*100) : null; } }
+    return null;
+  }
   function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
   function fm(x){ return x%1 ? x.toFixed(1) : String(x); }
 
@@ -2315,10 +2373,10 @@ body{background:#1c2129;}
       s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
       if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
     }
-    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    if(!PAIR) s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
     return s;
   }
-  function figEstimate(a, you){
+  function figEstimate(a, you, act){
     var L=40, R=520, base=226, maxH=132, s='';
     function X(v){ return L+(R-L)*v/100; }
     s+=title((K==='spectrum'?'Where the class stands':'How the class estimated')+(a.n?' (n = '+a.n+')':''));
@@ -2337,11 +2395,15 @@ body{background:#1c2129;}
       s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
         +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
         +T(xm.toFixed(1),base-maxH-31,K==='spectrum'?'class average':'class median '+fm(a.median)+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(act!==null && act!==undefined && K==='estimate'){ var xa=X(act), close=a.n && a.median!==undefined && Math.abs(act-a.median)<26, ya=close? base-maxH-18 : base-maxH-46;
+      s+='<g class="cs-fade" style="--d:1.4s"><path d="M'+xa.toFixed(1)+','+(ya+11)+' V'+base+'" stroke="'+S[0]+'" stroke-width="2.2"/>'
+        +'<rect x="'+(xa-66).toFixed(1)+'" y="'+ya+'" width="132" height="22" rx="11" fill="'+S[0]+'"/>'
+        +T(xa.toFixed(1),ya+15,'actual: '+act+'% said yes',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
     if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+(K==='spectrum'?44:62),K==='spectrum'?'you':'your estimate',{w:800,s:11,c:S[1]}); }
     return s;
   }
   function fig(a, you, tease){
-    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);   /* spectrum shares figEstimate */
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you,tease? null : actual());   /* spectrum shares figEstimate */
     return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
   }
   function sample(){
@@ -2386,10 +2448,14 @@ body{background:#1c2129;}
       return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
         +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
     }
-    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many of your classmates do you think said yes?</p></div>';
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no.'+(PAIR?'':' <b>Next:</b> how many of your classmates do you think said yes?')+'</p></div>';
     if(K==='spectrum'){ var ag=0,ne=0,di=0; a.by.forEach(function(c,v){ if(v<40) ag+=c; else if(v<=60) ne+=c; else di+=c; });
       return '<div class="cs-ans"><div class="cs-big">The class leans: '+spWord(Math.round(a.mean)).toLowerCase()+'</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree, <b>'
         +Math.round(ne/a.n*100)+'%</b> are near neutral, <b>'+Math.round(di/a.n*100)+'%</b> disagree.</p></div>'; }
+    var ac=actual();
+    if(ac!==null) return '<div class="cs-ans"><div class="cs-big">Class guess: '+fm(a.median)+'% &middot; Actual: '+ac+'%</div><p>'
+      +(a.median<ac-2? 'The class <b>underestimated</b> its classmates.' : a.median>ac+2? 'The class <b>overestimated</b> its classmates.' : 'The class guessed about right.')
+      +' <b>Next:</b> what people around the world actually said.</p></div>';
     return '<div class="cs-ans"><div class="cs-big">Class median: '+fm(a.median)+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
   }
   function left(a){
@@ -2397,7 +2463,7 @@ body{background:#1c2129;}
     if(HOST){
       h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
         +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
-        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':(PAIR?'reveals both, or press your clicker':'or press your clicker'))+'</span></div></div>';
     } else if(mine!==null){
       h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
     } else if(r){
@@ -2415,10 +2481,10 @@ body{background:#1c2129;}
   }
   function render(force){
     var a=agg(), r=rel();
-    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : ''].join('|');
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : '', r? actual() : ''].join('|');
     if(key===viewKey && !force) return; viewKey=key;
     var play = r && !lastRel; lastRel=r;
-    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+    root.innerHTML='<div class="'+(PAIR?'cs-stack':'cs-play-grid')+'">'+left(a)+right(a, play)+'</div>';
   }
 
   function lock(){
@@ -2432,15 +2498,19 @@ body{background:#1c2129;}
     render(true);
   }
   function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+  function reset(){ if(backend) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()}); }
+  me.rel=rel; me.agg=agg; me.setRel=setRel; me.reset=reset; me.render=function(){ render(); };
+  me.can=function(){ return HOST && !!backend && !rel(); };
+  function each(f){ UNITS.forEach(f); }
 
   root.addEventListener('click', function(e){
     var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
     var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
     if(e.target.closest('[data-cs-lock]')){ lock(); return; }
     var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
-    if(b.dataset.cs==='reveal') setRel(true);
-    else if(b.dataset.cs==='hide') setRel(false);
-    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()});
+    if(b.dataset.cs==='reveal') each(function(u){ if(u.setRel) u.setRel(true); });
+    else if(b.dataset.cs==='hide') each(function(u){ if(u.setRel) u.setRel(false); });
+    else if(b.dataset.cs==='reset' && confirm(PAIR? 'Reset all answers on this slide?' : 'Reset all answers for this question?')) each(function(u){ if(u.reset) u.reset(); });
   });
   root.addEventListener('input', function(e){
     var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
@@ -2455,7 +2525,7 @@ body{background:#1c2129;}
     var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
   });
   /* presenter clicker: the first press reveals, the next press moves on */
-  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+  SEC.__deckNext=function(){ var go=UNITS.filter(function(u){ return u.can && u.can(); }); if(!go.length) return false; go.forEach(function(u){ u.setRel(true); }); return true; };
 
   window.__deckLiveReady.then(function(live){
     backend=live.backend; HOST=!!live.HOST;
@@ -2465,10 +2535,10 @@ body{background:#1c2129;}
       if(!HOST && mine!==null && (ls(KEY+':run')||'0')!==String(st.run||0)){
         mine=null; pick=SL?50:null; ls(KEY,''); ls(KEY+':run','');
         if(K==='scale' && C.legacy) ls('spectrum-done:'+C.legacy,''); viewKey=null; }
-      render(); });
+      each(function(u){ if(u.render) u.render(); }); });
   });
   render();
-})();</script></section>
+})();</script></div></div><div class="cs-pairband"><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></div></div><div class="footer"></div></section>
 <section class="slide ws-slide ws-hidden" data-type="content" style="--accent:#3f5d7b">
   <div class="slide-inner col ws-inner">
     <div class="eyebrow">Introduction</div>
@@ -2750,10 +2820,12 @@ body{background:#1c2129;}
   draw('all');
 })();</script></section>
 <section class="slide cs-slide" data-type="content" style="--accent:#3f5d7b"><script type="application/json" data-cs-cfg>{"kind": "spectrum", "id": "ch11-natural-change", "q": "We shouldn't be worried about climate change because the climate has naturally changed over geologic time.", "tag": "Statement · Agree or disagree", "left": "Agree", "right": "Disagree"}</script><div class="cs-wrap"><div class="cs-head"><div class="eyebrow">11.2 · Natural Drivers · Live</div><h2 class="heading">Agree or Disagree?</h2><p class="cs-sub">Drag the slider on your laptop, then lock in. Answers are anonymous.</p></div><div class="cs-root" data-cs-root aria-live="polite"></div></div><template data-cs-band><div class="cs-band" aria-hidden="true"><svg viewBox="0 0 176 1" preserveAspectRatio="none"><rect x="0" width="1.04" height="1" fill="#577692"/><rect x="1" width="1.04" height="1" fill="#728ca4"/><rect x="2" width="1.04" height="1" fill="#7992a9"/><rect x="3" width="1.04" height="1" fill="#738da5"/><rect x="4" width="1.04" height="1" fill="#6d88a1"/><rect x="5" width="1.04" height="1" fill="#6e89a1"/><rect x="6" width="1.04" height="1" fill="#67839d"/><rect x="7" width="1.04" height="1" fill="#52718e"/><rect x="8" width="1.04" height="1" fill="#5b7a95"/><rect x="9" width="1.04" height="1" fill="#6d89a1"/><rect x="10" width="1.04" height="1" fill="#5a7894"/><rect x="11" width="1.04" height="1" fill="#53718e"/><rect x="12" width="1.04" height="1" fill="#496784"/><rect x="13" width="1.04" height="1" fill="#5e7c97"/><rect x="14" width="1.04" height="1" fill="#4f6e8b"/><rect x="15" width="1.04" height="1" fill="#5c7a96"/><rect x="16" width="1.04" height="1" fill="#5b7995"/><rect x="17" width="1.04" height="1" fill="#5b7995"/><rect x="18" width="1.04" height="1" fill="#617e99"/><rect x="19" width="1.04" height="1" fill="#69859e"/><rect x="20" width="1.04" height="1" fill="#67839d"/><rect x="21" width="1.04" height="1" fill="#5f7d98"/><rect x="22" width="1.04" height="1" fill="#6a869f"/><rect x="23" width="1.04" height="1" fill="#68849e"/><rect x="24" width="1.04" height="1" fill="#617e99"/><rect x="25" width="1.04" height="1" fill="#607e99"/><rect x="26" width="1.04" height="1" fill="#597894"/><rect x="27" width="1.04" height="1" fill="#98aaba"/><rect x="28" width="1.04" height="1" fill="#adbbc5"/><rect x="29" width="1.04" height="1" fill="#6e89a2"/><rect x="30" width="1.04" height="1" fill="#6b87a0"/><rect x="31" width="1.04" height="1" fill="#7b94aa"/><rect x="32" width="1.04" height="1" fill="#718ba4"/><rect x="33" width="1.04" height="1" fill="#67839d"/><rect x="34" width="1.04" height="1" fill="#52708d"/><rect x="35" width="1.04" height="1" fill="#53728f"/><rect x="36" width="1.04" height="1" fill="#597894"/><rect x="37" width="1.04" height="1" fill="#506f8b"/><rect x="38" width="1.04" height="1" fill="#5f7d98"/><rect x="39" width="1.04" height="1" fill="#758ea6"/><rect x="40" width="1.04" height="1" fill="#4f6d8a"/><rect x="41" width="1.04" height="1" fill="#5b7a95"/><rect x="42" width="1.04" height="1" fill="#4e6d89"/><rect x="43" width="1.04" height="1" fill="#4f6e8b"/><rect x="44" width="1.04" height="1" fill="#51708c"/><rect x="45" width="1.04" height="1" fill="#557490"/><rect x="46" width="1.04" height="1" fill="#708aa3"/><rect x="47" width="1.04" height="1" fill="#748ea5"/><rect x="48" width="1.04" height="1" fill="#52708d"/><rect x="49" width="1.04" height="1" fill="#64819b"/><rect x="50" width="1.04" height="1" fill="#7891a8"/><rect x="51" width="1.04" height="1" fill="#6e89a2"/><rect x="52" width="1.04" height="1" fill="#567591"/><rect x="53" width="1.04" height="1" fill="#4b6986"/><rect x="54" width="1.04" height="1" fill="#446280"/><rect x="55" width="1.04" height="1" fill="#5a7894"/><rect x="56" width="1.04" height="1" fill="#69859f"/><rect x="57" width="1.04" height="1" fill="#4f6d8a"/><rect x="58" width="1.04" height="1" fill="#4e6d89"/><rect x="59" width="1.04" height="1" fill="#4b6a87"/><rect x="60" width="1.04" height="1" fill="#4c6b88"/><rect x="61" width="1.04" height="1" fill="#4a6986"/><rect x="62" width="1.04" height="1" fill="#51708d"/><rect x="63" width="1.04" height="1" fill="#53718e"/><rect x="64" width="1.04" height="1" fill="#738da5"/><rect x="65" width="1.04" height="1" fill="#7f97ad"/><rect x="66" width="1.04" height="1" fill="#587793"/><rect x="67" width="1.04" height="1" fill="#4a6885"/><rect x="68" width="1.04" height="1" fill="#577692"/><rect x="69" width="1.04" height="1" fill="#66839d"/><rect x="70" width="1.04" height="1" fill="#6b87a0"/><rect x="71" width="1.04" height="1" fill="#7690a7"/><rect x="72" width="1.04" height="1" fill="#65829c"/><rect x="73" width="1.04" height="1" fill="#69859f"/><rect x="74" width="1.04" height="1" fill="#6a869f"/><rect x="75" width="1.04" height="1" fill="#6f8aa3"/><rect x="76" width="1.04" height="1" fill="#8ea3b5"/><rect x="77" width="1.04" height="1" fill="#7992a9"/><rect x="78" width="1.04" height="1" fill="#7c94ab"/><rect x="79" width="1.04" height="1" fill="#5c7b96"/><rect x="80" width="1.04" height="1" fill="#839baf"/><rect x="81" width="1.04" height="1" fill="#92a6b7"/><rect x="82" width="1.04" height="1" fill="#889eb2"/><rect x="83" width="1.04" height="1" fill="#67839d"/><rect x="84" width="1.04" height="1" fill="#8299ae"/><rect x="85" width="1.04" height="1" fill="#7b94aa"/><rect x="86" width="1.04" height="1" fill="#839aaf"/><rect x="87" width="1.04" height="1" fill="#a7b6c2"/><rect x="88" width="1.04" height="1" fill="#a8b7c2"/><rect x="89" width="1.04" height="1" fill="#a1b2bf"/><rect x="90" width="1.04" height="1" fill="#bac3c8"/><rect x="91" width="1.04" height="1" fill="#b2bfc8"/><rect x="92" width="1.04" height="1" fill="#aab9c3"/><rect x="93" width="1.04" height="1" fill="#acbac4"/><rect x="94" width="1.04" height="1" fill="#c7cac9"/><rect x="95" width="1.04" height="1" fill="#b4c1c8"/><rect x="96" width="1.04" height="1" fill="#8ea3b5"/><rect x="97" width="1.04" height="1" fill="#94a8b8"/><rect x="98" width="1.04" height="1" fill="#8da2b4"/><rect x="99" width="1.04" height="1" fill="#879db1"/><rect x="100" width="1.04" height="1" fill="#7690a7"/><rect x="101" width="1.04" height="1" fill="#9aacbb"/><rect x="102" width="1.04" height="1" fill="#adbbc5"/><rect x="103" width="1.04" height="1" fill="#bac4c9"/><rect x="104" width="1.04" height="1" fill="#8fa4b6"/><rect x="105" width="1.04" height="1" fill="#7d96ac"/><rect x="106" width="1.04" height="1" fill="#728ca4"/><rect x="107" width="1.04" height="1" fill="#a2b3bf"/><rect x="108" width="1.04" height="1" fill="#a7b6c2"/><rect x="109" width="1.04" height="1" fill="#a0b1be"/><rect x="110" width="1.04" height="1" fill="#91a5b6"/><rect x="111" width="1.04" height="1" fill="#a7b7c2"/><rect x="112" width="1.04" height="1" fill="#9dafbd"/><rect x="113" width="1.04" height="1" fill="#a3b4c0"/><rect x="114" width="1.04" height="1" fill="#6c87a0"/><rect x="115" width="1.04" height="1" fill="#7d95ac"/><rect x="116" width="1.04" height="1" fill="#899fb2"/><rect x="117" width="1.04" height="1" fill="#90a4b6"/><rect x="118" width="1.04" height="1" fill="#859cb0"/><rect x="119" width="1.04" height="1" fill="#a4b4c0"/><rect x="120" width="1.04" height="1" fill="#97aaba"/><rect x="121" width="1.04" height="1" fill="#7d95ab"/><rect x="122" width="1.04" height="1" fill="#96a9b9"/><rect x="123" width="1.04" height="1" fill="#b6c1c8"/><rect x="124" width="1.04" height="1" fill="#849baf"/><rect x="125" width="1.04" height="1" fill="#92a6b7"/><rect x="126" width="1.04" height="1" fill="#7b94ab"/><rect x="127" width="1.04" height="1" fill="#bfc6c9"/><rect x="128" width="1.04" height="1" fill="#acbac4"/><rect x="129" width="1.04" height="1" fill="#bcc5c9"/><rect x="130" width="1.04" height="1" fill="#cfceca"/><rect x="131" width="1.04" height="1" fill="#d9d3cb"/><rect x="132" width="1.04" height="1" fill="#b2bfc7"/><rect x="133" width="1.04" height="1" fill="#d4d1ca"/><rect x="134" width="1.04" height="1" fill="#b5c1c8"/><rect x="135" width="1.04" height="1" fill="#b5c1c8"/><rect x="136" width="1.04" height="1" fill="#bdc5c9"/><rect x="137" width="1.04" height="1" fill="#d7d3cb"/><rect x="138" width="1.04" height="1" fill="#dcd3c8"/><rect x="139" width="1.04" height="1" fill="#cccdca"/><rect x="140" width="1.04" height="1" fill="#dac7b7"/><rect x="141" width="1.04" height="1" fill="#dacabc"/><rect x="142" width="1.04" height="1" fill="#c2c8c9"/><rect x="143" width="1.04" height="1" fill="#c9ccca"/><rect x="144" width="1.04" height="1" fill="#d5d2cb"/><rect x="145" width="1.04" height="1" fill="#d9c4b4"/><rect x="146" width="1.04" height="1" fill="#dcd4c9"/><rect x="147" width="1.04" height="1" fill="#d8beaa"/><rect x="148" width="1.04" height="1" fill="#d0a48b"/><rect x="149" width="1.04" height="1" fill="#dbcdbf"/><rect x="150" width="1.04" height="1" fill="#dacbbe"/><rect x="151" width="1.04" height="1" fill="#d6b39b"/><rect x="152" width="1.04" height="1" fill="#d2aa92"/><rect x="153" width="1.04" height="1" fill="#d2aa91"/><rect x="154" width="1.04" height="1" fill="#d7b6a0"/><rect x="155" width="1.04" height="1" fill="#ce9f86"/><rect x="156" width="1.04" height="1" fill="#d0a58d"/><rect x="157" width="1.04" height="1" fill="#cfa289"/><rect x="158" width="1.04" height="1" fill="#d7b7a1"/><rect x="159" width="1.04" height="1" fill="#cea188"/><rect x="160" width="1.04" height="1" fill="#c89279"/><rect x="161" width="1.04" height="1" fill="#d3ab92"/><rect x="162" width="1.04" height="1" fill="#d0a48c"/><rect x="163" width="1.04" height="1" fill="#cc9c83"/><rect x="164" width="1.04" height="1" fill="#c9937b"/><rect x="165" width="1.04" height="1" fill="#b97a64"/><rect x="166" width="1.04" height="1" fill="#ac6855"/><rect x="167" width="1.04" height="1" fill="#b77762"/><rect x="168" width="1.04" height="1" fill="#c1856d"/><rect x="169" width="1.04" height="1" fill="#b16e5b"/><rect x="170" width="1.04" height="1" fill="#ad6957"/><rect x="171" width="1.04" height="1" fill="#bf826b"/><rect x="172" width="1.04" height="1" fill="#bb7d66"/><rect x="173" width="1.04" height="1" fill="#8f4c43"/><rect x="174" width="1.04" height="1" fill="#86433d"/><rect x="175" width="1.04" height="1" fill="#995549"/></svg><div class="cs-bandcap"><span>1850</span><span>Global temperature each year, 1850&ndash;2025 (HadCRUT5, Met Office Hadley Centre, via Our World in Data)</span><span>2025</span></div></div></template><div class="footer"></div><script>(function(){
-  var SEC=document.currentScript.closest('section'); if(!SEC||SEC.__cs) return; SEC.__cs=1;
+  var SCR=document.currentScript, SEC=SCR.closest('section'); if(!SEC) return;
+  var U=SCR.closest('[data-cs-unit]')||SEC, PAIR=U!==SEC; if(U.__cs) return; U.__cs=1;
   if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
-  var C=JSON.parse(SEC.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
-  var BAND=SEC.querySelector('template[data-cs-band]').innerHTML, root=SEC.querySelector('[data-cs-root]');
+  var C=JSON.parse(U.querySelector('[data-cs-cfg]').textContent), K=C.kind, ID=C.id, S=["#2f4a66", "#3f5d7b", "#587793", "#7f97ad", "#b3c0c8", "#dcd5cb", "#d6b29a", "#c58b72", "#aa6553", "#86433d"], INK='#2a2e33';
+  var bt=PAIR? null : SEC.querySelector('template[data-cs-band]'), BAND=bt? bt.innerHTML : '', root=U.querySelector('[data-cs-root]');
+  var UNITS=SEC.__csU||(SEC.__csU=[]), me={id:ID}; UNITS.push(me);
   var WORDS=['Strongly disagree','Strongly disagree','Disagree','Disagree','Lean disagree','Lean agree','Agree','Agree','Strongly agree','Strongly agree'];
   var KEY = K==='scale' ? 'scale-done:'+ID : K==='yesno' ? 'poll-voted:'+ID : K==='spectrum' ? 'spectrum-done:'+ID : 'guess-done:'+ID;
   var SL = (K==='estimate'||K==='spectrum');
@@ -2765,6 +2837,12 @@ body{background:#1c2129;}
     else mine=parseInt(x,10); if(isNaN(mine)) mine=null; })();
   pick = mine!==null ? mine : (SL ? 50 : null);
   function rel(){ return !!st.released; }
+  /* paired estimate: the share of the class that actually said yes, once that question is revealed */
+  function actual(){
+    if(!C.actual) return null;
+    for(var i=0;i<UNITS.length;i++){ var u=UNITS[i]; if(u.id===C.actual && u.agg && u.rel()){ var o=u.agg(); return o.n? Math.round(o.by[0]/o.n*100) : null; } }
+    return null;
+  }
   function f1(x){ return (Math.round(x*10)/10).toFixed(1); }
   function fm(x){ return x%1 ? x.toFixed(1) : String(x); }
 
@@ -2824,10 +2902,10 @@ body{background:#1c2129;}
       s+=T(X+cw/2,base+42,a.by[k]+(a.by[k]===1?' vote':' votes'),{it:1,serif:1,w:400,s:12,c:'#5d6670'});
       if(you===k) s+=T(X+cw/2,base-maxH-10,'&#9660; your vote',{w:800,s:11,c:S[1]});
     }
-    s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
+    if(!PAIR) s+='<g class="cs-fade" style="--d:.9s">'+T(468,150,'?',{serif:1,w:900,s:54,c:'#c8ccd0'})+T(468,178,'Everyone else?',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+T(468,194,'next slide',{serif:1,it:1,w:400,s:12,c:'#5d6670'})+'</g>';
     return s;
   }
-  function figEstimate(a, you){
+  function figEstimate(a, you, act){
     var L=40, R=520, base=226, maxH=132, s='';
     function X(v){ return L+(R-L)*v/100; }
     s+=title((K==='spectrum'?'Where the class stands':'How the class estimated')+(a.n?' (n = '+a.n+')':''));
@@ -2846,11 +2924,15 @@ body{background:#1c2129;}
       s+='<g class="cs-fade" style="--d:1.1s"><path d="M'+xm.toFixed(1)+','+(base-maxH-24)+' V'+base+'" stroke="'+S[9]+'" stroke-width="1.8" stroke-dasharray="5 4"/>'
         +'<rect x="'+(xm-60).toFixed(1)+'" y="'+(base-maxH-46)+'" width="120" height="22" rx="11" fill="'+S[9]+'"/>'
         +T(xm.toFixed(1),base-maxH-31,K==='spectrum'?'class average':'class median '+fm(a.median)+'%',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
+    if(act!==null && act!==undefined && K==='estimate'){ var xa=X(act), close=a.n && a.median!==undefined && Math.abs(act-a.median)<26, ya=close? base-maxH-18 : base-maxH-46;
+      s+='<g class="cs-fade" style="--d:1.4s"><path d="M'+xa.toFixed(1)+','+(ya+11)+' V'+base+'" stroke="'+S[0]+'" stroke-width="2.2"/>'
+        +'<rect x="'+(xa-66).toFixed(1)+'" y="'+ya+'" width="132" height="22" rx="11" fill="'+S[0]+'"/>'
+        +T(xa.toFixed(1),ya+15,'actual: '+act+'% said yes',{w:800,s:11.5,c:'#fffdf8'})+'</g>'; }
     if(you!==null && you!==undefined){ var xg=X(you); s+='<path d="M'+xg.toFixed(1)+','+(base+2)+' l-6,10 h12 z" fill="'+S[1]+'"/>'+T(xg.toFixed(1),base+(K==='spectrum'?44:62),K==='spectrum'?'you':'your estimate',{w:800,s:11,c:S[1]}); }
     return s;
   }
   function fig(a, you, tease){
-    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you);   /* spectrum shares figEstimate */
+    var body = K==='scale' ? figScale(a,you) : K==='yesno' ? figYesNo(a,you) : figEstimate(a,you,tease? null : actual());   /* spectrum shares figEstimate */
     return '<svg class="cs-svg'+(tease?' cs-blur':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(tease?'Hidden until the reveal':'The class results')+'">'+defs()+body+'</svg>';
   }
   function sample(){
@@ -2895,10 +2977,14 @@ body{background:#1c2129;}
       return '<div class="cs-ans"><div class="cs-big">Class average: '+f1(a.mean)+' out of 10</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree (7&ndash;10), <b>'
         +Math.round((a.n-ag-di)/a.n*100)+'%</b> in the middle (5&ndash;6), <b>'+Math.round(di/a.n*100)+'%</b> disagree (1&ndash;4).</p></div>';
     }
-    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no. <b>Next:</b> how many of your classmates do you think said yes?</p></div>';
+    if(K==='yesno') return '<div class="cs-ans"><div class="cs-big">'+Math.round(a.by[0]/a.n*100)+'% of the class said yes</div><p>'+a.by[0]+' yes and '+a.by[1]+' no.'+(PAIR?'':' <b>Next:</b> how many of your classmates do you think said yes?')+'</p></div>';
     if(K==='spectrum'){ var ag=0,ne=0,di=0; a.by.forEach(function(c,v){ if(v<40) ag+=c; else if(v<=60) ne+=c; else di+=c; });
       return '<div class="cs-ans"><div class="cs-big">The class leans: '+spWord(Math.round(a.mean)).toLowerCase()+'</div><p><b>'+Math.round(ag/a.n*100)+'%</b> agree, <b>'
         +Math.round(ne/a.n*100)+'%</b> are near neutral, <b>'+Math.round(di/a.n*100)+'%</b> disagree.</p></div>'; }
+    var ac=actual();
+    if(ac!==null) return '<div class="cs-ans"><div class="cs-big">Class guess: '+fm(a.median)+'% &middot; Actual: '+ac+'%</div><p>'
+      +(a.median<ac-2? 'The class <b>underestimated</b> its classmates.' : a.median>ac+2? 'The class <b>overestimated</b> its classmates.' : 'The class guessed about right.')
+      +' <b>Next:</b> what people around the world actually said.</p></div>';
     return '<div class="cs-ans"><div class="cs-big">Class median: '+fm(a.median)+'%</div><p>The average estimate was '+Math.round(a.mean)+'%. <b>Next:</b> what people around the world actually said.</p></div>';
   }
   function left(a){
@@ -2906,7 +2992,7 @@ body{background:#1c2129;}
     if(HOST){
       h+='<div class="cs-card cs-hostcard"><div class="cs-live"><b>'+a.n+'</b> '+(a.n===1?'answer':'answers')+' in</div><div class="cs-ctl">'
         +(r? '<button class="cs-btn ghost" type="button" data-cs="hide">Hide results</button>' : '<button class="cs-btn" type="button" data-cs="reveal">Reveal</button>')
-        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':'or press your clicker')+'</span></div></div>';
+        +'<button class="cs-btn ghost" type="button" data-cs="reset">Reset</button><span class="cs-hint">'+(r?'':(PAIR?'reveals both, or press your clicker':'or press your clicker'))+'</span></div></div>';
     } else if(mine!==null){
       h+='<div class="cs-card cs-me">Recorded: '+mineText()+'.'+(r?'':' Your answer is anonymous. Waiting for the reveal&hellip;')+'</div>';
     } else if(r){
@@ -2924,10 +3010,10 @@ body{background:#1c2129;}
   }
   function render(force){
     var a=agg(), r=rel();
-    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : ''].join('|');
+    var key=[r?1:0, HOST?1:0, mine, (HOST||r)? JSON.stringify(a.by) : '', (!HOST&&!r&&mine===null&&!SL)? pick : '', r? actual() : ''].join('|');
     if(key===viewKey && !force) return; viewKey=key;
     var play = r && !lastRel; lastRel=r;
-    root.innerHTML='<div class="cs-play-grid">'+left(a)+right(a, play)+'</div>';
+    root.innerHTML='<div class="'+(PAIR?'cs-stack':'cs-play-grid')+'">'+left(a)+right(a, play)+'</div>';
   }
 
   function lock(){
@@ -2941,15 +3027,19 @@ body{background:#1c2129;}
     render(true);
   }
   function setRel(v){ if(backend) backend.mergeDoc('polls', ID, {released:!!v}); }
+  function reset(){ if(backend) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()}); }
+  me.rel=rel; me.agg=agg; me.setRel=setRel; me.reset=reset; me.render=function(){ render(); };
+  me.can=function(){ return HOST && !!backend && !rel(); };
+  function each(f){ UNITS.forEach(f); }
 
   root.addEventListener('click', function(e){
     var t=e.target.closest('[data-v]'); if(t && !HOST && mine===null && !rel()){ pick=+t.dataset.v; render(); return; }
     var o=e.target.closest('[data-k]'); if(o && !HOST && mine===null && !rel()){ pick=+o.dataset.k; render(); return; }
     if(e.target.closest('[data-cs-lock]')){ lock(); return; }
     var b=e.target.closest('[data-cs]'); if(!b||!HOST||!backend) return;
-    if(b.dataset.cs==='reveal') setRel(true);
-    else if(b.dataset.cs==='hide') setRel(false);
-    else if(b.dataset.cs==='reset' && confirm('Reset all answers for this question?')) backend.setDoc('polls', ID, {counts:{}, released:false, run:Date.now()});
+    if(b.dataset.cs==='reveal') each(function(u){ if(u.setRel) u.setRel(true); });
+    else if(b.dataset.cs==='hide') each(function(u){ if(u.setRel) u.setRel(false); });
+    else if(b.dataset.cs==='reset' && confirm(PAIR? 'Reset all answers on this slide?' : 'Reset all answers for this question?')) each(function(u){ if(u.reset) u.reset(); });
   });
   root.addEventListener('input', function(e){
     var r=e.target.closest('[data-cs-range]'); if(!r) return; pick=+r.value;
@@ -2964,7 +3054,7 @@ body{background:#1c2129;}
     var f=root.querySelector('.cs-tick[data-v="'+pick+'"]'); if(f) f.focus();
   });
   /* presenter clicker: the first press reveals, the next press moves on */
-  SEC.__deckNext=function(){ if(!HOST||!backend||rel()) return false; setRel(true); return true; };
+  SEC.__deckNext=function(){ var go=UNITS.filter(function(u){ return u.can && u.can(); }); if(!go.length) return false; go.forEach(function(u){ u.setRel(true); }); return true; };
 
   window.__deckLiveReady.then(function(live){
     backend=live.backend; HOST=!!live.HOST;
@@ -2974,7 +3064,7 @@ body{background:#1c2129;}
       if(!HOST && mine!==null && (ls(KEY+':run')||'0')!==String(st.run||0)){
         mine=null; pick=SL?50:null; ls(KEY,''); ls(KEY+':run','');
         if(K==='scale' && C.legacy) ls('spectrum-done:'+C.legacy,''); viewKey=null; }
-      render(); });
+      each(function(u){ if(u.render) u.render(); }); });
   });
   render();
 })();</script></section>
@@ -6653,7 +6743,7 @@ const FIN = (function () {
 
 <div class="hud">
   <button onclick="prev()" title="Previous (left arrow)">&#8249;</button>
-  <span class="counter" id="counter">1 / 33</span>
+  <span class="counter" id="counter">1 / 32</span>
   <button onclick="next()" title="Next (right arrow)">&#8250;</button>
   <button onclick="toggleMenu()" title="Slide menu (O)">&#9776;</button>
   <button onclick="toggleFs()" title="Fullscreen (F)">&#9974;</button>
@@ -6662,7 +6752,7 @@ const FIN = (function () {
 <div class="menu" id="menu">
   <button class="menu-close" onclick="toggleMenu(false)" aria-label="Close menu">&times;</button>
   <h3>Chapter 11 &middot; Jump to a slide</h3>
-  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>Intro ▶ Agree/Disagree (1-10)</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>Intro ▶ Would you pay 1%?</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>Intro ▶ Guess: % of others</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>Intro ▶ World vs Our Class</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>11.1 Climate vs Weather</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>11.1 ▶ Weather vs Climate</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>11.1 Proxies</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>11.2 Past Climate + Drivers</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>11.2 ▶ Agree/Disagree</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>11.2 ▶ Jackets?</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>11.2 ▶ Greenhouse Effect (sim)</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>11.2 ▶ GHG Spectrum</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>11.4 Warming Now + CO₂</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>11.4 ▶ Temp (OWID)</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>11.4 Other GHGs + charts</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>11.4 ▶ Chain of Evidence</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>11.4 ▶ One Sky (live game)</button><button class="menu-item" data-go="20"><span class="menu-num">21</span>11.5 Sea-Level Rise</button><button class="menu-item" data-go="21"><span class="menu-num">22</span>11.5 Precipitation + Heat Deaths</button><button class="menu-item" data-go="22"><span class="menu-num">23</span>11.5 Olive &amp; Cherry</button><button class="menu-item" data-go="23"><span class="menu-num">24</span>11.5 Hurricanes + Costs</button><button class="menu-item" data-go="24"><span class="menu-num">25</span>11.5 Ocean Acidification</button><button class="menu-item" data-go="25"><span class="menu-num">26</span>11.5 ▶ Seawater pH (OWID)</button><button class="menu-item" data-go="26"><span class="menu-num">27</span>11.6 The Future</button><button class="menu-item" data-go="27"><span class="menu-num">28</span>11.6 ▶ Climate Modeler</button><button class="menu-item" data-go="28"><span class="menu-num">29</span>11.7 ▶ Carbon Calculator</button><button class="menu-item" data-go="29"><span class="menu-num">30</span>11.7 Climate Justice</button><button class="menu-item" data-go="30"><span class="menu-num">31</span>Final Thoughts</button><button class="menu-item" data-go="31"><span class="menu-num">32</span>▶ So, Can We Afford It?</button><button class="menu-item" data-go="32"><span class="menu-num">33</span>Key Concepts</button></div>
+  <div class="menu-grid"><button class="menu-item" data-go="0"><span class="menu-num">1</span>Title</button><button class="menu-item" data-go="1"><span class="menu-num">2</span>Outline</button><button class="menu-item" data-go="2"><span class="menu-num">3</span>Announcements</button><button class="menu-item" data-go="3"><span class="menu-num">4</span>Intro ▶ Agree/Disagree (1-10)</button><button class="menu-item" data-go="4"><span class="menu-num">5</span>Intro ▶ Pay 1%? + guess classmates</button><button class="menu-item" data-go="5"><span class="menu-num">6</span>Intro ▶ World vs Our Class</button><button class="menu-item" data-go="6"><span class="menu-num">7</span>11.1 Climate vs Weather</button><button class="menu-item" data-go="7"><span class="menu-num">8</span>11.1 ▶ Weather vs Climate</button><button class="menu-item" data-go="8"><span class="menu-num">9</span>11.1 Proxies</button><button class="menu-item" data-go="9"><span class="menu-num">10</span>11.2 Past Climate + Drivers</button><button class="menu-item" data-go="10"><span class="menu-num">11</span>11.2 ▶ Agree/Disagree</button><button class="menu-item" data-go="11"><span class="menu-num">12</span>11.2 ▶ Jackets?</button><button class="menu-item" data-go="12"><span class="menu-num">13</span>11.2 ▶ Greenhouse Effect (sim)</button><button class="menu-item" data-go="13"><span class="menu-num">14</span>11.2 ▶ GHG Spectrum</button><button class="menu-item" data-go="14"><span class="menu-num">15</span>11.4 Warming Now + CO₂</button><button class="menu-item" data-go="15"><span class="menu-num">16</span>11.4 ▶ Temp (OWID)</button><button class="menu-item" data-go="16"><span class="menu-num">17</span>11.4 Other GHGs + charts</button><button class="menu-item" data-go="17"><span class="menu-num">18</span>11.4 ▶ Chain of Evidence</button><button class="menu-item" data-go="18"><span class="menu-num">19</span>11.4 ▶ One Sky (live game)</button><button class="menu-item" data-go="19"><span class="menu-num">20</span>11.5 Sea-Level Rise</button><button class="menu-item" data-go="20"><span class="menu-num">21</span>11.5 Precipitation + Heat Deaths</button><button class="menu-item" data-go="21"><span class="menu-num">22</span>11.5 Olive &amp; Cherry</button><button class="menu-item" data-go="22"><span class="menu-num">23</span>11.5 Hurricanes + Costs</button><button class="menu-item" data-go="23"><span class="menu-num">24</span>11.5 Ocean Acidification</button><button class="menu-item" data-go="24"><span class="menu-num">25</span>11.5 ▶ Seawater pH (OWID)</button><button class="menu-item" data-go="25"><span class="menu-num">26</span>11.6 The Future</button><button class="menu-item" data-go="26"><span class="menu-num">27</span>11.6 ▶ Climate Modeler</button><button class="menu-item" data-go="27"><span class="menu-num">28</span>11.7 ▶ Carbon Calculator</button><button class="menu-item" data-go="28"><span class="menu-num">29</span>11.7 Climate Justice</button><button class="menu-item" data-go="29"><span class="menu-num">30</span>Final Thoughts</button><button class="menu-item" data-go="30"><span class="menu-num">31</span>▶ So, Can We Afford It?</button><button class="menu-item" data-go="31"><span class="menu-num">32</span>Key Concepts</button></div>
 </div>
 
 <script>
