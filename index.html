@@ -2547,11 +2547,11 @@ body{background:#1c2129;}
     <div class="ws-chartwrap"><div class="ws-veil"><span>Hidden until the reveal</span></div><svg id="wsSvg" role="img"
       aria-label="Scatter plot of 125 countries: actual share willing to give 1% of income (x) vs predicted share (y), with our class plotted as a live point"></svg></div>
     <div class="ws-foot">
-      <span class="ws-status" id="wsStatus">Waiting for class responses on the two previous slides…</span>
+      <span class="ws-status" id="wsStatus">Waiting for class responses on the previous slide…</span>
       <button class="ws-hostbtn" type="button" id="wsRev">Reveal graph</button>
       <button class="ws-simbtn" type="button" id="wsSim">🎲 Simulate class data</button>
     </div>
-    <div class="ws-src">Data: Andre, P., Boneva, T., Chopra, F., &amp; Falk, A. (2024). Globally representative evidence on the actual and perceived support for climate action. <em>Nature Climate Change, 14,</em> 253–259. Global Climate Change Survey (~130,000 respondents, 125 countries), via Our World in Data. Each country: the share who said they would give 1% of their household income every month (x) and the share of their fellow citizens they expected would (y). Both are self-reported survey answers, not observed donations. Our class: your Yes/No answers (x) and your average estimate for classmates (y) from the two previous slides.</div>
+    <div class="ws-src">Data: Andre, P., Boneva, T., Chopra, F., &amp; Falk, A. (2024). Globally representative evidence on the actual and perceived support for climate action. <em>Nature Climate Change, 14,</em> 253–259. Global Climate Change Survey (~130,000 respondents, 125 countries), via Our World in Data. Each country: the share who said they would give 1% of their household income every month (x) and the share of their fellow citizens they expected would (y). Both are self-reported survey answers, not observed donations. Our class: your Yes/No answers (x) and your average estimate for classmates (y) from the previous slide.</div>
   </div>
   <div class="footer">© 2023 W. W. Norton &amp; Company, Inc.</div>
   <script type="module">
@@ -2649,7 +2649,7 @@ body{background:#1c2129;}
       if(d){ showClass(d.a,d.p,sim?'(simulated)':'');
         status.textContent=(sim?'Simulated demo — ':'Live — ')+d.n1+' voted on the Yes/No poll · '+d.n2+' guessed.';
       } else { CG.setAttribute('visibility','hidden');
-        status.textContent='Waiting for class responses on the two previous slides…'; }
+        status.textContent='Waiting for class responses on the previous slide…'; }
     }
     document.getElementById('wsSim').addEventListener('click',function(){
       if(sim){ sim=null; this.textContent='🎲 Simulate class data'; }
@@ -2665,7 +2665,7 @@ body{background:#1c2129;}
     render();
 
     // live class data through the deck's shared backend (Firestore in class, local storage offline), so the class
-    // point always sees the same answers the two poll slides recorded
+    // point always sees the same answers the paired poll slide recorded
     if(!window.__deckLiveReady){ window.__deckLiveReady=new Promise(function(r){ window.__deckLiveResolve=r; }); }
     window.__deckLiveReady.then(function(live){
       var b=live.backend, merged={self:{},others:{}};
