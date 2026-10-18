@@ -228,9 +228,16 @@ body.focus .bk-table td{padding:.42rem .7rem; font-size:.76rem;} body.focus .bk-
 .fx-popcard .panel{border:0; background:transparent;} .fx-popcard .ph{display:none;} .fx-popcard .pb{padding:0;}
 .fx-x{position:absolute; top:.55rem; right:.65rem; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(42,46,51,.07); font-size:1.3rem; line-height:1; cursor:pointer; color:#22262b;}
 .fx-x:hover{background:rgba(42,46,51,.14);}
+/* hand-drawn icons (cfc_icons.py) */
+.hi{display:inline-block; width:1.3em; height:1.3em; vertical-align:-.3em; overflow:visible; flex:none;}
+.hi circle[r=".45"], .hi circle[r=".5"], .hi circle[r=".7"], .hi circle[r=".9"]{fill:currentColor;}
+.card-ico .hi{width:1.55em; height:1.55em;}
+.ph-icon .hi{width:1.25em; height:1.25em;}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" data-hd-defs><defs><filter id="hdNib" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="0.9" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+<script>var HI_SVG={car:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#7f97ad" opacity=".6" transform="translate(.8 .9)"><path d="M3.2 16V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.3 16H3.2V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16H18.7M9.3 16H14.7"/><path d="M8.7 10.6 9.9 8.4H11.5V10.6ZM12.9 10.6V8.4H14.1L15.4 10.6Z"/><circle cx="7.3" cy="16.3" r="1.9"/><circle cx="16.7" cy="16.3" r="1.9"/></g></svg>',leaf:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/><path d="M3.6 20.4C8 15.6 11.6 11.6 15.8 8.4M9.7 14.1 9.5 10.9M12.6 11.4 16 11.5"/></g></svg>',bolt:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g></svg>',bags:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#b39cb8" opacity=".6" transform="translate(.8 .9)"><path d="M5 8.5H19L18 20.5H6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 8.5H19L18 20.5H6Z"/><path d="M9 11V6.8A3 3 0 0 1 15 6.8V11"/></g></svg>',battery:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><rect x="3" y="7.5" width="10" height="10" rx="1.6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="3" y="7.5" width="16" height="10" rx="1.6"/><path d="M19 10.5H20.6V14.5H19M6.4 10.4V14.6M9.4 10.4V14.6M12.4 10.4V14.6"/></g></svg>',pump:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><rect x="5" y="4" width="9" height="16.5" rx="1.5"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 20.5V5.5Q5 4 6.5 4H12.5Q14 4 14 5.5V20.5M3.5 20.5H15.5"/><rect x="7" y="6.5" width="5" height="4.2" rx=".6"/><path d="M14 8.2 17.6 10.6V17Q17.6 18.6 19 18.6 20.5 18.6 20.5 17V9.2L18.6 7"/></g></svg>',walk:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><ellipse cx="11.6" cy="20.8" rx="5.6" ry="1.1"/><circle cx="12.8" cy="4.6" r="1.9"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12.8" cy="4.6" r="1.7"/><path d="M12.3 7.6 10.8 13.2M12.1 8.6 9.1 10.8M12.1 8.6 14.9 11.2M10.8 13.2 8.4 19.8M10.8 13.2 13.6 16 14.4 20.2M6.2 21H17"/></g></svg>',bulb:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M9 16.5C9 14 6.2 12.8 6.2 9.4A5.8 5.8 0 0 1 17.8 9.4C17.8 12.8 15 14 15 16.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M9 16.5C9 14 6.2 12.8 6.2 9.4A5.8 5.8 0 0 1 17.8 9.4C17.8 12.8 15 14 15 16.5Z"/><path d="M9.2 18.3H14.8M10.1 20.2H13.9M10.5 13 11.3 10.5 12 12.2 12.7 10.5 13.5 13"/></g></svg>',sprout:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><path d="M12 13C8 13 5 10.5 5 6.5 9 6.5 12 9 12 13ZM12 11C12 6.8 14.8 4.2 19 4.2 19 8.4 16.2 11 12 11Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 13C8 13 5 10.5 5 6.5 9 6.5 12 9 12 13ZM12 11C12 6.8 14.8 4.2 19 4.2 19 8.4 16.2 11 12 11Z"/><path d="M12 21V10.8M6.6 21H17.4"/></g></svg>',carrot:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d6996c" opacity=".6" transform="translate(.8 .9)"><path d="M5.2 20.8 11.2 11.6C12.8 9.2 15.4 8.4 16.6 9.6 17.8 10.8 17 13.4 14.6 15Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.2 20.8 11.2 11.6C12.8 9.2 15.4 8.4 16.6 9.6 17.8 10.8 17 13.4 14.6 15Z"/><path d="M16.4 9.4C16.2 7 17.2 4.6 19 3.6M16.8 9.8C18.6 8.6 20.6 8.8 21.4 9.8M16.6 9.6C18 7.6 19.6 6.6 21 6.6M10.4 14.4 11.8 15.2M8.5 17.3 9.7 17.9M12.5 12 13.5 12.8"/></g></svg>',plate:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d8c39c" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12.2" r="6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12.2" r="6"/><circle cx="12" cy="12.2" r="3.7"/><path d="M2.6 3.6V8.6Q2.6 10.4 3.8 10.4 5 10.4 5 8.6V3.6M3.8 3.6V8M3.8 10.4V20.6M21.2 3.6Q19.4 6 19.4 10.4H21.2V20.6M21.2 3.6V10.4"/></g></svg>',steak:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><path d="M4 11.5C4 7.5 8 5 12.5 5.2 17.5 5.4 20.6 8.2 20.2 11.8 19.8 15.4 16.4 15.6 14.8 17.6 13.2 19.6 10.6 19.8 8.4 18.8 5.6 17.6 4 15 4 11.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M4 11.5C4 7.5 8 5 12.5 5.2 17.5 5.4 20.6 8.2 20.2 11.8 19.8 15.4 16.4 15.6 14.8 17.6 13.2 19.6 10.6 19.8 8.4 18.8 5.6 17.6 4 15 4 11.5Z"/><circle cx="9.2" cy="11.8" r="1.9"/><path d="M13 9Q15 10 16.6 9.4M12.8 13.6Q14.8 13.6 16 12.6"/></g></svg>',flame:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d6996c" opacity=".6" transform="translate(.8 .9)"><path d="M12 21C7.6 21 5.6 18 5.6 15 5.6 11 9 9.4 9.2 5.6 11.6 7 12.2 9.2 11.8 11 13 10.2 13.4 8.6 13.2 7.2 16.6 9.4 18.4 12.4 18.4 15.2 18.4 18.4 16 21 12 21Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 21C7.6 21 5.6 18 5.6 15 5.6 11 9 9.4 9.2 5.6 11.6 7 12.2 9.2 11.8 11 13 10.2 13.4 8.6 13.2 7.2 16.6 9.4 18.4 12.4 18.4 15.2 18.4 18.4 16 21 12 21Z"/><path d="M12 20.6C10.2 20.6 9.4 19.2 9.4 17.8 9.4 16 11 15.2 11.2 13.4 13.2 14.6 14.6 16.2 14.6 17.8 14.6 19.4 13.6 20.6 12 20.6Z"/></g></svg>',heatpump:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><rect x="2.8" y="6" width="18.4" height="12" rx="1.4"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="2.8" y="6" width="18.4" height="12" rx="1.4"/><circle cx="9" cy="12" r="4"/><path d="M9 12 9.4 8.4M9 12 12.2 13.8M9 12 5.8 13.6M15.6 9H18.8M15.6 11H18.8M15.6 13H18.8M5 18V20M19 18V20M7 3.6Q8 2.6 9 3.6T11 3.6M13 3.6Q14 2.6 15 3.6T17 3.6"/></g></svg>',sun:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12" r="5"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4V4.8M12 19.2V21.6M2.4 12H4.8M19.2 12H21.6M5.2 5.2 6.9 6.9M17.1 17.1 18.8 18.8M5.2 18.8 6.9 17.1M17.1 6.9 18.8 5.2"/></g></svg>',plane:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><path d="M12 2.6Q13.2 2.6 13.2 4.6V9.6L21 14V15.8L13.2 13.4V18.4L15.6 20.2V21.4L12 20.4 8.4 21.4V20.2L10.8 18.4V13.4L3 15.8V14L10.8 9.6V4.6Q10.8 2.6 12 2.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 2.6Q13.2 2.6 13.2 4.6V9.6L21 14V15.8L13.2 13.4V18.4L15.6 20.2V21.4L12 20.4 8.4 21.4V20.2L10.8 18.4V13.4L3 15.8V14L10.8 9.6V4.6Q10.8 2.6 12 2.6Z"/></g></svg>',bus:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#7f97ad" opacity=".6" transform="translate(.8 .9)"><rect x="4" y="3.5" width="16" height="15" rx="2.2"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="4" y="3.5" width="16" height="15" rx="2.2"/><rect x="6" y="6" width="12" height="5.6" rx=".8"/><path d="M4 13.8H20M6.5 18.5V20.6H9V18.5M15 18.5V20.6H17.5V18.5"/><circle cx="7.4" cy="16.1" r=".9"/><circle cx="16.6" cy="16.1" r=".9"/></g></svg>',takeout:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c9a87a" opacity=".6" transform="translate(.8 .9)"><path d="M5 9 6.6 20.5H17.4L19 9Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 9 6.6 20.5H17.4L19 9ZM5 9 3.6 5.6 8.4 4.4 9.6 9M19 9 20.4 5.6 15.6 4.4 14.4 9M9.4 9Q12 3.2 14.6 9"/></g></svg>',shirt:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#b39cb8" opacity=".6" transform="translate(.8 .9)"><path d="M8.6 3.6 3.4 6.6 5.2 10.8 7.2 9.8V20.4H16.8V9.8L18.8 10.8 20.6 6.6 15.4 3.6Q12 6.4 8.6 3.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M8.6 3.6 3.4 6.6 5.2 10.8 7.2 9.8V20.4H16.8V9.8L18.8 10.8 20.6 6.6 15.4 3.6Q12 6.4 8.6 3.6Z"/></g></svg>',laptop:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><rect x="5" y="4.6" width="14" height="10" rx="1"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="5" y="4.6" width="14" height="10" rx="1"/><path d="M2.6 18.4 5 14.6H19L21.4 18.4Q21.4 19.4 20.4 19.4H3.6Q2.6 19.4 2.6 18.4ZM10.4 17.2H13.6"/></g></svg>',cart:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#b39cb8" opacity=".6" transform="translate(.8 .9)"><path d="M6 7.4H20.4L18.2 15.2H7.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M2.6 4H5L7.6 15.2H18.2L20.4 7.4H6M7 11.4H19.3"/><circle cx="9" cy="18.6" r="1.4"/><circle cx="16.6" cy="18.6" r="1.4"/></g></svg>',tv:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><rect x="3" y="5.5" width="18" height="12" rx="1.6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="3" y="5.5" width="18" height="12" rx="1.6"/><path d="M9 20.5H15M12 17.5V20.5M9 2.6 12 5.5 15 2.6M10.6 9.2 14.4 11.5 10.6 13.8Z"/></g></svg>',warn:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M12 3.4 21.4 19.6H2.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 3.4 21.4 19.6H2.6ZM12 9.4V14"/><circle cx="12" cy="16.8" r=".45"/></g></svg>',chart:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><path d="M6.4 12H9.4V20.4H6.4ZM11 7.4H14V20.4H11ZM15.6 10H18.6V20.4H15.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M3.6 3.6V20.4H20.6M6.4 20.4V12H9.4V20.4M11 20.4V7.4H14V20.4M15.6 20.4V10H18.6V20.4"/></g></svg>',globe:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12" r="8.6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12" r="8.6"/><ellipse cx="12" cy="12" rx="3.8" ry="8.6"/><path d="M3.6 9.4H20.4M3.6 14.6H20.4"/></g></svg>',clipboard:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d8c39c" opacity=".6" transform="translate(.8 .9)"><rect x="5" y="4.6" width="14" height="16.4" rx="1.4"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="5" y="4.6" width="14" height="16.4" rx="1.4"/><path d="M9 6.2V3.4Q9 2.6 9.8 2.6H14.2Q15 2.6 15 3.4V6.2ZM8 10.4H16M8 13.6H16M8 16.8H13"/></g></svg>',books:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><path d="M3.6 5H7.6V20.4H3.6ZM13 6 16.8 5 20.6 19.6 16.8 20.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="3.6" y="5" width="4" height="15.4" rx=".5"/><rect x="7.6" y="3.6" width="4" height="16.8" rx=".5"/><path d="M13 6 16.8 5 20.6 19.6 16.8 20.6ZM2.6 20.6H21.4M3.6 8H7.6M7.6 7H11.6"/></g></svg>',flask:'<svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><path d="M7.4 14.6H16.6L19 18.6Q19.8 20.6 17.6 20.6H6.4Q4.2 20.6 5 18.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M9.4 3H14.6M10.4 3V9.4L5 18.6Q4.2 20.6 6.4 20.6H17.6Q19.8 20.6 19 18.6L13.6 9.4V3M7.4 14.6H16.6"/><circle cx="11" cy="17.4" r=".7"/><circle cx="13.6" cy="16.6" r=".5"/></g></svg>'}; function HI(n){ return HI_SVG[n]||""; }</script>
 <script>if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embed');
 var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS) document.body.classList.add('focus');</script>
 
@@ -248,23 +255,23 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
 <div class="wrap">
   <!-- DISCLAIMER -->
-  <div class="disclaimer sans">⚠️ <strong>This tool is for educational purposes only.</strong> The values shown — while based on the peer-reviewed and government sources cited below — are <strong>estimates</strong>, not precise measurements of any individual's actual emissions. Real footprints vary widely with local grids, specific products, and behavior.</div>
+  <div class="disclaimer sans"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M12 3.4 21.4 19.6H2.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 3.4 21.4 19.6H2.6ZM12 9.4V14"/><circle cx="12" cy="16.8" r=".45"/></g></svg> <strong>This tool is for educational purposes only.</strong> The values shown — while based on the peer-reviewed and government sources cited below — are <strong>estimates</strong>, not precise measurements of any individual's actual emissions. Real footprints vary widely with local grids, specific products, and behavior.</div>
 
   <!-- CONTROLS -->
   <div class="ctrl-col">
 
     <!-- TRANSPORT -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">🚗</span><span class="ph-title">Transportation</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#7f97ad" opacity=".6" transform="translate(.8 .9)"><path d="M3.2 16V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.3 16H3.2V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16H18.7M9.3 16H14.7"/><path d="M8.7 10.6 9.9 8.4H11.5V10.6ZM12.9 10.6V8.4H14.1L15.4 10.6Z"/><circle cx="7.3" cy="16.3" r="1.9"/><circle cx="16.7" cy="16.3" r="1.9"/></g></svg></span><span class="ph-title">Transportation</span><span class="ph-chevron">▾</span></div>
       <div class="panel-body-wrap"><div class="pb">
         <div class="cat">Vehicle</div>
         <div class="cr">
           <div class="cl"><span class="cn">Primary vehicle type</span></div>
           <div class="seg" id="sg-vehicle">
-            <button class="seg-btn on" onclick="setSeg('vehicle','ev',this)">⚡ EV</button>
-            <button class="seg-btn" onclick="setSeg('vehicle','hybrid',this)">🔋 Hybrid</button>
-            <button class="seg-btn" onclick="setSeg('vehicle','gas',this)">⛽ Gas</button>
-            <button class="seg-btn" onclick="setSeg('vehicle','none',this)">🚶 No Car</button>
+            <button class="seg-btn on" onclick="setSeg('vehicle','ev',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g></svg> EV</button>
+            <button class="seg-btn" onclick="setSeg('vehicle','hybrid',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><rect x="3" y="7.5" width="10" height="10" rx="1.6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="3" y="7.5" width="16" height="10" rx="1.6"/><path d="M19 10.5H20.6V14.5H19M6.4 10.4V14.6M9.4 10.4V14.6M12.4 10.4V14.6"/></g></svg> Hybrid</button>
+            <button class="seg-btn" onclick="setSeg('vehicle','gas',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><rect x="5" y="4" width="9" height="16.5" rx="1.5"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 20.5V5.5Q5 4 6.5 4H12.5Q14 4 14 5.5V20.5M3.5 20.5H15.5"/><rect x="7" y="6.5" width="5" height="4.2" rx=".6"/><path d="M14 8.2 17.6 10.6V17Q17.6 18.6 19 18.6 20.5 18.6 20.5 17V9.2L18.6 7"/></g></svg> Gas</button>
+            <button class="seg-btn" onclick="setSeg('vehicle','none',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><ellipse cx="11.6" cy="20.8" rx="5.6" ry="1.1"/><circle cx="12.8" cy="4.6" r="1.9"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12.8" cy="4.6" r="1.7"/><path d="M12.3 7.6 10.8 13.2M12.1 8.6 9.1 10.8M12.1 8.6 14.9 11.2M10.8 13.2 8.4 19.8M10.8 13.2 13.6 16 14.4 20.2M6.2 21H17"/></g></svg> No Car</button>
           </div>
         </div>
         <div class="cr">
@@ -293,16 +300,16 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- FOOD -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">🌿</span><span class="ph-title">Food &amp; Diet</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/><path d="M3.6 20.4C8 15.6 11.6 11.6 15.8 8.4M9.7 14.1 9.5 10.9M12.6 11.4 16 11.5"/></g></svg></span><span class="ph-title">Food &amp; Diet</span><span class="ph-chevron">▾</span></div>
       <div class="panel-body-wrap"><div class="pb">
         <div class="cat">Diet Pattern</div>
         <div class="cr">
           <div class="cl"><span class="cn">Primary diet type</span></div>
           <div class="seg" id="sg-diet">
-            <button class="seg-btn" onclick="setSeg('diet','vegan',this)">🌱 Vegan</button>
-            <button class="seg-btn" onclick="setSeg('diet','veggie',this)">🥦 Veggie</button>
-            <button class="seg-btn on" onclick="setSeg('diet','mixed',this)">🍽️ Mixed</button>
-            <button class="seg-btn" onclick="setSeg('diet','meat',this)">🥩 Meat-heavy</button>
+            <button class="seg-btn" onclick="setSeg('diet','vegan',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><path d="M12 13C8 13 5 10.5 5 6.5 9 6.5 12 9 12 13ZM12 11C12 6.8 14.8 4.2 19 4.2 19 8.4 16.2 11 12 11Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 13C8 13 5 10.5 5 6.5 9 6.5 12 9 12 13ZM12 11C12 6.8 14.8 4.2 19 4.2 19 8.4 16.2 11 12 11Z"/><path d="M12 21V10.8M6.6 21H17.4"/></g></svg> Vegan</button>
+            <button class="seg-btn" onclick="setSeg('diet','veggie',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d6996c" opacity=".6" transform="translate(.8 .9)"><path d="M5.2 20.8 11.2 11.6C12.8 9.2 15.4 8.4 16.6 9.6 17.8 10.8 17 13.4 14.6 15Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.2 20.8 11.2 11.6C12.8 9.2 15.4 8.4 16.6 9.6 17.8 10.8 17 13.4 14.6 15Z"/><path d="M16.4 9.4C16.2 7 17.2 4.6 19 3.6M16.8 9.8C18.6 8.6 20.6 8.8 21.4 9.8M16.6 9.6C18 7.6 19.6 6.6 21 6.6M10.4 14.4 11.8 15.2M8.5 17.3 9.7 17.9M12.5 12 13.5 12.8"/></g></svg> Veggie</button>
+            <button class="seg-btn on" onclick="setSeg('diet','mixed',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d8c39c" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12.2" r="6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12.2" r="6"/><circle cx="12" cy="12.2" r="3.7"/><path d="M2.6 3.6V8.6Q2.6 10.4 3.8 10.4 5 10.4 5 8.6V3.6M3.8 3.6V8M3.8 10.4V20.6M21.2 3.6Q19.4 6 19.4 10.4H21.2V20.6M21.2 3.6V10.4"/></g></svg> Mixed</button>
+            <button class="seg-btn" onclick="setSeg('diet','meat',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><path d="M4 11.5C4 7.5 8 5 12.5 5.2 17.5 5.4 20.6 8.2 20.2 11.8 19.8 15.4 16.4 15.6 14.8 17.6 13.2 19.6 10.6 19.8 8.4 18.8 5.6 17.6 4 15 4 11.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M4 11.5C4 7.5 8 5 12.5 5.2 17.5 5.4 20.6 8.2 20.2 11.8 19.8 15.4 16.4 15.6 14.8 17.6 13.2 19.6 10.6 19.8 8.4 18.8 5.6 17.6 4 15 4 11.5Z"/><circle cx="9.2" cy="11.8" r="1.9"/><path d="M13 9Q15 10 16.6 9.4M12.8 13.6Q14.8 13.6 16 12.6"/></g></svg> Meat-heavy</button>
           </div>
         </div>
         <div class="cr" style="margin-top:.8rem">
@@ -325,7 +332,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- ENERGY -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">⚡</span><span class="ph-title">Home Energy</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g></svg></span><span class="ph-title">Home Energy</span><span class="ph-chevron">▾</span></div>
       <div class="panel-body-wrap"><div class="pb">
         <div class="cat">Electricity</div>
         <div class="cr">
@@ -348,10 +355,10 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
         <div class="cr">
           <div class="cl"><span class="cn">Home heating source</span></div>
           <div class="seg" id="sg-heat">
-            <button class="seg-btn on" onclick="setSeg('heat','natgas',this)">🔥 Gas</button>
-            <button class="seg-btn" onclick="setSeg('heat','heatpump',this)">🌡️ Heat Pump</button>
-            <button class="seg-btn" onclick="setSeg('heat','electric',this)">⚡ Electric</button>
-            <button class="seg-btn" onclick="setSeg('heat','minimal',this)">☀️ Minimal</button>
+            <button class="seg-btn on" onclick="setSeg('heat','natgas',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d6996c" opacity=".6" transform="translate(.8 .9)"><path d="M12 21C7.6 21 5.6 18 5.6 15 5.6 11 9 9.4 9.2 5.6 11.6 7 12.2 9.2 11.8 11 13 10.2 13.4 8.6 13.2 7.2 16.6 9.4 18.4 12.4 18.4 15.2 18.4 18.4 16 21 12 21Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M12 21C7.6 21 5.6 18 5.6 15 5.6 11 9 9.4 9.2 5.6 11.6 7 12.2 9.2 11.8 11 13 10.2 13.4 8.6 13.2 7.2 16.6 9.4 18.4 12.4 18.4 15.2 18.4 18.4 16 21 12 21Z"/><path d="M12 20.6C10.2 20.6 9.4 19.2 9.4 17.8 9.4 16 11 15.2 11.2 13.4 13.2 14.6 14.6 16.2 14.6 17.8 14.6 19.4 13.6 20.6 12 20.6Z"/></g></svg> Gas</button>
+            <button class="seg-btn" onclick="setSeg('heat','heatpump',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><rect x="2.8" y="6" width="18.4" height="12" rx="1.4"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="2.8" y="6" width="18.4" height="12" rx="1.4"/><circle cx="9" cy="12" r="4"/><path d="M9 12 9.4 8.4M9 12 12.2 13.8M9 12 5.8 13.6M15.6 9H18.8M15.6 11H18.8M15.6 13H18.8M5 18V20M19 18V20M7 3.6Q8 2.6 9 3.6T11 3.6M13 3.6Q14 2.6 15 3.6T17 3.6"/></g></svg> Heat Pump</button>
+            <button class="seg-btn" onclick="setSeg('heat','electric',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g></svg> Electric</button>
+            <button class="seg-btn" onclick="setSeg('heat','minimal',this)"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12" r="5"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4V4.8M12 19.2V21.6M2.4 12H4.8M19.2 12H21.6M5.2 5.2 6.9 6.9M17.1 17.1 18.8 18.8M5.2 18.8 6.9 17.1M17.1 6.9 18.8 5.2"/></g></svg> Minimal</button>
           </div>
         </div>
         <div class="cr">
@@ -364,7 +371,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- CONSUMER -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">🛍️</span><span class="ph-title">Consumer Choices</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#b39cb8" opacity=".6" transform="translate(.8 .9)"><path d="M5 8.5H19L18 20.5H6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 8.5H19L18 20.5H6Z"/><path d="M9 11V6.8A3 3 0 0 1 15 6.8V11"/></g></svg></span><span class="ph-title">Consumer Choices</span><span class="ph-chevron">▾</span></div>
       <div class="panel-body-wrap"><div class="pb">
         <div class="cat">Clothing &amp; Electronics</div>
         <div class="cr">
@@ -419,14 +426,14 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
     </div>
 
     <div class="insight sans" id="insight-box">
-      <strong>💡 Insight:</strong> <span id="insight-text"></span>
+      <strong><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M9 16.5C9 14 6.2 12.8 6.2 9.4A5.8 5.8 0 0 1 17.8 9.4C17.8 12.8 15 14 15 16.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M9 16.5C9 14 6.2 12.8 6.2 9.4A5.8 5.8 0 0 1 17.8 9.4C17.8 12.8 15 14 15 16.5Z"/><path d="M9.2 18.3H14.8M10.1 20.2H13.9M10.5 13 11.3 10.5 12 12.2 12.7 10.5 13.5 13"/></g></svg> Insight:</strong> <span id="insight-text"></span>
     </div>
 
     <!-- CARDS -->
     <div class="cards">
       <div class="card">
         <div class="card-bar" id="cb-transport" style="background:var(--sage)"></div>
-        <span class="card-ico">🚗</span>
+        <span class="card-ico"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#7f97ad" opacity=".6" transform="translate(.8 .9)"><path d="M3.2 16V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.3 16H3.2V12.6Q3.2 11.4 4.5 11.1L6.4 10.7 8.3 7.5Q8.7 6.9 9.5 6.9H14.5Q15.3 6.9 15.7 7.5L17.7 10.7 19.6 11.1Q20.8 11.4 20.8 12.6V16H18.7M9.3 16H14.7"/><path d="M8.7 10.6 9.9 8.4H11.5V10.6ZM12.9 10.6V8.4H14.1L15.4 10.6Z"/><circle cx="7.3" cy="16.3" r="1.9"/><circle cx="16.7" cy="16.3" r="1.9"/></g></svg></span>
         <div class="card-lbl">Transportation</div>
         <div class="card-val" id="cv-transport">—</div>
         <div class="card-unit">CO₂e / year</div>
@@ -434,7 +441,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
       </div>
       <div class="card">
         <div class="card-bar" id="cb-food" style="background:var(--gold)"></div>
-        <span class="card-ico">🌿</span>
+        <span class="card-ico"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#8fa77a" opacity=".6" transform="translate(.8 .9)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5.5 18.5C4.8 11.5 9.5 5.6 19.4 4.6 19.6 13.6 13.6 19.4 5.5 18.5Z"/><path d="M3.6 20.4C8 15.6 11.6 11.6 15.8 8.4M9.7 14.1 9.5 10.9M12.6 11.4 16 11.5"/></g></svg></span>
         <div class="card-lbl">Food</div>
         <div class="card-val" id="cv-food">—</div>
         <div class="card-unit">CO₂e / year</div>
@@ -442,7 +449,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
       </div>
       <div class="card">
         <div class="card-bar" id="cb-energy" style="background:var(--blue)"></div>
-        <span class="card-ico">⚡</span>
+        <span class="card-ico"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#e2c784" opacity=".6" transform="translate(.8 .9)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M13.5 2.8 5.8 13.4H11.4L10.2 21.2 18.2 10.2H12.6Z"/></g></svg></span>
         <div class="card-lbl">Energy</div>
         <div class="card-val" id="cv-energy">—</div>
         <div class="card-unit">CO₂e / year</div>
@@ -450,7 +457,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
       </div>
       <div class="card">
         <div class="card-bar" id="cb-consumer" style="background:var(--purple)"></div>
-        <span class="card-ico">🛍️</span>
+        <span class="card-ico"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#b39cb8" opacity=".6" transform="translate(.8 .9)"><path d="M5 8.5H19L18 20.5H6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M5 8.5H19L18 20.5H6Z"/><path d="M9 11V6.8A3 3 0 0 1 15 6.8V11"/></g></svg></span>
         <div class="card-lbl">Consumer</div>
         <div class="card-val" id="cv-consumer">—</div>
         <div class="card-unit">CO₂e / year</div>
@@ -460,7 +467,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- CHARTS -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">📊</span><span class="ph-title">Emissions Breakdown</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><path d="M6.4 12H9.4V20.4H6.4ZM11 7.4H14V20.4H11ZM15.6 10H18.6V20.4H15.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M3.6 3.6V20.4H20.6M6.4 20.4V12H9.4V20.4M11 20.4V7.4H14V20.4M15.6 20.4V10H18.6V20.4"/></g></svg></span><span class="ph-title">Emissions Breakdown</span><span class="ph-chevron">▾</span></div>
       <div class="pb">
         <div class="chart-tabs">
           <button class="ctab on" onclick="switchTab('bar',this)">By Activity</button>
@@ -489,7 +496,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- COMPARE -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">🌍</span><span class="ph-title">How Your Footprint Compares</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><circle cx="12" cy="12" r="8.6"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><circle cx="12" cy="12" r="8.6"/><ellipse cx="12" cy="12" rx="3.8" ry="8.6"/><path d="M3.6 9.4H20.4M3.6 14.6H20.4"/></g></svg></span><span class="ph-title">How Your Footprint Compares</span><span class="ph-chevron">▾</span></div>
       <div class="pb">
         <p style="font-family:system-ui,sans-serif;font-size:.78rem;color:#5a7a6a;margin-bottom:1rem;font-weight:300;line-height:1.6">
           Your total set against three reference points: the US per-capita average, the global per-capita average, and the roughly <strong>2 tonnes/person/year</strong> consistent with holding warming near 1.5&nbsp;°C by mid-century.
@@ -507,7 +514,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- BREAKDOWN TABLE -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">📋</span><span class="ph-title">Line-Item Breakdown</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#d8c39c" opacity=".6" transform="translate(.8 .9)"><rect x="5" y="4.6" width="14" height="16.4" rx="1.4"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="5" y="4.6" width="14" height="16.4" rx="1.4"/><path d="M9 6.2V3.4Q9 2.6 9.8 2.6H14.2Q15 2.6 15 3.4V6.2ZM8 10.4H16M8 13.6H16M8 16.8H13"/></g></svg></span><span class="ph-title">Line-Item Breakdown</span><span class="ph-chevron">▾</span></div>
       <div class="table-scroll"><table class="bk-table">
         <thead>
           <tr>
@@ -524,7 +531,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- SOURCES -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">📚</span><span class="ph-title">Sources &amp; Methodology</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#c58b72" opacity=".6" transform="translate(.8 .9)"><path d="M3.6 5H7.6V20.4H3.6ZM13 6 16.8 5 20.6 19.6 16.8 20.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><rect x="3.6" y="5" width="4" height="15.4" rx=".5"/><rect x="7.6" y="3.6" width="4" height="16.8" rx=".5"/><path d="M13 6 16.8 5 20.6 19.6 16.8 20.6ZM2.6 20.6H21.4M3.6 8H7.6M7.6 7H11.6"/></g></svg></span><span class="ph-title">Sources &amp; Methodology</span><span class="ph-chevron">▾</span></div>
       <div class="pb">
         <div class="src-item"><div class="src-n">[1]</div><div class="src-t">U.S. EPA. (2024). <em>Greenhouse Gases Equivalencies Calculator — Calculations and References.</em> epa.gov. Gasoline combustion 8.887 kg CO₂/gallon; natural gas 5.3 kg CO₂/therm; and the GHG emission factors used throughout.</div></div>
         <div class="src-item"><div class="src-n">[2]</div><div class="src-t">U.S. EPA. (2023). <em>Automotive Trends Report</em> &amp; fuel-economy data. Real-world fleet average ≈ 25 mpg (gas); ≈ 50 mpg (hybrid); EV efficiency ≈ 3.5 mi/kWh. Basis for the per-mile vehicle emission factors.</div></div>
@@ -546,7 +553,7 @@ var FOCUS = new URLSearchParams(location.search).get('focus')==='lab'; if(FOCUS)
 
     <!-- METHODOLOGY -->
     <div class="panel">
-      <div class="ph"><span class="ph-icon">🔬</span><span class="ph-title">Methodology — How This Calculator Works</span><span class="ph-chevron">▾</span></div>
+      <div class="ph"><span class="ph-icon"><svg class="hi" viewBox="0 0 24 24" aria-hidden="true"><g fill="#9fb3c4" opacity=".6" transform="translate(.8 .9)"><path d="M7.4 14.6H16.6L19 18.6Q19.8 20.6 17.6 20.6H6.4Q4.2 20.6 5 18.6Z"/></g><g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" filter="url(#hdNib)"><path d="M9.4 3H14.6M10.4 3V9.4L5 18.6Q4.2 20.6 6.4 20.6H17.6Q19.8 20.6 19 18.6L13.6 9.4V3M7.4 14.6H16.6"/><circle cx="11" cy="17.4" r=".7"/><circle cx="13.6" cy="16.6" r=".5"/></g></svg></span><span class="ph-title">Methodology — How This Calculator Works</span><span class="ph-chevron">▾</span></div>
       <div class="pb">
         <div class="chart-tabs" id="meth-tabs">
           <button class="ctab on" onclick="switchMeth('scope',this)">Scope &amp; Boundaries</button>
@@ -877,25 +884,25 @@ function go() {
 
   // Breakdown table
   const rows=[
-    {ico:'🚗',name:'Vehicle Driving',  cat:'transport',desc:`${s.miles.toLocaleString()} mi/yr · ${s.vehicle==='none'?'No car':s.vehicle.toUpperCase()}`,val:d.veh},
-    {ico:'✈️',name:'Flights (short)',  cat:'transport',desc:`${s.fshort}/yr · ~500 mi · RF×1.9`,val:d.fSh},
-    {ico:'✈️',name:'Flights (long)',   cat:'transport',desc:`${s.flong}/yr · ~3,500 mi · RF×1.9`,val:d.fLo},
-    {ico:'🚌',name:'Public Transit',   cat:'transport',desc:`${s.transit.toLocaleString()} mi/yr · bus/rail avg`,val:d.trCo},
-    {ico:'🍽️',name:'Diet',            cat:'food',desc:`${s.diet} · ${wasteStr[s.waste].toLowerCase()} waste · ${localStr[s.local].toLowerCase()}`,val:d.diet},
-    {ico:'🛵',name:'Takeout & Delivery',cat:'food',desc:`${s.takeout} meals/wk · packaging + delivery`,val:d.takeout},
-    {ico:'⚡',name:'Grid Electricity', cat:'energy',desc:`${s.kwh.toLocaleString()} kWh/yr · ${s.grid} grid`,val:d.gridElec},
-    {ico:'🔥',name:'Home Heating',     cat:'energy',desc:`${s.heat} · ${s.sqft.toLocaleString()} sq ft`,val:d.heat},
-    {ico:'👕',name:'Clothing',         cat:'consumer',desc:`${s.clothes}/mo × 12 = ${s.clothes*12}/yr · ~${clothEF} kg/item`,val:d.cloth},
-    {ico:'💻',name:'Electronics',      cat:'consumer',desc:`${s.elec} device(s)/yr · ~${elecEF} kg/device`,val:d.elec},
-    {ico:'🛒',name:'General Shopping', cat:'consumer',desc:`${s.spend} spending level`,val:d.shop},
-    {ico:'📺',name:'Digital (stream+AI)',cat:'consumer',desc:`${s.stream} hr/day streaming · ${s.ai} AI prompts/day · upstream`,val:d.stream+d.ai}
+    {ico:'car',name:'Vehicle Driving',  cat:'transport',desc:`${s.miles.toLocaleString()} mi/yr · ${s.vehicle==='none'?'No car':s.vehicle.toUpperCase()}`,val:d.veh},
+    {ico:'plane',name:'Flights (short)',  cat:'transport',desc:`${s.fshort}/yr · ~500 mi · RF×1.9`,val:d.fSh},
+    {ico:'plane',name:'Flights (long)',   cat:'transport',desc:`${s.flong}/yr · ~3,500 mi · RF×1.9`,val:d.fLo},
+    {ico:'bus',name:'Public Transit',   cat:'transport',desc:`${s.transit.toLocaleString()} mi/yr · bus/rail avg`,val:d.trCo},
+    {ico:'plate',name:'Diet',            cat:'food',desc:`${s.diet} · ${wasteStr[s.waste].toLowerCase()} waste · ${localStr[s.local].toLowerCase()}`,val:d.diet},
+    {ico:'takeout',name:'Takeout & Delivery',cat:'food',desc:`${s.takeout} meals/wk · packaging + delivery`,val:d.takeout},
+    {ico:'bolt',name:'Grid Electricity', cat:'energy',desc:`${s.kwh.toLocaleString()} kWh/yr · ${s.grid} grid`,val:d.gridElec},
+    {ico:'flame',name:'Home Heating',     cat:'energy',desc:`${s.heat} · ${s.sqft.toLocaleString()} sq ft`,val:d.heat},
+    {ico:'shirt',name:'Clothing',         cat:'consumer',desc:`${s.clothes}/mo × 12 = ${s.clothes*12}/yr · ~${clothEF} kg/item`,val:d.cloth},
+    {ico:'laptop',name:'Electronics',      cat:'consumer',desc:`${s.elec} device(s)/yr · ~${elecEF} kg/device`,val:d.elec},
+    {ico:'cart',name:'General Shopping', cat:'consumer',desc:`${s.spend} spending level`,val:d.shop},
+    {ico:'tv',name:'Digital (stream+AI)',cat:'consumer',desc:`${s.stream} hr/day streaming · ${s.ai} AI prompts/day · upstream`,val:d.stream+d.ai}
   ];
   const maxRow=Math.max(...rows.map(rw=>rw.val),1);
   document.getElementById('bk-body').innerHTML=rows.map(rw=>{
     const pct=Math.max(0,Math.min(100,rw.val/maxRow*100));
     const cls=rw.val>2000?'hi':rw.val<100?'lo':'';
     return `<tr>
-      <td><div class="td-cat">${rw.ico} ${rw.name}</div></td>
+      <td><div class="td-cat">${HI(rw.ico)} ${rw.name}</div></td>
       <td class="td-desc">${rw.desc}</td>
       <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:${pct}%;background:${CLR[rw.cat]}"></div></div></td>
       <td class="td-cost ${cls}">${fmt(rw.val)}</td>
@@ -1099,7 +1106,7 @@ function focusSetup(){
   const R='<svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/></svg>';
   const bar=document.createElement('div'); bar.className='fx-bar';
   bar.innerHTML='<span class="fx-lbl">Your inputs</span>'+ins.map((p,i)=>'<button class="fx-tab'+(i?'':' on')+'" type="button" data-in="'+i+'">'
-      +p.querySelector('.ph-icon').textContent+' '+p.querySelector('.ph-title').textContent.replace(' & Diet','').replace(' Choices','')+'</button>').join('')
+      +p.querySelector('.ph-icon').innerHTML+' '+p.querySelector('.ph-title').textContent.replace(' & Diet','').replace(' Choices','')+'</button>').join('')
     +'<span class="fx-spacer"></span><button class="fx-pill" type="button" data-reset>'+R+'Reset</button>'
     +'<button class="fx-pill" type="button" data-fx="how">'+I+'How to use</button><button class="fx-pill" type="button" data-fx="src">'+B+'Sources</button>';
   ins.forEach((p,i)=>{ p.style.display=i?'none':''; });
