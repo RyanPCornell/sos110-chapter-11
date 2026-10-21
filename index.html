@@ -1352,6 +1352,8 @@ body{background:#1c2129;}
 .os .os-popts .os-b:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .os .os-news.poll{border-color:#2668a8;background:#eef3f7}
 .os .os-news.poll .os-nlbl{color:#2668a8}
+.os .os-pskip{margin-left:6px;font:700 11.5px Inter;color:var(--muted);background:none;border:0;border-bottom:1px dotted var(--muted);padding:0;cursor:pointer}
+.os .os-pskip:hover{color:var(--ink)}
 .sc-slide{padding:0!important;background:#f4efe4}
 .sc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(1rem,3vw,2.4rem) clamp(3.4rem,6vw,6rem);font-family:Inter,system-ui,sans-serif;color:#2b2a26}
 .sc *{box-sizing:border-box}
@@ -6742,7 +6744,8 @@ const POLLS = (function () {
     if (!P) { if (card) card.remove(); return; }
     const k = POLLS.key(P.i, gid()), who = POLLS.asked(P, assign(), gid()), me = who.has(PK) && !HOST, my = mine('poll' + P.i);
     const aud = P.aud === 'world' ? 'Every delegate' : `${who.size} of ${SIM.NATIONS[P.aud].name}’s delegates`;
-    if (!HOST && !me) { if (card) card.remove(); return; }
+    // optional: a delegate who would rather not answer can wave the card away
+    if (!HOST && (!me || (my == null && mine('pollskip' + P.i)))) { if (card) card.remove(); return; }
     const sig = k + yr() + (my != null ? 'a' + my : '') + (HOST ? Object.keys((state.pv && state.pv[k]) || {}).length : '');
     if (card && card.dataset.sig === sig) return;
     if (!card) { card = document.createElement('div'); card.className = 'os-pollc'; host.appendChild(card); }
@@ -6755,7 +6758,8 @@ const POLLS = (function () {
       card.innerHTML = `<span class="os-pk">Quick poll · you answered</span><b>${esc(P.q)}</b><em>“${esc(P.opts[my])}”. The result will be in the news soon.</em>`;
     } else {
       card.innerHTML = `<span class="os-pk">Quick poll · ${P.aud === 'world' ? 'for every delegate' : `for some of ${SIM.NATIONS[P.aud].name}’s delegates`}</span><b>${esc(P.q)}</b>
-        <div class="os-popts">${P.opts.map((o, j) => `<button class="os-b" data-pv="${j}">${esc(o)}</button>`).join('')}</div><em>Anonymous. The result runs in the news.</em>`;
+        <div class="os-popts">${P.opts.map((o, j) => `<button class="os-b" data-pv="${j}">${esc(o)}</button>`).join('')}</div><em>Optional and anonymous. The result runs in the news. <button class="os-pskip" data-pskip>Not now ×</button></em>`;
+      card.querySelector('[data-pskip]').onclick = () => { setMine('pollskip' + P.i, 1); card.remove(); };
       card.querySelectorAll('[data-pv]').forEach(b => b.onclick = () => { setMine('poll' + P.i, +b.dataset.pv); if (backend) backend.mergeDocShard('polls', GID, { pv: { [k]: { [PK]: String(b.dataset.pv) } } }); card.dataset.sig = ''; paintPoll(C); });
     }
   }
