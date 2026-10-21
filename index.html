@@ -7068,7 +7068,7 @@ const SPECIAL = (function () {
   const q = s => root.querySelector(s);
   const esc = UI.esc;
   const visible = () => slide.classList.contains('active') || !slide.classList.contains('slide');
-  const SECS = { vote0: 200, vote: 170, special: 150 };
+  const SECS = { vote0: 180, vote: 90, special: 60 };   // first election 3 min, later elections 1.5 min, special election 1 min (Ryan, Oct 21)
   let backend = null, HOST = false, state = {}, unsub = null, subMode = '';
   const HOSTID = (() => { try { let v = sessionStorage.getItem('os-host'); if (!v) { v = Math.random().toString(36).slice(2, 10); sessionStorage.setItem('os-host', v); } return v; } catch (e) { return Math.random().toString(36).slice(2, 10); } })();
   const clockMine = () => !state.hostId || state.hostId === HOSTID;
