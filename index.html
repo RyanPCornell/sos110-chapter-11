@@ -5907,8 +5907,7 @@ const UI = (function () {
     }
     // 2. what the laws did to the climate
     if (L && o.fut) add('impact', impactPage(L, o.fut));
-    // the temptation: why every nation is drawn to fossil-first, and where that leads
-    if (o.I) add('tempt', FIN.temptPage());
+    // (the four-worlds "temptation" page was retired Oct 21 at Ryan's request; FIN.temptPage is kept but unused)
     // 3. now or later: which laws pay off first and cost later, and the other way around
     if (L && o.I) add('later', std() ? STD.laterPage(o) : laterPage(L, o));
     // 4. who paid, who gained (the commons)
@@ -5922,9 +5921,9 @@ const UI = (function () {
     }
     // 3. the twist (round 2 only)
     if (o.twist) add('twist', o.twist);
-    // four core pages in order; the rest wait behind "More from 2066" on the last core page
-    const CORE = ['world', 'earths', 'tempt', 'ledger', 'twist'], idx = kinds.map((k, i) => i);
-    const core = idx.filter(i => CORE.includes(kinds[i])), extra = idx.filter(i => !CORE.includes(kinds[i]));
+    // the core pages in this order (now-or-later, the "acting pays off from" chart, closes the run); the rest wait behind "More from 2066"
+    const CORE = ['world', 'earths', 'ledger', 'later', 'twist'], idx = kinds.map((k, i) => i);
+    const core = idx.filter(i => CORE.includes(kinds[i])).sort((a, b) => CORE.indexOf(kinds[a]) - CORE.indexOf(kinds[b])), extra = idx.filter(i => !CORE.includes(kinds[i]));
     const XL = { chain: 'From choices to climate', impact: `What did your ${W()} do to the climate?`, later: 'Now or later?' };
     let at = Math.min(core.length - 1, R.fpg || 0), side = null; R.fpg = 0;
     const draw = () => {
@@ -5932,7 +5931,7 @@ const UI = (function () {
       const more = last && extra.length ? `<div class="os-fmore"><span>More from 2066:</span>${extra.map(i => `<button class="os-linkb" data-x="${i}">${XL[kinds[i]] || 'More'}</button>`).join('')}</div>` : '';
       overlay(pages[pg] + more + (last || side != null ? `<p class="os-fhow">Where do these numbers come from? <button class="os-linkb" data-how2>How this model works, and its sources</button></p>` : '') +
         (side == null ? `<div class="os-fnav">${core.map((_, i) => `<i class="${i === at ? 'on' : ''}"></i>`).join('')}</div>` : '') +
-        act(side == null && !last ? { onGo: () => { at++; draw(); }, goLabel: { earths: 'Two worlds ▸', tempt: 'The temptation ▸', ledger: 'Who paid, who gained? ▸', twist: 'One more thing… ▸' }[kinds[core[at + 1]]] || 'Next ▸' } : o, 'Close',
+        act(side == null && !last ? { onGo: () => { at++; draw(); }, goLabel: { earths: 'Two worlds ▸', ledger: 'Who paid, who gained? ▸', later: 'Now or later? ▸', twist: 'One more thing… ▸' }[kinds[core[at + 1]]] || 'Next ▸' } : o, 'Close',
           side != null ? '<button class="os-btn ghost" id="osBack">◂ Back to the ledger</button>' : at ? '<button class="os-btn ghost" id="osBack">◂ Back</button>' : ''), () => {
         if (kinds[pg] === 'world') finalChart($('#osFchart'));
         if (kinds[pg] === 'chain' && chainD) STD.mountChain(chainD, true);
@@ -7650,8 +7649,8 @@ const SPECIAL = (function () {
       [2400, adv(2), ''],
       [2400, adv(2), ''],
       [12000, goBtn, 'Two worlds: drag across the map from the world the class made to the world where every nation went fossil-first.'],
-      [14000, goBtn, 'The temptation: going fossil-first pays each nation more, whatever the others do. If all five take that deal, all five lose.'],
-      [12000, goBtn, 'Who paid, and who gained? Each nation paid for its own choices, but the cooling was shared. More pages from 2066 wait behind “More from 2066”.'],
+      [12000, goBtn, 'Who paid, and who gained? Each nation paid for its own choices, but the cooling was shared.'],
+      [14000, goBtn, 'Now or later? Acting costs income at first; the chart marks the year acting starts to pay off. More pages from 2066 wait behind “More from 2066”.'],
     ];
     const bar = document.createElement('div'); bar.className = 'os-demobar';
     const views = [['projector', 'Projector'], ...SIM.NATIONS.map(N => [N.id, N.name])];
@@ -7705,8 +7704,8 @@ const SPECIAL = (function () {
       { t: 'The second election', b: 16, cap: 'In 2040 the delegates choose again, knowing what fourteen years of their choices did, and a new platform appears: protecting their people from the damage.' },
       { t: 'Where it landed', b: 35, cap: 'In 2066: where the world landed, against the published climate pathways.' },
       { t: 'Two worlds', b: 36, cap: 'The 2066 map drawn twice: the world the class made and the world where every nation went fossil-first, with a handle to drag between them and a tally of what the difference cost.' },
-      { t: 'The temptation', b: 37, cap: 'Four worlds for one nation: it acts or goes fossil-first, and so do the other four. Going fossil-first pays every nation more whatever the others do, until all five do it.' },
-      { t: 'The ledger', b: 38, cap: 'Who paid, and who gained: each nation’s income in 2066 in three worlds, and what its own choices did for itself and for its neighbors.' }] },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained: each nation’s income in 2066 in three worlds, and what its own choices did for itself and for its neighbors.' },
+      { t: 'Now or later?', b: 38, cap: 'Now or later? World income against the world where every nation went fossil-first: acting costs at first, and the chart marks the year it starts to pay off.' }] },
     host: { t: 'The projector', view: 'projector', steps: [
       { t: 'The lobby', b: 1, cap: 'Students join from the slide.' },
       { t: 'The nations', b: 2, cap: 'Five nations, five economies, one sky.' },
@@ -7717,8 +7716,8 @@ const SPECIAL = (function () {
       { t: 'The years', b: 9, cap: 'The years run on the map: indicators, the nations’ choices, breaking news, and charts.' },
       { t: 'Where it landed', b: 35, cap: 'The world in 2066.' },
       { t: 'Two worlds', b: 36, cap: 'The world the class made against the world of inaction.' },
-      { t: 'The temptation', b: 37, cap: 'Why every nation is drawn to fossil-first, and where it leads.' },
-      { t: 'The ledger', b: 38, cap: 'Who paid, and who gained.' }] },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained.' },
+      { t: 'Now or later?', b: 38, cap: 'Now or later: the year acting starts to pay off.' }] },
   };
   const SAMPLE = {
     del: { t: 'A delegate', view: 'terrasen', steps: [
@@ -7731,8 +7730,8 @@ const SPECIAL = (function () {
       { t: 'The second election', b: 16, cap: 'In 2040 the delegates vote again, knowing what fourteen years of their laws did. Adaptation and climate aid join the ballot.' },
       { t: 'Where it landed', b: 35, cap: 'In 2066: where the world landed, against the published climate pathways.' },
       { t: 'Two worlds', b: 36, cap: 'The 2066 map drawn twice: the world the class made and the world where every nation went fossil-first, with a handle to drag between them and a tally of what the difference cost.' },
-      { t: 'The temptation', b: 37, cap: 'Four worlds for one nation: it acts or goes fossil-first, and so do the other four. Going fossil-first pays every nation more whatever the others do, until all five do it.' },
-      { t: 'The ledger', b: 38, cap: 'Who paid, and who gained: each nation’s income in 2066 in three worlds, and what its own laws did for itself and for its neighbors.' }] },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained: each nation’s income in 2066 in three worlds, and what its own laws did for itself and for its neighbors.' },
+      { t: 'Now or later?', b: 38, cap: 'Now or later? World income against the world where every nation went fossil-first: acting costs at first, and the chart marks the year it starts to pay off.' }] },
     host: { t: 'The projector', view: 'projector', steps: [
       { t: 'The lobby', b: 1, cap: 'Students join from the slide.' },
       { t: 'The nations', b: 2, cap: 'Five nations, five economies, one sky.' },
@@ -7742,8 +7741,8 @@ const SPECIAL = (function () {
       { t: 'The years', b: 9, cap: 'The years run on the map: indicators, the nations’ laws, breaking news, and charts.' },
       { t: 'Where it landed', b: 35, cap: 'The world in 2066.' },
       { t: 'Two worlds', b: 36, cap: 'The world the class made against the world of inaction.' },
-      { t: 'The temptation', b: 37, cap: 'Why every nation is drawn to fossil-first, and where it leads.' },
-      { t: 'The ledger', b: 38, cap: 'Who paid, and who gained.' }] },
+      { t: 'The ledger', b: 37, cap: 'Who paid, and who gained.' },
+      { t: 'Now or later?', b: 38, cap: 'Now or later: the year acting starts to pay off.' }] },
   };
   const sampleBase = () => /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '/game-demos-web/onesky/' : 'https://ryanpcornell.github.io/sos110-game-demos/onesky/';
   let sR = 'del', sAt = 0;
